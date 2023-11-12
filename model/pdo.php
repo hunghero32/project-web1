@@ -1,4 +1,5 @@
 <?php
+// databse
 class pdo
 {
     public function pdo_get_connection()
