@@ -1,6 +1,5 @@
 <?php
-// databse
-class pdo
+class db
 {
     public function pdo_get_connection()
     {
