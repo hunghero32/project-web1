@@ -1,6 +1,5 @@
 <?php
-// include_once('../..c_pdo.php');
-include('../c_pdo.php');
+include_once( __DIR__ . '/../m_db.php');
 class M_corp extends db
 {
     function get_all_Corp($name, $major, $address)
@@ -21,13 +20,16 @@ class M_corp extends db
     }
     
 
+
+
     function get_one_Corp($id)
     {
         $sql = "SELECT c.*, u.name, u.img, u.email, u.phone, u.address
                 FROM corp c
                 INNER JOIN user u ON c.idcorp = u.id
-                WHERE u.role = 3 AND c.id = $id";
-        return $this->pdo_query_one($sql);
+                WHERE u.role = 3 AND c.idcorp = ?";
+        $corp = $this->pdo_query_one($sql, [$id]);
+        return $corp;
     }
 
     // UPDATE user as u, corp as c
