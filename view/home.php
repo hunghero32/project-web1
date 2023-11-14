@@ -97,117 +97,27 @@
             <h2>Nhà tuyển dụng nổi bật</h2>
         </div>
         <div class="row">
-            <div class="col-lg-6">
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
-                        <h3>Product Designer</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Los Angeles, CS, USA
-                            </li>
-                            <li>5 months ago</li>
-                        </ul>
-                        <p>We are Looking for a skilled Ul/UX designer amet conscu adiing elitsed do eusmod tempor
-                        </p>
-                        <span class="span-one">Accounting</span>
-                        <span class="span-two">FULL TIME</span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="employer-item">
-                    <a href="blog-details.html">
-                        <img data-cfsrc="assets/img/home-one/job2.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job2.png" alt="Employer"></noscript>
-                        <h3>Sr. Shopify Developer</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Houston, TX, USA
-                            </li>
-                            <li>4 months ago</li>
-                        </ul>
-                        <p>Responsible for managing skilled Ul/UX designer amet conscu adiing elitsed do eusmod</p>
-                        <span class="span-one">Accounting</span>
-                        <span class="span-two two">FULL TIME</span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <a href="job-details.html">
+            <?php foreach($top_corp as $c) { extract($c) ?>
+                <div class="col-lg-6">
                     <div class="employer-item">
-                        <img data-cfsrc="assets/img/home-one/job3.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job3.png" alt="Employer"></noscript>
-                        <h3>Tax Manager</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Ho Chi Minh City, Vietnam
-                            </li>
-                            <li>6 months ago</li>
-                        </ul>
-                        <p>International collaborative a skilled Ul/UX designer amet conscu adiing elitsed do eusmod
-                        </p>
-                        <span class="span-one two">Broardcasting</span>
-                        <span class="span-two three">FREELANCER</span>
+                        <a href="index.php?act=infoCorp&id=<?= $idcorp ?>">
+                            <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
+                            <h3><?= $name ?></h3>
+                            <ul>
+                                <li>
+                                    <i class="flaticon-send"></i>
+                                    Los Angeles, CS, USA
+                                </li>
+                                <li>5 months ago</li>
+                            </ul>
+                            <p>We are Looking for a skilled Ul/UX designer amet conscu adiing elitsed do eusmod tempor
+                            </p>
+                            <span class="span-one">Accounting</span>
+                            <span class="span-two">FULL TIME</span>
+                        </a>
                     </div>
-                </a>
-            </div>
-            <div class="col-lg-6">
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job4.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job4.png" alt="Employer"></noscript>
-                        <h3>Senior Data Engineer</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Cardiss, UK
-                            </li>
-                            <li>9 months ago</li>
-                        </ul>
-                        <p>International collaborative designer amet conscu adiing elitsed do eusmod tempor</p>
-                        <span class="span-one three">Web & Software Dev</span>
-                        <span class="span-two four">REMOTE</span>
-                    </a>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job5.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job5.png" alt="Employer"></noscript>
-                        <h3>Construction Worker</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Adelaide SA, Australia
-                            </li>
-                            <li>10 months ago</li>
-                        </ul>
-                        <p>We are Looking for a skilled Ul/UX designer amet conscu adiing elitsed do eusmod tempor
-                        </p>
-                        <span class="span-one">Accounting</span>
-                        <span class="span-two">FULL TIME</span>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job6.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job6.png" alt="Employer"></noscript>
-                        <h3>Product Manager</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Warangal, Telangana, India
-                            </li>
-                            <li>2 months ago</li>
-                        </ul>
-                        <p>Wind Power Engineering Manager amet conscu adiing elitsed do eusmod tempor</p>
-                        <span class="span-one four">Customer Service</span>
-                        <span class="span-two">FULL TIME</span>
-                    </a>
-                </div>
-            </div>
+            <?php } ?>
         </div>
         <div class="job-browse">
             <p>Rất nhiều công việc công nghệ hàng đầu đang chờ bạn > <a href="jobs.html"> Tất cả việc làm</a></p>
