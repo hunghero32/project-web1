@@ -1,3 +1,3 @@
 <?php
-    $img_path='control/uploads/';
+    $img_path='assets/uploads/';
 ?>
