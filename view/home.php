@@ -1,3 +1,4 @@
+
 <div class="banner-area three">
     <div class="banner-shape-three">
         <img data-cfsrc="assets/img/home-three/banner-main.png" alt="Shape" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/banner-main.png" alt="Shape"></noscript>
@@ -96,32 +97,100 @@
             <h2>Nhà tuyển dụng nổi bật</h2>
         </div>
         <div class="row">
-            <?php foreach ($listCorp as $corp) {
-                extract($corp);
-            ?>
-                <div class="col-lg-6">
-                    <div class="employer-item">
-                        <a href="index.php?corp=<?= $idcorp ?>">
-                            <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
-                            <!-- <img data-cfsrc="<?= $img ?>" alt="Company" style="display:none;visibility:hidden;"><noscript><img src="<?= $img ?>" alt="Employer"></noscript> -->
-                            <h3><?= $name ?></h3>
-                            <ul>
-                                <li>
-                                    <i class="flaticon-send"></i>
-                                    <?= $address ?>
-                                </li>
-                            </ul>
-                            <p>
-                                Hoạt động: <?= $exp ?> năm <br>
-                                Lĩnh vực: <?= $major ?>
-                            </p>
-                            <a href=""><span class="span-one">Thông tin về nhà tuyển dụng</span></a>
-                            <span class="span-two">FULL TIME</span>
-                        </a>
-                    </div>
+            <div class="col-lg-6">
+                <div class="employer-item">
+                    <a href="job-details.html">
+                        <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
+                        <h3>Product Designer</h3>
+                        <ul>
+                            <li>
+                                <i class="flaticon-send"></i>
+                                Los Angeles, CS, USA
+                            </li>
+                            <li>5 months ago</li>
+                        </ul>
+                        <p>We are Looking for a skilled Ul/UX designer amet conscu adiing elitsed do eusmod tempor
+                        </p>
+                        <span class="span-one">Accounting</span>
+                        <span class="span-two">FULL TIME</span>
+                    </a>
                 </div>
-            <?php } ?>
-            <!-- <div class="col-lg-6">
+            </div>
+            <div class="col-lg-6">
+                <div class="employer-item">
+                    <a href="blog-details.html">
+                        <img data-cfsrc="assets/img/home-one/job2.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job2.png" alt="Employer"></noscript>
+                        <h3>Sr. Shopify Developer</h3>
+                        <ul>
+                            <li>
+                                <i class="flaticon-send"></i>
+                                Houston, TX, USA
+                            </li>
+                            <li>4 months ago</li>
+                        </ul>
+                        <p>Responsible for managing skilled Ul/UX designer amet conscu adiing elitsed do eusmod</p>
+                        <span class="span-one">Accounting</span>
+                        <span class="span-two two">FULL TIME</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <a href="job-details.html">
+                    <div class="employer-item">
+                        <img data-cfsrc="assets/img/home-one/job3.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job3.png" alt="Employer"></noscript>
+                        <h3>Tax Manager</h3>
+                        <ul>
+                            <li>
+                                <i class="flaticon-send"></i>
+                                Ho Chi Minh City, Vietnam
+                            </li>
+                            <li>6 months ago</li>
+                        </ul>
+                        <p>International collaborative a skilled Ul/UX designer amet conscu adiing elitsed do eusmod
+                        </p>
+                        <span class="span-one two">Broardcasting</span>
+                        <span class="span-two three">FREELANCER</span>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-6">
+                <div class="employer-item">
+                    <a href="job-details.html">
+                        <img data-cfsrc="assets/img/home-one/job4.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job4.png" alt="Employer"></noscript>
+                        <h3>Senior Data Engineer</h3>
+                        <ul>
+                            <li>
+                                <i class="flaticon-send"></i>
+                                Cardiss, UK
+                            </li>
+                            <li>9 months ago</li>
+                        </ul>
+                        <p>International collaborative designer amet conscu adiing elitsed do eusmod tempor</p>
+                        <span class="span-one three">Web & Software Dev</span>
+                        <span class="span-two four">REMOTE</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="employer-item">
+                    <a href="job-details.html">
+                        <img data-cfsrc="assets/img/home-one/job5.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job5.png" alt="Employer"></noscript>
+                        <h3>Construction Worker</h3>
+                        <ul>
+                            <li>
+                                <i class="flaticon-send"></i>
+                                Adelaide SA, Australia
+                            </li>
+                            <li>10 months ago</li>
+                        </ul>
+                        <p>We are Looking for a skilled Ul/UX designer amet conscu adiing elitsed do eusmod tempor
+                        </p>
+                        <span class="span-one">Accounting</span>
+                        <span class="span-two">FULL TIME</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-6">
                 <div class="employer-item">
                     <a href="job-details.html">
                         <img data-cfsrc="assets/img/home-one/job6.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job6.png" alt="Employer"></noscript>
@@ -138,7 +207,7 @@
                         <span class="span-two">FULL TIME</span>
                     </a>
                 </div>
-            </div> -->
+            </div>
         </div>
         <div class="job-browse">
             <p>Rất nhiều công việc công nghệ hàng đầu đang chờ bạn > <a href="jobs.html"> Tất cả việc làm</a></p>
