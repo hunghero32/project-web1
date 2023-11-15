@@ -5,6 +5,7 @@ include 'model/corp.php';
 
 
 $top_corp = top_Corp();
+$list_corp = list_Corp('','','');
 include 'view/header.php';
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
@@ -18,6 +19,9 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
             include 'view/corp/info_Corp.php';
             break;
 
+        case 'listCorp':
+            include 'view/corp/list_Corp.php';
+            break;
         default:
             # code...
             break;
