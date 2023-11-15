@@ -1,5 +1,5 @@
 <div class="user-form-area position-relative">
-        <a class="position-absolute top-0 end-0 me-3 mt-4 translate-middle" href="index.html">
+        <a class="position-absolute top-0 end-0 me-3 mt-4 translate-middle" href="index.php">
             <i class="fa-solid fa-xmark"></i>
         </a>
         <div class="container-fluid p-0">
@@ -22,12 +22,12 @@
                     <div class="user-content">
                         <div class="top">
                             <h2>Lấy lại mật khẩu</h2>
-                            <form>
+                            <form action="index.php?act=forgot" method="post">
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Tài khoản / Email đăng kí">
+                                    <input type="email" name="email" class="form-control" placeholder="Tài khoản / Email đăng kí">
                                 </div>
                                 <div class="form-group">
-                                    <input type="tel" class="form-control" placeholder="Số điện thoại đăng kí">
+                                    <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại đăng kí">
                                 </div>
                                 <button type="submit" class="btn">Lấy mật khẩu</button>
                             </form>
@@ -57,8 +57,8 @@
                             </ul>
                         </div>
                         <div class="end mt-3">
-                            <a href="login.html"> Đăng nhập</a> <a href="#">/</a>
-                            <a href="register.html"> Đăng kí </a>
+                            <a href="index.php?act=signin"> Đăng nhập</a> <a href="#">/</a>
+                            <a href="index.php?act=signup> Đăng kí </a>
                         </div>
                     </div>
                 </div>

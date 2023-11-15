@@ -11,13 +11,13 @@ function pdo_get_connection(){
         echo "Connection failed: " . $e->getMessage();
     }
 }
-
 function pdo_execute($sql){
     $sql_args=array_slice(func_get_args(),1);
     try{
         $conn=pdo_get_connection();
         $stmt=$conn->prepare($sql);
         $stmt->execute($sql_args);
+
     }
     catch(PDOException $e){
         throw $e;
@@ -26,7 +26,6 @@ function pdo_execute($sql){
         unset($conn);
     }
 }
-
 // truy vấn nhiều dữ liệu
 function pdo_query($sql){
     $sql_args=array_slice(func_get_args(),1);
@@ -37,6 +36,22 @@ function pdo_query($sql){
         $stmt->execute($sql_args);
         $rows=$stmt->fetchAll();
         return $rows;
+    }
+    catch(PDOException $e){
+        throw $e;
+    }
+    finally{
+        unset($conn);
+    }
+}
+// Truy vấn liên tục dữ liệu
+function pdo_execute_return($sql){
+    $sql_args = array_slice(func_get_args(), 1);
+    try{
+        $conn = pdo_get_connection();
+        $stmt = $conn->prepare($sql);
+        $stmt->execute($sql_args);
+        return $conn->lastInsertId();
     }
     catch(PDOException $e){
         throw $e;
@@ -64,3 +79,4 @@ function pdo_query_one($sql){
     }
 }
 pdo_get_connection();
+?>

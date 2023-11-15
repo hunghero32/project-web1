@@ -1,5 +1,5 @@
 <div class="user-form-area position-relative">
-    <a class="position-absolute top-0 end-0 me-3 mt-4 translate-middle" href="index.html">
+    <a class="position-absolute top-0 end-0 me-3 mt-4 translate-middle" href="index.php">
         <i class="fa-solid fa-xmark"></i>
     </a>
     <div class="container-fluid p-0">
@@ -21,15 +21,20 @@
                 <div class="user-content">
                     <div class="top">
                         <h2>Đăng nhập</h2>
-                        <form>
+                        <form  action="index.php?act=signin" method="post"> 
                             <div class="form-group">
-                                <input type="text" name="user" class="form-control" placeholder="Tài khoản / Email" required>
+                                <input type="text" name="username" class="form-control" placeholder="Tài khoản " required>
                             </div>
                             <div class="form-group">
                                 <input type="password" name="pass" class="form-control" placeholder="Mật khẩu" required>
                             </div>
-                            <button type="submit" class="btn">Đăng nhập</button>
+                            <button type="submit" class="btn" name="signin">Đăng nhập</button>
                         </form>
+                        <?php if (isset($thongbao) && $thongbao != '') { ?>
+                    <div class="row">
+                        <p style="color: red;"><?= $thongbao ?></p>
+                    </div>
+                <?php } ?>
                     </div>
                     <div class="end">
                         <ul>
@@ -56,10 +61,10 @@
                         </ul>
                     </div>
                     <div class="end mt-3">
-                        Chưa có tài khoản ? <a href="register.html"> Đăng kí ngay</a>
+                        Chưa có tài khoản ? <a href="index.php?act=signup"> Đăng kí ngay</a>
                     </div>
                     <div class="end mt-2">
-                        Quên mật khẩu ? <a href="forgotpassword.html"> Lấy lại mật khẩu</a>
+                        Quên mật khẩu ? <a href="index.php?act=forgot"> Lấy lại mật khẩu</a>
                     </div>
                 </div>
             </div>
