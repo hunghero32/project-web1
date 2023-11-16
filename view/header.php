@@ -25,6 +25,7 @@
     <title>JI - Jobs IT</title>
 </head>
 
+
 <body>
 <div class="loader">
     <div class="d-table">
