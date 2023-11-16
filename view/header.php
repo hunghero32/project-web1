@@ -26,6 +26,7 @@
 </head>
 
 
+<body>
 <div class="loader">
     <div class="d-table">
         <div class="d-table-cell">
