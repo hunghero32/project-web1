@@ -1,25 +1,17 @@
-<body>
-    <div class="loader">
-        <div class="d-table">
-            <div class="d-table-cell">
-                <div class="spinner"></div>
-            </div>
-        </div>
-    </div>
 
 <div class="navbar-area fixed-top">
 
-<div class="mobile-nav">
-    <a href="index.php" class="logo">
-        <script type="text/javascript" style="display:none">
-            window.__mirage2 = {
-                petok: "R5hvAGvuYYzQ_tuA6uW2YWY70c9VahuBUEONJqSdIJI-1800-0"
-            };
-        </script>
-        <script type="text/javascript" src="ajax.cloudflare.com/mirage2.min.js" src="ajax.cloudflare.com/mirage2.min.js"></script>
-        <img data-cfsrc="assets/img/logo-three.png" alt="Logo" style="display:none;visibility:hidden;"><noscript><img src="assets/img/logo-three.png" alt="Logo"></noscript>
-    </a>
-</div>
+    <div class="mobile-nav">
+        <a href="index.php" class="logo">
+            <script type="text/javascript" style="display:none">
+                window.__mirage2 = {
+                    petok: "R5hvAGvuYYzQ_tuA6uW2YWY70c9VahuBUEONJqSdIJI-1800-0"
+                };
+            </script>
+            <script type="text/javascript" src="ajax.cloudflare.com/mirage2.min.js" src="ajax.cloudflare.com/mirage2.min.js"></script>
+            <img data-cfsrc="assets/img/logo-three.png" alt="Logo" style="display:none;visibility:hidden;"><noscript><img src="assets/img/logo-three.png" alt="Logo"></noscript>
+        </a>
+    </div>
 
 <div class="main-nav three">
     <div class="container-fluid">
@@ -38,7 +30,7 @@
                         <a href="index.php?act=listCorp">Nhà tuyển dụng</a>
                     </li>
                     <li class="nav-item">
-                        <a href="index.php?act=listCV">CV</a>
+                        <a href="#">CV</a>
                     </li>
                     <li class="nav-item">
                         <a href="index.php?act=about" class="nav-link">Giới thiệu</a>
