@@ -276,25 +276,14 @@ button:focus {
     height: 50px;
     padding-top: 0;
     padding-bottom: 0;
-    padding-left: 20px;
-    padding-right: 65px;
+    padding: 0 30px;
     border-radius: 5px;
-    line-height: 50px
+    line-height: 50px;
+    margin-left: 20px;
 }
 
 .side-nav .job-right i {
-    display: inline-block;
-    height: 50px;
-    line-height: 50px;
-    padding-left: 12px;
-    padding-right: 12px;
-    font-size: 20px;
-    color: #fff;
-    background-color: var(--secondary);
-    position: absolute;
-    top: 10px;
-    right: 0;
-    border-radius: 0 5px 5px 0
+    margin-left: 1rem;
 }
 
 .side-nav .job-right:hover {
@@ -3582,10 +3571,6 @@ button:focus {
 
 .side-nav.three .job-right {
     background-color: var(--secondary)
-}
-
-.side-nav.three .job-right i {
-    background-color: var(--secondary-child)
 }
 
 .side-nav.three .job-right:hover {
@@ -8024,4 +8009,14 @@ button:focus {
 
 * {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+@media (max-width: 760px) {
+    .text-small-screen {
+        color: var(--main) !important;
+    }
 }
