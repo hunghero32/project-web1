@@ -21,20 +21,18 @@ switch ($act) {
     case 'signup':
         if (isset($_POST['submit']) ) {
             $username = $_POST['username'];
-            $image = $_FILES['img'];
-            $avatar = $image['name']; 
+            // $image = $_FILES['img'];
+            // $avatar = $image['name'];
             $pass = $_POST['pass'];
             $phone = $_POST['phone'];
             $name = $_POST['name'];
             $email = $_POST['email'];
-            $adress = $_POST['adress'];
+            // $adress = $_POST['adress'];
             $role = $_POST['role'];
-            $target_file = 'assets/img/' . $avatar;
+            $target_file = 'assets/uploads/' . $avatar;
             move_uploaded_file($image['tmp_name'], $target_file);
 
             add_user($username, $pass,$name , $avatar , $email, $phone, $adress , $role);
-
-            $thongbao = "Đăng ký thành công Vui lòng đăng nhập";
         } 
         include "view/user/signup.php";
         break;
