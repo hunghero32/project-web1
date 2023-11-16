@@ -21,45 +21,29 @@
                 <div class="user-content">
                     <div class="top">
                         <h2>Đăng nhập</h2>
-                        <form>
+                        <form action="index.php?act=signin" method="post">
                             <div class="form-group">
-                                <input type="text" name="user" class="form-control" placeholder="Tài khoản / Email" required>
+                                <input type="text" name="username" class="form-control" placeholder="Tài khoản " required>
                             </div>
                             <div class="form-group">
                                 <input type="password" name="pass" class="form-control" placeholder="Mật khẩu" required>
                             </div>
-                            <button type="submit" class="btn">Đăng nhập</button>
+                            <button type="submit" class="btn" name="signin">Đăng nhập</button>
                         </form>
+
+                        <?php if (isset($thongbao) && $thongbao != '') { ?>
+                            <div class="row">
+                                <p style="color: red;"><?= $thongbao ?></p>
+                            </div>
+                        <?php } ?>
+
                     </div>
-                    <div class="end">
-                        <ul>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="bx bxl-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="bx bxl-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="bx bxl-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="bx bxl-pinterest-alt"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+
                     <div class="end mt-3">
                         Chưa có tài khoản ? <a href="index.php?act=signup"> Đăng kí ngay</a>
                     </div>
                     <div class="end mt-2">
-                        Quên mật khẩu ? <a href="index.php?act=forgotpassword"> Lấy lại mật khẩu</a>
+                        Quên mật khẩu ? <a href="index.php?act=forgot"> Lấy lại mật khẩu</a>
                     </div>
                 </div>
             </div>
