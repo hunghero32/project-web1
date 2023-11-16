@@ -105,14 +105,16 @@
                             <h3><?= $name ?></h3>
                             <ul>
                                 <li>
-                                    <i class="flaticon-send"></i>
-                                    Los Angeles, CS, USA
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <?= $address ?>
                                 </li>
-                                <li>5 months ago</li>
                             </ul>
-                            <p>We are Looking for a skilled Ul/UX designer amet conscu adiing elitsed do eusmod tempor
+                            <p>
+                                <i class="fa-solid fa-suitcase"></i> <?= $major ?>
                             </p>
-                            <span class="span-one">Accounting</span>
+                            <a href="index.php?act=infoCorp&id=<?= $idcorp ?>">
+                                <span class="span-one"><i class="fa-solid fa-circle-info"></i> Thông tin chi tiết</span>
+                            </a>
                             <span class="span-two">FULL TIME</span>
                         </a>
                     </div>

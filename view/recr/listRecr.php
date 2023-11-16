@@ -442,52 +442,6 @@
                         <div class="salary cmn-padding">
                             <h3>Mức lương</h3>
                             <form>
-                                <div class="job-cmn-cat flex-divide">
-                                    <ul class="left">
-                                        <li>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value id="defaultCheck23">
-                                                <label class="form-check-label" for="defaultCheck23">
-                                                    Monthly
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value id="defaultCheck24">
-                                                <label class="form-check-label" for="defaultCheck24">
-                                                    Daily
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value id="defaultCheck25">
-                                                <label class="form-check-label" for="defaultCheck25">
-                                                    Yearly
-                                                </label>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                    <ul class="right">
-                                        <li>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value id="defaultCheck26">
-                                                <label class="form-check-label" for="defaultCheck26">
-                                                    Weekly
-                                                </label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value id="defaultCheck27">
-                                                <label class="form-check-label" for="defaultCheck27">
-                                                    Hourly
-                                                </label>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </div>
                                 <div class="form-group">
                                     <label class="range" for="formControlRangeTwo">$6778 - $9077</label>
                                     <input type="range" class="form-control-range" id="formControlRangeTwo">

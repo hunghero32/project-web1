@@ -1,5 +1,5 @@
 <div class="user-form-area position-relative">
-        <a class="position-absolute top-0 end-0 me-3 mt-4 translate-middle" href="index.html">
+        <a class="position-absolute top-0 end-0 me-3 mt-4 translate-middle" href="index.php">
             <i class="fa-solid fa-xmark"></i>
         </a>
         <div class="container-fluid p-0">
@@ -12,7 +12,7 @@
                             //]]>
                         </script>
                         <script type="text/javascript"
-                            src="../../../ajax.cloudflare.com/cdn-cgi/scripts/04b3eb47/cloudflare-static/mirage2.min.js"></script>
+                            src="ajax.cloudflare.com/cdn-cgi/scripts/04b3eb47/cloudflare-static/mirage2.min.js"></script>
                         <img data-cfsrc="assets/img/resgister-bg.jpg" alt="User"
                             style="display:none;visibility:hidden;"><noscript><img src="assets/img/resgister-bg.jpg"
                                 alt="User"></noscript>
@@ -60,32 +60,8 @@
                                 <button type="submit" name="submit" class="btn mt-3">Đăng kí</button>
                             </form>
                         </div>
-                        <!-- <div class="end">
-                            <ul>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <i class="bx bxl-facebook"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <i class="bx bxl-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <i class="bx bxl-linkedin"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" target="_blank">
-                                        <i class="bx bxl-pinterest-alt"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div> -->
                         <div class="end mt-3">
-                            <a href="login.html"> Đăng nhập</a>
+                            <a href="index.php?act=signin"> Đăng nhập</a>
                         </div>
                     </div>
                 </div>
