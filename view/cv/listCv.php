@@ -1,4 +1,3 @@
-
 <div class="page-title-area">
     <div class="d-table">
         <div class="d-table-cell">
@@ -108,48 +107,30 @@
 <div class="job-showing-area">
     <div class="container">
         <h1>CV Tiềm Năng</h1>
-        <?php
-        $cv = loadall_cv_user(); // Assuming you want to load all CVs for this example
-        $i = 0;
-
-        if (isset($cv) && is_array($cv)) {
-            foreach ($cv as $cv) {
-                // Extract relevant CV information
-                $link = "infoCV.php?act=" . $cv['id'];
-                $name = $cv['name'];
-                $img = $cv['img'];
-                $major = $cv['major'];
-                $exp = $cv['exp'];
-                $salary = $cv['salary'];
-                $address = $cv['address'];
-                //$skills = explode(',', $cv['skills']);
-
-                // Your existing HTML code for displaying CVs
-                ?>
-                <div class="candidate-area pb-100">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="candidate-item two">
-                                    <div class="left">
-                                        <h3>
-                                            <a href="<?= $link ?>"><?= $name ?></a>
-                                        </h3>
-                                        <span><?= $major ?></span>
-                                        <ul class="experience">
-                                            <li>Kinh nghiệm: <span><?= $exp ?> Tháng</span></li>
-                                            <li>Mức lương/giờ: <span><?= $salary ?>/giờ</span></li>
-                                            <li>
-                                                <i class="flaticon-send"></i>
-                                                <?= $address ?>
-                                            </li>
+        <div class="candidate-area pb-100">
+            <div class="container">
+                <div class="row">
+                    <?php foreach ($cv as $c) {
+                        extract($c) ?>
+                        <div class="col-lg-6">
+                            <div class="candidate-item two">
+                                <div class="left">
+                                    <h3>
+                                        <a href="<?= $link ?>"><?= $name ?></a>
+                                    </h3>
+                                    <span><?= $major ?></span>
+                                    <ul class="experience">
+                                        <li>Kinh nghiệm: <span><?= $exp ?> Tháng</span></li>
+                                        <li>Mức lương/giờ: <span><?= $salary ?>/giờ</span></li>
+                                        <li>
+                                            <i class="flaticon-send"></i>
+                                            <?= $address ?>
+                                        </li>
+                                    </ul>
+                                        <?php foreach ($skills as $skill) : ?>
+                                        <li><?= $skill ?>
+                                        <?php endforeach; ?>
                                         </ul>
-                                        <!-- <ul>
-                                            <?php foreach ($skills as $skill) : ?>
-                                                <li><?= $skill ?></li>
-                                            <?php endforeach; ?>
-                                        </ul> -->
-                                        <!-- Add your existing HTML for View Resume link -->
                                         <div class="cmn-link">
                                             <a href="<?= $link ?>">
                                                 <i class="flaticon-right-arrow one"></i>
@@ -157,21 +138,15 @@
                                                 <i class="flaticon-right-arrow two"></i>
                                             </a>
                                         </div>
-                                    </div>
-                                    <!-- Your existing HTML for displaying candidate image -->
-                                    <img data-cfsrc="<?= $img ?>" alt="<?= $name ?>" style="display:none;visibility:hidden;">
-                                    <noscript><img src="<?= $img ?>" alt="<?= $name ?>"></noscript>
                                 </div>
+                                <img data-cfsrc="<?= $img ?>" alt="<?= $name ?>" style="display:none;visibility:hidden;">
+                                <noscript><img src="<?= $img ?>" alt="<?= $name ?>"></noscript>
                             </div>
                         </div>
-                    </div>
+                    <?php } ?>
                 </div>
-                <?php
-            }
-        } else {
-            echo "No CV data available.";
-        }
-        ?>
+            </div>
+        </div>
         <div class="pagination-area">
             <ul>
                 <li>
