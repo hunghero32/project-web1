@@ -19,7 +19,7 @@ switch ($act) {
         break;
 
     case 'signup':
-        if (isset($_POST['submit']) ) {
+        if (isset($_POST['submit'])) {
             $username = $_POST['username'];
             // $image = $_FILES['img'];
             // $avatar = $image['name'];
@@ -32,8 +32,8 @@ switch ($act) {
             $target_file = 'assets/uploads/' . $avatar;
             move_uploaded_file($image['tmp_name'], $target_file);
 
-            add_user($username, $pass,$name , $avatar , $email, $phone, $adress , $role);
-        } 
+            add_user($username, $pass, $name, $avatar, $email, $phone, $adress, $role);
+        }
         include "view/user/signup.php";
         break;
 

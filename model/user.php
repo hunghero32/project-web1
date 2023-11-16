@@ -47,17 +47,3 @@ function edit_user($id)
     $user = pdo_query_one($sql);
     return $user;
 }
-
-function delete_user($id)
-{
-    $sql = "DELETE from user where id = '$id'";
-    pdo_execute($sql);
-}
-
-function delete_checkbox_user($checkbox = [])
-{
-    foreach ($checkbox as $box) {
-        $sql = "DELETE from user where id=" . $box;
-        pdo_execute($sql);
-    }
-}
