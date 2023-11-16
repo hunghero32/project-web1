@@ -1,3 +1,11 @@
+<body>
+    <div class="loader">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </div>
 
 <div class="navbar-area fixed-top">
 
@@ -30,7 +38,7 @@
                         <a href="index.php?act=listCorp">Nhà tuyển dụng</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#">CV</a>
+                        <a href="index.php?act=listCV">CV</a>
                     </li>
                     <li class="nav-item">
                         <a href="index.php?act=about" class="nav-link">Giới thiệu</a>
