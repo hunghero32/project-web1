@@ -3,8 +3,6 @@ session_start();
 include 'global.php';
 include 'model/pdo.php';
 include 'model/corp.php';
-include 'model/user.php';
-include 'model/recr.php';
 
 $top_corp = top_Corp();
 $list_corp = list_Corp('', '', '');
@@ -21,6 +19,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
     include 'recr.php';
     include 'user.php';
     include 'admin.php';
+    include 'cv.php';
 
     hide($act) == false ? include 'view/footer.php' : '';
 } else {
@@ -28,5 +27,3 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
     include 'view/home.php';
     include 'view/footer.php';
 }
-
-include 'view/script_tag.php';

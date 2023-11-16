@@ -8,7 +8,7 @@
                     <ul>
                         <li>
                             <img data-cfsrc="assets/img/home-three/title-img-two.png" alt="Image" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img-two.png" alt="Image"></noscript>
-                            <a href="index.html">Home</a>
+                            <a href="index.php">Home</a>
                         </li>
                         <li>
                             <span>/</span>
@@ -107,311 +107,71 @@
 
 <div class="job-showing-area">
     <div class="container">
-        <h4>Showing 1 - 8 of 11 results</h4>
-        <div class="showing">
-            <div class="row">
-                <div class="col-sm-6 col-lg-6">
-                    <div class="left">
-                        <div class="form-group">
-                            <select>
-                                <option>Newest</option>
-                                <option>Another option</option>
-                                <option>A option</option>
-                                <option>Potato</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-6">
-                    <div class="right">
-                        <ul>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-dots-horizontal"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="bx bx-menu"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+        <h1>CV Tiềm Năng</h1>
+        <?php
+        $cv = loadall_cv_user(); // Assuming you want to load all CVs for this example
+        $i = 0;
 
+        if (isset($cv) && is_array($cv)) {
+            foreach ($cv as $cv) {
+                // Extract relevant CV information
+                $link = "infoCV.php?act=" . $cv['id'];
+                $name = $cv['name'];
+                $img = $cv['img'];
+                $major = $cv['major'];
+                $exp = $cv['exp'];
+                $salary = $cv['salary'];
+                $address = $cv['address'];
+                //$skills = explode(',', $cv['skills']);
 
-<div class="candidate-area pb-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="candidate-item two">
-                    <div class="left">
-                        <h3>
-                            <a href="candidate-details.html">Arielle Terry</a>
-                        </h3>
-                        <span>Web Developer</span>
-                        <ul class="experience">
-                            <li>Experience: <span>3-5 years</span></li>
-                            <li>Hour Rate: <span>$30</span></li>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Chicago, Illinios
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>Php</li>
-                            <li>jQuery</li>
-                            <li>WordPress</li>
-                            <li>CSS3</li>
-                            <li>HTML5</li>
-                        </ul>
-                        <div class="cmn-link">
-                            <a href="single-resume.html">
-                                <i class="flaticon-right-arrow one"></i>
-                                View Resume
-                                <i class="flaticon-right-arrow two"></i>
-                            </a>
+                // Your existing HTML code for displaying CVs
+                ?>
+                <div class="candidate-area pb-100">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="candidate-item two">
+                                    <div class="left">
+                                        <h3>
+                                            <a href="<?= $link ?>"><?= $name ?></a>
+                                        </h3>
+                                        <span><?= $major ?></span>
+                                        <ul class="experience">
+                                            <li>Kinh nghiệm: <span><?= $exp ?> Tháng</span></li>
+                                            <li>Mức lương/giờ: <span><?= $salary ?>/giờ</span></li>
+                                            <li>
+                                                <i class="flaticon-send"></i>
+                                                <?= $address ?>
+                                            </li>
+                                        </ul>
+                                        <!-- <ul>
+                                            <?php foreach ($skills as $skill) : ?>
+                                                <li><?= $skill ?></li>
+                                            <?php endforeach; ?>
+                                        </ul> -->
+                                        <!-- Add your existing HTML for View Resume link -->
+                                        <div class="cmn-link">
+                                            <a href="<?= $link ?>">
+                                                <i class="flaticon-right-arrow one"></i>
+                                                View Resume
+                                                <i class="flaticon-right-arrow two"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- Your existing HTML for displaying candidate image -->
+                                    <img data-cfsrc="<?= $img ?>" alt="<?= $name ?>" style="display:none;visibility:hidden;">
+                                    <noscript><img src="<?= $img ?>" alt="<?= $name ?>"></noscript>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <img data-cfsrc="assets/img/candidate1.jpg" alt="Candidate" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate1.jpg" alt="Candidate"></noscript>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="candidate-item two">
-                    <div class="left">
-                        <h3>
-                            <a href="candidate-details.html">Alexander Max</a>
-                        </h3>
-                        <span>Senior UX/UI Designer</span>
-                        <ul class="experience">
-                            <li>Experience: <span>2-3 years</span></li>
-                            <li>Hour Rate: <span>$60</span></li>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                California
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>CSS</li>
-                            <li>Creative</li>
-                            <li>Photoshop</li>
-                            <li>Illustrator</li>
-                            <li>HTML5</li>
-                        </ul>
-                        <div class="cmn-link">
-                            <a href="single-resume.html">
-                                <i class="flaticon-right-arrow one"></i>
-                                View Resume
-                                <i class="flaticon-right-arrow two"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <img data-cfsrc="assets/img/candidate2.jpg" alt="Candidate" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate2.jpg" alt="Candidate"></noscript>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="candidate-item two">
-                    <div class="left">
-                        <h3>
-                            <a href="candidate-details.html">Jesse R. Chung</a>
-                        </h3>
-                        <span>PHP Developer</span>
-                        <ul class="experience">
-                            <li>Experience: <span>1-3 years</span></li>
-                            <li>Hour Rate: <span>$50</span></li>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Berlin
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>CSS</li>
-                            <li>Creative</li>
-                            <li>Photoshop</li>
-                            <li>Illustrator</li>
-                            <li>HTML5</li>
-                        </ul>
-                        <div class="cmn-link">
-                            <a href="single-resume.html">
-                                <i class="flaticon-right-arrow one"></i>
-                                View Resume
-                                <i class="flaticon-right-arrow two"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <img data-cfsrc="assets/img/candidate3.jpg" alt="Candidate" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate3.jpg" alt="Candidate"></noscript>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="candidate-item two">
-                    <div class="left">
-                        <h3>
-                            <a href="candidate-details.html">Linnaea Ronald</a>
-                        </h3>
-                        <span>Unity Developer</span>
-                        <ul class="experience">
-                            <li>Experience: <span>2-6 years</span></li>
-                            <li>Hour Rate: <span>$70</span></li>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                France
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>CSS</li>
-                            <li>Creative</li>
-                            <li>Photoshop</li>
-                            <li>Illustrator</li>
-                            <li>HTML5</li>
-                        </ul>
-                        <div class="cmn-link">
-                            <a href="single-resume.html">
-                                <i class="flaticon-right-arrow one"></i>
-                                View Resume
-                                <i class="flaticon-right-arrow two"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <img data-cfsrc="assets/img/candidate4.jpg" alt="Candidate" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate4.jpg" alt="Candidate"></noscript>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="candidate-item two">
-                    <div class="left">
-                        <h3>
-                            <a href="candidate-details.html">Leo Tolstoy</a>
-                        </h3>
-                        <span>Accounting/Finance</span>
-                        <ul class="experience">
-                            <li>Experience: <span>3-5 years</span></li>
-                            <li>Hour Rate: <span>$30</span></li>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Taine, Paris
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>CSS</li>
-                            <li>Creative</li>
-                            <li>Photoshop</li>
-                            <li>Illustrator</li>
-                            <li>HTML5</li>
-                        </ul>
-                        <div class="cmn-link">
-                            <a href="single-resume.html">
-                                <i class="flaticon-right-arrow one"></i>
-                                View Resume
-                                <i class="flaticon-right-arrow two"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <img data-cfsrc="assets/img/candidate5.jpg" alt="Candidate" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate5.jpg" alt="Candidate"></noscript>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="candidate-item two">
-                    <div class="left">
-                        <h3>
-                            <a href="candidate-details.html">Jack London</a>
-                        </h3>
-                        <span>UX/UI Designer</span>
-                        <ul class="experience">
-                            <li>Experience: <span>1-3 years</span></li>
-                            <li>Hour Rate: <span>$35</span></li>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                United State
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>CSS</li>
-                            <li>Creative</li>
-                            <li>Photoshop</li>
-                            <li>Illustrator</li>
-                            <li>HTML5</li>
-                        </ul>
-                        <div class="cmn-link">
-                            <a href="single-resume.html">
-                                <i class="flaticon-right-arrow one"></i>
-                                View Resume
-                                <i class="flaticon-right-arrow two"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <img data-cfsrc="assets/img/candidate6.jpg" alt="Candidate" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate6.jpg" alt="Candidate"></noscript>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="candidate-item two">
-                    <div class="left">
-                        <h3>
-                            <a href="candidate-details.html">Charles Dickens</a>
-                        </h3>
-                        <span>Education Training</span>
-                        <ul class="experience">
-                            <li>Experience: <span>3-5 years</span></li>
-                            <li>Hour Rate: <span>$30</span></li>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Berlin
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>CSS</li>
-                            <li>Creative</li>
-                            <li>Photoshop</li>
-                            <li>Illustrator</li>
-                            <li>HTML5</li>
-                        </ul>
-                        <div class="cmn-link">
-                            <a href="single-resume.html">
-                                <i class="flaticon-right-arrow one"></i>
-                                View Resume
-                                <i class="flaticon-right-arrow two"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <img data-cfsrc="assets/img/candidate7.jpg" alt="Candidate" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate7.jpg" alt="Candidate"></noscript>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="candidate-item two">
-                    <div class="left">
-                        <h3>
-                            <a href="candidate-details.html">Tom Henry</a>
-                        </h3>
-                        <span>Senior UX/UI Designer</span>
-                        <ul class="experience">
-                            <li>Experience: <span>2-3 years</span></li>
-                            <li>Hour Rate: <span>$60</span></li>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                UK
-                            </li>
-                        </ul>
-                        <ul>
-                            <li>CSS</li>
-                            <li>Creative</li>
-                            <li>Photoshop</li>
-                            <li>Illustrator</li>
-                            <li>HTML5</li>
-                        </ul>
-                        <div class="cmn-link">
-                            <a href="single-resume.html">
-                                <i class="flaticon-right-arrow one"></i>
-                                View Resume
-                                <i class="flaticon-right-arrow two"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <img data-cfsrc="assets/img/candidate8.jpg" alt="Candidate" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate8.jpg" alt="Candidate"></noscript>
-                </div>
-            </div>
-        </div>
+                <?php
+            }
+        } else {
+            echo "No CV data available.";
+        }
+        ?>
         <div class="pagination-area">
             <ul>
                 <li>

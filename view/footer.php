@@ -144,3 +144,6 @@
         </div>
     </div>
 </div>
+</body>
+<?php include "script_tag.php" ?>
+</html>
