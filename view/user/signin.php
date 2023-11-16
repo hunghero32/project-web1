@@ -1,5 +1,5 @@
 <div class="user-form-area position-relative">
-    <a class="position-absolute top-0 end-0 me-3 mt-4 translate-middle" href="index.html">
+    <a class="position-absolute top-0 end-0 me-3 mt-4 translate-middle" href="index.php">
         <i class="fa-solid fa-xmark"></i>
     </a>
     <div class="container-fluid p-0">
@@ -13,7 +13,7 @@
                         };
                         //]]>
                     </script>
-                    <script type="text/javascript" src="../../ajax.cloudflare.com/mirage2.min.js"></script>
+                    <script type="text/javascript" src="ajax.cloudflare.com/mirage2.min.js"></script>
                     <img data-cfsrc="assets/img/resgister-bg.jpg" alt="User" style="display:none;visibility:hidden;"><noscript><img src="assets/img/resgister-bg.jpg" alt="User"></noscript>
                 </div>
             </div>
@@ -56,10 +56,10 @@
                         </ul>
                     </div>
                     <div class="end mt-3">
-                        Chưa có tài khoản ? <a href="register.html"> Đăng kí ngay</a>
+                        Chưa có tài khoản ? <a href="index.php?act=signup"> Đăng kí ngay</a>
                     </div>
                     <div class="end mt-2">
-                        Quên mật khẩu ? <a href="forgotpassword.html"> Lấy lại mật khẩu</a>
+                        Quên mật khẩu ? <a href="index.php?act=forgotpassword"> Lấy lại mật khẩu</a>
                     </div>
                 </div>
             </div>

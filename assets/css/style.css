@@ -6948,7 +6948,8 @@ button:focus {
     background-color: #fafafa;
     padding: 30px;
     border-radius: 5px;
-    position: relative
+    position: relative;
+    border: 2px dashed var(--secondary)
 }
 
 .contact-form-area .form-item h2 {
@@ -7003,7 +7004,8 @@ button:focus {
     -webkit-transition: .5s all ease;
     transition: .5s all ease;
     padding-left: 20px;
-    font-size: 14px
+    font-size: 14px;
+    border: 1px dashed rgba(53, 53, 53, 0.3);
 }
 
 .contact-form-area .form-item .form-group .form-control:focus {
@@ -7052,7 +7054,7 @@ button:focus {
 }
 
 .map-area #map {
-    height: 400px;
+    height: 500px;
     width: 100%;
     border: 0;
     display: block
