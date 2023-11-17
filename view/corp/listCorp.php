@@ -18,37 +18,38 @@
 
 <div class="job-filter-area pt-100">
     <div class="container">
-        <form>
+        <form action="index.php?act=listCorp" method="POST">
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Tên">
+                        <input name="name" type="text" class="form-control" placeholder="Tên">
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3">
                     <div class="form-group">
-                        <select>
-                            <option>Địa điểm</option>
-                            <option>Another option</option>
-                            <option>A option</option>
-                            <option>Potato</option>
+                        <select name="address">
+                            <option value="" selected>Địa điểm</option>
+                            <?php foreach ($list_corp as $c) {
+                                extract($c) ?>
+                                <option value="<?= $address ?>"><?= $address ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3">
                     <div class="form-group">
-                        <select>
-                            <option>Lĩnh vực</option>
-                            <option>Another option</option>
-                            <option>A option</option>
-                            <option>Potato</option>
+                        <select name="major">
+                            <option value="" selected>Lĩnh vực</option>
+                            <?php foreach ($list_corp as $c) {
+                                extract($c) ?>
+                                <option value="<?= $major ?>"><?= $major ?></option>
+                            <?php } ?>
                         </select>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3">
-                    <button type="submit" class="btn cmn-btn">
+                    <button name="findCorp" type="submit" class="btn cmn-btn">
                         Tìm kiếm
-                        <!-- <i class="bx bx-plus"></i> -->
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </button>
                 </div>
@@ -57,12 +58,14 @@
     </div>
 </div>
 
-
-<div class="job-showing-area">
-    <div class="container">
-        <h4>Kết quả tìm thấy (8)</h4>
+<?php if (isset($_SESSION['findCorp'])) {
+    unset($_SESSION['findCorp']) ?>
+    <div class="job-showing-area">
+        <div class="container">
+            <h4>Kết quả tìm thấy (<?= count($list_corp) ?>)</h4>
+        </div>
     </div>
-</div>
+<?php } ?>
 
 
 <div class="employer-area two pb-100">

@@ -1,10 +1,9 @@
 <?php
 function list_Corp($name, $major, $address)
 {
-    $sql = "SELECT c.*, u.name, u.img, u.email, u.phone, u.address, u.role as userRole,
-                COUNT(c.id) as total
+    $sql = "SELECT c.*, u.name, u.img, u.email, u.phone, u.address, u.role as userRole
                 FROM corp c
-                INNER JOIN user u ON c.idcorp = u.id
+                INNER JOIN user u ON c.iduser = u.id
                 WHERE u.role = 3";
 
     $sql .= $name !== '' ? " AND c.name LIKE '$name' " : "";
@@ -20,7 +19,7 @@ function top_Corp()
 {
     $sql = "SELECT c.*, u.name, u.img, u.email, u.phone, u.address
     FROM corp c
-    INNER JOIN user u ON c.idcorp = u.id
+    INNER JOIN user u ON c.iduser = u.id
     WHERE u.role = 3 ORDER BY c.id DESC LIMIT 0,6";
     return pdo_query($sql);
 }
@@ -29,10 +28,10 @@ function info_Corp($id)
 {
     $sql = "SELECT c.*, u.name, u.img, u.email, u.phone, u.address
                 FROM corp c
-                INNER JOIN user u ON c.idcorp = u.id
-                WHERE u.role = 3 AND c.idcorp = $id";
-   $corp = pdo_query_one($sql);
-   return $corp;
+                INNER JOIN user u ON c.iduser = u.id
+                WHERE u.role = 3 AND c.iduser = $id";
+    $corp = pdo_query_one($sql);
+    return $corp;
 }
 
 function update_Corp($id, $name, $img, $email, $phone, $address, $exp, $major, $desc)
@@ -46,6 +45,6 @@ function update_Corp($id, $name, $img, $email, $phone, $address, $exp, $major, $
             c.exp = '$exp',
             c.major = '$major',
             c.description = '$desc'
-        WHERE u.id = '7' AND c.idcorp = '$id'";
+        WHERE u.id = '7' AND c.iduser = '$id'";
     pdo_execute($sql);
 }
