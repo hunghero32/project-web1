@@ -110,8 +110,9 @@
         <div class="candidate-area pb-100">
             <div class="container">
                 <div class="row">
-                    <?php foreach ($cv as $c) {
-                        extract($c) ?>
+                    <?php foreach ($cv as $cv) {
+                        $link = "index.php?act=infoCv=" . $cv['id'];
+                        extract($cv) ?>
                         <div class="col-lg-6">
                             <div class="candidate-item two">
                                 <div class="left">
@@ -127,9 +128,7 @@
                                             <?= $address ?>
                                         </li>
                                     </ul>
-                                        <?php foreach ($skills as $skill) : ?>
-                                        <li><?= $skill ?>
-                                        <?php endforeach; ?>
+
                                         </ul>
                                         <div class="cmn-link">
                                             <a href="<?= $link ?>">
