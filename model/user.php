@@ -23,9 +23,9 @@ function add_user($username, $pass, $name, $img, $email, $phone, $address, $role
     pdo_execute($sql, $username, $pass, $name, $img, $email, $phone, $address, $role);
 }
 
-function update_user($id, $username, $pass, $email, $name, $img, $phone, $adress, $role)
+function update_user($id, $username, $pass, $email, $name, $img, $phone, $address, $role)
 {
-    $sql = "UPDATE user SET user='$username',pass='$pass',email='$email',name='$name',img='$img',phone='$phone',address='$adress',role='$role' WHERE id = '$id'";
+    $sql = "UPDATE user SET user='$username',pass='$pass',email='$email',name='$name',img='$img',phone='$phone',address='$address',role='$role' WHERE id = '$id'";
     pdo_execute($sql);
 }
 

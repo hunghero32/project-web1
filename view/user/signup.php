@@ -62,7 +62,7 @@
                                 </select>
                             </div>
                             <br><br>
-                            <button type="submit" name="submit" class="btn mt-3">Đăng kí</button>
+                            <button type="submit" name="signup" class="btn mt-3">Đăng kí</button>
                         </form>
                     <!-- </div>
                     <div class="end">
