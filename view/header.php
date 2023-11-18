@@ -2,8 +2,7 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -25,11 +24,11 @@
     <title>JI - Jobs IT</title>
 </head>
 
-
-<div class="loader">
-    <div class="d-table">
-        <div class="d-table-cell">
-            <div class="spinner"></div>
+<body>
+    <div class="loader">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="spinner"></div>
+            </div>
         </div>
     </div>
-</div>

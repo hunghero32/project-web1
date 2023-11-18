@@ -16,11 +16,11 @@ function login($username, $pass)
     return $user;
 }
 
-function add_user($username, $pass, $name, $img, $email, $phone, $address, $role)
+function add_user($username, $pass, $name, $email, $phone, $role)
 {
-    $sql = "INSERT INTO user( username, pass, name, img, email, phone, address, role) 
-        VALUES (?,?,?,?,?,?,?,?)";
-    pdo_execute($sql, $username, $pass, $name, $img, $email, $phone, $address, $role);
+    $sql = "INSERT INTO user( username, pass, name,  email, phone , role) 
+        VALUES (?,?,?,?,?,?)";
+    pdo_execute($sql, $username, $pass, $name, $email, $phone, $role);
 }
 
 function update_user($id, $username, $pass, $email, $name, $img, $phone, $adress, $role)

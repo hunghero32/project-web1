@@ -1,3 +1,4 @@
+<?php extract($total_recr) ?>
 <div class="page-title-area">
     <div class="d-table">
         <div class="d-table-cell">
@@ -25,208 +26,62 @@
             <div class="col-lg-8">
                 <ul class="job-list-item align-items-center">
                     <li>
-                        <a href="#">Kết quả tìm thấy <span>(17)</span></a>
+                        <a href="#">Kết quả tìm thấy <span><span><?= $total ?></span></span></a>
                     </li>
                     <li></li>
                 </ul>
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
-                        <h3>Product Designer</h3>
+
+                <div id="data-container">
+                    <?php foreach ($currentData as $key) : ?>
+                        <?php extract($key); ?>
+                        <?php $link_recr = "index.php?act=info_recr&id=" . $id; ?>
+                        <div class='employer-item '>
+                            <a href='<?= $link_recr ?>'>
+                                <img data-cfsrc='assets/img/home-one/job1.png' alt='Employer' style='display:none;visibility:hidden;'><noscript><img src='assets/img/home-one/job1.png' alt='Employer'></noscript>
+                                <h3><?= $title ?></h3>
+                                <ul>
+                                    <li>
+                                        <i class='flaticon-send'></i>
+                                        <?= $address ?>
+                                    </li>
+                                    <li><?= $date ?></li>
+                                </ul>
+                                <p><?= $major ?>
+                                </p>
+                                <span class='span-one'>Accounting</span>
+                                <span class='span-two'><?=$key['type'] == 2 ? "FULL TIME" : "PART TIME" ?> </span>
+                            </a>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+
+                <!-- <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
+
+                    <div class="pagination-area">
                         <ul>
                             <li>
-                                <i class="flaticon-send"></i>
-                                Los Angeles, CS, USA
+                            <a href='index.php?act=job&page=" . $i . "'>" . $i . "</a>
                             </li>
-                            <li>5 months ago</li>
                         </ul>
-                        <p>We are Looking for a skilled Ul/UX designer amet conscu adiing elitsed do eusmod tempor
-                        </p>
-                        <span class="span-one">Accounting</span>
-                        <span class="span-two">FULL TIME</span>
-                    </a>
-                </div>
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job2.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job2.png" alt="Employer"></noscript>
-                        <h3>Sr. Shopify Developer</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Houston, TX, USA
-                            </li>
-                            <li>4 months ago</li>
-                        </ul>
-                        <p>Responsible for managing skilled Ul/UX designer amet conscu adiing elitsed do eusmod</p>
-                        <span class="span-one">Accounting</span>
-                        <span class="span-two two">FULL TIME</span>
-                    </a>
-                </div>
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job3.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job3.png" alt="Employer"></noscript>
-                        <h3>Tax Manager</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Ho Chi Minh City, Vietnam
-                            </li>
-                            <li>6 months ago</li>
-                        </ul>
-                        <p>International collaborative a skilled Ul/UX designer amet conscu adiing elitsed do eusmod
-                        </p>
-                        <span class="span-one two">Broardcasting</span>
-                        <span class="span-two three">FREELANCER</span>
-                    </a>
-                </div>
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job4.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job4.png" alt="Employer"></noscript>
-                        <h3>Senior Data Engineer</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Cardiss, UK
-                            </li>
-                            <li>9 months ago</li>
-                        </ul>
-                        <p>International collaborative designer amet conscu adiing elitsed do eusmod tempor</p>
-                        <span class="span-one three">Web & Software Dev</span>
-                        <span class="span-two four">REMOTE</span>
-                    </a>
-                </div>
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job5.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job5.png" alt="Employer"></noscript>
-                        <h3>Construction Worker</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Adelaide SA, Australia
-                            </li>
-                            <li>10 months ago</li>
-                        </ul>
-                        <p>We are Looking for a skilled Ul/UX designer amet conscu adiing elitsed do eusmod tempor
-                        </p>
-                        <span class="span-one">Accounting</span>
-                        <span class="span-two">FULL TIME</span>
-                    </a>
-                </div>
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job6.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job6.png" alt="Employer"></noscript>
-                        <h3>Product Manager</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Warangal, Telangana, India
-                            </li>
-                            <li>2 months ago</li>
-                        </ul>
-                        <p>Wind Power Engineering Manager amet conscu adiing elitsed do eusmod tempor</p>
-                        <span class="span-one four">Customer Service</span>
-                        <span class="span-two">FULL TIME</span>
-                    </a>
-                </div>
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job7.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job7.png" alt="Employer"></noscript>
-                        <h3>Marketing Manager</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Delhi, India
-                            </li>
-                            <li>5 months ago</li>
-                        </ul>
-                        <p>Wind Power Engineering Manager amet conscu adiing elitsed do eusmod tempor</p>
-                        <span class="span-one">Accounting</span>
-                        <span class="span-two one">FULL TIME</span>
-                    </a>
-                </div>
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job8.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job8.png" alt="Employer"></noscript>
-                        <h3>JavaScript Developer</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Washington, USA
-                            </li>
-                            <li>4 months ago</li>
-                        </ul>
-                        <p>Responsible for managing skilled Ul/UX designer amet conscu adiing elitsed do eusmod</p>
-                        <span class="span-one">Accounting</span>
-                        <span class="span-two two">FULL TIME</span>
-                    </a>
-                </div>
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job9.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job9.png" alt="Employer"></noscript>
-                        <h3>jQuery Developer</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Barmingham, UK
-                            </li>
-                            <li>6 months ago</li>
-                        </ul>
-                        <p>International collaborative a skilled Ul/UX designer amet conscu adiing elitsed do eusmod
-                        </p>
-                        <span class="span-one two">Broardcasting</span>
-                        <span class="span-two three">FREELANCER</span>
-                    </a>
-                </div>
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job10.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job10.png" alt="Employer"></noscript>
-                        <h3>PHP Developer</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Saudi Arabia
-                            </li>
-                            <li>9 months ago</li>
-                        </ul>
-                        <p>International collaborative designer amet conscu adiing elitsed do eusmod tempor</p>
-                        <span class="span-one three">Web & Software Dev</span>
-                        <span class="span-two four">REMOTE</span>
-                    </a>
-                </div>
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job11.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job11.png" alt="Employer"></noscript>
-                        <h3>WordPress Developer</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Australia
-                            </li>
-                            <li>10 months ago</li>
-                        </ul>
-                        <p>We are Looking for a skilled Ul/UX designer amet conscu adiing elitsed do eusmod tempor
-                        </p>
-                        <span class="span-one">Accounting</span>
-                        <span class="span-two">FULL TIME</span>
-                    </a>
-                </div>
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job12.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job12.png" alt="Employer"></noscript>
-                        <h3>React Developer</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Estonia
-                            </li>
-                            <li>2 months ago</li>
-                        </ul>
-                        <p>Wind Power Engineering Manager amet conscu adiing elitsed do eusmod tempor</p>
-                        <span class="span-one four">Customer Service</span>
-                        <span class="span-two">FULL TIME</span>
-                    </a>
-                </div>
+                    </div>
+                <?php } ?> -->
                 <div class="pagination-area">
+                    <ul class="pagination">
+                        <!-- Nút Prev -->
+                        <li><a href="#" id="prev">Prev</a></li>
+
+                        <!-- Hiển thị các nút số trang -->
+                        <?php
+                        for ($i = 1; $i <= $totalPages; $i++) {
+                            echo "<li><a href='#' class='page' data-page='$i'>$i</a></li>";
+                        }
+                        ?>
+
+                        <!-- Nút Next -->
+                        <li><a href="#" id="next">Next</a></li>
+                    </ul>
+                </div>
+                <!-- <div class="pagination-area">
                     <ul>
                         <li>
                             <a href="#">Prev</a>
@@ -244,139 +99,67 @@
                             <a href="#">Next</a>
                         </li>
                     </ul>
-                </div>
+                </div> -->
             </div>
             <div class="col-lg-4">
+                <!-- <form action=""> -->
                 <div class="job-list-right">
                     <div class="job-list-all">
+
                         <div class="search">
                             <h3>Tìm kiếm</h3>
                             <form>
                                 <input type="text" class="form-control" placeholder="Từ khóa">
-                                <button type="submit" class="btn">
+                                <button type="submit" name="search_recr" class="btn">
                                     <i class="flaticon-send"></i>
                                 </button>
                             </form>
                         </div>
                         <div class="location-list cmn-padding">
                             <h3>Địa điểm</h3>
-                            <form>
+                            <form action="index.php?act=listRecr" method="post">
                                 <ul class="job-cmn-cat">
+                                    <?php foreach ($totall_address as $r) : ?>
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="<?= $r['address'] ?>" id="defaultCheck10">
+                                                <label class="form-check-label" for="defaultCheck10">
+                                                    <?= $r['address'] ?> (<?= $r['sl_address'] ?>)
+                                                </label>
+                                            </div>
+                                        </li>
+                                    <?php endforeach ?>
                                     <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck10">
-                                            <label class="form-check-label" for="defaultCheck10">
-                                                New York (8)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck11">
-                                            <label class="form-check-label" for="defaultCheck11">
-                                                Los Angeles (4)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck12">
-                                            <label class="form-check-label" for="defaultCheck12">
-                                                London (5)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck13">
-                                            <label class="form-check-label" for="defaultCheck13">
-                                                Canada (1)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck14">
-                                            <label class="form-check-label" for="defaultCheck14">
-                                                France (9)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck15">
-                                            <label class="form-check-label" for="defaultCheck15">
-                                                Italy (2)
-                                            </label>
-                                        </div>
+                                        <button class="btn btn-info px-4 text-white" style="font-size: 12px;">
+                                            LỌC
+                                        </button>
                                     </li>
                                 </ul>
                             </form>
                         </div>
                         <div class="job-type cmn-padding">
-                            <h3>Chuyên ngành</h3>
+                            <h3>Loại công việc</h3>
                             <form>
                                 <ul class="job-cmn-cat">
+                                    <?php foreach ($valu_racr as $r) : ?>
+                                        <li>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value id="defaultCheck16">
+                                                <label class="form-check-label" for="defaultCheck16">
+                                                    <?=$r['type'] == 2 ? "Full time" : "Part time" ?> (<?=$r['sl_type'] ?>)
+                                                </label>
+                                            </div>
+                                        </li>
+                                    <?php endforeach ?>
                                     <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck16">
-                                            <label class="form-check-label" for="defaultCheck16">
-                                                Temporary (2)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck17">
-                                            <label class="form-check-label" for="defaultCheck17">
-                                                Remote (2)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck18">
-                                            <label class="form-check-label" for="defaultCheck18">
-                                                Part Time (2)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck19">
-                                            <label class="form-check-label" for="defaultCheck19">
-                                                Internship (1)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck20">
-                                            <label class="form-check-label" for="defaultCheck20">
-                                                Full Time (13)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck21">
-                                            <label class="form-check-label" for="defaultCheck21">
-                                                Freelancer (3)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck22">
-                                            <label class="form-check-label" for="defaultCheck22">
-                                                Contract (0)
-                                            </label>
-                                        </div>
+                                        <button class="btn btn-info px-4 text-white" style="font-size: 12px;">
+                                            LỌC
+                                        </button>
                                     </li>
                                 </ul>
                             </form>
                         </div>
-                        <div class="job-type cmn-padding">
+                        <!-- <div class="job-type cmn-padding">
                             <h3>Ngôn ngữ</h3>
                             <form>
                                 <ul class="job-cmn-cat">
@@ -438,17 +221,20 @@
                                     </li>
                                 </ul>
                             </form>
-                        </div>
+                        </div> -->
                         <div class="salary cmn-padding">
                             <h3>Mức lương</h3>
-                            <form>
+                            <form > 
                                 <div class="form-group">
-                                    <label class="range" for="formControlRangeTwo">$6778 - $9077</label>
-                                    <input type="range" class="form-control-range" id="formControlRangeTwo">
+                                    <label class="range" id="formControlRangeValu" for="formControlRangeTwo">10</label>
+                                    <input type="range" class="form-control-range" id="formControlRangeTwo" min='1' max='100' step="1">
                                 </div>
+                                <button class="btn btn-info px-4 mt-2 text-white" style="font-size: 12px;">
+                                            LỌC
+                                        </button>
                             </form>
                         </div>
-                        <div class="employer cmn-padding">
+                        <!-- <div class="employer cmn-padding">
                             <h3>Yêu cầu kinh nghiệm</h3>
                             <form>
                                 <ul class="job-cmn-cat">
@@ -510,7 +296,7 @@
                                     </li>
                                 </ul>
                             </form>
-                        </div>
+                        </div> -->
                         <div class="date cmn-padding">
                             <h3>Thời gian đăng tuyển</h3>
                             <form>
@@ -578,9 +364,74 @@
                                 </div>
                             </form>
                         </div>
+
                     </div>
                 </div>
+                <!-- </form> -->
             </div>
         </div>
     </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+        
+    </script>
+<script>
+        // Lấy các phần tử DOM
+        var range = document.getElementById('formControlRangeTwo');
+        var rangeValue = document.getElementById('formControlRangeValu');
+
+        // Xử lý sự kiện input khi di chuyển slider
+        range.addEventListener('input', function() {
+            // Cập nhật giá trị số bên cạnh slider
+            rangeValue.textContent = range.value;
+        });
+    $(document).ready(function() {
+        // Sử dụng jQuery để xử lý sự kiện khi nhấn nút "Next", "Prev", hoặc số trang
+        $(".page").click(function() {
+            var page = $(this).data('page');
+            $.ajax({
+                type: "GET",
+                url: "listRecr.php",
+                data: {
+                    act: 'listRecr',
+                    page: page
+                },
+                success: function(data) {
+                    $("#data-container").html(data);
+                }
+            });
+        });
+
+        $("#prev").click(function() {
+            var page = <?php echo ($currentPage > 1) ? ($currentPage - 1) : 1; ?>;
+            $.ajax({
+                type: "GET",
+                url: "listRecr.php",
+                data: {
+                    act: 'listRecr',
+                    page: page
+                },
+                success: function(data) {
+                    $("#data-container").html(data);
+                }
+            });
+        });
+
+        $("#next").click(function() {
+            var page = <?php echo ($currentPage < $totalPages) ? ($currentPage + 1) : $totalPages; ?>;
+            $.ajax({
+                type: "GET",
+                url: "listRecr.php",
+                data: {
+                    act: 'listRecr',
+                    page: page
+                },
+                success: function(data) {
+                    $("#data-container").html(data);
+                }
+            });
+        });
+    });
+</script>
