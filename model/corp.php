@@ -30,8 +30,10 @@ function info_Corp($id)
                 FROM corp c
                 INNER JOIN user u ON c.iduser = u.id
                 WHERE u.role = 3 AND c.iduser = $id";
+
     $corp = pdo_query_one($sql);
     return $corp;
+
 }
 
 function update_Corp($id, $name, $img, $email, $phone, $address, $exp, $major, $desc)

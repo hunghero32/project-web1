@@ -8,6 +8,7 @@ include 'model/admin.php';
 include 'model/recr.php';
 include 'model/user.php';
 
+
 $top_corp = top_Corp();
 $list_corp = list_Corp('', '', '');
 
@@ -32,5 +33,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
     include 'view/footer.php';
 }
 
+
 include 'view/script_tag.php';
+
 

@@ -33,9 +33,9 @@
                             <div class="form-group">
                                 <input type="text" name="name" class="form-control" placeholder="Tên của bạn  (*)" pattern=".{2,}" title="Tên phải có ít nhất 8 ký tự" required>
                             </div>
-                            <div class="mb-3">
+                            <!-- <div class="mb-3">
                                 <input type="file" name="img" id="img" class="form-control" pattern=".{5,}" title="File ảnh không được để trống" required>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <input type="password" name="pass" id="pass" class="form-control" placeholder="Mật khẩu (*)" pattern=".{8,}" title="Mật khảu phải có ít nhất 8 ký tự" required>
                             </div>
@@ -51,9 +51,9 @@
                                 required>
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <input type="text" name="adress" class="form-control" placeholder="Địa chỉ (*)" pattern=".{1,}" title="Địa chỉ không được để trống" required>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <select name="role" id="" class="form-control w-100 mb-2 p-3 pt-1 text-secondary" required>
                                     <option value="">Vai trò của bạn là ?</option>

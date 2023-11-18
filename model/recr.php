@@ -2,11 +2,11 @@
   require_once 'pdo.php';
     
     function recr_add( $idcorp,$title ,$img ,$exp ,$level ,$salary ,$major ,$type ,
-    $totalCV ,$description ,$view ,$status 
+    $totalCV ,$description ,$view  
     )  {
         $sql = "INSERT INTO  recr ( idcorp ,  title ,  img ,  exp ,  level ,
           salary ,  major ,  type ,  totalCV ,  description ,  date ,  view  ) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ? ?, ?, ?, ?, ?)";
+        VALUES (?, ?, ?, ?, ?, ?, ?, ? , ?, ?, ?, ?)";
         pdo_execute( $sql , $idcorp,$title , 
         $img ,$exp ,$level ,$salary ,
             $major ,$type ,$totalCV ,
@@ -15,11 +15,11 @@
     }
 
     function recr_update($id ,$idcorp,$title ,$img ,$exp ,$level ,$salary ,
-    $major ,$type ,$totalCV ,$description ,$view ,$status 
+    $major ,$type ,$totalCV ,$description ,$view  
     )  {
-        $sql = "UPDATE  recr  SET  id = ?, idcorp = ?, title = ?, img = ?, exp = ?, level = ?, salary = ?, major = ?, type = ?, totalCV = ?, description = ?, date = ?, view = ?, status = ? WHERE id = ? ";
+        $sql = "UPDATE  recr  SET  id = ?, idcorp = ?, title = ?, img = ?, exp = ?, level = ?, salary = ?, major = ?, type = ?, totalCV = ?, description = ?, date = ?, view = ? WHERE id = ? ";
         pdo_execute($sql , $id , $idcorp, $title , $img , $exp , $level , 
-        $salary , $major , $type , $totalCV , $description , $view , $status 
+        $salary , $major , $type , $totalCV , $description , $view 
         );
     }
 
@@ -33,12 +33,14 @@
         return pdo_query($sql , []);
     }
     function recr_select_by_employers($idcorp) {
-        $sql = "SELECT * FROM  recr  WHERE idcorp = ? ";
-        return pdo_query($sql , [$idcorp]);
+        $sql = "SELECT r.*  , c.description AS c_description ,c.major ,u.address FROM  recr r 
+        INNER JOIN corp c ON c.id= r.idcorp INNER JOIN user u ON u.id = c.iduser   WHERE r.idcorp = ?  LIMIT 0,3";
+        return pdo_query($sql , $idcorp);
     }
 
     function recr_select_by_id($id) {
-        $sql = "SELECT * FROM  recr r INNER JOIN corp c ON c.id= r.idcorp  WHERE id = ? ";
+        $sql = "SELECT r.*  , c.description AS c_description ,c.major ,u.address FROM  recr r 
+        INNER JOIN corp c ON c.id= r.idcorp  INNER JOIN user u ON u.id = c.iduser  WHERE r.id = ? ";
         return pdo_query_one($sql , $id);
     }
 //lấy bài đăng
@@ -54,7 +56,17 @@
        
     
         // Truy vấn dữ liệu từ database
-        $sql = "SELECT r.* , u.address FROM recr r INNER JOIN corp c ON c.id= r.idcorp INNER JOIN user u ON u.id = c.idcorp  ORDER BY r.id DESC LIMIT 0, 10 ";
+        $sql = "SELECT r.* ,c.major, u.address, COUNT(r.type) as sl_type FROM recr r INNER JOIN corp c ON c.id= r.idcorp 
+        INNER JOIN user u ON u.id = c.iduser GROUP by  r.type ORDER BY r.id DESC  ";
+        $valu = pdo_query($sql );
+        return  $valu;
+    }
+    function total_address_recr() {
+       
+    
+        // Truy vấn dữ liệu từ database
+        $sql = "SELECT  u.address , COUNT(u.address) as sl_address  FROM recr r INNER JOIN corp c ON c.id= r.idcorp 
+        INNER JOIN user u ON u.id = c.iduser GROUP by u.address ";
         $valu = pdo_query($sql );
         return  $valu;
     }
