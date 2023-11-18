@@ -3,9 +3,12 @@ session_start();
 include 'global.php';
 include 'model/pdo.php';
 include 'model/corp.php';
+include 'model/cv.php';
+include 'model/admin.php';
 include 'model/recr.php';
 include 'model/user.php';
-include 'model/cv.php';
+
+
 $top_corp = top_Corp();
 $list_corp = list_Corp('', '', '');
 
@@ -29,4 +32,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
     include 'view/home.php';
     include 'view/footer.php';
 }
+
+
 include 'view/script_tag.php';
+
+

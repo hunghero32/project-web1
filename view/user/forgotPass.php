@@ -28,8 +28,14 @@
                             <div class="form-group">
                                 <input type="tel" class="form-control" placeholder="Số điện thoại đăng kí">
                             </div>
-                            <button type="submit" class="btn">Lấy mật khẩu</button>
+                            <button type="submit" name="submit" class="btn">Lấy mật khẩu</button>
                         </form>
+                        
+                        <?php
+                if(isset($thongbao)&& $thongbao!=""){
+                    echo $thongbao;
+                }
+            ?>
                     </div>
                     <div class="end">
                         <ul>

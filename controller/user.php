@@ -18,7 +18,9 @@ switch ($act) {
         break;
 
     case 'signup':
-        if (isset($_POST['signup']) ) {
+
+        if (isset($_POST['signup'])) { 
+
             $username = $_POST['username'];
             // $image = $_FILES['img'];
             // $avatar = $image['name'];
@@ -35,13 +37,34 @@ switch ($act) {
             echo "<script>alert('Sai mật khẩu hoặc tên tài khoản !');</script>";
 
         } 
+
         include "view/user/signup.php";
         break;
+    case 'editinfo':
+        if (isset($_POST['edit'])) {
 
-    case 'forgotpassword':
+            $name = $_POST['name'];
+            $pass = $_POST['pass'];
+            $phone = $_POST['phone'];
+            $email = $_POST['email'];
+            $address = $_POST['adress'];
+            $role = $_POST['role'];
+            $target_file = 'assets/uploads/' . $img;
+            move_uploaded_file($image['tmp_name'], $target_file);
+
+
+
+        }
+        include 'view/user/editinfo.php';
+        break;
+    case 'forgotpass':
         include 'view/user/forgotPass.php';
         break;
+    case 'signout':
+        session_destroy();
+        //header('location: index.php?act=signout');
 
+        break;
     case 'contact':
         include 'view/contact.php';
         break;

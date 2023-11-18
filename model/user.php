@@ -23,9 +23,9 @@ function add_user($username, $pass, $name, $email, $phone, $role)
     pdo_execute($sql, $username, $pass, $name, $email, $phone, $role);
 }
 
-function update_user($id, $username, $pass, $email, $name, $img, $phone, $adress, $role)
+function update_user($id, $username, $pass, $email, $name, $img, $phone, $address, $role)
 {
-    $sql = "UPDATE user SET user='$username',pass='$pass',email='$email',name='$name',img='$img',phone='$phone',address='$adress',role='$role' WHERE id = '$id'";
+    $sql = "UPDATE user SET user='$username',pass='$pass',email='$email',name='$name',img='$img',phone='$phone',address='$address',role='$role' WHERE id = '$id'";
     pdo_execute($sql);
 }
 
@@ -46,18 +46,4 @@ function edit_user($id)
     $sql = "SELECT * from user where id = '$id'";
     $user = pdo_query_one($sql);
     return $user;
-}
-
-function delete_user($id)
-{
-    $sql = "DELETE from user where id = '$id'";
-    pdo_execute($sql);
-}
-
-function delete_checkbox_user($checkbox = [])
-{
-    foreach ($checkbox as $box) {
-        $sql = "DELETE from user where id=" . $box;
-        pdo_execute($sql);
-    }
 }

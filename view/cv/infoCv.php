@@ -5,8 +5,9 @@
                 <div class="row align-items-end">
                     <div class="col-lg-8">
                         <div class="left two">
-                            <img data-cfsrc="assets/img/candidate-details1.jpg" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate-details1.jpg" alt="Details"></noscript>
-                            <h2>Markin M. Doland</h2>
+                        <?php  extract($infoCv);  ?>
+                            <img data-cfsrc="assets/img/candidate-details1.jpg" alt="CV Chi Tiết" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate-details1.jpg" alt="Details"></noscript>
+                            <h2><?= $name ?></h2>
                             <ul>
                                 <li>
                                     <i class="bx bx-box"></i>
@@ -14,7 +15,7 @@
                                 </li>
                                 <li>
                                     <i class="bx bx-phone-call"></i>
-                                    <a href="%2b567908234875.html">+567 908 234 875</a>
+                                    <a href="tel:<?= $phone ?>"><?= $phone ?></a>
                                 </li>
                             </ul>
                         </div>
@@ -304,12 +305,12 @@
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Salary:</h4>
-                                <span>$1,500 - $2,000</span>
+                                <span><?=$salary ?></span>
                             </li>
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Experience:</h4>
-                                <span>5 years</span>
+                                <span><?=$exp?> years</span>
                             </li>
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
