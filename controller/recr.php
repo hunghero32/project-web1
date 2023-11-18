@@ -26,6 +26,6 @@ switch ($act) {
         include 'view/recr/infoRecr.php';
         break;
     default:
-        include "+567908234875.html";
+        // include "+567908234875.html";
         break;
 }
