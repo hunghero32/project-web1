@@ -26,16 +26,13 @@
                                 <p style="color: red;"><?= $thongbao ?></p>
                             </div>
                         <?php } ?>
-                        <form action="index.php?act=signup" method="post"  enctype="multipart/form-data">
+                        <form action="index.php?act=signup" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <input type="text" name="username" class="form-control" placeholder="Tài khoản (*)" pattern=".{5,}" title="Tài khoản phải có ít nhất 8 ký tự" required>
                             </div>
                             <div class="form-group">
                                 <input type="text" name="name" class="form-control" placeholder="Tên của bạn  (*)" pattern=".{2,}" title="Tên phải có ít nhất 8 ký tự" required>
                             </div>
-                            <!-- <div class="mb-3">
-                                <input type="file" name="img" id="img" class="form-control" pattern=".{5,}" title="File ảnh không được để trống" required>
-                            </div> -->
                             <div class="form-group">
                                 <input type="password" name="pass" id="pass" class="form-control" placeholder="Mật khẩu (*)" pattern=".{8,}" title="Mật khảu phải có ít nhất 8 ký tự" required>
                             </div>
@@ -43,17 +40,11 @@
                                 <input type="password" name="repass" id="repass" class="form-control" placeholder="Nhập lại mật khẩu (*)" pattern=".{8,}" title="Mật khẩu phải có ít nhất 8 ký tự" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" name="email" class="form-control"  pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/" placeholder="Địa chỉ Email (*)" required>
+                                <input type="email" name="email" class="form-control" pattern="/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/" placeholder="Địa chỉ Email (*)" required>
                             </div>
                             <div class="form-group">
-                                <input type="text" name="phone" class="form-control" pattern="[0-9]{10,12}" placeholder="Số điện thoại (*)" 
-                                title="Số điện thoại phải có ít nhất 10 ký tự"
-                                required>
+                                <input type="text" name="phone" class="form-control" pattern="[0-9]{10,12}" placeholder="Số điện thoại (*)" title="Số điện thoại phải có ít nhất 10 ký tự" required>
                             </div>
-
-                            <!-- <div class="form-group">
-                                <input type="text" name="adress" class="form-control" placeholder="Địa chỉ (*)" pattern=".{1,}" title="Địa chỉ không được để trống" required>
-                            </div> -->
                             <div class="form-group">
                                 <select name="role" id="" class="form-control w-100 mb-2 p-3 pt-1 text-secondary" required>
                                     <option value="">Vai trò của bạn là ?</option>
@@ -64,57 +55,32 @@
                             <br><br>
                             <button type="submit" name="signup" class="btn mt-3">Đăng kí</button>
                         </form>
-                    <!-- </div>
-                    <div class="end">
-                        <ul>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="bx bxl-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="bx bxl-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="bx bxl-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="bx bxl-pinterest-alt"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="end mt-3"> -->
-                        <a href="index.php?act=signin"> Đăng nhập</a>
+                        <div class="end mt-3">
+                            <a href="index.php?act=signin"> Đăng nhập</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<script>
-    // Lấy các trường input
-    var passInput = document.getElementById('pass');
-    var repassInput = document.getElementById('repass');
-    var message = document.getElementById('message');
+    <script>
+        // Lấy các trường input
+        var passInput = document.getElementById('pass');
+        var repassInput = document.getElementById('repass');
+        var message = document.getElementById('message');
 
-    // Thêm sự kiện change cho cả hai trường
-    passInput.addEventListener('input', validatePassword);
-    repassInput.addEventListener('input', validatePassword);
+        // Thêm sự kiện change cho cả hai trường
+        passInput.addEventListener('input', validatePassword);
+        repassInput.addEventListener('input', validatePassword);
 
-    function validatePassword() {
-        // Kiểm tra xem giá trị của cả hai trường có giống nhau không
-        if (passInput.value === repassInput.value) {
-            message.innerHTML = 'Mật khẩu trùng khớp';
-            message.style.color = 'green';
-        } else {
-            message.innerHTML = 'Mật khẩu không trùng khớp';
-            message.style.color = 'red';
+        function validatePassword() {
+            // Kiểm tra xem giá trị của cả hai trường có giống nhau không
+            if (passInput.value === repassInput.value) {
+                message.innerHTML = 'Mật khẩu trùng khớp';
+                message.style.color = 'green';
+            } else {
+                message.innerHTML = 'Mật khẩu không trùng khớp';
+                message.style.color = 'red';
+            }
         }
-    }
-</script>
+    </script>
