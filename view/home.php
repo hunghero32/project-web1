@@ -100,7 +100,7 @@
             <?php foreach($top_corp as $c) { extract($c) ?>
                 <div class="col-lg-6">
                     <div class="employer-item">
-                        <a href="index.php?act=infoCorp&id=<?= $idcorp ?>">
+                        <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
                             <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
                             <h3><?= $name ?></h3>
                             <ul>
@@ -112,7 +112,7 @@
                             <p>
                                 <i class="fa-solid fa-suitcase"></i> <?= $major ?>
                             </p>
-                            <a href="index.php?act=infoCorp&id=<?= $idcorp ?>">
+                            <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
                                 <span class="span-one"><i class="fa-solid fa-circle-info"></i> Thông tin chi tiết</span>
                             </a>
                             <span class="span-two">FULL TIME</span>
@@ -122,7 +122,7 @@
             <?php } ?>
         </div>
         <div class="job-browse">
-            <p>Rất nhiều công việc công nghệ hàng đầu đang chờ bạn > <a href="jobs.html"> Tất cả việc làm</a></p>
+            <p>Rất nhiều công việc công nghệ hàng đầu đang chờ bạn > <a href="index.php?act=listRecr"> Tất cả việc làm</a></p>
         </div>
     </div>
 </section>
