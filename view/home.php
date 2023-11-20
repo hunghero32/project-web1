@@ -8,7 +8,7 @@
             <div class="d-table">
                 <div class="d-table-cell">
                     <p>Cầu nối nhà tuyển dụng & ứng cử viên</p>
-                    <h1>Chúng tôi sẽ giúp bạn tìm <span>công việc mong muốn</span> của bạn</h1>
+                    <h1>Ứng tuyển & tìm công việc IT với <span> JIT</span> </h1>
                     <div class="banner-form-area">
                         <form>
                             <div class="row">

@@ -22,16 +22,19 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
                     <div class="form-group">
-                        <input name="name" type="text" class="form-control" placeholder="Tên">
+                        <input name="name" type="text" class="form-control"placeholder="<?= !isset($_POST['name']) || $_POST['name'] == '' ? 'Tên' : $_POST['name'] ?>">
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3">
                     <div class="form-group">
                         <select name="address">
                             <option value="" selected>Địa điểm</option>
-                            <?php foreach ($list_corp as $c) {
+                            <?php foreach ($filter_corp as $c) {
                                 extract($c) ?>
-                                <option value="<?= $address ?>"><?= $address ?></option>
+                                <option value="<?= $address ?>"
+                                    <?= isset($_POST['address']) && $_POST['address'] == $address ? 'selected' : '' ?>>
+                                    <?= $address ?>
+                                </option>
                             <?php } ?>
                         </select>
                     </div>
@@ -40,9 +43,12 @@
                     <div class="form-group">
                         <select name="major">
                             <option value="" selected>Lĩnh vực</option>
-                            <?php foreach ($list_corp as $c) {
+                            <?php foreach ($filter_corp as $c) {
                                 extract($c) ?>
-                                <option value="<?= $major ?>"><?= $major ?></option>
+                                <option value="<?= $major ?>"
+                                    <?= isset($_POST['major']) &&  $_POST['major'] == $major ? 'selected' : '' ?>>
+                                    <?= $major ?>
+                                </option>
                             <?php } ?>
                         </select>
                     </div>
@@ -58,7 +64,7 @@
     </div>
 </div>
 
-<?php if (isset($_SESSION['findCorp'])) {
+<?php if (isset($_POST['findCorp'])) {
     unset($_SESSION['findCorp']) ?>
     <div class="job-showing-area">
         <div class="container">
@@ -71,31 +77,39 @@
 <div class="employer-area two pb-100">
     <div class="container">
         <div class="row">
-            <?php foreach ($list_corp as $c) {
-                extract($c) ?>
-                <div class="col-lg-6">
-                    <div class="employer-item">
-                        <a href="index.php?act=infoCorp&id=<?= $idcorp ?>">
-                            <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
-                            <h3><?= $name ?></h3>
-                            <ul>
-                                <li>
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <?= $address ?>
-                                </li>
-                            </ul>
-                            <p>
-                                <i class="fa-solid fa-suitcase"></i> <?= $major ?>
-                            </p>
-                            <a href="index.php?act=infoCorp&id=<?= $idcorp ?>">
-                                <span class="span-one"><i class="fa-solid fa-circle-info"></i> Thông tin chi tiết</span>
-                            </a>
-                            <span class="span-two">FULL TIME</span>
-                        </a>
+            <?php if (count($list_corp) == 0) { ?>
+                <div class="col-lg-12">
+                    <div class="employer-item text-center">
+                        Không có dữ liệu tìm thấy !
                     </div>
                 </div>
+                <?php } else {
+                foreach ($list_corp as $c) {
+                    extract($c) ?>
+                    <div class="col-lg-6">
+                        <div class="employer-item">
+                            <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
+                                <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
+                                <h3><?= $name ?></h3>
+                                <ul>
+                                    <li>
+                                        <i class="fa-solid fa-location-dot"></i>
+                                        <?= $address ?>
+                                    </li>
+                                </ul>
+                                <p>
+                                    <i class="fa-solid fa-suitcase"></i> <?= $major ?>
+                                </p>
+                                <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
+                                    <span class="span-one"><i class="fa-solid fa-circle-info"></i> Thông tin chi tiết</span>
+                                </a>
+                                <span class="span-two">FULL TIME</span>
+                            </a>
+                        </div>
+                    </div>
+                <?php } ?>
             <?php } ?>
-            <div class="col-lg-6">
+            <!-- <div class="col-lg-6">
                 <div class="employer-item">
                     <a href="job-details.html">
                         <img data-cfsrc="assets/img/home-one/job2.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job2.png" alt="Employer"></noscript>
@@ -129,7 +143,7 @@
                         <span class="span-two two">FULL TIME</span>
                     </a>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="pagination-area">
             <ul>

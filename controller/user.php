@@ -22,16 +22,11 @@ switch ($act) {
         if (isset($_POST['signup'])) { 
 
             $username = $_POST['username'];
-            // $image = $_FILES['img'];
-            // $avatar = $image['name'];
             $pass = $_POST['pass'];
             $phone = $_POST['phone'];
             $name = $_POST['name'];
             $email = $_POST['email'];
-            // $adress = $_POST['adress'];
             $role = $_POST['role'];
-            // $target_file = 'assets/uploads/' . $avatar;
-            // move_uploaded_file($image['tmp_name'], $target_file);
 
             add_user($username, $pass,$name  , $email, $phone, $role);
             echo "<script>alert('Sai mật khẩu hoặc tên tài khoản !');</script>";
@@ -51,9 +46,6 @@ switch ($act) {
             $role = $_POST['role'];
             $target_file = 'assets/uploads/' . $img;
             move_uploaded_file($image['tmp_name'], $target_file);
-
-
-
         }
         include 'view/user/editinfo.php';
         break;

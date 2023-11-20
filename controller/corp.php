@@ -11,6 +11,8 @@ switch ($act) {
         break;
 
     case 'listCorp':
+        $filter_corp = filter_Corp();
+
         $name = isset($_POST['name']) ? $_POST['name'] : '';
         $major = isset($_POST['major']) ? $_POST['major'] : '';
         $address = isset($_POST['address']) ? $_POST['address'] : '';
