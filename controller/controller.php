@@ -10,7 +10,9 @@ include 'model/user.php';
 
 
 $top_corp = top_Corp();
+$top_cv = top_cv();
 $list_corp = list_Corp('', '', '');
+$list_cv = list_cv('', '', '', '');
 
 include 'view/header.php';
 
@@ -18,7 +20,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
 
     hide($act) == false ? include 'view/navbar.php' : '';
-    
+
     // controller child
     include 'corp.php';
     include 'recr.php';
@@ -35,5 +37,3 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
 
 
 include 'view/script_tag.php';
-
-
