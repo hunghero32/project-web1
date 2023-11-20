@@ -19,7 +19,7 @@ switch ($act) {
 
     case 'signup':
 
-        if (isset($_POST['signup'])) { 
+        if (isset($_POST['signup'])) {
 
             $username = $_POST['username'];
             $pass = $_POST['pass'];
@@ -28,10 +28,9 @@ switch ($act) {
             $email = $_POST['email'];
             $role = $_POST['role'];
 
-            add_user($username, $pass,$name  , $email, $phone, $role);
+            add_user($username, $pass, $name, $email, $phone, $role);
             echo "<script>alert('Sai mật khẩu hoặc tên tài khoản !');</script>";
-
-        } 
+        }
 
         include "view/user/signup.php";
         break;
@@ -53,9 +52,8 @@ switch ($act) {
         include 'view/user/forgotPass.php';
         break;
     case 'signout':
-        session_destroy();
-        //header('location: index.php?act=signout');
-
+        unset($_SESSION['username']);
+        header('Location: index.php');
         break;
     case 'contact':
         include 'view/contact.php';

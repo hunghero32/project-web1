@@ -19,12 +19,13 @@ include 'view/header.php';
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
 
+    include 'user.php';
+    
     hide($act) == false ? include 'view/navbar.php' : '';
 
     // controller child
     include 'corp.php';
     include 'recr.php';
-    include 'user.php';
     include 'admin.php';
     include 'cv.php';
 

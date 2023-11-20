@@ -38,7 +38,7 @@
                             <a href="index.php?act=contact" class="nav-link">Liên hệ</a>
                         </li>
                     </ul>
-                    <div class="side-nav three d-flex">
+                    <div class="side-nav three d-flex"> 
                         <?php if (isset($_SESSION['username'])) {
                             extract($_SESSION['username']); ?>
                             <div class="login-left d-flex align-items-center">
@@ -49,7 +49,7 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item" href="index.php?act=changepassword">Đổi mật khẩu</a></li>
-                                        <li><a class="dropdown-item" href="index.php?act=editinfo">Sửa thông tin</a></li>
+                                        <li><a class="dropdown-item" href="index.php?act=editinfo">Quản lí thông tin</a></li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
