@@ -1,27 +1,26 @@
 <?php
 switch ($act) {
-    case 'listCv':
-        $cv = loadall_cv_user();
-        include "view/cv/listCv.php"; 
-
-        $name = $cv['name'];
-        $major = $cv['major'];
-        $exp = $cv['exp'];
-        $salary = $cv['salary'];
-        $address = $cv['address'];
-        break;
     case 'infoCv':
-        if(isset($_GET['id'])&&($_GET['id']>0)){
-            $id=$_GET['id'];
-            $infoCv=loadone_cv($id);
-            extract($infoCv);
+        if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+            $id = $_GET['id'];
+            $cv = info_cv($id);
+        }
 
-        include "view/cv/infoCv.php"; }
+        include 'view/cv/infoCv.php';
         break;
-    case '3':
-        $cv = loadall_cv_user();
-        include "view/cv/listCv.php"; 
+
+    case 'listCv':
+        $filter_cv = filter_cv();
+
+        $name = isset($_POST['name']) ? $_POST['name'] : '';
+        $major = isset($_POST['major']) ? $_POST['major'] : '';
+        $exp = isset($_POST['exp']) ? $_POST['exp'] : '';
+        $salary = isset($_POST['salary']) ? $_POST['salary'] : '';
+
+        $list_cv = list_cv($name, $major, $exp, $salary);
+        include 'view/cv/listCv.php';
         break;
+
     default:
         # code...
         break;

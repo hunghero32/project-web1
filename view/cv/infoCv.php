@@ -5,17 +5,16 @@
                 <div class="row align-items-end">
                     <div class="col-lg-8">
                         <div class="left two">
-                        <?php  extract($infoCv);  ?>
                             <img data-cfsrc="assets/img/candidate-details1.jpg" alt="CV Chi Tiết" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate-details1.jpg" alt="Details"></noscript>
-                            <h2><?= $name ?></h2>
+                            <h2><?= $cv['name'] ?></h2>
                             <ul>
                                 <li>
                                     <i class="bx bx-box"></i>
-                                    UX/UI Designer
+                                    <?= $cv['major'] ?>
                                 </li>
                                 <li>
                                     <i class="bx bx-phone-call"></i>
-                                    <a href="tel:<?= $phone ?>"><?= $phone ?></a>
+                                    <a href="tel:<?= $cv['phone'] ?>"><?= $cv['phone'] ?></a>
                                 </li>
                             </ul>
                         </div>
@@ -24,13 +23,13 @@
                         <div class="right">
                             <ul>
                                 <li>
-                                    <a href="#">
+                                    <a href="#" id="save">
                                         <i class="bx bx-heart"></i>
                                         Save
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#">
+                                    <a href="#" id="share">
                                         <i class="bx bx-share-alt"></i>
                                         Share
                                     </a>
@@ -51,24 +50,61 @@
 </div>
 
 
-<div class="person-details-area ptb-100">
+<div class="person-details-area resume-area ptb-100">
     <div class="container">
         <div class="row">
+            <div class="col-lg-4">
+                <div class="widget-area">
+                    <div class="resume-profile">
+                        <img data-cfsrc="assets/img/dashboard1.jpg" alt="Dashboard" style="display:none;visibility:hidden;"><noscript><img src="assets/img/dashboard1.jpg" alt="Dashboard"></noscript>
+                        <h2><?= $cv['name'] ?></h2>
+                        <span><?= $cv['major'] ?></span>
+                    </div>
+                    <div class="information widget-item">
+                        <h3>Yêu Cầu</h3>
+                        <ul>
+                            <li>
+                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <h4>Mức Lương :</h4>
+                                <span><?= $cv['salary'] ?></span>
+                            </li>
+                            <li>
+                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <h4>Kinh Nghiệm :</h4>
+                                <span><?= $cv['exp'] ?></span>
+                            </li>
+                            <li>
+                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <h4>Tuổi :</h4>
+                                <span><?= $cv['age'] ?></span>
+                            </li>
+                            <li>
+                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <h4>Giới Tính:</h4>
+                                <span><?= $cv['gender'] ?></span>
+                            </li>
+                            <li>
+                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <h4>Kỹ năng:</h4>
+                                <span><?= $cv['skill'] ?></span>
+                            </li>
+                            <li>
+                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <h4>Địa Chỉ:</h4>
+                                <span><?= $cv['address'] ?></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
             <div class="col-lg-8">
                 <div class="details-item">
                     <div class="profile">
-                        <h3>My Profile</h3>
-                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum
-                            has been the industry's standard dummy text ever since the 1500s, when an unknown
-                            printer took a galley of type and scrambled it to make a type specimen book.</p>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of
-                            a page when looking at its layout. The point of using Lorem Ipsum is that it has a
-                            more-or-less normal distribution of letters, as opposed to using 'Content here, content
-                            here', making it look like readable English. Many desktop publishing packages and web
-                            page editors now use Lorem Ipsum as their default model text, and a search.</p>
+                        <h3>Giới thiệu chung về tôi</h3>
+                        <p><?= $cv['description'] ?></p>
                     </div>
                     <div class="work bottom-item">
-                        <h3>Work Experience</h3>
+                        <h3>Kinh nghiệm làm Việc </h3>
                         <ul>
                             <li>
                                 <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
@@ -79,26 +115,14 @@
                             </li>
                         </ul>
                         <h4>Senior Software Engineer</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form, by injected humour, or randomised words which don't
-                            look even slightly believable. If you are going to use a passage of Lorem Ipsum, you
-                            need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                    </div>
-                    <div class="work bottom-item">
-                        <ul>
-                            <li>
-                                <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
-                                University Of Maryland
-                            </li>
-                            <li>
-                                <span>03/2014 - 03/2016</span>
-                            </li>
-                        </ul>
-                        <h4>Professor</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form, by injected humour, or randomised words which don't
-                            look even slightly believable. If you are going to use a passage of Lorem Ipsum, you
-                            need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+                        <p>There are many variations of passages of
+                            Lorem Ipsum available, but the majority have
+                            suffered alteration in some form, by
+                            injected humour, or randomised words which
+                            don't look even slightly believable. If you
+                            are going to use a passage of Lorem Ipsum,
+                            you need to be sure there isn't anything
+                            embarrassing hidden in the middle of text.</p>
                     </div>
                     <div class="work bottom-item bottom-item-last">
                         <ul>
@@ -111,10 +135,14 @@
                             </li>
                         </ul>
                         <h4>John Hopkins, Bangladesh</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form, by injected humour, or randomised words which don't
-                            look even slightly believable. If you are going to use a passage of Lorem Ipsum, you
-                            need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+                        <p>There are many variations of passages of
+                            Lorem Ipsum available, but the majority have
+                            suffered alteration in some form, by
+                            injected humour, or randomised words which
+                            don't look even slightly believable. If you
+                            are going to use a passage of Lorem Ipsum,
+                            you need to be sure there isn't anything
+                            embarrassing hidden in the middle of text.</p>
                     </div>
                     <div class="work bottom-item">
                         <h3>Education</h3>
@@ -125,36 +153,32 @@
                             </li>
                         </ul>
                         <h4>MBA (2018-2019)</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form, by injected humour, or randomised words which don't
-                            look even slightly believable. If you are going to use a passage of Lorem Ipsum, you
-                            need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
-                    </div>
-                    <div class="work bottom-item">
-                        <ul>
-                            <li>
-                                <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
-                                School of Design at University of Michigan
-                            </li>
-                        </ul>
-                        <h4>BBA (2010-2014)</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form, by injected humour, or randomised words which don't
-                            look even slightly believable. If you are going to use a passage of Lorem Ipsum, you
-                            need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+                        <p>There are many variations of passages of
+                            Lorem Ipsum available, but the majority have
+                            suffered alteration in some form, by
+                            injected humour, or randomised words which
+                            don't look even slightly believable. If you
+                            are going to use a passage of Lorem Ipsum,
+                            you need to be sure there isn't anything
+                            embarrassing hidden in the middle of text.</p>
                     </div>
                     <div class="work bottom-item bottom-item-last">
                         <ul>
                             <li>
                                 <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
-                                Design at Institute of Technology & Marketing
+                                Design at Institute of Technology &
+                                Marketing
                             </li>
                         </ul>
                         <h4>Section UX & UI design (2014 - 2018)</h4>
-                        <p>There are many variations of passages of Lorem Ipsum available, but the majority have
-                            suffered alteration in some form, by injected humour, or randomised words which don't
-                            look even slightly believable. If you are going to use a passage of Lorem Ipsum, you
-                            need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
+                        <p>There are many variations of passages of
+                            Lorem Ipsum available, but the majority have
+                            suffered alteration in some form, by
+                            injected humour, or randomised words which
+                            don't look even slightly believable. If you
+                            are going to use a passage of Lorem Ipsum,
+                            you need to be sure there isn't anything
+                            embarrassing hidden in the middle of text.</p>
                     </div>
                     <div class="skills">
                         <h3>Skills</h3>
@@ -197,225 +221,42 @@
                             </div>
                         </div>
                     </div>
-                    <div class="portfolio">
-                        <h3>Portfolio</h3>
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="img">
-                                    <img data-cfsrc="assets/img/portfolio1.jpg" alt="Portfolio" style="display:none;visibility:hidden;"><noscript><img src="assets/img/portfolio1.jpg" alt="Portfolio"></noscript>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="img">
-                                    <img data-cfsrc="assets/img/portfolio2.jpg" alt="Portfolio" style="display:none;visibility:hidden;"><noscript><img src="assets/img/portfolio2.jpg" alt="Portfolio"></noscript>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="img">
-                                    <img data-cfsrc="assets/img/portfolio3.jpg" alt="Portfolio" style="display:none;visibility:hidden;"><noscript><img src="assets/img/portfolio3.jpg" alt="Portfolio"></noscript>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="client">
-                        <img data-cfsrc="assets/img/candidate-details-client1.png" alt="Candidate Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate-details-client1.png" alt="Candidate Details"></noscript>
-                        <h3>Devit Killer</h3>
-                        <span>January 12, 2020</span>
-                        <p>Software hack from an initial feasibility study, continuing through l implna business you
-                            have to be But we know there's a better</p>
-                        <ul>
-                            <li>
-                                <span>05</span>
-                            </li>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="review">
-                        <h3>Add Review</h3>
-                        <span>Your rating for this listing</span>
-                        <ul>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                        </ul>
-                        <form>
-                            <div class="form-group form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck59">
-                                <label class="form-check-label" for="exampleCheck59">Save my name, email, and
-                                    website in this browser for the next time I comment.</label>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <i class="bx bx-user"></i>
-                                        <input type="text" class="form-control" placeholder="Name*">
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <i class="bx bx-mail-send"></i>
-                                        <input type="email" class="form-control" placeholder="Email*">
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <div class="form-group">
-                                        <i class="bx bx-mail-send"></i>
-                                        <textarea id="your-message" rows="10" class="form-control" placeholder="Write message"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-lg-12">
-                                    <button type="submit" class="btn">Submit A Review</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="widget-area">
-                    <div class="information widget-item">
-                        <h3>Job Overview</h3>
-                        <ul>
-                            <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
-                                <h4>Salary:</h4>
-                                <span><?=$salary ?></span>
-                            </li>
-                            <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
-                                <h4>Experience:</h4>
-                                <span><?=$exp?> years</span>
-                            </li>
-                            <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
-                                <h4>Age:</h4>
-                                <span>30-35</span>
-                            </li>
-                            <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
-                                <h4>Gender:</h4>
-                                <span>Both</span>
-                            </li>
-                            <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
-                                <h4>Languages:</h4>
-                                <span>Bangla, English, Arbi, Spanish</span>
-                            </li>
-                            <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
-                                <h4>Qualification:</h4>
-                                <span>Certificate, Associate Degree</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="download widget-item">
-                        <a href="#">Download CV</a>
-                        <a class="right" href="contact.html">Contact Me</a>
-                    </div>
-                    <div class="owner">
-                        <div class="top">
-                            <img data-cfsrc="assets/img/home-one/job4.png" alt="Owner" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job4.png" alt="Owner"></noscript>
-                            <h3>Owner Info</h3>
-                            <i class="flaticon-send"></i>
-                            <span>Los Angeles, CA, USA</span>
-                        </div>
-                        <div class="information widget-item">
-                            <ul>
-                                <li>
-                                    <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
-                                    <h4>Phone</h4>
-                                    <a href="tel:+34561232349987">+3456 123 234 9987</a>
-                                </li>
-                                <li>
-                                    <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
-                                    <h4>Email</h4>
-                                    <a href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#1179747d7d7e517b7472657e3f727e7c"><span class="__cf_email__" data-cfemail="6a020f0606052a000f091e0544090507">[email&#160;protected]</span></a>
-                                </li>
-                                <li>
-                                    <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
-                                    <h4>Location</h4>
-                                    <a href="#" target="_blank">www.jectothemes.com</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="similar-candidates">
-                        <h4>Similar Candidates</h4>
-                    </div>
-                    <div class="candidate-item">
-                        <div class="left">
-                            <h3>
-                                <a href="candidate-details.html">Arielle Terry</a>
-                            </h3>
-                            <span>Web Developer</span>
-                            <p>I’m IRanin dolor sit amet conscu adiing elitsed eusmod tempor</p>
-                            <ul>
-                                <li>Php</li>
-                                <li>jQuery</li>
-                                <li>WordPress</li>
-                                <li>CSS3</li>
-                                <li>HTML5</li>
-                            </ul>
-                            <div class="cmn-link">
-                                <a href="single-resume.html">
-                                    <i class="flaticon-right-arrow one"></i>
-                                    View Resume
-                                    <i class="flaticon-right-arrow two"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="candidate-item">
-                        <div class="left">
-                            <h3>
-                                <a href="candidate-details.html">Alexander Max</a>
-                            </h3>
-                            <span>Senior UX/UI Designer</span>
-                            <p>I’m Max dolor sit amet conscu adiing elitsed eusmod tempor</p>
-                            <ul>
-                                <li>CSS</li>
-                                <li>Creative</li>
-                                <li>Photoshop</li>
-                                <li>Illustrator</li>
-                                <li>HTML5</li>
-                            </ul>
-                            <div class="cmn-link">
-                                <a href="single-resume.html">
-                                    <i class="flaticon-right-arrow one"></i>
-                                    View Resume
-                                    <i class="flaticon-right-arrow two"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    // Gán sự kiện click cho nút "Share"
+    document.getElementById('share').addEventListener('click', function() {
+        // Lấy địa chỉ (URL) của trang đang hiển thị
+        var currentPageUrl = window.location.href;
+
+        // Tạo một thẻ input ẩn để sao chép nội dung vào clipboard
+        var tempInput = document.createElement("input");
+        tempInput.value = currentPageUrl;
+        document.body.appendChild(tempInput);
+
+        // Chọn toàn bộ nội dung trong input
+        tempInput.select();
+
+        // Sao chép nội dung vào clipboard
+        document.execCommand("copy");
+
+        // Xóa thẻ input ẩn
+        document.body.removeChild(tempInput);
+
+        //alert("Đã sao chép URL trang vào clipboard: " + currentPageUrl);
+    });
+    // Gán sự kiện click cho nút "Save"
+    document.getElementById('save').addEventListener('click', function() {
+        // Lấy địa chỉ (URL) của trang đang hiển thị
+        var currentPageUrl = window.location.href;
+
+        // Lưu địa chỉ URL vào localStorage
+        localStorage.setItem('savedUrl', currentPageUrl);
+
+        //alert("Đã lưu URL trang: " + currentPageUrl);
+    });
+</script>

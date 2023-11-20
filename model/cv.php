@@ -1,58 +1,62 @@
 <?php
-function loadall_cv_user() {  
-    // Truy vấn dữ liệu từ database
-    $sql = "SELECT user.*, cv.* FROM user user INNER JOIN cv ON user.id = cv.id";
-    $result = pdo_query($sql);
-    return $result;
-}
+function list_cv($name, $major, $exp, $salary)
+{
+    $sql = "SELECT cv.*, u.name, u.img, u.email, u.phone, u.address, u.role as userRole
+            FROM cv
+            INNER JOIN user u ON cv.iduser = u.id
+            WHERE u.role = 2";
 
-// Load toàn bộ CV
-function loadall_cv() {
-    $sql = "SELECT * FROM cv";
+    $sql .= $name !== '' ? " AND u.name LIKE '%" . $name . "%' " : "";
+    $sql .= $major !== '' ? " AND cv.major LIKE '%" . $major . "%' " : "";
+    $sql .= $exp !== '' ? " AND cv.exp LIKE '%" . $exp . "%' " : "";
+    $sql .= $salary !== '' ? " AND cv.salary LIKE '%" . $salary . "%' " : "";
+
+
+    $sql .= " GROUP BY cv.id, userRole ORDER BY cv.id DESC";
+
     return pdo_query($sql);
 }
 
-// Load Top theo View
-function loadall_cv_top() {
-    $sql = "SELECT * FROM cv ORDER BY view DESC";
+function filter_cv()
+{
+    $sql = "SELECT cv.*, u.name, u.address, u.role as userRole
+            FROM cv
+            INNER JOIN user u ON cv.iduser = u.id
+            WHERE u.role = 2 GROUP BY cv.id, userRole
+            ORDER BY cv.id DESC";
     return pdo_query($sql);
 }
 
-// Load Top 10 theo View
-function loadall_cv_top10() {
-    $sql = "SELECT * FROM cv ORDER BY view DESC LIMIT 10";
+function top_cv()
+{
+    $sql = "SELECT cv.*, u.name, u.img, u.email, u.phone, u.address
+            FROM cv
+            INNER JOIN user u ON cv.iduser = u.id
+            WHERE u.role = 2 ORDER BY cv.id DESC LIMIT 0,8";
     return pdo_query($sql);
 }
 
-// load từng CV 1 
-function loadone_cv($id) {
-    $sql = "SELECT user.*, cv.* FROM user user INNER JOIN cv ON user.id = cv.id";
-    return pdo_query_one($sql, $id);
+function info_cv($id)
+{
+    $sql = "SELECT cv.*, u.name, u.img, u.email, u.phone, u.address
+            FROM cv
+            INNER JOIN user u ON cv.iduser = u.id
+            WHERE u.role = 2 AND cv.iduser = $id";
+    $cv = pdo_query_one($sql);
+    return $cv;
 }
 
-// Tạo CV mới 
-function insert_cv($iduser, $img, $major, $exp, $level, $salary, $description) {
-    $sql = "INSERT INTO cv (iduser, img, major, exp, level, salary, description) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    pdo_execute($sql, $iduser, $img, $major, $exp, $level, $salary, $description);
-}
-
-// Sửa CV
-function update_cv($id, $iduser, $img, $major, $exp, $level, $salary, $description) {
-    $sql = "UPDATE cv SET 
-            iduser = ?, 
-            img = ?, 
-            major = ?, 
-            exp = ?, 
-            level = ?, 
-            salary = ?, 
-            description = ?, 
-            WHERE id = ?";
-    pdo_execute($sql, $iduser, $img, $major, $exp, $level, $salary, $description, $id);
-}
-
-// Xóa CV
-function delete_cv($id) {
-    $sql = "DELETE FROM cv WHERE id = ?";
-    pdo_execute($sql, $id);
+function update_cv($id, $name, $img, $email, $phone, $address, $exp, $major, $desc)
+{
+    $sql = "UPDATE user as u, cv as cv
+            SET u.username = '$name',
+                u.img = '$img',
+                u.email = '$email',
+                u.phone = '$phone',
+                u.address = '$address',
+                cv.exp = '$exp',
+                cv.major = '$major',
+                cv.description = '$desc'
+            WHERE u.id = '$id' AND cv.iduser = '$id'";
+    pdo_execute($sql);
 }
