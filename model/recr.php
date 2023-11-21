@@ -1,25 +1,26 @@
 <?php 
-  require_once 'pdo.php';
+
     
     function recr_add( $idcorp,$title ,$img ,$exp ,$level ,$salary ,$major ,$type ,
-    $totalCV ,$description ,$view  
+     $totalCV ,$description  , $skill 
     )  {
-        $sql = "INSERT INTO  recr ( idcorp ,  title ,  img ,  exp ,  level ,
-          salary ,  major ,  type ,  totalCV ,  description ,  date ,  view  ) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ? , ?, ?, ?, ?)";
-        pdo_execute( $sql , $idcorp,$title , 
-        $img ,$exp ,$level ,$salary ,
-            $major ,$type ,$totalCV ,
-            $description ,$view 
+        $sql = "INSERT INTO  recr (  idcorp ,  title ,  img ,  exp ,  level ,
+          salary ,  major ,  type ,  totalCV ,  description ,  date  , skill ) 
+          VALUES (?,?,?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP,?)";
+        pdo_execute($sql, $idcorp,$title ,$img ,$exp ,$level ,$salary ,$major ,$type ,
+         $totalCV ,$description, $skill 
         );
     }
 
     function recr_update($id ,$idcorp,$title ,$img ,$exp ,$level ,$salary ,
-    $major ,$type ,$totalCV ,$description ,$view  
+    $major ,$type ,$totalCV ,$description , $skill  
     )  {
-        $sql = "UPDATE  recr  SET  id = ?, idcorp = ?, title = ?, img = ?, exp = ?, level = ?, salary = ?, major = ?, type = ?, totalCV = ?, description = ?, date = ?, view = ? WHERE id = ? ";
-        pdo_execute($sql , $id , $idcorp, $title , $img , $exp , $level , 
-        $salary , $major , $type , $totalCV , $description , $view 
+        $sql = "UPDATE  recr  SET   idcorp =?, title =?,
+         img =?, exp =?, level =?, salary =?, major =?,
+         type =?, totalCV =?, description =?, date = CURRENT_TIMESTAMP,
+          skill =? WHERE id = ? ";
+        pdo_execute($sql , $idcorp, $title , $img , $exp , $level , 
+        $salary , $major , $type , $totalCV , $description ,$skill, $id 
         );
     }
 
@@ -39,7 +40,7 @@
     }
 
     function recr_select_by_id($id) {
-        $sql = "SELECT r.*  , c.description AS c_description ,c.major ,u.address FROM  recr r 
+        $sql = "SELECT r.*  , c.description AS c_description ,c.major AS c_major ,u.address FROM  recr r 
         INNER JOIN corp c ON c.id= r.idcorp  INNER JOIN user u ON u.id = c.iduser  WHERE r.id = ? ";
         return pdo_query_one($sql , $id);
     }
@@ -52,32 +53,40 @@
     //     $valu = pdo_query($sql , $start, $limit);
     //     return  $valu;
     // }
-    function get_records() {
+    function get_records($kym) {
        
     
         // Truy vấn dữ liệu từ database
-        $sql = "SELECT r.* ,c.major, u.address, COUNT(r.type) as sl_type FROM recr r INNER JOIN corp c ON c.id= r.idcorp 
-        INNER JOIN user u ON u.id = c.iduser GROUP by  r.type ORDER BY r.id DESC  ";
+        $sql = "SELECT r.* ,c.major, u.address FROM recr r INNER JOIN corp c ON c.id= r.idcorp 
+        INNER JOIN user u ON u.id = c.iduser WHERE 1" ;
+        if($kym != ""){
+            $sql .= " AND (r.title LIKE '%" . $kym . "%' OR c.major LIKE '%" . $kym . "%')"; 
+        }
+        $sql .= " ORDER BY r.id DESC  LIMIT 0 , 5";
+        $valu = pdo_query($sql );
+        return  $valu;
+    }
+    // $sql = "select b.*, s.sp_img from bienthesanpham b inner join sanpham s on b.sp_id = s.sp_id where 1 order by btsp_id desc limit 0,10";
+    function total_type_recr() {
+        $sql = "SELECT  r.type , COUNT(r.type) as sl_type  FROM recr r  GROUP by r.type ";
         $valu = pdo_query($sql );
         return  $valu;
     }
     function total_address_recr() {
-       
-    
-        // Truy vấn dữ liệu từ database
         $sql = "SELECT  u.address , COUNT(u.address) as sl_address  FROM recr r INNER JOIN corp c ON c.id= r.idcorp 
         INNER JOIN user u ON u.id = c.iduser GROUP by u.address ";
         $valu = pdo_query($sql );
         return  $valu;
     }
-    //lấy số bài đăng
+    
     function get_Total_Records() {
-        // Truy vấn tổng số bản ghi
+        
         $sql = "SELECT COUNT(id) AS total FROM recr";
         
         $valu = pdo_query_one($sql);
         return $valu;
     }
+    
 
 
 ?>

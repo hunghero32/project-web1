@@ -8,7 +8,7 @@
                 };
             </script>
             <script type="text/javascript" src="ajax.cloudflare.com/mirage2.min.js" src="ajax.cloudflare.com/mirage2.min.js"></script>
-            <img data-cfsrc="assets/img/logo-three.png" alt="Logo" style="display:none;visibility:hidden;"><noscript><img src="assets/img/logo-three.png" alt="Logo"></noscript>
+            <img data-cfsrc="assets/img/favicon.png" alt="Logo" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Logo"></noscript>
         </a>
     </div>
 
@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-light">
                 <a class="navbar-brand" href="index.php">
-                    <img data-cfsrc="assets/img/logo-three.png" alt="Logo" style="display:none;visibility:hidden;"><noscript><img src="assets/img/logo-three.png" alt="Logo"></noscript>
+                    <img data-cfsrc="assets/img/favicon.png" alt="Logo" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Logo"></noscript>
                 </a>
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav">
@@ -44,12 +44,12 @@
                             <div class="login-left d-flex align-items-center">
                                 <div class="nav-item dropdown">
                                     <a class="text-white text-small-screen d-flex align-items-center" href="#" id="navbarDropdown" role="button" aria-expanded="false">
-                                        <img src='assets/img/<?= $img ?>' alt='user ' class='w-25 ms-2'>
+                                        <img src='assets/img/<?= $img ?>' alt='user ' class='w-25 me-2'>
                                         <p class="p-0 m-0"><?= $name ?></p>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item" href="index.php?act=changepassword">Đổi mật khẩu</a></li>
-                                        <li><a class="dropdown-item" href="index.php?act=editinfo">Quản lí thông tin</a></li>
+                                        <li><a class="dropdown-item" href="index.php?act=manage_recr">Quản lí thông tin</a></li>
                                         <li>
                                             <hr class="dropdown-divider">
                                         </li>
@@ -65,7 +65,7 @@
                                         Tạo CV <i class="fa-solid fa-comments"></i>
                                     </a>
                                 <?php } else { ?>
-                                    <a class="job-right" href="index.php?act=post_recr&id=<?= $id ?>">
+                                    <a class="job-right" href="index.php?act=post_recr">
                                         Tuyển dụng <i class="fa-solid fa-comments"></i>
                                     </a>
                                 <?php } ?>

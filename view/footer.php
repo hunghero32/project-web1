@@ -5,7 +5,7 @@
                 <div class="footer-item three">
                     <div class="footer-logo">
                         <a class="logo" href="index.html">
-                            <img data-cfsrc="assets/img/logo-three.png" alt="Logo" style="display:none;visibility:hidden;"><noscript><img src="assets/img/logo-three.png" alt="Logo"></noscript>
+                            <img data-cfsrc="assets/img/favicon.png" alt="Logo" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Logo"></noscript>
                         </a>
                         <ul>
                             <li>
