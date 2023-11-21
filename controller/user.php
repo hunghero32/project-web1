@@ -34,20 +34,20 @@ switch ($act) {
 
         include "view/user/signup.php";
         break;
-    case 'editinfo':
-        if (isset($_POST['edit'])) {
+    // case 'editinfo':
+    //     if (isset($_POST['edit'])) {
 
-            $name = $_POST['name'];
-            $pass = $_POST['pass'];
-            $phone = $_POST['phone'];
-            $email = $_POST['email'];
-            $address = $_POST['adress'];
-            $role = $_POST['role'];
-            $target_file = 'assets/uploads/' . $img;
-            move_uploaded_file($image['tmp_name'], $target_file);
-        }
-        include 'view/user/editinfo.php';
-        break;
+    //         $name = $_POST['name'];
+    //         $pass = $_POST['pass'];
+    //         $phone = $_POST['phone'];
+    //         $email = $_POST['email'];
+    //         $address = $_POST['adress'];
+    //         $role = $_POST['role'];
+    //         $target_file = 'assets/uploads/' . $img;
+    //         move_uploaded_file($image['tmp_name'], $target_file);
+    //     }
+    //     include 'view/user/editinfo.php';
+    //     break;
     case 'forgotpass':
         include 'view/user/forgotPass.php';
         break;

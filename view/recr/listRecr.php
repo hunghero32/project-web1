@@ -26,14 +26,18 @@
             <div class="col-lg-8">
                 <ul class="job-list-item align-items-center">
                     <li>
-                        <a href="#">Kết quả tìm thấy <span><span>(<?= $total ?>)</span></span></a>
+                        <a href="#">Kết quả tìm thấy <span><span><?= $total ?></span></span></a>
                     </li>
                     <li></li>
                 </ul>
 
                 <div id="data-container">
-                    <?php foreach ($currentData as $key) : ?>
-                        <?php extract($key); ?>
+                    <?php foreach ($valu_racr as $key) : ?>
+
+                        <?php 
+                        // var_dump($valu_racr);
+                            extract($key); 
+                             ?>
                         <?php $link_recr = "index.php?act=info_recr&id=" . $id; ?>
                         <div class='employer-item '>
                             <a href='<?= $link_recr ?>'>
@@ -48,40 +52,28 @@
                                 </ul>
                                 <p><?= $major ?>
                                 </p>
-                                <span class='span-one'>Accounting</span>
+                                <span class='span-one'>Ứng tuyển </span>
                                 <span class='span-two'><?=$key['type'] == 2 ? "FULL TIME" : "PART TIME" ?> </span>
                             </a>
                         </div>
                     <?php endforeach ?>
                 </div>
 
-                <!-- <?php for ($i = 1; $i <= $total_pages; $i++) { ?>
+                
+                <!-- <div class="pagination-area">
+                    <ul class="pagination"> -->
+                        <!-- <li><a href="#" id="prev">Prev</a></li> -->
 
-                    <div class="pagination-area">
-                        <ul>
-                            <li>
-                            <a href='index.php?act=job&page=" . $i . "'>" . $i . "</a>
-                            </li>
-                        </ul>
-                    </div>
-                <?php } ?> -->
-                <div class="pagination-area">
-                    <ul class="pagination">
-                        <!-- Nút Prev -->
-                        <li><a href="#" id="prev">Prev</a></li>
-
-                        <!-- Hiển thị các nút số trang -->
                         <?php
-                        for ($i = 1; $i <= $totalPages; $i++) {
-                            echo "<li><a href='#' class='page' data-page='$i'>$i</a></li>";
-                        }
+                        //for ($i = 1; $i <= $totalPages; $i++) {
+                            //echo "<li><a href='#' class='page' data-page='$i'>$i</a></li>";
+                        //}
                         ?>
 
-                        <!-- Nút Next -->
-                        <li><a href="#" id="next">Next</a></li>
+                        <!-- <li><a href="#" id="next">Next</a></li>
                     </ul>
-                </div>
-                <!-- <div class="pagination-area">
+                </div> -->
+                <div class="pagination-area">
                     <ul>
                         <li>
                             <a href="#">Prev</a>
@@ -99,7 +91,7 @@
                             <a href="#">Next</a>
                         </li>
                     </ul>
-                </div> -->
+                </div>
             </div>
             <div class="col-lg-4">
                 <!-- <form action=""> -->
@@ -108,8 +100,8 @@
 
                         <div class="search">
                             <h3>Tìm kiếm</h3>
-                            <form>
-                                <input type="text" class="form-control" placeholder="Từ khóa">
+                            <form action="index.php?act=listRecr" method="post">
+                                <input type="text" class="form-control" placeholder="Từ khóa" name="key">
                                 <button type="submit" name="search_recr" class="btn">
                                     <i class="flaticon-send"></i>
                                 </button>
@@ -122,7 +114,7 @@
                                     <?php foreach ($totall_address as $r) : ?>
                                         <li>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="<?= $r['address'] ?>" id="defaultCheck10">
+                                                <input class="form-check-input" type="checkbox" name="address" value="<?= $r['address'] ?>" id="defaultCheck10">
                                                 <label class="form-check-label" for="defaultCheck10">
                                                     <?= $r['address'] ?> (<?= $r['sl_address'] ?>)
                                                 </label>
@@ -130,7 +122,7 @@
                                         </li>
                                     <?php endforeach ?>
                                     <li>
-                                        <button class="btn btn-info px-4 text-white" style="font-size: 12px;">
+                                        <button type="submit" name="address_recr" class="btn btn-info px-4 text-white" style="font-size: 12px;">
                                             LỌC
                                         </button>
                                     </li>
@@ -139,12 +131,12 @@
                         </div>
                         <div class="job-type cmn-padding">
                             <h3>Loại công việc</h3>
-                            <form>
+                            <form action="index.php?act=listRecr" method="post">
                                 <ul class="job-cmn-cat">
-                                    <?php foreach ($valu_racr as $r) : ?>
+                                    <?php foreach ($total_type as $r) : ?>
                                         <li>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value id="defaultCheck16">
+                                                <input class="form-check-input" type="checkbox" name="address" value="<?=$r['type'] ?>" id="defaultCheck16">
                                                 <label class="form-check-label" for="defaultCheck16">
                                                     <?=$r['type'] == 2 ? "Full time" : "Part time" ?> (<?=$r['sl_type'] ?>)
                                                 </label>
@@ -152,7 +144,7 @@
                                         </li>
                                     <?php endforeach ?>
                                     <li>
-                                        <button class="btn btn-info px-4 text-white" style="font-size: 12px;">
+                                        <button type="submit" name="type_recr" class="btn btn-info px-4 text-white" style="font-size: 12px;">
                                             LỌC
                                         </button>
                                     </li>
@@ -224,7 +216,7 @@
                         </div> -->
                         <div class="salary cmn-padding">
                             <h3>Mức lương</h3>
-                            <form > 
+                            <form action="index.php?act=listRecr" method="post"> 
                                 <div class="form-group">
                                     <label class="range" id="formControlRangeValu" for="formControlRangeTwo">10</label>
                                     <input type="range" class="form-control-range" id="formControlRangeTwo" min='1' max='100' step="1">
@@ -372,66 +364,3 @@
         </div>
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-        
-    </script>
-<script>
-        // Lấy các phần tử DOM
-        var range = document.getElementById('formControlRangeTwo');
-        var rangeValue = document.getElementById('formControlRangeValu');
-
-        // Xử lý sự kiện input khi di chuyển slider
-        range.addEventListener('input', function() {
-            // Cập nhật giá trị số bên cạnh slider
-            rangeValue.textContent = range.value;
-        });
-    $(document).ready(function() {
-        // Sử dụng jQuery để xử lý sự kiện khi nhấn nút "Next", "Prev", hoặc số trang
-        $(".page").click(function() {
-            var page = $(this).data('page');
-            $.ajax({
-                type: "GET",
-                url: "listRecr.php",
-                data: {
-                    act: 'listRecr',
-                    page: page
-                },
-                success: function(data) {
-                    $("#data-container").html(data);
-                }
-            });
-        });
-
-        $("#prev").click(function() {
-            var page = <?php echo ($currentPage > 1) ? ($currentPage - 1) : 1; ?>;
-            $.ajax({
-                type: "GET",
-                url: "listRecr.php",
-                data: {
-                    act: 'listRecr',
-                    page: page
-                },
-                success: function(data) {
-                    $("#data-container").html(data);
-                }
-            });
-        });
-
-        $("#next").click(function() {
-            var page = <?php echo ($currentPage < $totalPages) ? ($currentPage + 1) : $totalPages; ?>;
-            $.ajax({
-                type: "GET",
-                url: "listRecr.php",
-                data: {
-                    act: 'listRecr',
-                    page: page
-                },
-                success: function(data) {
-                    $("#data-container").html(data);
-                }
-            });
-        });
-    });
-</script>
