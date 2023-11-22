@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="e34c3aaf-da5b-4126-bbfb-1d83c0c23fb4" name="@localhost Mapping">
+      <data-sources db="567e74e1-e469-459b-b683-e9b6612f97e2" ddl="009fa09d-c275-4137-a51a-a652c887ba19" />
+      <scope>
+        <node kind="database" negative="1" />
+      </scope>
+    </mapping>
+  </component>
+  <component name="SqlDataSourceStorage">
+    <option name="dataSources">
+      <list>
+        <State>
+          <option name="id" value="009fa09d-c275-4137-a51a-a652c887ba19" />
+          <option name="name" value="@localhost (DDL)" />
+          <option name="dbmsName" value="MARIADB" />
+          <option name="parent" value="567e74e1-e469-459b-b683-e9b6612f97e2" />
+          <option name="urls">
+            <array>
+              <option value="file://$PROJECT_DIR$/duan1.sql" />
+            </array>
+          </option>
+          <option name="outLayout" value="File per object by schema.groovy" />
+        </State>
+      </list>
+    </option>
+  </component>
+</project>

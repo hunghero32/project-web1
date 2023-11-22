@@ -67,7 +67,7 @@
                                 <a href="terms-conditions.html" target="_blank">Terms & Conditions</a>
                             </li>
                             <li>
-                                <a href="jobs.html" target="_blank">Jobs</a>
+                                <a href="index.php?act=listRecr" target="_blank">Jobs</a>
                             </li>
                             <li>
                                 <a href="candidates.html" target="_blank">CV nổi bật</a>

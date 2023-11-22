@@ -101,7 +101,7 @@
                 <div class="details-item">
                     <div class="profile">
                         <h3>Giới thiệu chung về tôi</h3>
-                        <p><?= $cv['description'] ?></p>
+                        <p><?= $cv['info'] ?></p>
                     </div>
                     <div class="work bottom-item">
                         <h3>Kinh nghiệm làm Việc </h3>

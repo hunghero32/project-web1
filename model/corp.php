@@ -1,7 +1,7 @@
 <?php
 function list_Corp($name, $major, $address)
 {
-    $sql = "SELECT c.*, u.name, u.img, u.email, u.phone, u.address, u.role as userRole
+    $sql = "SELECT c.*, u.name, u.email, u.phone, u.address, u.role as userRole
             FROM corp c
             INNER JOIN user u ON c.iduser = u.id
             WHERE u.role = 3";
@@ -10,23 +10,23 @@ function list_Corp($name, $major, $address)
     $sql .= $major !== '' ? " AND c.major LIKE '%".$major."%' " : "";
     $sql .= $address !== '' ? " AND u.address LIKE '%".$address."%' " : "";
 
-    $sql .= " GROUP BY c.id, userRole ORDER BY c.id DESC";
+    $sql .= " GROUP BY c.id, u.role ORDER BY c.id DESC";
 
     return pdo_query($sql);
 }
 
 function filter_Corp()
 {
-    $sql = "SELECT c.*, u.name, u.address, u.role as userRole
+    $sql = "SELECT c.*, u.name, u.address, u.role as u.role
             FROM corp c INNER JOIN user u ON c.iduser = u.id
-            WHERE u.role = 3 GROUP BY c.id, userRole
+            WHERE u.role = 3 GROUP BY c.id, u.role
             ORDER BY c.id DESC";
     return pdo_query($sql);
 }
 
 function top_Corp()
 {
-    $sql = "SELECT c.*, u.name, u.img, u.email, u.phone, u.address
+    $sql = "SELECT c.*, u.name, u.email, u.phone, u.address
             FROM corp c
             INNER JOIN user u ON c.iduser = u.id
             WHERE u.role = 3 ORDER BY c.id DESC LIMIT 0,6";
@@ -35,7 +35,7 @@ function top_Corp()
 
 function info_Corp($id)
 {
-    $sql = "SELECT c.*, u.name, u.img, u.email, u.phone, u.address
+    $sql = "SELECT c.*, u.name, u.email, u.phone, u.address
                 FROM corp c
                 INNER JOIN user u ON c.iduser = u.id
                 WHERE u.role = 3 AND c.iduser = $id";
@@ -48,7 +48,7 @@ function update_Corp($id, $name, $img, $email, $phone, $address, $exp, $major, $
 {
     $sql = "UPDATE user as u, corp as c
             SET u.username = '$name',
-                u.img = '$img',
+                -- u.img = '$img',
                 u.email = '$email',
                 u.phone = '$phone',
                 u.address = '$address',

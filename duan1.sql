@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 17, 2023 at 05:19 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 22, 2023 lúc 09:07 AM
+-- Phiên bản máy phục vụ: 10.4.28-MariaDB
+-- Phiên bản PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,311 +18,434 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `duan1`
+-- Cơ sở dữ liệu: `duan1`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `adscv`
---
-
-CREATE TABLE `adscv` (
-  `id` int(11) NOT NULL,
-  `idads` int(11) NOT NULL,
-  `day` int(11) NOT NULL,
-  `cost` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `adsrec`
---
-
-CREATE TABLE `adsrec` (
-  `id` int(11) NOT NULL,
-  `idads` int(11) NOT NULL,
-  `day` int(11) NOT NULL,
-  `cost` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `adsrec`
---
-
-INSERT INTO `adsrec` (`id`, `idads`, `day`, `cost`) VALUES
-(1, 1, 30, 500000);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `corp`
+-- Cấu trúc bảng cho bảng `corp`
 --
 
 CREATE TABLE `corp` (
-  `id` int(11) NOT NULL,
-  `iduser` int(11) NOT NULL,
-  `exp` int(11) NOT NULL,
+  `id` int(10) NOT NULL,
+  `iduser` int(10) NOT NULL,
+  `activeYear` int(2) NOT NULL,
   `major` varchar(255) NOT NULL,
-  `totalStaff` int(10) NOT NULL,
-  `description` text NOT NULL,
-  `subimg1` varchar(255) NOT NULL,
-  `subimg2` varchar(255) NOT NULL,
-  `subimg3` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `corp`
---
-
-INSERT INTO `corp` (`id`, `iduser`, `exp`, `major`, `totalStaff`, `description`, `subimg1`, `subimg2`, `subimg3`) VALUES
-(1, 1, 10, 'FE', 0, 'test query 4 table', '', '', ''),
-(4, 7, 10, 'be', 0, 'test query 20 table', '', '', '');
+  `size` int(10) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `introduce` text NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `benefits` text NOT NULL,
+  `workingday` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cv`
+-- Cấu trúc bảng cho bảng `cv`
 --
 
 CREATE TABLE `cv` (
-  `id` int(11) NOT NULL,
-  `iduser` int(11) NOT NULL,
-  `img` varchar(255) NOT NULL,
-  `gender` varchar(10) NOT NULL,
-  `age` int(3) NOT NULL,
-  `degree` varchar(255) NOT NULL,
-  `major` varchar(255) NOT NULL,
-  `exp` int(11) NOT NULL,
-  `skill` varchar(255) NOT NULL,
-  `level` varchar(255) NOT NULL,
-  `salary` int(11) NOT NULL,
-  `description` text NOT NULL,
-  `view` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id` int(10) NOT NULL,
+  `iduser` int(10) NOT NULL,
+  `gender` int(2) NOT NULL,
+  `birth` date NOT NULL,
+  `salary` int(10) NOT NULL,
+  `major` int(10) NOT NULL,
+  `introduce` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `cv`
+-- Đang đổ dữ liệu cho bảng `cv`
 --
 
-INSERT INTO `cv` (`id`, `iduser`, `img`, `gender`, `age`, `degree`, `major`, `exp`, `skill`, `level`, `salary`, `description`, `view`) VALUES
-(1, 1, '', '', 0, '', 'Web Progamming', 12, '', '', 0, 'Tốt nghiệp FPT College, chuyên ngành Web BE', 0),
-(2, 2, '', '', 0, '', 'WEB Development', 10, '', '', 0, 'Hưng 365 - Thegioiso365.vn', 0),
-(3, 4, '', '', 0, '', 'Web Progamming', 12, '', '', 0, 'tuanapple222', 0),
-(4, 3, '', '', 0, '', 'Web developer', 10, '', '', 0, 'Tốt nghiệp loại Giỏi khoa Công nghệ Thông tin, Đại học Bách khoa Hà Nội. Được đào tạo chuyên sâu về tổ chức và quản lý công nghệ phần mềm và có kinh nghiệm quản lý dự án trong vai trò thành viên Câu lạc bộ HUST Developers. Luôn chủ động học hỏi và tham gia các chương trình tập huấn chuyên môn để nâng cao trình độ và thực hành kỹ năng. ', 0);
+INSERT INTO `cv` (`id`, `iduser`, `gender`, `birth`, `salary`, `major`, `introduce`) VALUES
+(1, 2, 1, '2023-11-22', 10000, 2, 'Một thằng User nghèo ');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `info`
+-- Cấu trúc bảng cho bảng `degree`
+--
+
+CREATE TABLE `degree` (
+  `id` int(10) NOT NULL,
+  `idcv` int(10) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `school` varchar(255) NOT NULL,
+  `start` date NOT NULL,
+  `end` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `degree`
+--
+
+INSERT INTO `degree` (`id`, `idcv`, `name`, `school`, `start`, `end`) VALUES
+(1, 1, 'FPT polytechnic', 'Cao Đẳng', '2020-11-01', '2023-11-22');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `expcv`
+--
+
+CREATE TABLE `expcv` (
+  `id` int(10) NOT NULL,
+  `idcv` int(10) NOT NULL,
+  `level` int(10) NOT NULL,
+  `job` varchar(255) NOT NULL,
+  `corp` varchar(255) NOT NULL,
+  `start` date NOT NULL,
+  `end` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `expcv`
+--
+
+INSERT INTO `expcv` (`id`, `idcv`, `level`, `job`, `corp`, `start`, `end`) VALUES
+(1, 1, 1, 'Devops', 'Thegioiso365', '2021-11-01', '2022-11-30');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `filtercv`
+--
+
+CREATE TABLE `filtercv` (
+  `id` int(11) NOT NULL,
+  `exp` varchar(255) NOT NULL,
+  `major` varchar(255) NOT NULL,
+  `age` varchar(255) NOT NULL,
+  `gender` varchar(10) NOT NULL,
+  `level` varchar(255) NOT NULL,
+  `salary` varchar(255) NOT NULL,
+  `skill` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `filterrecr`
+--
+
+CREATE TABLE `filterrecr` (
+  `id` int(11) NOT NULL,
+  `exp` varchar(255) NOT NULL,
+  `level` varchar(255) NOT NULL,
+  `salary` varchar(255) NOT NULL,
+  `progLang` varchar(255) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `date` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `gallery`
+--
+
+CREATE TABLE `gallery` (
+  `id` int(10) NOT NULL,
+  `iduser` int(10) NOT NULL,
+  `avatar` varchar(255) NOT NULL,
+  `thumbnail1` varchar(255) NOT NULL,
+  `thumbnail2` varchar(255) NOT NULL,
+  `thumbnail3` varchar(255) NOT NULL,
+  `thumbnail4` varchar(255) NOT NULL,
+  `thumbnail5` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `gallery`
+--
+
+INSERT INTO `gallery` (`id`, `iduser`, `avatar`, `thumbnail1`, `thumbnail2`, `thumbnail3`, `thumbnail4`, `thumbnail5`) VALUES
+(1, 2, '', '', '', '', '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `info`
 --
 
 CREATE TABLE `info` (
-  `id` int(11) NOT NULL,
-  `idcv` int(11) NOT NULL,
-  `idrec` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id` int(10) NOT NULL,
+  `idrec` int(10) NOT NULL,
+  `idcv` int(10) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `recr`
+-- Cấu trúc bảng cho bảng `recr`
 --
 
 CREATE TABLE `recr` (
-  `id` int(11) NOT NULL,
-  `idcorp` int(11) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `img` varchar(255) NOT NULL,
-  `exp` int(11) NOT NULL,
-  `level` varchar(255) NOT NULL,
-  `salary` int(11) NOT NULL,
-  `major` varchar(255) NOT NULL,
-  `skill` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `totalCV` int(11) NOT NULL,
+  `id` int(10) NOT NULL,
+  `idcorp` int(10) NOT NULL,
+  `job` varchar(255) NOT NULL,
+  `exp` int(2) NOT NULL,
+  `level` int(2) NOT NULL,
+  `salary` int(2) NOT NULL,
+  `progLang` varchar(255) NOT NULL,
+  `type` int(2) NOT NULL,
   `description` text NOT NULL,
-  `date` date NOT NULL,
-  `view` int(11) NOT NULL,
-  `status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `recr`
---
-
-INSERT INTO `recr` (`id`, `idcorp`, `title`, `img`, `exp`, `level`, `salary`, `major`, `skill`, `type`, `totalCV`, `description`, `date`, `view`, `status`) VALUES
-(1, 1, 'Tuyển dụng nhân sự IT, Các vị trí FE & BE, DevOps', '', 2, '0', 0, 'FE, BE, DevOps', '', '', 10, 'Ưu tiên các ứng viên có ngoại ngữ, các ứng viên có độ tuổi từ 20 - 30', '0000-00-00', 0, 1);
+  `start` date NOT NULL,
+  `end` date NOT NULL,
+  `request` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Cấu trúc bảng cho bảng `skillcv`
+--
+
+CREATE TABLE `skillcv` (
+  `id` int(10) NOT NULL,
+  `idcv` int(10) NOT NULL,
+  `skill` int(10) NOT NULL,
+  `percent` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `skillcv`
+--
+
+INSERT INTO `skillcv` (`id`, `idcv`, `skill`, `percent`) VALUES
+(1, 1, 2, 50);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `user`
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `id` int(10) NOT NULL,
   `username` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `img` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(13) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `role` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `role` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `user`
+-- Đang đổ dữ liệu cho bảng `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `pass`, `name`, `img`, `email`, `phone`, `address`, `role`) VALUES
-(1, 'long123', '123', 'SSP Company', '', 'longhoang0002@gmail.com', '0346540479', 'Hà Nội', 3),
-(2, 'admin', '123456', '', '', 'admin@gmail.com', '0123456789', '', 1),
-(3, 'dungnt', 'dungph31678', '', '', 'dung@gmail.com', '0346246396', '', 1),
-(4, 'tuan8386', '8386', '', '', 'tuannaph38619@fpt.edu.vn', '0567575222', '', 1),
-(7, 'long', '123', 'FPoly Company', 'img.img', 'longlhph31572@fpt.edu.vn', '0346540479', 'Đà Nẵng', 3);
+INSERT INTO `user` (`id`, `username`, `pass`, `name`, `email`, `phone`, `address`, `role`) VALUES
+(1, 'admin', '123', 'ADMIN', 'admin@gmail.com', '0123456789', 'Admin', 1),
+(2, 'user', '123', 'User', 'user@gmail.com', '0123456789', 'User', 2),
+(3, 'corp', '123', 'Corp', 'corp@gmail.com', '0123456789', 'Corp', 3);
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `adscv`
---
-ALTER TABLE `adscv`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_adsCv_cv` (`idads`);
-
---
--- Indexes for table `adsrec`
---
-ALTER TABLE `adsrec`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_adsRec_rerc` (`idads`);
-
---
--- Indexes for table `corp`
+-- Chỉ mục cho bảng `corp`
 --
 ALTER TABLE `corp`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_corp_user` (`iduser`);
 
 --
--- Indexes for table `cv`
+-- Chỉ mục cho bảng `cv`
 --
 ALTER TABLE `cv`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_cv_user` (`iduser`);
 
 --
--- Indexes for table `info`
+-- Chỉ mục cho bảng `degree`
+--
+ALTER TABLE `degree`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_degree_cv` (`idcv`);
+
+--
+-- Chỉ mục cho bảng `expcv`
+--
+ALTER TABLE `expcv`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_expCv_cv` (`idcv`);
+
+--
+-- Chỉ mục cho bảng `filtercv`
+--
+ALTER TABLE `filtercv`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `filterrecr`
+--
+ALTER TABLE `filterrecr`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Chỉ mục cho bảng `gallery`
+--
+ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_gallery_user` (`iduser`);
+
+--
+-- Chỉ mục cho bảng `info`
 --
 ALTER TABLE `info`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `FK1_info_cv` (`idcv`),
-  ADD KEY `FK2_info_rerc` (`idrec`);
+  ADD KEY `FK_info_cv` (`idcv`),
+  ADD KEY `FK_info_recr` (`idrec`);
 
 --
--- Indexes for table `recr`
+-- Chỉ mục cho bảng `recr`
 --
 ALTER TABLE `recr`
   ADD PRIMARY KEY (`id`),
   ADD KEY `FK_rerc_corp` (`idcorp`);
 
 --
--- Indexes for table `user`
+-- Chỉ mục cho bảng `skillcv`
+--
+ALTER TABLE `skillcv`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK_skillCv_cv` (`idcv`);
+
+--
+-- Chỉ mục cho bảng `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `adscv`
---
-ALTER TABLE `adscv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `adsrec`
---
-ALTER TABLE `adsrec`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `corp`
+-- AUTO_INCREMENT cho bảng `corp`
 --
 ALTER TABLE `corp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `cv`
+-- AUTO_INCREMENT cho bảng `cv`
 --
 ALTER TABLE `cv`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `info`
+-- AUTO_INCREMENT cho bảng `degree`
 --
-ALTER TABLE `info`
+ALTER TABLE `degree`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `expcv`
+--
+ALTER TABLE `expcv`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `filtercv`
+--
+ALTER TABLE `filtercv`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `recr`
+-- AUTO_INCREMENT cho bảng `filterrecr`
+--
+ALTER TABLE `filterrecr`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `info`
+--
+ALTER TABLE `info`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT cho bảng `recr`
 --
 ALTER TABLE `recr`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT cho bảng `skillcv`
+--
+ALTER TABLE `skillcv`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Constraints for dumped tables
+-- Các ràng buộc cho các bảng đã đổ
 --
 
 --
--- Constraints for table `adscv`
---
-ALTER TABLE `adscv`
-  ADD CONSTRAINT `FK_adsCv_cv` FOREIGN KEY (`idads`) REFERENCES `cv` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `adsrec`
---
-ALTER TABLE `adsrec`
-  ADD CONSTRAINT `FK_adsRec_rerc` FOREIGN KEY (`idads`) REFERENCES `recr` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `corp`
+-- Các ràng buộc cho bảng `corp`
 --
 ALTER TABLE `corp`
   ADD CONSTRAINT `FK_corp_user` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `cv`
+-- Các ràng buộc cho bảng `cv`
 --
 ALTER TABLE `cv`
   ADD CONSTRAINT `FK_cv_user` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `info`
+-- Các ràng buộc cho bảng `degree`
 --
-ALTER TABLE `info`
-  ADD CONSTRAINT `FK1_info_cv` FOREIGN KEY (`idcv`) REFERENCES `cv` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `FK2_info_rerc` FOREIGN KEY (`idrec`) REFERENCES `recr` (`id`);
+ALTER TABLE `degree`
+  ADD CONSTRAINT `FK_degree_cv` FOREIGN KEY (`idcv`) REFERENCES `cv` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `recr`
+-- Các ràng buộc cho bảng `expcv`
+--
+ALTER TABLE `expcv`
+  ADD CONSTRAINT `FK_expCv_cv` FOREIGN KEY (`idcv`) REFERENCES `cv` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `gallery`
+--
+ALTER TABLE `gallery`
+  ADD CONSTRAINT `FK_gallery_user` FOREIGN KEY (`iduser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `info`
+--
+ALTER TABLE `info`
+  ADD CONSTRAINT `FK_info_cv` FOREIGN KEY (`idcv`) REFERENCES `cv` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_info_recr` FOREIGN KEY (`idrec`) REFERENCES `recr` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `recr`
 --
 ALTER TABLE `recr`
   ADD CONSTRAINT `FK_rerc_corp` FOREIGN KEY (`idcorp`) REFERENCES `corp` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Các ràng buộc cho bảng `skillcv`
+--
+ALTER TABLE `skillcv`
+  ADD CONSTRAINT `FK_skillCv_cv` FOREIGN KEY (`idcv`) REFERENCES `cv` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
