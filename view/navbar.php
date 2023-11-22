@@ -49,8 +49,16 @@
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item" href="index.php?act=changepassword">Đổi mật khẩu</a></li>
+                                        <?php if ($role == 1) { ?>
                                         <li><a class="dropdown-item" href="index.php?act=manage_recr">Quản lí thông tin</a></li>
-                                        <li>
+                                        <?php } ?>
+                                        <?php if ($role == 2) { ?>
+                                        <li><a class="dropdown-item" href="index.php?act=manage_Cv">Thông tin người dùng</a></li>
+                                        <?php } ?>
+                                        <?php if ($role == 3) { ?>
+                                        <li><a class="dropdown-item" href="index.php?act=manage_recr">Thông tin doanh nghiệp</a></li>
+                                        <?php } ?>
+                                        <li> 
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li><a class="dropdown-item" href="index.php?act=signout">Đăng xuất</a></li>

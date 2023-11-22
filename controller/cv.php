@@ -20,6 +20,40 @@ switch ($act) {
         $list_cv = list_cv($name, $major, $exp, $salary);
         include 'view/cv/listCv.php';
         break;
+    case 'manage_Cv':
+        if (isset($_GET['id']) && ($_GET['id'] > 0)) {
+            $id = $_GET['id'];
+            $cv = info_cv($id);
+        }
+
+        include 'view/cv/manage_CV.php';
+        break;
+        case 'user_cv':
+            if (isset($_POST['submit'])) {
+                $id = $_POST['id'];
+//                $idcv = $_POST['idcv'];
+                $img = $_POST['img'];
+                $image = $_FILES['img'];
+                $cv = info_cv($id);
+                // Check if a new image is uploaded
+                if ($image['size'] > 0) {
+                    $img = $image['name'];
+                    $target_file = 'assets/img/' . $img;
+                    move_uploaded_file($image['tmp_name'], $target_file);
+                }
+            
+                $exp = $_POST['exp'];
+                $level = $_POST['level'];
+                $salary = $_POST['salary'];
+                $major = $_POST['major'];
+                $type = $_POST['type'];
+                $totalCV = $_POST['totalCV'];
+                $desc = $_POST['description'];
+            
+                update_cv($id, $name, $img, $email, $phone, $address, $exp, $major, $desc);}
+                
+            include 'view/cv/updateCv.php';
+            break;
 
     default:
         # code...
