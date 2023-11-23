@@ -20,40 +20,30 @@
     <div class="container">
         <form action="index.php?act=listCorp" method="POST">
             <div class="row">
-                <div class="col-sm-6 col-lg-3">
+                <div class="col-sm-6 col-lg-4">
                     <div class="form-group">
-                        <input name="name" type="text" class="form-control"placeholder="<?= !isset($_POST['name']) || $_POST['name'] == '' ? 'Tên' : $_POST['name'] ?>">
+                        <input name="name" type="text" class="form-control" 
+                        placeholder="<?= !isset($_POST['name']) || $_POST['name'] == '' ? 'Tên' : $_POST['name'] ?>">
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
+                <div class="col-sm-6 col-lg-4">
                     <div class="form-group">
                         <select name="address">
                             <option value="" selected>Địa điểm</option>
-                            <?php foreach ($filter_corp as $c) {
-                                extract($c) ?>
-                                <option value="<?= $address ?>"
+                            <?php foreach ($datafilter as $c) {
+                                extract($c);
+                                if ($address !== '') { ?>
+                                    <option value="<?= $address ?>"
                                     <?= isset($_POST['address']) && $_POST['address'] == $address ? 'selected' : '' ?>>
-                                    <?= $address ?>
-                                </option>
+                                        <?= $address ?>
+                                    </option>
+                                <?php } ?>
                             <?php } ?>
+                            <option value="diff">Khác</option>
                         </select>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="form-group">
-                        <select name="major">
-                            <option value="" selected>Lĩnh vực</option>
-                            <?php foreach ($filter_corp as $c) {
-                                extract($c) ?>
-                                <option value="<?= $major ?>"
-                                    <?= isset($_POST['major']) &&  $_POST['major'] == $major ? 'selected' : '' ?>>
-                                    <?= $major ?>
-                                </option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3">
+                <div class="col-sm-6 col-lg-4">
                     <button name="findCorp" type="submit" class="btn cmn-btn">
                         Tìm kiếm
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -91,19 +81,22 @@
                             <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
                                 <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
                                 <h3><?= $name ?></h3>
-                                <ul>
-                                    <li>
+                                <p>
+                                    <span class="me-3">
                                         <i class="fa-solid fa-location-dot"></i>
                                         <?= $address ?>
-                                    </li>
-                                </ul>
-                                <p>
-                                    <i class="fa-solid fa-suitcase"></i> <?= $major ?>
+                                    </span>
+                                    <span class="me-3">
+                                        <i class="fa-solid fa-users"></i> <?= $size ?>
+                                    </span>
+                                    <span>
+                                        <i class="fa-solid fa-calendar-days"></i> Thành lập <?= $activeYear ?>
+                                    </span>
                                 </p>
                                 <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
                                     <span class="span-one"><i class="fa-solid fa-circle-info"></i> Thông tin chi tiết</span>
                                 </a>
-                                <span class="span-two">FULL TIME</span>
+                                <!-- <span class="span-two">FULL TIME</span> -->
                             </a>
                         </div>
                     </div>
