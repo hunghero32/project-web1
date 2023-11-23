@@ -46,33 +46,17 @@
                                 <label>
                                     Tiêu đề :
                                 </label>
-                                <input type="text" value="<?=$title ?>" name="title" class="form-control" placeholder="Tuyển lập trình viên Backend ..." title="Tiêu đề không được để trống !" required>
+                                <input type="text" value="<?=$job ?>" name="job" class="form-control" placeholder="Tuyển lập trình viên Backend ..." title="Tiêu đề không được để trống !" required>
                             </div>
                         </div>
 
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>
-                                    Số lượng CV :
-                                </label>
-                                <input type="number" value="<?=$totalCV ?>" name="totalCV" class="form-control" placeholder=" Cần 23 CV" title="Số lượng cv không được để trống !" required>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>
-                                    Ảnh :
-                                </label>
-                                <input type="hidden" value="<?=$img ?>"  name="img">
-                                <input type="file"   name="img" class="form-control py-3" >
-                            </div>
-                        </div>
+                        
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>
                                     Ngôn ngữ :
                                 </label>
-                                <input type="text" value="<?=$skill ?>" class="form-control" name="skill" placeholder="Web Developer" title="Ngôn ngữ không được để trống !" requiredd>
+                                <input type="text" value="<?=$progLang ?>" class="form-control" name="progLang" placeholder="Web Developer" title="Ngôn ngữ không được để trống !" requiredd>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -88,20 +72,13 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>
-                                    Kĩ năng :
-                                </label>
-                                <input type="text" value="<?=$major ?>" class="form-control" name="major" placeholder="Thành thạo tiếng anh ..." title="Kĩ năng không được để trống !" required>
-                            </div>
-                        </div>
+                       
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label >
                                     Lương :
                                 </label>
-                                <input type="number" value="<?=$salary ?>" class="form-control" name="salary" placeholder="1000000" title="Lương không được để trống !" required>
+                                <input type="text" value="<?=$salary ?>" class="form-control" name="salary" placeholder="1000000" title="Lương không được để trống !" required>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -125,7 +102,14 @@
                                 <textarea name="description" class="form-control" cols="30" rows="10" style="resize: vertical;" title="Mô tả không được để trống !" required><?=$description ?></textarea>
                             </div>
                         </div>
-                     
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>
+                                    Yêu cầu công việc :
+                                </label>
+                                <textarea name="request"  class="form-control" cols="30" rows="10" style="resize: vertical;" title="Mô tả không được để trống !" required> <?=$request ?></textarea>
+                            </div>
+                        </div>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>
@@ -137,6 +121,14 @@
                                     <option value="dh " <?= $level == 'dh' ? 'selected' : '' ?>>Đại học</option>
                                     <option value="ts " <?= $level == 'ts' ? 'selected' : '' ?>>Thạc sĩ</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>
+                                    Ngày hết hạn :
+                                </label>
+                                <input type="date" class="form-control" name="end" required>
                             </div>
                         </div>
                     </div>
