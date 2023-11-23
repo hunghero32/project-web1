@@ -43,7 +43,7 @@ function top_Corp()
 
 function info_Corp($id)
 {
-    $sql = "SELECT c.*, u.name, u.email, u.phone, u.address,
+    $sql = "SELECT c.*, u.name, u.email, u.phone, u.addressS
             -- g.avatar, g.thumbnail1, g.thumbnail2, g.thumbnail3, g.thumbnail4, g.thumbnail5
             FROM corp c
             INNER JOIN user u ON c.iduser = u.id
