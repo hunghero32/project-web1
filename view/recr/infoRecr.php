@@ -1,4 +1,4 @@
-<?php extract($val_recr); ?>
+
 <div class="page-title-area two">
     <div class="d-table">
         <div class="d-table-cell">
@@ -7,15 +7,15 @@
                     <div class="col-lg-8">
                         <div class="left">
                             <img data-cfsrc="assets/img/job-details1.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details1.png" alt="Details"></noscript>
-                            <h2><?= $title ?></h2>
+                            <h2><?= $job ?></h2>
                             <ul>
                                 <li>
                                     <i class="bx bx-pie-chart-alt-2"></i>
-                                    <?= $major ?>
+                                    <?= $progLang ?>
                                 </li>
                                 <li>
                                     <i class="bx bx-time"></i>
-                                    <?= $date ?>
+                                    <?= $start ?>
                                 </li>
                             </ul>
                         </div>
@@ -42,35 +42,62 @@
                 <div class="details-item">
                     <div class="details-inner">
                         <h3>Miêu tả công việc</h3>
-                        <p><?= $description ?></p>
+                        <ul><?php  
+                        $des_arr =  explode("\n", $description);
+                        // $des_arr_2 = array_filter($des_arr);
+                        for ($i = 0; $i < count($des_arr) ; $i++) {
+                            echo "<li><i class='bx bx-message-square-check me-2'></i>"  . $des_arr[$i] . "<li>";
+                        }
+                        ?></ul>
                     </div>
                     <div class="details-inner">
                         <h3>Giới thiệu công ty</h3>
-                        <p><?= $c_description ?></p>
+                        <p><?= $introduce ?></p>
                     </div>
-                  
+                    <div class="details-inner">
+                        <h3>Yêu cầu công việc</h3>
+                        <ul><?php  
+                        $req_arr =  explode("\n", $request);
+                        // $req_arr_2 = array_filter($req_arr);
+                        for ($i = 0; $i < count($req_arr) ; $i++) {
+                            echo "<li><i class='bx bx-message-square-check me-2'></i>"  . $req_arr[$i] . " <li>" ;
+                        }
+                        ?></ul>
+                    </div>
+                    <div class="details-inner">
+                        <h3>Quyền lợi</h3>
+                        <ul><?php  
+                        $ben_arr =  explode("\n", $benefits);
+                        
+                        // $ben_arr_2 = array_filter($ben_arr);
+                        for ($i = 0; $i < count($ben_arr) ; $i++) {
+                            echo  "<li><i class='bx bx-message-square-check me-2'></i>" . $ben_arr[$i] . " </li>";
+                        }
+                        ?></ul>
+                    </div>
                 </div>
                 <div class="job-details-related pb-70 " style="background-color: #fff; padding-top: 40px;">
                    
                         <div class="section-title">
                             <h2>Việc làm tương tự</h2>
                         </div>
-                        <?php foreach ($val_corp as $val) : ?>
+                        <?php foreach ($val_c as $val) : ?>
                             <?php extract($val) ?>
+                            <?php $link_recr = "index.php?act=info_recr&id=" . $id; ?>
                             <div class="employer-item">
-                                <a href="job-details.html">
+                                <a href="<?= $link_recr ?>">
                                     <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
-                                    <h3><?= $title ?></h3>
+                                    <h3><?= $job ?></h3>
                                     <ul>
                                         <li>
                                             <i class="flaticon-send"></i>
                                             <?= $address ?>
                                         </li>
-                                        <li><?= $date ?></li>
+                                        <li><?= $start ?></li>
                                     </ul>
                                     <p><?= $major ?></p>
-                                    <span class="span-one">Accounting</span>
-                                    <span class="span-two"><?=$val['type'] == 2 ? "FULL TIME" : "PART TIME" ?> </span>
+                                    <span class="span-one">Ứng tuyển</span>
+                                    <span class="span-two"><?=$type == 2 ? "FULL TIME" : "PART TIME" ?> </span>
                                 </a>
                             </div>
                         <?php endforeach ?>
@@ -101,7 +128,7 @@
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Ngày đăng</h4>
-                                <span><?=$date ?></span>
+                                <span><?=$start ?></span>
                             </li>
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
@@ -111,23 +138,23 @@
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Ngôn ngữ lập trình</h4>
-                                <span><?=$major ?></span>
+                                <span><?=$progLang ?></span>
                             </li>
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Cấp độ</h4>
                                 <span><?=$level ?></span>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Chỉ tiêu ứng tuyển</h4>
-                                <span><?=$totalCV ?></span>
-                            </li>
-                            <li>
+                                <span></span>
+                            </li> -->
+                            <!-- <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Chỉ tiêu đã đạt</h4>
-                                <span><?=$status?></span>
-                            </li>
+                                <span>chưa</span>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
