@@ -31,20 +31,23 @@ function filter_Corp()
 
 function top_Corp()
 {
-    $sql = "SELECT c.*, u.name, u.email, u.phone, u.address,
+    $sql = "SELECT c.*, u.name, u.email, u.phone, u.address
             FROM corp c
             INNER JOIN user u ON c.iduser = u.id
-            WHERE u.role = 3 ORDER BY c.id DESC LIMIT 0,6";
+            WHERE u.role = 3
+            ORDER BY c.id DESC
+            LIMIT 0, 6
+            ";
     return pdo_query($sql);
 }
 
 function info_Corp($id)
 {
     $sql = "SELECT c.*, u.name, u.email, u.phone, u.address,
-            g.avatar, g.thumbnail1, g.thumbnail2, g.thumbnail3, g.thumbnail4, g.thumbnail5
+            -- g.avatar, g.thumbnail1, g.thumbnail2, g.thumbnail3, g.thumbnail4, g.thumbnail5
             FROM corp c
             INNER JOIN user u ON c.iduser = u.id
-            INNER JOIN gallery g ON u.id = g.iduser
+            -- INNER JOIN gallery g ON u.id = g.iduser
             WHERE u.role = 3 AND c.iduser = $id";
     return pdo_query_one($sql);
 }

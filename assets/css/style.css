@@ -3748,9 +3748,9 @@ button:focus {
 .employer-item {
     margin-bottom: 30px;
     border-radius: 5px;
-    border: 1px dashed var(--secondary);
-    -webkit-box-shadow: 0 0 20px 0 var(--secondary);
-    box-shadow: 0 0 20px 0 var(--secondary);
+    border: 2px dashed var(--secondary);
+    /* -webkit-box-shadow: 0 0 20px 0 var(--secondary); */
+    /* box-shadow: 0 0 20px 0 var(--secondary); */
     position: relative;
     padding: 25px 35px 25px 105px;
     -webkit-transition: .5s all ease;
