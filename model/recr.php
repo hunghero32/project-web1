@@ -34,13 +34,13 @@
         return pdo_query($sql , []);
     }
     function recr_select_by_employers($idcorp) {
-        $sql = "SELECT r.*  , c.description AS c_description ,c.major ,u.address FROM  recr r 
+        $sql = "SELECT r.*  , c.description AS c_description ,u.address FROM  recr r 
         INNER JOIN corp c ON c.id= r.idcorp INNER JOIN user u ON u.id = c.iduser   WHERE r.idcorp = ?  LIMIT 0,3";
         return pdo_query($sql , $idcorp);
     }
 
     function recr_select_by_id($id) {
-        $sql = "SELECT r.*  , c.description AS c_description ,c.major AS c_major ,u.address FROM  recr r 
+        $sql = "SELECT r.*  , c.description AS c_description AS c_major ,u.address FROM  recr r 
         INNER JOIN corp c ON c.id= r.idcorp  INNER JOIN user u ON u.id = c.iduser  WHERE r.id = ? ";
         return pdo_query_one($sql , $id);
     }
@@ -57,7 +57,7 @@
        
     
         // Truy vấn dữ liệu từ database
-        $sql = "SELECT r.* ,c.major, u.address FROM recr r INNER JOIN corp c ON c.id= r.idcorp 
+        $sql = "SELECT r.*, u.address FROM recr r INNER JOIN corp c ON c.id= r.idcorp 
         INNER JOIN user u ON u.id = c.iduser WHERE 1" ;
         if($kym != ""){
             $sql .= " AND (r.title LIKE '%" . $kym . "%' OR c.major LIKE '%" . $kym . "%')"; 
