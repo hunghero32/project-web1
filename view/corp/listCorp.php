@@ -22,8 +22,7 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-4">
                     <div class="form-group">
-                        <input name="name" type="text" class="form-control" 
-                        placeholder="<?= !isset($_POST['name']) || $_POST['name'] == '' ? 'Tên' : $_POST['name'] ?>">
+                        <input name="name" type="text" class="form-control" placeholder="<?= !isset($_POST['name']) || $_POST['name'] == '' ? 'Tên' : $_POST['name'] ?>">
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-4">
@@ -33,8 +32,7 @@
                             <?php foreach ($datafilter as $c) {
                                 extract($c);
                                 if ($address !== '') { ?>
-                                    <option value="<?= $address ?>"
-                                    <?= isset($_POST['address']) && $_POST['address'] == $address ? 'selected' : '' ?>>
+                                    <option value="<?= $address ?>" <?= isset($_POST['address']) && $_POST['address'] == $address ? 'selected' : '' ?>>
                                         <?= $address ?>
                                     </option>
                                 <?php } ?>
@@ -76,67 +74,35 @@
                 <?php } else {
                 foreach ($list_corp as $c) {
                     extract($c) ?>
-                    <div class="col-lg-6">
-                        <div class="employer-item">
+                <div class="col-lg-6">
+                    <div class="employer-item">
+                        <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
+                            <img width="60px" data-cfsrc="<?= checkCorpAvaNull($avatar) ?>" alt="Details" style="display:none;visibility:hidden;">
+                            <noscript><img src="<?= checkCorpAvaNull($avatar) ?>" alt="Details"></noscript>
+                            <h3><?= $name ?></h3>
+                            <p>
+                                <span class="me-3">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <?= checknull($address) ?>
+                                </span>
+                                <span class="me-3">
+                                    <i class="fa-solid fa-users"></i>
+                                    <?= checknull($size) ?>
+                                </span>
+                                <span>
+                                    <i class="fa-solid fa-calendar-days"></i> Thành lập
+                                    <?= checknull($activeYear) ?>
+                                </span>
+                            </p>
                             <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
-                                <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
-                                <h3><?= $name ?></h3>
-                                <p>
-                                    <span class="me-3">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                        <?= $address ?>
-                                    </span>
-                                    <span class="me-3">
-                                        <i class="fa-solid fa-users"></i> <?= $size ?>
-                                    </span>
-                                    <span>
-                                        <i class="fa-solid fa-calendar-days"></i> Thành lập <?= $activeYear ?>
-                                    </span>
-                                </p>
-                                <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
-                                    <span class="span-one"><i class="fa-solid fa-circle-info"></i> Thông tin chi tiết</span>
-                                </a>
-                                <!-- <span class="span-two">FULL TIME</span> -->
+                                <span class="span-one"><i class="fa-solid fa-circle-info"></i> Thông tin chi tiết</span>
                             </a>
-                        </div>
+                            <!-- <span class="span-two">FULL TIME</span> -->
+                        </a>
                     </div>
+                </div>
                 <?php } ?>
             <?php } ?>
-            <!-- <div class="col-lg-6">
-                <div class="employer-item">
-                    <a href="job-details.html">
-                        <img data-cfsrc="assets/img/home-one/job2.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job2.png" alt="Employer"></noscript>
-                        <h3>Sr. Shopify Developer</h3>
-                        <ul>
-                            <li>
-                                <i class="flaticon-send"></i>
-                                Houston, TX, USA
-                            </li>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                            <li>
-                                <i class="bx bxs-star checked"></i>
-                            </li>
-                            <li>
-                                <span>15 Rating</span>
-                            </li>
-                        </ul>
-                        <p>Responsible for managing skilled Ul/UX designer amet conscu adiing elitsed do eusmod</p>
-                        <span class="span-one">Accounting</span>
-                        <span class="span-two two">FULL TIME</span>
-                    </a>
-                </div>
-            </div> -->
         </div>
         <div class="pagination-area">
             <ul>

@@ -6,20 +6,20 @@
                     <div class="col-lg-8">
                         <div class="left two">
                             <img data-cfsrc="assets/img/candidate-details1.jpg" alt="CV Chi Tiết" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate-details1.jpg" alt="Details"></noscript>
-                            <h2><?= $cv['name'] ?></h2>
+                            <h2><?= checknull($name) ?></h2>
                             <ul>
                                 <li>
                                     <i class="bx bx-box"></i>
-                                    <?= $cv['major'] ?>
+                                    <?= checknull($major) ?>
                                 </li>
                                 <li>
                                     <i class="bx bx-phone-call"></i>
-                                    <a href="tel:<?= $cv['phone'] ?>"><?= $cv['phone'] ?></a>
+                                    <a href="tel:<?= checknull($phone) ?>"><?= checknull($phone) ?></a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <!-- <div class="col-lg-4">
                         <div class="right">
                             <ul>
                                 <li>
@@ -42,7 +42,7 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -57,16 +57,16 @@
                 <div class="widget-area">
                     <div class="resume-profile">
                         <img data-cfsrc="assets/img/dashboard1.jpg" alt="Dashboard" style="display:none;visibility:hidden;"><noscript><img src="assets/img/dashboard1.jpg" alt="Dashboard"></noscript>
-                        <h2><?= $cv['name'] ?></h2>
-                        <span><?= $cv['major'] ?></span>
+                        <h2><?= checknull($name) ?></h2>
+                        <span><?= checknull($major) ?></span>
                     </div>
                     <div class="information widget-item">
                         <h3>Yêu Cầu</h3>
                         <ul>
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
-                                <h4>Mức Lương :</h4>
-                                <span><?= $cv['salary'] ?></span>
+                                <h4>Mức Lương mong muốn:</h4>
+                                <span><?= checknull($salary) ?></span>
                             </li>
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>

@@ -1,4 +1,3 @@
-
 <div class="banner-area three">
     <div class="banner-shape-three">
         <img data-cfsrc="assets/img/home-three/banner-main.png" alt="Shape" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/banner-main.png" alt="Shape"></noscript>
@@ -97,25 +96,32 @@
             <h2>Nhà tuyển dụng nổi bật</h2>
         </div>
         <div class="row">
-            <?php foreach($top_corp as $c) { extract($c) ?>
+            <?php foreach ($top_corp as $c) {
+                extract($c); ?>
                 <div class="col-lg-6">
                     <div class="employer-item">
                         <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
-                            <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
+                            <img width="60px" data-cfsrc="<?= checkCorpAvaNull($avatar) ?>" alt="Details" style="display:none;visibility:hidden;">
+                            <noscript><img src="<?= checkCorpAvaNull($avatar) ?>" alt="Details"></noscript>
                             <h3><?= $name ?></h3>
-                            <ul>
-                                <li>
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <?= $address ?>
-                                </li>
-                            </ul>
                             <p>
-                                <i class="fa-solid fa-suitcase"></i> <?= $major ?>
+                                <span class="me-3">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    <?= checknull($address) ?>
+                                </span>
+                                <span class="me-3">
+                                    <i class="fa-solid fa-users"></i>
+                                    <?= checknull($size) ?>
+                                </span>
+                                <span>
+                                    <i class="fa-solid fa-calendar-days"></i> Thành lập
+                                    <?= checknull($activeYear) ?>
+                                </span>
                             </p>
                             <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
                                 <span class="span-one"><i class="fa-solid fa-circle-info"></i> Thông tin chi tiết</span>
                             </a>
-                            <span class="span-two">FULL TIME</span>
+                            <!-- <span class="span-two">FULL TIME</span> -->
                         </a>
                     </div>
                 </div>
