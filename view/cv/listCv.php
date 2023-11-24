@@ -28,18 +28,30 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-3">
                     <div class="form-group">
-                        <input name="name" type="text" class="form-control" placeholder="<?= !isset($_POST['name']) || $_POST['name'] == '' ? 'Tên' : $_POST['name'] ?>">
+                        <select name="level">
+                            <option value="" selected>Cấp bậc</option>
+                            <?php foreach ($datafilter as $cv) {
+                                extract($cv);
+                                if ($level !== '') { ?>
+                                    <option value="<?= $level ?>" <?= isset($_POST['level']) && $_POST['level'] == $level ? 'selected' : '' ?>>
+                                        <?= $level ?>
+                                    </option>
+                                <?php } ?>
+                            <?php } ?>
+                        </select>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3">
                     <div class="form-group">
                         <select name="age">
                             <option value="" selected>Độ Tuổi</option>
-                            <?php foreach ($filter_cv as $cv) {
-                                extract($cv) ?>
-                                <option value="<?= $age ?>" <?= isset($_POST['age']) && $_POST['age'] == $age ? 'selected' : '' ?>>
-                                    <?= $age ?>
-                                </option>
+                            <?php foreach ($datafilter as $cv) {
+                                extract($cv);
+                                if ($age !== '') { ?>
+                                    <option value="<?= $age ?>" <?= isset($_POST['age']) && $_POST['age'] == $age ? 'selected' : '' ?>>
+                                        <?= $age ?>
+                                    </option>
+                                <?php } ?>
                             <?php } ?>
                         </select>
                     </div>
@@ -48,12 +60,15 @@
                     <div class="form-group">
                         <select name="address">
                             <option value="" selected>Địa điểm</option>
-                            <?php foreach ($filter_cv as $cv) {
-                                extract($cv) ?>
-                                <option value="<?= $address ?>" <?= isset($_POST['address']) && $_POST['address'] == $address ? 'selected' : '' ?>>
-                                    <?= $address ?>
-                                </option>
+                            <?php foreach ($datafilter as $cv) {
+                                extract($cv);
+                                if ($address !== '') { ?>
+                                    <option value="<?= $address ?>" <?= isset($_POST['address']) && $_POST['address'] == $address ? 'selected' : '' ?>>
+                                        <?= $address ?>
+                                    </option>
+                                <?php } ?>
                             <?php } ?>
+                            <option value="diff">Khác</option>
                         </select>
                     </div>
                 </div>
@@ -61,11 +76,13 @@
                     <div class="form-group">
                         <select name="major">
                             <option value="" selected>Chuyên Ngành</option>
-                            <?php foreach ($filter_cv as $cv) {
-                                extract($cv) ?>
-                                <option value="<?= $major ?>" <?= isset($_POST['major']) && $_POST['major'] == $major ? 'selected' : '' ?>>
-                                    <?= $major ?>
-                                </option>
+                            <?php foreach ($datafilter as $cv) {
+                                extract($cv);
+                                if ($job !== '') { ?>
+                                    <option value="<?= $job ?>" <?= isset($_POST['major']) && $_POST['major'] == $job ? 'selected' : '' ?>>
+                                        <?= $job ?>
+                                    </option>
+                                <?php } ?>
                             <?php } ?>
                         </select>
                     </div>
@@ -74,11 +91,13 @@
                     <div class="form-group">
                         <select name="exp">
                             <option value="" selected>Kinh Nghiệm Làm Việc</option>
-                            <?php foreach ($filter_cv as $cv) {
-                                extract($cv) ?>
-                                <option value="<?= $exp ?>" <?= isset($_POST['exp']) && $_POST['exp'] == $exp ? 'selected' : '' ?>>
-                                    <?= $exp ?>
-                                </option>
+                            <?php foreach ($datafilter as $cv) {
+                                extract($cv);
+                                if ($exp !== '') { ?>
+                                    <option value="<?= $exp ?>" <?= isset($_POST['exp']) && $_POST['exp'] == $exp ? 'selected' : '' ?>>
+                                        <?= $exp ?>
+                                    </option>
+                                <?php } ?>
                             <?php } ?>
                         </select>
                     </div>
@@ -87,10 +106,10 @@
                     <div class="form-group">
                         <select name="skill">
                             <option value="" selected>Kỹ Năng</option>
-                            <?php foreach ($filter_cv as $cv) {
+                            <?php foreach ($datafilter as $cv) {
                                 extract($cv) ?>
-                                <option value="<?= $skill ?>" <?= isset($_POST['skill']) && $_POST['skill'] == $skill ? 'selected' : '' ?>>
-                                    <?= $skill ?>
+                                <option value="<?= $progLang ?>" <?= isset($_POST['skill']) && $_POST['skill'] == $progLang ? 'selected' : '' ?>>
+                                    <?= $progLang ?>
                                 </option>
                             <?php } ?>
                         </select>
@@ -100,11 +119,13 @@
                     <div class="form-group">
                         <select name="salary">
                             <option value="" selected>Mức Lương</option>
-                            <?php foreach ($filter_cv as $cv) {
-                                extract($cv) ?>
-                                <option value="<?= $salary ?>" <?= isset($_POST['salary']) && $_POST['salary'] == $salary ? 'selected' : '' ?>>
-                                    <?= $salary ?>
-                                </option>
+                            <?php foreach ($datafilter as $cv) {
+                                extract($cv);
+                                if ($salary !== '') { ?>
+                                    <option value="<?= $salary ?>" <?= isset($_POST['salary']) && $_POST['salary'] == $salary ? 'selected' : '' ?>>
+                                        <?= $salary ?>
+                                    </option>
+                                <?php } ?>
                             <?php } ?>
                         </select>
                     </div>
@@ -133,7 +154,11 @@
     <div class="container">
         <div class="row">
             <?php if (count($list_cv) == 0) { ?>
-                <h4>Không có dữ liệu tìm thấy !</h4>
+                <div class="col-lg-12 mt-3">
+                    <div class="employer-item text-center">
+                        Không có dữ liệu tìm thấy !
+                    </div>
+                </div>
                 <?php } else {
                 foreach ($list_cv as $cv) {
                     extract($cv) ?>
@@ -146,17 +171,13 @@
                                 <span><?= $major ?></span>
                                 <ul class="experience">
                                     <li>Kinh nghiệm: <span><?= $exp ?> Tháng</span></li>
-                                    <li>Mức lương/giờ: <span><?= $salary ?>đ/giờ</span></li>
+                                    <li>Mức lương: <span><?= $salary ?></span></li>
                                     <li>
                                         <i class="flaticon-send"></i> <?= $address ?>
                                     </li>
                                 </ul>
                                 <ul>
-                                    <li>Php</li>
-                                    <li>jQuery</li>
-                                    <li>WordPress</li>
-                                    <li>CSS3</li>
-                                    <li>HTML5</li>
+                                    <li><?= $progLang ?></li>
                                 </ul>
                                 <div class="cmn-link">
                                     <a href="index.php?act=infoCv&id=<?= $iduser ?>">
@@ -165,7 +186,8 @@
                                     </a>
                                 </div>
                             </div>
-                            <img data-cfsrc="<?= $avatar ?>" alt="<?= $name ?>" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate1.jpg" alt="Candidate"></noscript>
+                            <img data-cfsrc="<?= checkUserAvaNull($avatar) ?>" alt="<?= $name ?>" style="display:none;visibility:hidden;">
+                            <noscript><img src="<?= checkUserAvaNull($avatar) ?>" alt="Candidate"></noscript>
                         </div>
                     </div>
                 <?php } ?>

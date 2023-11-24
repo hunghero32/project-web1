@@ -8024,6 +8024,10 @@ button:focus {
     height: 1px;
 }
 
+.text-main {
+    color: var(--main);
+}
+
 @media (max-width: 760px) {
     .text-small-screen {
         color: var(--main) !important;
