@@ -29,9 +29,9 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="profile-item">
-                    <img data-cfsrc="assets/img/<?= $img ?>" alt="Dashboard" style="display:none;visibility:hidden;"><noscript><img src="assets/img/dashboard1.jpg" alt="Dashboard"></noscript>
+                    <img data-cfsrc="assets/img/<?= $avatar ?>" alt="Dashboard" style="display:none;visibility:hidden;"><noscript><img src="assets/img/dashboard1.jpg" alt="Dashboard"></noscript>
                     <h2><?=$name ?></h2>
-                    <span>Web Developer</span>
+                    <span>Web developer</span>
                 </div>
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
@@ -190,13 +190,13 @@
                             <div class='employer-item position-relative'>
                                 <a href='<?= $link_recr ?>'>
                                     <img data-cfsrc='assets/img/home-one/job1.png' alt='Employer' style='display:none;visibility:hidden;'><noscript><img src='assets/img/home-one/job1.png' alt='Employer'></noscript>
-                                    <h3><?= $title ?></h3>
+                                    <h3><?= $job ?></h3>
                                     <ul>
                                         <li>
                                             <i class='flaticon-send'></i>
                                             <?= $address ?>
                                         </li>
-                                        <li><?= $date ?></li>
+                                        <li><?= $start ?></li>
                                     </ul>
                                     <p><?= $major ?>
                                     </p>

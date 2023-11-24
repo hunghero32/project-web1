@@ -3748,9 +3748,9 @@ button:focus {
 .employer-item {
     margin-bottom: 30px;
     border-radius: 5px;
-    border: 1px dashed var(--secondary);
-    -webkit-box-shadow: 0 0 20px 0 #dddddd73;
-    box-shadow: 0 0 20px 0 #dddddd73;
+    border: 2px dashed var(--secondary);
+    /* -webkit-box-shadow: 0 0 20px 0 var(--secondary); */
+    /* box-shadow: 0 0 20px 0 var(--secondary); */
     position: relative;
     padding: 25px 35px 25px 105px;
     -webkit-transition: .5s all ease;
@@ -8016,6 +8016,12 @@ button:focus {
 
 .nav-item.dropdown:hover .dropdown-menu {
     display: block;
+}
+
+.dash-bottom {
+    border-top: 1px dashed var(--main);
+    width: 100%;
+    height: 1px;
 }
 
 @media (max-width: 760px) {

@@ -1,11 +1,12 @@
 <?php
-function list_cv($name, $major, $exp, $salary,$avatar)
+function list_cv($name, $major, $exp, $salary)
 {
         $sql = "SELECT cv.*, u.username, u.name as name, u.email, u.phone, u.address, u.role as userrole, g.avatar,
         TIMESTAMPDIFF(MONTH, MIN(expcv.start), MAX(expcv.end)) as exp
         FROM cv
         INNER JOIN user u ON cv.iduser = u.id
         LEFT JOIN gallery g ON cv.iduser = g.iduser
+        LEFT JOIN skillcv
         LEFT JOIN expcv ON expcv.idcv = cv.id
         WHERE u.role = 2";
 
@@ -13,7 +14,6 @@ function list_cv($name, $major, $exp, $salary,$avatar)
         $sql .= $major !== '' ? " AND cv.major LIKE '%" . $major . "%' " : "";
         $sql .= $exp !== '' ? " AND TIMESTAMPDIFF(MONTH, MIN(expcv.start), MAX(expcv.end)) LIKE '%" . $exp . "%' " : "";
         $sql .= $salary !== '' ? " AND cv.salary LIKE '%" . $salary . "%' " : "";
-        $sql .= $avatar !== '' ? " AND g.avatar LIKE '%" . $avatar . "%' " : "";
 
         $sql .= " GROUP BY cv.id, g.avatar, u.role ORDER BY cv.id DESC";
         return pdo_query($sql);
@@ -68,14 +68,14 @@ ORDER BY cv.id DESC";
 return pdo_query($sql);
 }
 
-function top_cv()
-{
-    $sql = "SELECT cv.*, u.name, u.email, u.phone, u.address
-            FROM cv
-            INNER JOIN user u ON cv.iduser = u.id
-            WHERE u.role = 2 ORDER BY cv.id DESC LIMIT 0,8";
-    return pdo_query($sql);
-}
+// function top_cv()
+// {
+//     $sql = "SELECT cv.*, u.name, u.email, u.phone, u.address
+//             FROM cv
+//             INNER JOIN user u ON cv.iduser = u.id
+//             WHERE u.role = 2 ORDER BY cv.id DESC LIMIT 0,8";
+//     return pdo_query($sql);
+// }
 
 function info_cv($id)
 {
@@ -88,22 +88,22 @@ function info_cv($id)
                 WHERE u.role = 2 AND cv.iduser = $id
                             GROUP BY cv.id, exp,age";;
     
-        $cv = pdo_query_one($sql);
-        return $cv;
+//         $cv = pdo_query_one($sql);
+//         return $cv;
 
-}
+// }
 
-function update_cv($id, $name, $email, $phone, $address, $exp, $major, $intro)
-{
-    $sql = "UPDATE user as u, cv as cv, skillcv as sk, degree as de, expcv as exp 
-            SET u.username = '$name',
+// function update_cv($id, $name, $email, $phone, $address, $exp, $major, $intro)
+// {
+//     $sql = "UPDATE user as u, cv as cv, skillcv as sk, degree as de, expcv as exp 
+//             SET u.username = '$name',
 
-                u.email = '$email',
-                u.phone = '$phone',
-                u.address = '$address',
-                exp.end = '$exp',
-                cv.major = '$major',
-              cv.introduce = '$intro'
-            WHERE u.id = '$id' AND cv.iduser = '$id'";
-    pdo_execute($sql);
-}
+//                 u.email = '$email',
+//                 u.phone = '$phone',
+//                 u.address = '$address',
+//                 exp.end = '$exp',
+//                 cv.major = '$major',
+//               cv.introduce = '$intro'
+//             WHERE u.id = '$id' AND cv.iduser = '$id'";
+//     pdo_execute($sql);
+// }

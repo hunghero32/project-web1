@@ -7,7 +7,7 @@ include 'model/cv.php';
 include 'model/admin.php';
 include 'model/recr.php';
 include 'model/user.php';
-
+include 'model/datafilter.php';
 
 $top_corp = top_Corp();
 $top_cv = top_cv();
