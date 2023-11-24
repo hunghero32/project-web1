@@ -16,8 +16,10 @@ switch ($act) {
         $major = isset($_POST['major']) ? $_POST['major'] : '';
         $exp = isset($_POST['exp']) ? $_POST['exp'] : '';
         $salary = isset($_POST['salary']) ? $_POST['salary'] : '';
+        $avatar = isset($_POST['avatar']) ? $_POST['avatar'] : '';
 
-        $list_cv = list_cv($name, $major, $exp, $salary);
+
+        $list_cv = list_cv($name, $major, $exp, $salary,$avatar);
         include 'view/cv/listCv.php';
         break;
     case 'manage_Cv':

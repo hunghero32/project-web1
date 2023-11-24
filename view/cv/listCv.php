@@ -3,17 +3,17 @@
         <div class="d-table-cell">
             <div class="container">
                 <div class="title-item">
-                    <h2>CV</h2>
+                    <h2>Candidates</h2>
                     <ul>
                         <li>
                             <img data-cfsrc="assets/img/home-three/title-img-two.png" alt="Image" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img-two.png" alt="Image"></noscript>
-                            <a href="index.php">Home</a>
+                            <a href="index.html">Home</a>
                         </li>
                         <li>
                             <span>/</span>
                         </li>
                         <li>
-                            CV
+                            Candidates
                         </li>
                     </ul>
                 </div>
@@ -21,7 +21,6 @@
         </div>
     </div>
 </div>
-
 
 <div class="job-filter-area pt-100">
     <div class="container">
@@ -120,85 +119,57 @@
         </form>
     </div>
 </div>
-<?php if (isset($_POST['findCv'])) {
-    unset($_SESSION['findCv']) ?>
-    <div class="job-showing-area">
-        <div class="container">
+
+
+<div class="job-showing-area">
+    <div class="container">
+        <?php if (isset($_POST['findCv'])) {
+            unset($_SESSION['findCv']) ?>
             <h4>Kết quả tìm thấy (<?= count($list_cv) ?>)</h4>
-        </div>
+        <?php } ?>
     </div>
-<?php } ?>
-<div class="employer-area two pb-100">
+</div>
+<div class="candidate-area pb-100">
     <div class="container">
         <div class="row">
             <?php if (count($list_cv) == 0) { ?>
-                <div class="col-lg-12">
-                    <div class="employer-item text-center">
-                        Không có dữ liệu tìm thấy !
-                    </div>
-                </div>
+                <h4>Không có dữ liệu tìm thấy !</h4>
                 <?php } else {
                 foreach ($list_cv as $cv) {
                     extract($cv) ?>
-                    <div class="job-showing-area">
-                        <div class="container">
-                            <h1>CV Tiềm Năng</h1>
-                            <div class="candidate-area pb-100">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <div class="candidate-item two">
-                                                <a href="index.php?act=infoCv&id=<?= $iduser ?>">
-                                                    <div class="left">
-                                                        <h3>
-                                                            <?= $name ?>
-                                                        </h3>
-                                                </a>
-                                                <span><?= $major ?></span>
-                                                <ul class="experience">
-                                                    <li>Kinh nghiệm: <span><?= $exp ?> Tháng</span></li>
-                                                    <li>Mức lương/giờ: <span><?= $salary ?>/giờ</span></li>
-                                                    <li>
-                                                        <i class="flaticon-send"></i>
-                                                        <?= $address ?>
-                                                    </li>
-                                                </ul>
-
-                                                </ul>
-                                                <div class="cmn-link">
-                                                    <a href="index.php?act=infoCv&id=<?= $iduser ?>">
-                                                        <i class="flaticon-right-arrow one"></i>
-                                                        View Resume
-                                                        <i class="flaticon-right-arrow two"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <img data-cfsrc="<?= $img ?>" alt="<?= $name ?>" style="display:none;visibility:hidden;">
-                                            <noscript><img src="<?= $img ?>" alt="<?= $name ?>"></noscript>
-                                        </div>
-                                    <?php } ?>
-                                <?php } ?>
-                                    </div>
+                    <div class="col-lg-6">
+                        <div class="candidate-item two">
+                            <div class="left">
+                                <h3>
+                                    <a href="index.php?act=infoCv&id=<?= $iduser ?>"><?= $name ?></a>
+                                </h3>
+                                <span><?= $major ?></span>
+                                <ul class="experience">
+                                    <li>Kinh nghiệm: <span><?= $exp ?> Tháng</span></li>
+                                    <li>Mức lương/giờ: <span><?= $salary ?>đ/giờ</span></li>
+                                    <li>
+                                        <i class="flaticon-send"></i> <?= $address ?>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>Php</li>
+                                    <li>jQuery</li>
+                                    <li>WordPress</li>
+                                    <li>CSS3</li>
+                                    <li>HTML5</li>
+                                </ul>
+                                <div class="cmn-link">
+                                    <a href="index.php?act=infoCv&id=<?= $iduser ?>">
+                                        <i class="flaticon-right-arrow one"></i> Xem Chi Tiết
+                                        <i class="flaticon-right-arrow two"></i>
+                                    </a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="pagination-area">
-                            <ul>
-                                <li>
-                                    <a href="#">Prev</a>
-                                </li>
-                                <li>
-                                    <a href="#">1</a>
-                                </li>
-                                <li>
-                                    <a href="#">2</a>
-                                </li>
-                                <li>
-                                    <a href="#">3</a>
-                                </li>
-                                <li>
-                                    <a href="#">Next</a>
-                                </li>
-                            </ul>
+                            <img data-cfsrc="<?= $avatar ?>" alt="<?= $name ?>" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate1.jpg" alt="Candidate"></noscript>
                         </div>
                     </div>
+                <?php } ?>
+            <?php } ?>
+        </div>
+    </div>
+</div>
