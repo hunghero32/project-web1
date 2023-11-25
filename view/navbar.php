@@ -38,27 +38,29 @@
                             <a href="index.php?act=contact" class="nav-link">Liên hệ</a>
                         </li>
                     </ul>
-                    <div class="side-nav three d-flex"> 
+                    <div class="side-nav three d-flex">
                         <?php if (isset($_SESSION['username'])) {
                             extract($_SESSION['username']); ?>
                             <div class="login-left d-flex align-items-center">
                                 <div class="nav-item dropdown">
                                     <a class="text-white text-small-screen d-flex align-items-center" href="#" id="navbarDropdown" role="button" aria-expanded="false">
-                                        <img src='<?= checkUserAvaNull($avatar) ?>' alt='user ' class='w-25 me-2'>
-                                        <p class="p-0 m-0"><?= $name ?></p>
+                                        <div style="width: 50px; height: 50px" class="overflow-hidden rounded-circle">
+                                            <img src='<?= checkUserAvaNull($avatar) ?>' alt='user ' class=''>
+                                        </div>
+                                        <p class="p-0 m-0 ms-2"><?= $name ?></p>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item" href="index.php?act=changepassword">Đổi mật khẩu</a></li>
                                         <?php if ($role == 1) { ?>
-                                        <li><a class="dropdown-item" href="index.php?act=manage_recr">Quản lí thông tin</a></li>
+                                            <li><a class="dropdown-item" href="index.php?act=manage_recr">Quản lí thông tin</a></li>
                                         <?php } ?>
                                         <?php if ($role == 2) { ?>
-                                        <li><a class="dropdown-item" href="index.php?act=manage_Cv">Thông tin người dùng</a></li>
+                                            <li><a class="dropdown-item" href="index.php?act=manage_Cv">Thông tin người dùng</a></li>
                                         <?php } ?>
                                         <?php if ($role == 3) { ?>
-                                        <li><a class="dropdown-item" href="index.php?act=manage_recr">Thông tin doanh nghiệp</a></li>
+                                            <li><a class="dropdown-item" href="index.php?act=manage_recr">Thông tin doanh nghiệp</a></li>
                                         <?php } ?>
-                                        <li> 
+                                        <li>
                                             <hr class="dropdown-divider">
                                         </li>
                                         <li><a class="dropdown-item" href="index.php?act=signout">Đăng xuất</a></li>
@@ -76,12 +78,12 @@
                                     <a class="job-right" href="index.php?act=post_recr&id=<?= $id ?>">
                                         Tuyển dụng <i class="fa-solid fa-comments"></i>
                                     </a>
-                                    
+
                                 <?php } ?>
                             </div>
                         <?php } else { ?>
                             <a class='login-left d-flex align-items-center' href='index.php?act=signin'><i class='flaticon-enter me-2'></i> Đăng kí / Đăng nhập </a>
-                            <a class="job-right" href="index.php?act=post_recr" >
+                            <a class="job-right" href="index.php?act=signin" onclick="return confirm('Bạn cần đăng nhập trước !')">
                                 Tuyển dụng / Tạo CV <i class="fa-solid fa-comments"></i>
                             </a>
                         <?php } ?>
