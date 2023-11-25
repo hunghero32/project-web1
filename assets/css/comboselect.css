@@ -1,0 +1,33 @@
+.searchSelect {
+    color: #746d6d;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px dashed var(--secondary);
+    padding-left: 15px;
+    font-size: 14px;
+    line-height: 45px;
+    display: block;
+    width: 100%;
+    outline: none;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: calc(100% - 23px);
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    z-index: 3;
+}
+.dropdown-content.visible {
+    display: block;
+}
+.dropdown-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #746d6d;
+}
+.dropdown-item:hover {
+    background-color: #ddd;
+}

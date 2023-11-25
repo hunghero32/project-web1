@@ -16,5 +16,6 @@
 <script src="assets/js/owl.carousel.min.js"></script>
 <script src="assets/js/progressbar.min.js"></script>
 <script src="assets/js/custom.js"></script>
+<script src="assets/js/comboselect.js"></script>
 
 </html>
