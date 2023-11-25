@@ -9,10 +9,13 @@ include 'model/recr.php';
 include 'model/user.php';
 include 'model/datafilter.php';
 
+$data = data();
 $top_corp = top_Corp();
 // $top_cv = top_cv();
 $list_corp = list_Corp('', '');
 // $list_cv = list_cv('', '', '', '');
+$list_recr = get_records($kym = "");
+
 
 include 'view/header.php';
 

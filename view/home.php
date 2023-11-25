@@ -1,4 +1,3 @@
-
 <div class="banner-area three">
     <div class="banner-shape-three">
         <img data-cfsrc="assets/img/home-three/banner-main.png" alt="Shape" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/banner-main.png" alt="Shape"></noscript>
@@ -97,7 +96,8 @@
             <h2>Nhà tuyển dụng nổi bật</h2>
         </div>
         <div class="row">
-            <?php foreach($top_corp as $c) { extract($c) ?>
+            <?php foreach ($top_corp as $c) {
+                extract($c) ?>
                 <div class="col-lg-6">
                     <div class="employer-item">
                         <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
@@ -110,7 +110,7 @@
                                 </li>
                             </ul>
                             <p>
-                                <i class="fa-solid fa-suitcase"></i> <?= $major ?>
+                                <i class="fa-solid fa-suitcase"></i> <?= $name ?>
                             </p>
                             <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
                                 <span class="span-one"><i class="fa-solid fa-circle-info"></i> Thông tin chi tiết</span>
@@ -228,48 +228,54 @@
             <div class="col-lg-5">
                 <div class="sorting-menu">
                     <ul>
-                        <li class="filter" data-filter="all">All</li>
-                        <li class="filter" data-filter=".m">Featured</li>
-                        <li class="filter" data-filter=".n">Most Viewed</li>
-                        <li class="filter" data-filter=".o">Newest</li>
+                        <li class="filter" data-filter="all">Tất cả</li>
+                        <li class="filter" data-filter=".n">Xem nhiều nhất</li>
+                        <li class="filter" data-filter=".o">Mới nhất</li>
+                        <!-- <li class="filter" data-filter=".m">Featured</li> -->
                     </ul>
                 </div>
             </div>
         </div>
         <div id="container" class="row">
-            <div class="col-sm-6 col-lg-3 mix n">
-                <div class="company-item">
-                    <div class="feature-top-right">
-                        <span>Most Viewed</span>
-                    </div>
-                    <div class="top">
-                        <a href="employer-details.html">
-                            <img data-cfsrc="assets/img/home-one/company1.png" alt="Brand" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/company1.png" alt="Brand"></noscript>
-                        </a>
-                        <h3>
-                            <a href="employer-details.html">Pi Agency</a>
-                        </h3>
-                        <span>Part Time Job</span>
-                        <p>
-                            <i class="flaticon-appointment"></i>
-                            10 min ago / Austria, Vienna
-                        </p>
-                    </div>
-                    <div class="bottom">
-                        <ul>
-                            <li>Pay Relocation Free</li>
-                            <li>Remote Work</li>
-                            <li>Duration: 5 Years</li>
-                        </ul>
-                        <span>Annual Salary</span>
-                        <h4>50K</h4>
-                        <a href="employer-details.html">
-                            <i class="flaticon-right-arrow"></i>
+            <?php foreach ($list_recr as $key) {
+                extract($key); 
+                $link_recr = "index.php?act=info_recr&id=" . $id; ?>
+                <div class="col-sm-6 col-lg-3 mix n">
+                    <div class="company-item">
+                        <a href="<?=$link_recr?>">
+                            <div class="feature-top-right">
+                                <span>Most Viewed</span>
+                            </div>
+                            <div class="top flex-direction" >
+                                <a href="employer-details.html">
+                                    <img data-cfsrc="assets/img/home-one/company1.png" alt="Brand" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/company1.png" alt="Brand"></noscript>
+                                </a>
+                                <h3 style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1; ">
+                                    <a href="employer-details.html" ><?= $job ?></a>
+                                </h3>
+                                <span><?= $type ?></span>
+                                <p>
+                                    <i class="flaticon-appointment"></i>
+                                    <?= $start ?> / <?= $address ?>
+                                </p>
+                            </div>
+                            <div class="bottom">
+                                <ul>
+                                    <li>Công ty <?= $name ?></li>
+                                    <li><?= $level ?></li>
+                                    <li>Kinh nghiệm: <?= $exp ?></li>
+                                </ul>
+                                <span>Mức lương </span>
+                                <h4><?= $salary ?></h4>
+                                <a href="<?=$link_recr?>">
+                                    <i class="flaticon-right-arrow"></i>
+                                </a>
+                            </div>
                         </a>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mix n">
+            <?php } ?>
+            <!-- <div class="col-sm-6 col-lg-3 mix n">
                 <div class="company-item">
                     <div class="feature-top-right">
                         <span>Most Viewed</span>
@@ -492,7 +498,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </section>
