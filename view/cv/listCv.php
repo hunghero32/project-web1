@@ -3,7 +3,7 @@
         <div class="d-table-cell">
             <div class="container">
                 <div class="title-item">
-                    <h2>Ứng cử viên</h2>
+                    <h2>Ứng viên</h2>
                     <ul>
                         <li>
                             Ứng viên / Hồ sơ ứng viên
