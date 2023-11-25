@@ -4,20 +4,23 @@ switch ($act) {
         if (isset($_GET['id']) && ($_GET['id'] > 0)) {
             $id = $_GET['id'];
             $cv = info_cv($id);
+            extract($cv);
         }
 
         include 'view/cv/infoCv.php';
         break;
 
     case 'listCv':
-        $filter_cv = filter_cv();
+        // $filter_cv = filter_cv();
 
-        $name = isset($_POST['name']) ? $_POST['name'] : '';
+        $level = isset($_POST['level']) ? $_POST['level'] : '';
         $major = isset($_POST['major']) ? $_POST['major'] : '';
         $exp = isset($_POST['exp']) ? $_POST['exp'] : '';
         $salary = isset($_POST['salary']) ? $_POST['salary'] : '';
+        $avatar = isset($_POST['avatar']) ? $_POST['avatar'] : '';
 
-        $list_cv = list_cv($name, $major, $exp, $salary);
+
+        $list_cv = list_cv($level, $major, $exp, $salary,$avatar);
         include 'view/cv/listCv.php';
         break;
     case 'manage_Cv':

@@ -44,7 +44,7 @@
                             <div class="login-left d-flex align-items-center">
                                 <div class="nav-item dropdown">
                                     <a class="text-white text-small-screen d-flex align-items-center" href="#" id="navbarDropdown" role="button" aria-expanded="false">
-                                        <img src='assets/img/<?= $avatar ?>' alt='user ' class='w-25 me-2'>
+                                        <img src='<?= checkUserAvaNull($avatar) ?>' alt='user ' class='w-25 me-2'>
                                         <p class="p-0 m-0"><?= $name ?></p>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
