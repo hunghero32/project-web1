@@ -1,4 +1,4 @@
-<div class="page-title-area">
+<!-- <div class="page-title-area">
     <div class="d-table">
         <div class="d-table-cell">
             <div class="container">
@@ -21,7 +21,7 @@
         </div>
     </div>
 </div>
-
+ -->
 
 <div class="post-job-area ptb-100">
     <div class="container">
@@ -45,22 +45,7 @@
                         </div>
                     </div>
 
-                    <!-- <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>
-                                    Số lượng CV :
-                                </label>
-                                <input type="number" name="totalCV" class="form-control" placeholder=" Cần 23 CV" title="Số lượng cv không được để trống !" required>
-                            </div>
-                        </div> -->
-                    <!-- <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>
-                                    Ảnh :
-                                </label>
-                                <input type="file"  name="img" class="form-control py-3" title="Ảnh không được để trống !" required>
-                            </div>
-                        </div> -->
+
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label>
@@ -75,27 +60,29 @@
                                 Kiểu tuyển dụng :
                             </label>
                             <select name="type" title="Kiểu không được để trống !" required>
-                                <option value="2">Full Time</option>
-                                <option value="1">Part Time</option>
-                                <!-- <option>Internship</option>
-                                    <option>Freelancing</option> -->
+                                <?php foreach ($data as $v) { ?>
+                                    <?php extract($v);
+                                    if (isset($typeRecr) && $typeRecr != "") { ?>
+                                        <option value="<?= $typeRecr ?>"> <?= $typeRecr ?></option>
+                                <?php }
+                                } ?>
                             </select>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>
-                                    Kĩ năng :
-                                </label>
-                                <input type="text" class="form-control" name="major" placeholder="Thành thạo tiếng anh ..." title="Kĩ năng không được để trống !" required>
-                            </div>
-                        </div> -->
+
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label>
                                 Lương :
                             </label>
-                            <input type="text" class="form-control" name="salary" placeholder="1000000" title="Lương không được để trống !" required>
+                            <select name="salary" title="Lương không được để trống !" required>
+                                <?php foreach ($data as $v) { ?>
+                                    <?php extract($v);
+                                    if (isset($salary) && $salary != "") { ?>
+                                        <option value="<?= $salary ?>"> <?= $salary ?></option>
+                                <?php }
+                                } ?>
+                            </select>
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -104,13 +91,17 @@
                                 Kinh nghiệm :
                             </label>
                             <select name="exp" required>
-                                <option value="0 - 1">không kinh nghiệm</option>
-                                <option value="1 - 2">Kinh nghiệm 1 - 2 năm</option>
-                                <option value="2 - 3">Kinh nghiệm 2 - 3 năm</option>
-                                <option value="Trên 5">Kinh nghiệm trên 5 năm</option>
+                                <?php foreach ($data as $v) { ?>
+                                    <?php extract($v);
+                                    if (isset($exp) && $exp != "") { ?>
+                                        <option value="<?= $exp ?>"> <?= $exp ?></option>
+                                <?php }
+                                } ?>
+
                             </select>
                         </div>
                     </div>
+
                     <div class="col-lg-6">
                         <div class="form-group">
                             <label>
@@ -133,10 +124,12 @@
                                 Cấp bậc / trình độ :
                             </label>
                             <select name="level" required>
-                                <option value="Trung cấp">Trung cấp</option>
-                                <option value="Cao đẳng">Cao đẳng</option>
-                                <option value="Đại học ">Đại học</option>
-                                <option value="Thạc sĩ ">Thạc sĩ</option>
+                                <?php foreach ($data as $v) { ?>
+                                    <?php extract($v);
+                                    if (isset($level) && $level != "") { ?>
+                                        <option value="<?= $level ?>"> <?= $level ?></option>
+                                <?php }
+                                } ?>
                             </select>
                         </div>
                     </div>

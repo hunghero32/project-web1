@@ -1,4 +1,3 @@
-
 <div class="page-title-area two">
     <div class="d-table">
         <div class="d-table-cell">
@@ -42,13 +41,16 @@
                 <div class="details-item">
                     <div class="details-inner">
                         <h3>Miêu tả công việc</h3>
-                        <ul><?php  
-                        $des_arr =  explode("\n", $description);
-                        // $des_arr_2 = array_filter($des_arr);
-                        for ($i = 0; $i < count($des_arr) ; $i++) {
-                            echo "<li><i class='bx bx-message-square-check me-2'></i>"  . $des_arr[$i] . "<li>";
-                        }
-                        ?></ul>
+
+                        <ul>
+                            <?php
+                            $des_arr =  explode("\n", $description);
+                            // $des_arr_2 = array_filter($des_arr);
+                            for ($i = 0; $i < count($des_arr); $i++) {
+                                echo "<li><i class='bx bx-message-square-check me-2'></i>"  . $des_arr[$i] . "<li>";
+                            }
+                            ?>
+                        </ul>
                     </div>
                     <div class="details-inner">
                         <h3>Giới thiệu công ty</h3>
@@ -56,51 +58,51 @@
                     </div>
                     <div class="details-inner">
                         <h3>Yêu cầu công việc</h3>
-                        <ul><?php  
-                        $req_arr =  explode("\n", $request);
-                        // $req_arr_2 = array_filter($req_arr);
-                        for ($i = 0; $i < count($req_arr) ; $i++) {
-                            echo "<li><i class='bx bx-message-square-check me-2'></i>"  . $req_arr[$i] . " <li>" ;
-                        }
-                        ?></ul>
+                        <ul><?php
+                            $req_arr =  explode("\n", $request);
+                            // $req_arr_2 = array_filter($req_arr);
+                            for ($i = 0; $i < count($req_arr); $i++) {
+                                echo "<li><i class='bx bx-message-square-check me-2'></i>"  . $req_arr[$i] . " <li>";
+                            }
+                            ?></ul>
                     </div>
                     <div class="details-inner">
                         <h3>Quyền lợi</h3>
-                        <ul><?php  
-                        $ben_arr =  explode("\n", $benefits);
-                        
-                        // $ben_arr_2 = array_filter($ben_arr);
-                        for ($i = 0; $i < count($ben_arr) ; $i++) {
-                            echo  "<li><i class='bx bx-message-square-check me-2'></i>" . $ben_arr[$i] . " </li>";
-                        }
-                        ?></ul>
+                        <ul><?php
+                            $ben_arr =  explode("\n", $benefits);
+
+                            // $ben_arr_2 = array_filter($ben_arr);
+                            for ($i = 0; $i < count($ben_arr); $i++) {
+                                echo  "<li><i class='bx bx-message-square-check me-2'></i>" . $ben_arr[$i] . " </li>";
+                            }
+                            ?></ul>
                     </div>
                 </div>
                 <div class="job-details-related pb-70 " style="background-color: #fff; padding-top: 40px;">
-                   
-                        <div class="section-title">
-                            <h2>Việc làm tương tự</h2>
+
+                    <div class="section-title">
+                        <h2>Việc làm tương tự</h2>
+                    </div>
+                    <?php foreach ($val_c as $val) : ?>
+                        <?php extract($val) ?>
+                        <?php $link_recr = "index.php?act=info_recr&id=" . $id; ?>
+                        <div class="employer-item">
+
+                            <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
+                            <h3><a href="<?= $link_recr ?>" class="text-dark"><?= $job ?></a></h3>
+                            <ul>
+                                <li>
+                                    <i class="flaticon-send"></i>
+                                    <?= $address ?>
+                                </li>
+                                <li><?= $start ?></li>
+                            </ul>
+                            <p><?= $name ?></p>
+                            <span class="span-one"><a href="#">Ứng tuyển</a></span>
+                            <span class="span-two"><?= $type == 2 ? "FULL TIME" : "PART TIME" ?> </span>
+
                         </div>
-                        <?php foreach ($val_c as $val) : ?>
-                            <?php extract($val) ?>
-                            <?php $link_recr = "index.php?act=info_recr&id=" . $id; ?>
-                            <div class="employer-item">
-                                <a href="<?= $link_recr ?>">
-                                    <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
-                                    <h3><?= $job ?></h3>
-                                    <ul>
-                                        <li>
-                                            <i class="flaticon-send"></i>
-                                            <?= $address ?>
-                                        </li>
-                                        <li><?= $start ?></li>
-                                    </ul>
-                                    <p><?= $major ?></p>
-                                    <span class="span-one">Ứng tuyển</span>
-                                    <span class="span-two"><?=$type == 2 ? "FULL TIME" : "PART TIME" ?> </span>
-                                </a>
-                            </div>
-                        <?php endforeach ?>
+                    <?php endforeach ?>
 
 
                 </div>
@@ -113,7 +115,7 @@
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Mức lương thỏa thuận</h4>
-                                <span><?=$salary ?></span>
+                                <span><?= $salary ?></span>
                             </li>
                             <!-- <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
@@ -123,27 +125,27 @@
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Địa điểm</h4>
-                                <span><?=$address ?></span>
+                                <span><?= $address ?></span>
                             </li>
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Ngày đăng</h4>
-                                <span><?=$start ?></span>
+                                <span><?= $start ?></span>
                             </li>
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Kinh nghiệm yêu cầu</h4>
-                                <span><?=$exp ?> Years</span>
+                                <span><?= $exp ?> Years</span>
                             </li>
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Ngôn ngữ lập trình</h4>
-                                <span><?=$progLang ?></span>
+                                <span><?= $progLang ?></span>
                             </li>
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Cấp độ</h4>
-                                <span><?=$level ?></span>
+                                <span><?= $level ?></span>
                             </li>
                             <!-- <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>

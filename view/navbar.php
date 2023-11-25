@@ -73,14 +73,15 @@
                                         Tạo CV <i class="fa-solid fa-comments"></i>
                                     </a>
                                 <?php } else { ?>
-                                    <a class="job-right" href="index.php?act=post_recr">
+                                    <a class="job-right" href="index.php?act=post_recr&id=<?= $id ?>">
                                         Tuyển dụng <i class="fa-solid fa-comments"></i>
                                     </a>
+                                    
                                 <?php } ?>
                             </div>
                         <?php } else { ?>
                             <a class='login-left d-flex align-items-center' href='index.php?act=signin'><i class='flaticon-enter me-2'></i> Đăng kí / Đăng nhập </a>
-                            <a class="job-right" href="index.php?act=post_recr">
+                            <a class="job-right" href="index.php?act=post_recr" >
                                 Tuyển dụng / Tạo CV <i class="fa-solid fa-comments"></i>
                             </a>
                         <?php } ?>

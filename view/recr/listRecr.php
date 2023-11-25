@@ -40,9 +40,9 @@
                         ?>
                         <?php $link_recr = "index.php?act=info_recr&id=" . $id; ?>
                         <div class='employer-item '>
-                            <a href='<?= $link_recr ?>'>
+                            
                                 <img data-cfsrc='assets/img/home-one/job1.png' alt='Employer' style='display:none;visibility:hidden;'><noscript><img src='assets/img/home-one/job1.png' alt='Employer'></noscript>
-                                <h3><?= $job ?></h3>
+                                <h3><a href='<?= $link_recr ?>' class="text-dark"><?= $job ?></a></h3>
                                 <ul>
                                     <li>
                                         <i class='flaticon-send'></i>
@@ -50,11 +50,11 @@
                                     </li>
                                     <li><?= $start ?></li>
                                 </ul>
-                                <p><?= $major ?>
+                                <p><?= $name ?>
                                 </p>
-                                <span class='span-one'>Ứng tuyển </span>
+                                <a href="#" class="btn btn-info text-white">Ứng tuyển </a>
                                 <span class='span-two'><?= $key['type'] == 2 ? "FULL TIME" : "PART TIME" ?> </span>
-                            </a>
+                            
                         </div>
                     <?php endforeach ?>
                 </div>

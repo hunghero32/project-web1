@@ -64,12 +64,15 @@
                                 <label>
                                     Kiểu tuyển dụng :
                                 </label>
+                                
                                 <select name="type" title="Kiểu không được để trống !" required>
-                                    <option value="2" <?=$type == 2 ? "selected" : "" ?> >Full Time</option>
-                                    <option value="1" <?=$type == 1 ? "selected" : "" ?> >Part Time</option>
-                                    <!-- <option>Internship</option>
-                                    <option>Freelancing</option> -->
-                                </select>
+                                <?php foreach ($data as $v) { ?>
+                                    <?php 
+                                    if (isset($v['typeRecr']) && $v['typeRecr'] != "") { ?>
+                                        <option value="<?= $v['typeRecr'] ?>" <?=$type ==  $v['typeRecr'] ? "selected" : "" ?>> <?= $v['typeRecr'] ?></option>
+                                <?php }
+                                } ?>
+                            </select>
                             </div>
                         </div>
                        
@@ -78,7 +81,14 @@
                                 <label >
                                     Lương :
                                 </label>
-                                <input type="text" value="<?=$salary ?>" class="form-control" name="salary" placeholder="1000000" title="Lương không được để trống !" required>
+                                <select name="salary" title="Lương không được để trống !" required>
+                                <?php foreach ($data as $v) { ?>
+                                    <?php 
+                                    if (isset($v['salary']) && $v['salary'] != "") { ?>
+                                        <option value="<?= $v['salary'] ?>" <?= $salary == $v['salary'] ? '' : '' ?>> <?= $v['salary'] ?></option>
+                                <?php }
+                                } ?>
+                            </select>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -86,12 +96,16 @@
                                 <label>
                                     Kinh nghiệm :
                                 </label>
+                                
                                 <select name="exp" required>
-                                    <option value="0" <?=$exp == '0' ? 'selected' : '' ?>>0 - 1</option>
-                                    <option value="1-2" <?=$exp == '1-2' ? 'selected' : '' ?>>1 - 2</option>
-                                    <option value="2-3 " <?=$exp == '2-3' ? 'selected' : '' ?>>2 - 3</option>
-                                    <option value="5" <?=$exp == '5' ? 'selected' : '' ?>>Trên 5</option>
-                                </select>
+                                <?php foreach ($data as $v) { ?>
+                                    <?php 
+                                    if (isset($v['exp']) && $v['exp'] != "") { ?>
+                                        <option value="<?= $v['exp'] ?>" <?=$exp == $v['exp'] ? 'selected' : '' ?>> <?= $v['exp'] ?></option>
+                                <?php }
+                                } ?>
+
+                            </select>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -115,12 +129,15 @@
                                 <label>
                                     Cấp bậc / trình độ :
                                 </label>
+                                
                                 <select name="level" required>
-                                    <option value="tc" <?= $level == 'tc' ? 'selected' : '' ?>>Trung cấp</option>
-                                    <option value="dc"  <?= $level == 'dc' ? 'selected' : '' ?>>Cao đẳng</option>
-                                    <option value="dh " <?= $level == 'dh' ? 'selected' : '' ?>>Đại học</option>
-                                    <option value="ts " <?= $level == 'ts' ? 'selected' : '' ?>>Thạc sĩ</option>
-                                </select>
+                                <?php foreach ($data as $v) { ?>
+                                    <?php 
+                                    if (isset($v['level']) && $v['level'] != "") { ?>
+                                        <option value="<?= $v['level'] ?>" <?= $level == $v['level'] ? 'selected' : '' ?>> <?= $v['level'] ?></option>
+                                <?php }
+                                } ?>
+                            </select>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -128,7 +145,7 @@
                                 <label>
                                     Ngày hết hạn :
                                 </label>
-                                <input type="date" class="form-control" name="end" required>
+                                <input type="date" class="form-control" name="end" required value="<?= $end ?>">
                             </div>
                         </div>
                     </div>
