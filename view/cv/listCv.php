@@ -3,17 +3,10 @@
         <div class="d-table-cell">
             <div class="container">
                 <div class="title-item">
-                    <h2>Candidates</h2>
+                    <h2>Ứng cử viên</h2>
                     <ul>
                         <li>
-                            <img data-cfsrc="assets/img/home-three/title-img-two.png" alt="Image" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img-two.png" alt="Image"></noscript>
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li>
-                            <span>/</span>
-                        </li>
-                        <li>
-                            Candidates
+                            Ứng viên / Hồ sơ ứng viên
                         </li>
                     </ul>
                 </div>
@@ -106,7 +99,6 @@
                 </div>
                 <div class="col-sm-6 col-lg-3 form-group position-relative">
                     <input name="salary" type="text" class="searchSelect" id="searchsalary" placeholder="<?= checkfind($salary, 'Mức lương'); ?> &darr;">
-                    <?= checkfind($salary, 'Mức lương') ?>
                     <div class="dropdown-content" id="dropdownsalary">
                         <div class="dropdown-item">Không chọn</div>
                         <?php foreach ($datafilter as $cv) {

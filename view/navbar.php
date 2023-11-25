@@ -29,7 +29,7 @@
                             <a href="index.php?act=listCorp">Nhà tuyển dụng</a>
                         </li>
                         <li class="nav-item">
-                            <a href="index.php?act=listCv">CV</a>
+                            <a href="index.php?act=listCv">Ứng viên</a>
                         </li>
                         <li class="nav-item">
                             <a href="index.php?act=about" class="nav-link">Giới thiệu</a>
