@@ -3748,7 +3748,7 @@ button:focus {
 .employer-item {
     margin-bottom: 30px;
     border-radius: 5px;
-    border: 2px dashed var(--secondary);
+    border: 1px dashed var(--secondary);
     /* -webkit-box-shadow: 0 0 20px 0 var(--secondary); */
     /* box-shadow: 0 0 20px 0 var(--secondary); */
     position: relative;
@@ -3759,7 +3759,8 @@ button:focus {
 
 .employer-item:hover {
     -webkit-transform: translate(0, -10px);
-    transform: translate(0, -10px)
+    transform: translate(0, -10px);
+    cursor: pointer;
 }
 
 .employer-item img {
@@ -5165,7 +5166,7 @@ button:focus {
 }
 
 .job-details-area .details-item .details-inner {
-    margin-bottom: 30px
+    margin-bottom: 30px;
 }
 
 .job-details-area .details-item .details-inner:last-child {

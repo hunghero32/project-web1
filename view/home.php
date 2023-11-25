@@ -101,7 +101,7 @@
                 <div class="col-lg-6">
                     <div class="employer-item">
                         <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
-                            <img width="60px" data-cfsrc="<?= checkCorpAvaNull($avatar) ?>" alt="Details" style="display:none;visibility:hidden;">
+                            <img width="65px" height="" class="rounded-3" data-cfsrc="<?= checkCorpAvaNull($avatar) ?>" alt="Details" style="display:none;visibility:hidden;">
                             <noscript><img src="<?= checkCorpAvaNull($avatar) ?>" alt="Details"></noscript>
                             <h3><?= $name ?></h3>
                             <p>

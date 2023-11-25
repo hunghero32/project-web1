@@ -45,8 +45,13 @@ function info_Corp($id)
 }
 
 function loadRecr($id) {
-    $sql = "SELECT * FROM recr where idcorp = $id";
-    return pdo_query($sql);
+    $sql = "SELECT c.iduser, u.name, r.* 
+            FROM corp c
+            INNER JOIN user u ON c.iduser = u.id
+            LEFT JOIN recr r ON c.id = r.idcorp
+            WHERE c.id = ?
+            ORDER BY r.id DESC";
+    return pdo_query($sql,$id);
 }
 
 // function update_Corp(
