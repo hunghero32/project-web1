@@ -29,7 +29,7 @@
                             <a href="index.php?act=listCorp">Nhà tuyển dụng</a>
                         </li>
                         <li class="nav-item">
-                            <a href="index.php?act=listCv">CV</a>
+                            <a href="index.php?act=listCv">Ứng viên</a>
                         </li>
                         <li class="nav-item">
                             <a href="index.php?act=about" class="nav-link">Giới thiệu</a>
@@ -73,14 +73,15 @@
                                         Tạo CV <i class="fa-solid fa-comments"></i>
                                     </a>
                                 <?php } else { ?>
-                                    <a class="job-right" href="index.php?act=post_recr">
+                                    <a class="job-right" href="index.php?act=post_recr&id=<?= $id ?>">
                                         Tuyển dụng <i class="fa-solid fa-comments"></i>
                                     </a>
+                                    
                                 <?php } ?>
                             </div>
                         <?php } else { ?>
                             <a class='login-left d-flex align-items-center' href='index.php?act=signin'><i class='flaticon-enter me-2'></i> Đăng kí / Đăng nhập </a>
-                            <a class="job-right" href="index.php?act=post_recr">
+                            <a class="job-right" href="index.php?act=post_recr" >
                                 Tuyển dụng / Tạo CV <i class="fa-solid fa-comments"></i>
                             </a>
                         <?php } ?>

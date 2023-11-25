@@ -13,6 +13,11 @@ function hide($act)
     }
 }
 
+function checkfind($input,$output) {
+    $return =  $input !== '' && $input !== 'Không chọn' && $input !== 'Khác' ? $input : $output ;
+    return $return;
+}
+
 function checklink($input) {
     $return = $input == '' || !isset($input) ? 'index.php?act=err' : $input;
     return $return;

@@ -1,4 +1,5 @@
 <?php
+$date = data();
 $perPage = 5;
 $totall_address = total_address_recr();
 $valu_racr = get_records($kym = '');
@@ -8,7 +9,7 @@ $total_data = $total;
 $totalPages = ceil($total_data / $perPage);
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($currentPage - 1) * $perPage;
-$data = range(1, $total_data);
+$data_r = range(1, $total_data);
 $currentData = array_slice($valu_racr, $start, $perPage);
 switch ($act) {
     case 'listRecr':
@@ -34,6 +35,7 @@ switch ($act) {
         }
         include 'view/recr/infoRecr.php';
         break;
+    
     case 'post_recr':
         if (isset($_SESSION['username'])) {
             // echo "hihi";
@@ -76,8 +78,8 @@ switch ($act) {
                 // header("location : index.php?act=post_recr");
             }
         }
-        include 'view/recr/addRecr.php';
-        // include 'view/recr/manage_recr.php';
+        // include 'view/recr/addRecr.php';
+        include 'view/recr/manage_recr.php';
         break;
     case 'manage_recr':
 

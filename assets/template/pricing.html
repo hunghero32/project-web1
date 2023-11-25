@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Input with Dropdown Selection</title>
+    <style>
+        /* CSS để tạo giao diện */
+        .search-dropdown {
+            position: relative;
+            display: inline-block;
+            width: 200px;
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 5px;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            width: 100%;
+            max-height: 150px;
+            overflow-y: auto;
+            border: 1px solid #ccc;
+            z-index: 1;
+        }
+        .dropdown-content.visible {
+            display: block;
+        }
+        .dropdown-item {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        .dropdown-item:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-dropdown">
+        <input type="text" id="searchInput" placeholder="Search...">
+        <div class="dropdown-content" id="dropdownContent">
+            <div class="dropdown-item">Apple</div>
+            <div class="dropdown-item">Banana</div>
+            <div class="dropdown-item">Orange</div>
+            <div class="dropdown-item">Grape</div>
+            <div class="dropdown-item">Kiwi</div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript để tìm kiếm và chọn giá trị từ danh sách
+        const searchInput = document.getElementById('searchInput');
+        const dropdownContent = document.getElementById('dropdownContent');
+
+        searchInput.addEventListener('input', function() {
+            const searchValue = searchInput.value.toLowerCase();
+            const items = dropdownContent.getElementsByClassName('dropdown-item');
+            Array.from(items).forEach(item => {
+                const itemText = item.textContent.toLowerCase();
+                const isVisible = itemText.includes(searchValue);
+                item.style.display = isVisible ? 'block' : 'none';
+            });
+        });
+
+        searchInput.addEventListener('focus', function() {
+            dropdownContent.classList.add('visible');
+        })
+
+        dropdownContent.addEventListener('click', function(e) {
+            if (e.target.classList.contains('dropdown-item')) {
+                searchInput.value = e.target.textContent;
+                dropdownContent.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+</html>
