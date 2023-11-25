@@ -23,113 +23,102 @@
 </div>
 
 <div class="job-filter-area pt-100">
-    <div class="container">
+    <div class="container ">
         <form action="index.php?act=listCv" method="POST">
             <div class="row">
-                <div class="col-sm-6 col-lg-3">
-                    <div class="form-group">
-                        <select name="level">
-                            <option value="" selected>Cấp bậc</option>
-                            <?php foreach ($datafilter as $cv) {
-                                extract($cv);
-                                if ($level !== '') { ?>
-                                    <option value="<?= $level ?>" <?= isset($_POST['level']) && $_POST['level'] == $level ? 'selected' : '' ?>>
-                                        <?= $level ?>
-                                    </option>
-                                <?php } ?>
+                <div class="col-sm-6 col-lg-3 form-group position-relative">
+                    <input name="level" type="text" class="searchSelect" id="searchlevel" placeholder="<?= checkfind($level, 'Cấp bậc'); ?> &darr;">
+                    <div class="dropdown-content" id="dropdownlevel">
+                        <div class="dropdown-item">Không chọn</div>
+                        <?php foreach ($datafilter as $cv) {
+                            extract($cv);
+                            if ($level !== '') { ?>
+                                <div class="dropdown-item"><?= $level ?></div>
                             <?php } ?>
-                        </select>
+                        <?php } ?>
+                        <div class="dropdown-item">Khác</div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="form-group">
-                        <select name="age">
-                            <option value="" selected>Độ Tuổi</option>
-                            <?php foreach ($datafilter as $cv) {
-                                extract($cv);
-                                if ($age !== '') { ?>
-                                    <option value="<?= $age ?>" <?= isset($_POST['age']) && $_POST['age'] == $age ? 'selected' : '' ?>>
-                                        <?= $age ?>
-                                    </option>
-                                <?php } ?>
+                <div class="col-sm-6 col-lg-3 form-group position-relative">
+                    <input name="age" type="text" class="searchSelect" id="searchage" placeholder="<?= checkfind($age, 'Độ tuổi'); ?> &darr;">
+                    <div class="dropdown-content" id="dropdownage">
+                        <div class="dropdown-item">Không chọn</div>
+                        <?php foreach ($datafilter as $cv) {
+                            extract($cv);
+                            if ($age !== '') { ?>
+                                <div class="dropdown-item"><?= $age ?></div>
                             <?php } ?>
-                        </select>
+                        <?php } ?>
+                        <div class="dropdown-item">Khác</div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="form-group">
-                        <select name="address">
-                            <option value="" selected>Địa điểm</option>
-                            <?php foreach ($datafilter as $cv) {
-                                extract($cv);
-                                if ($address !== '') { ?>
-                                    <option value="<?= $address ?>" <?= isset($_POST['address']) && $_POST['address'] == $address ? 'selected' : '' ?>>
-                                        <?= $address ?>
-                                    </option>
-                                <?php } ?>
+                <div class="col-sm-6 col-lg-3 form-group position-relative">
+                    <input name="address" type="text" class="searchSelect" id="searchaddress" placeholder="<?= checkfind($address, 'Địa điểm'); ?> &darr;">
+                    <div class="dropdown-content" id="dropdownaddress">
+                        <div class="dropdown-item">Không chọn</div>
+                        <?php foreach ($datafilter as $cv) {
+                            extract($cv);
+                            if ($address !== '') { ?>
+                                <div class="dropdown-item"><?= $address ?></div>
                             <?php } ?>
-                            <option value="diff">Khác</option>
-                        </select>
+                        <?php } ?>
+                        <div class="dropdown-item">Khác</div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="form-group">
-                        <select name="major">
-                            <option value="" selected>Chuyên Ngành</option>
-                            <?php foreach ($datafilter as $cv) {
-                                extract($cv);
-                                if ($job !== '') { ?>
-                                    <option value="<?= $job ?>" <?= isset($_POST['major']) && $_POST['major'] == $job ? 'selected' : '' ?>>
-                                        <?= $job ?>
-                                    </option>
-                                <?php } ?>
+                <div class="col-sm-6 col-lg-3 form-group position-relative">
+                    <input name="major" type="text" class="searchSelect" id="searchjob" placeholder="<?= checkfind($major, 'Chuyên ngành'); ?> &darr;">
+                    <div class="dropdown-content" id="dropdownjob">
+                        <div class="dropdown-item">Không chọn</div>
+                        <?php foreach ($datafilter as $cv) {
+                            extract($cv);
+                            if ($job !== '') { ?>
+                                <div class="dropdown-item"><?= $job ?></div>
                             <?php } ?>
-                        </select>
+                        <?php } ?>
+                        <div class="dropdown-item">Khác</div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="form-group">
-                        <select name="exp">
-                            <option value="" selected>Kinh Nghiệm Làm Việc</option>
-                            <?php foreach ($datafilter as $cv) {
-                                extract($cv);
-                                if ($exp !== '') { ?>
-                                    <option value="<?= $exp ?>" <?= isset($_POST['exp']) && $_POST['exp'] == $exp ? 'selected' : '' ?>>
-                                        <?= $exp ?>
-                                    </option>
-                                <?php } ?>
+                <div class="col-sm-6 col-lg-3 form-group position-relative">
+                    <input name="exp" type="text" class="searchSelect" id="searchexp" placeholder="<?= checkfind($exp, 'Kinh nghiệm'); ?> &darr;">
+                    <div class="dropdown-content" id="dropdownexp">
+                        <div class="dropdown-item">Không chọn</div>
+                        <?php foreach ($datafilter as $cv) {
+                            extract($cv);
+                            if ($exp !== '') { ?>
+                                <div class="dropdown-item"><?= $exp ?></div>
                             <?php } ?>
-                        </select>
+                        <?php } ?>
+                        <div class="dropdown-item">Khác</div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="form-group">
-                        <select name="skill">
-                            <option value="" selected>Kỹ Năng</option>
-                            <?php foreach ($datafilter as $cv) {
-                                extract($cv) ?>
-                                <option value="<?= $progLang ?>" <?= isset($_POST['skill']) && $_POST['skill'] == $progLang ? 'selected' : '' ?>>
-                                    <?= $progLang ?>
-                                </option>
+                <div class="col-sm-6 col-lg-3 form-group position-relative">
+                    <input name="skill" type="text" class="searchSelect" id="searchskill" placeholder="<?= checkfind($skill, 'Ngôn ngữ'); ?> &darr;">
+                    <div class="dropdown-content" id="dropdownskill">
+                        <div class="dropdown-item">Không chọn</div>
+                        <?php foreach ($datafilter as $cv) {
+                            extract($cv);
+                            if ($progLang !== '') { ?>
+                                <div class="dropdown-item"><?= $progLang ?></div>
                             <?php } ?>
-                        </select>
+                        <?php } ?>
+                        <div class="dropdown-item">Khác</div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="form-group">
-                        <select name="salary">
-                            <option value="" selected>Mức Lương</option>
-                            <?php foreach ($datafilter as $cv) {
-                                extract($cv);
-                                if ($salary !== '') { ?>
-                                    <option value="<?= $salary ?>" <?= isset($_POST['salary']) && $_POST['salary'] == $salary ? 'selected' : '' ?>>
-                                        <?= $salary ?>
-                                    </option>
-                                <?php } ?>
+                <div class="col-sm-6 col-lg-3 form-group position-relative">
+                    <input name="salary" type="text" class="searchSelect" id="searchsalary" placeholder="<?= checkfind($salary, 'Mức lương'); ?> &darr;">
+                    <?= checkfind($salary, 'Mức lương') ?>
+                    <div class="dropdown-content" id="dropdownsalary">
+                        <div class="dropdown-item">Không chọn</div>
+                        <?php foreach ($datafilter as $cv) {
+                            extract($cv);
+                            if ($salary !== '') { ?>
+                                <div class="dropdown-item"><?= $salary ?></div>
                             <?php } ?>
-                        </select>
+                        <?php } ?>
+                        <div class="dropdown-item">Khác</div>
                     </div>
                 </div>
+
                 <div class="col-sm-6 col-lg-3">
                     <button name="findCv" type="submit" class="btn cmn-btn">
                         Tìm kiếm

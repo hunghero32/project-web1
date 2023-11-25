@@ -1,5 +1,5 @@
 <?php
-function list_cv($name, $major, $exp, $salary,$skill)
+function list_cv($level,$age, $major, $exp,$address, $salary,$skill)
 {
         $sql = "SELECT cv.*, u.username, u.name as name, u.email, u.phone, u.address, u.role as userrole, g.avatar, s.skill,
         TIMESTAMPDIFF(MONTH, MIN(expcv.start), MAX(expcv.end)) as exp
@@ -10,9 +10,11 @@ function list_cv($name, $major, $exp, $salary,$skill)
         LEFT JOIN expcv ON expcv.idcv = cv.id
         WHERE u.role = 2";
 
-        $sql .= $name !== '' ? " AND u.name LIKE '%" . $name . "%' " : "";
+        $sql .= $level !== '' ? " AND u.name LIKE '%" . $level . "%' " : "";
+        $sql .= $age !== '' ? " AND u.name LIKE '%" . $age . "%' " : "";
         $sql .= $major !== '' ? " AND cv.major LIKE '%" . $major . "%' " : "";
         $sql .= $exp !== '' ? " AND TIMESTAMPDIFF(MONTH, MIN(expcv.start), MAX(expcv.end)) LIKE '%" . $exp . "%' " : "";
+        $sql .= $address !== '' ? " AND u.address LIKE '%" . $address . "%' " : "";
         $sql .= $salary !== '' ? " AND cv.salary LIKE '%" . $salary . "%' " : "";
         $sql .= $skill !== '' ? " AND s.skill LIKE '%" . $skill . "%' " : "";
 
