@@ -11,6 +11,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($currentPage - 1) * $perPage;
 $data = range(1, $total_data);
 $currentData = array_slice($valu_racr, $start, $perPage);
+
 switch ($act) {
     case 'listRecr':
         // $total_recr = 40;
@@ -81,10 +82,7 @@ switch ($act) {
         // include 'view/recr/addRecr.php';
         include 'view/recr/manage_recr.php';
         break;
-    case 'manage_recr':
 
-        include 'view/recr/manage_recr.php';
-        break;
     case 'edit_recr':
        
         include 'view/recr/manage_recr.php';

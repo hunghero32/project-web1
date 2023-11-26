@@ -1,7 +1,6 @@
 const comboselect = ['level','age','address','skill','exp' ,'salary','job'];
 
 Array.from(comboselect).forEach(e => {
-    console.log(e);
     var search = document.getElementById('search' + e);
     var dropdown = document.getElementById('dropdown' + e);
 
@@ -26,29 +25,3 @@ Array.from(comboselect).forEach(e => {
         }
     });
 });
-
-
-
-// var searchaddress = document.getElementById('searchaddress');
-// var dropdownaddress = document.getElementById('dropdownaddress');
-
-// searchaddress.addEventListener('input', function () {
-//     var searchaddressValue = searchaddress.value.toLowerCase();
-//     var items = dropdownaddress.getElementsByClassName('dropdownaddress-item');
-//     Array.from(items).forEach(item => {
-//         var itemText = item.textContent.toLowerCase();
-//         var isVisible = itemText.includes(searchaddressValue);
-//         item.style.display = isVisible ? 'block' : 'none';
-//     });
-// });
-
-// searchaddress.addEventListener('focus', function () {
-//     dropdownaddress.classList.add('visible');
-// })
-
-// dropdownaddress.addEventListener('click', function (e) {
-//     if (e.target.classList.contains('dropdownaddress-item')) {
-//         searchaddress.value = e.target.textContent;
-//         dropdownaddress.classList.remove('visible');
-//     }
-// });

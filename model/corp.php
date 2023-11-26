@@ -18,7 +18,7 @@ function list_Corp($name, $address)
 
     $sql .= $name !== '' ? " AND u.name LIKE '%" . $name . "%' " : "";
     $sql .= " GROUP BY c.id, u.role ORDER BY c.id DESC";
-    return pdo_query($sql,3);
+    return pdo_query($sql, 3);
 }
 
 function top_Corp()
@@ -44,17 +44,30 @@ function info_Corp($id)
     return pdo_query_one($sql, $id);
 }
 
-function loadRecr($id) {
+function manageInfo($id)
+{
+    $sql = "SELECT u.name, u.email, u.phone, u.address, c.*,
+            g.avatar, g.thumbnail1 ,g.thumbnail2 ,g.thumbnail3 ,g.thumbnail4 ,g.thumbnail5
+            FROM user u
+            LEFT JOIN corp c ON u.id = c.iduser
+            LEFT JOIN gallery g ON u.id = g.iduser
+            WHERE u.role = 3 AND u.id = ?";
+    return pdo_query_one($sql, $id);
+}
+
+function loadRecr($id)
+{
     $sql = "SELECT c.iduser, u.name, r.* 
             FROM recr r
             LEFT JOIN corp c ON  r.idcorp = c.id
             INNER JOIN user u ON c.iduser = u.id
             WHERE c.id = ?
             ORDER BY r.id DESC";
-    return pdo_query($sql,$id);
+    return pdo_query($sql, $id);
 }
 
-function sameLocation($id,$location) {
+function sameLocation($id, $location)
+{
     $sql = "SELECT c.*, u.name, u.email, u.phone, u.role as userRole, g.avatar
             FROM corp c
             LEFT JOIN user u  ON c.iduser = u.id
@@ -62,7 +75,7 @@ function sameLocation($id,$location) {
             WHERE u.role = ? AND u.address LIKE ? AND c.id NOT LIKE ?
             GROUP BY c.id, u.role ORDER BY c.id DESC
             LIMIT 0, 3";
-    return pdo_query($sql,3,$location,$id);
+    return pdo_query($sql, 3, $location, $id);
 }
 
 // function update_Corp(

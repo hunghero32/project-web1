@@ -37,7 +37,7 @@ function checkCorpAvaNull($input)
 
 function checkUserAvaNull($input)
 {
-    $return = $input == '' ? 'assets/img/unknowCorp.png' : 'assets/uploads/' . $input;
+    $return = $input == '' ? 'assets/img/unknowUser.png' : 'assets/uploads/' . $input;
     return $return;
 }
 

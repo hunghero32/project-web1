@@ -40,26 +40,23 @@
                     </ul>
                     <div class="side-nav three d-flex">
                         <?php if (isset($_SESSION['username'])) {
-                            extract($_SESSION['username']);  
-                            // var_dump($_SESSION['username'])?>
+                            extract($_SESSION['username']);
+                        ?>
                             <div class="login-left d-flex align-items-center">
                                 <div class="nav-item dropdown">
                                     <a class="text-white text-small-screen d-flex align-items-center" href="#" id="navbarDropdown" role="button" aria-expanded="false">
-                                        <div style="width: 50px; height: 50px" class="overflow-hidden rounded-circle">
+                                        <div style="width: 35px; height: 35px" class="overflow-hidden rounded-circle">
                                             <img src='<?= checkUserAvaNull($avatar) ?>' alt='user ' class=''>
                                         </div>
                                         <p class="p-0 m-0 ms-2"><?= $name ?></p>
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item" href="index.php?act=changepassword">Đổi mật khẩu</a></li>
-                                        <?php if ($role == 1) { ?>
-                                            <li><a class="dropdown-item" href="index.php?act=manage_recr">Quản lí thông tin</a></li>
-                                        <?php } ?>
                                         <?php if ($role == 2) { ?>
                                             <li><a class="dropdown-item" href="index.php?act=manage_Cv">Thông tin người dùng</a></li>
                                         <?php } ?>
                                         <?php if ($role == 3) { ?>
-                                            <li><a class="dropdown-item" href="index.php?act=manage_recr">Thông tin doanh nghiệp</a></li>
+                                            <li><a class="dropdown-item" href="index.php?act=manageCorp">Thông tin doanh nghiệp</a></li>
                                         <?php } ?>
                                         <li>
                                             <hr class="dropdown-divider">
@@ -68,15 +65,18 @@
                                     </div>
                                 </div>
                                 <?php if ($role == 1) { ?>
-                                    <a class="job-right" href="index.php?act=corp_recr">
-                                        Quản trị <i class="fa-solid fa-comments"></i>
+                                    <a class="job-right" href="index.php?act=admin">
+                                        Quản trị <i class="fa-solid fa-user-gear"></i>
                                     </a>
                                 <?php } else if ($role == 2) { ?>
                                     <a class="job-right" href="index.php?act=user_cv&id=<?= $id ?>">
-                                        Tạo CV <i class="fa-solid fa-comments"></i>
+                                        Tạo CV <i class="fa-solid fa-file-pen"></i>
                                     </a>
-                                <?php } else { ?>
-                                    <a class="job-right" href="index.php?act=post_recr&id=<?= $id ?>">
+                                <?php } else if ($role == 3) { ?>
+                                    <a class="job-right" href="index.php?act=user_cv&id=<?= $id ?>">
+                                        Tạo tuyển dụng <i class="fa-solid fa-file-pen"></i>
+                                    </a>
+                                <?php } else { ?> <a class="job-right" href="index.php?act=post_recr&id=<?= $id ?>">
                                         Tuyển dụng <i class="fa-solid fa-comments"></i>
                                     </a>
 
