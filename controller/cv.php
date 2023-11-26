@@ -5,6 +5,7 @@ switch ($act) {
             $id = $_GET['id'];
             $cv = info_cv($id);
             extract($cv);
+            
         }
 
         include 'view/cv/infoCv.php';
@@ -50,9 +51,9 @@ switch ($act) {
             $major = $_POST['major'];
             $type = $_POST['type'];
             $totalCV = $_POST['totalCV'];
-            $desc = $_POST['description'];
+            $intro = $_POST['introduce'];
 
-            update_cv($id, $name, $img, $email, $phone, $address, $exp, $major, $desc);
+            update_cv($id, $name, $img, $email, $phone, $address, $exp, $major, $intro);
         }
 
         include 'view/cv/updateCv.php';

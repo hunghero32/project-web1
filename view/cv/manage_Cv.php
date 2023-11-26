@@ -61,7 +61,7 @@
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
                         <div class="profile-content">
-                            <form>
+                        <form action="index.php?act=manage_Cv" method="POST" enctype="multipart/form-data">
                                 <div class="profile-content-inner">
                                     <h2>Thông tin cơ bản</h2>
                                     <div class="row">
@@ -120,7 +120,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="profile-content-inner">
+                                <!-- <div class="profile-content-inner">
                                     <h2>Social Links</h2>
                                     <div class="row">
                                         <div class="col-lg-6">
@@ -148,8 +148,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <button type="submit" class="btn dashboard-btn">Save Your Information</button>
+                                </div> -->
+                                <button type="submit" class="btn dashboard-btn">Cập Nhật Thông Tin</button>
                             </form>
                         </div>
                     </div>

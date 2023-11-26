@@ -85,7 +85,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3 form-group position-relative">
-                    <input name="skill" type="text" class="searchSelect" id="searchskill" placeholder="<?= checkfind($skill, 'Ngôn ngữ'); ?> &darr;">
+                    <input name="skill" type="text" class="searchSelect" id="searchskill" placeholder="<?= checkfind($progLang, 'Ngôn ngữ'); ?> &darr;">
                     <div class="dropdown-content" id="dropdownskill">
                         <div class="dropdown-item">Không chọn</div>
                         <?php foreach ($datafilter as $cv) {
