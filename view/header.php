@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="assets/css/animate.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/comboselect.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/theme-dark.css">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
@@ -25,10 +26,10 @@
 </head>
 
 <body>
-    <!-- <div class="loader">
+    <div class="loader">
         <div class="d-table">
             <div class="d-table-cell">
                 <div class="spinner"></div>
             </div>
         </div>
-    </div> -->
+    </div>

@@ -99,9 +99,8 @@
             <?php foreach ($top_corp as $c) {
                 extract($c); ?>
                 <div class="col-lg-6">
-                    <div class="employer-item">
-                        <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
-                            <img width="60px" data-cfsrc="<?= checkCorpAvaNull($avatar) ?>" alt="Details" style="display:none;visibility:hidden;">
+                    <div class="employer-item" onclick="return window.location.href= 'index.php?act=infoCorp&id=<?= $id ?>'">
+                            <img width="65px" height="" class="rounded-3" data-cfsrc="<?= checkCorpAvaNull($avatar) ?>" alt="Details" style="display:none;visibility:hidden;">
                             <noscript><img src="<?= checkCorpAvaNull($avatar) ?>" alt="Details"></noscript>
                             <h3><?= $name ?></h3>
                             <p>
@@ -122,7 +121,6 @@
                                 <span class="span-one"><i class="fa-solid fa-circle-info"></i> Thông tin chi tiết</span>
                             </a>
                             <!-- <span class="span-two">FULL TIME</span> -->
-                        </a>
                     </div>
                 </div>
             <?php } ?>
