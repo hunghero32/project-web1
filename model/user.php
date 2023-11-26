@@ -11,7 +11,8 @@ function list_user($kyw)
 
 function login($username, $pass)
 {
-    $sql = "SELECT u.* , g.avatar , g.thumbnail1 , g.thumbnail2 , g.thumbnail3 , g.thumbnail4 , g.thumbnail5 from user u 
+    $sql = "SELECT u.* , g.avatar , g.thumbnail1 , g.thumbnail2 , g.thumbnail3 , g.thumbnail4 , g.thumbnail5
+    FROM user u 
     LEFT JOIN gallery g ON u.id = g.iduser  where username=? AND pass=?";
     $user = pdo_query_one($sql, $username, $pass);
     return $user;

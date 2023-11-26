@@ -27,18 +27,21 @@
 <div class="dashboard-area ptb-100">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="profile-item">
-                    <img data-cfsrc="assets/img/<?= $avatar ?>" alt="Dashboard" style="display:none;visibility:hidden;"><noscript><img src="assets/img/dashboard1.jpg" alt="Dashboard"></noscript>
-                    <h2><?= $name ?></h2>
-                    <span>Web developer</span>
+            <div class="col-lg-3">
+                <div class="d-flex w-100 align-items-center flex-column">
+                    <div style="width: 100px; height: 100px" class="overflow-hidden rounded-circle mb-3">
+                        <img src='<?= checkUserAvaNull($avatar) ?>' alt='user ' class=''>
+                    </div>
+                    <h2 class="mb-4"><?= $name ?></h2>
                 </div>
+
+                <!-- <span>Web developer</span> -->
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link <?=(!isset($_GET['id'])) ? 'active' : '' ?> " id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                    <a class="nav-link <?= (!isset($_GET['id'])) ? 'active' : '' ?> " id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
                         <i class="bx bx-user"></i>
-                        My Profile
+                        Thông tin
                     </a>
-                    <a class="nav-link" id="v-pills-messages-tab <?=(isset($_GET['id'])) ? 'active' : '' ?> " data-bs-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                    <a class="nav-link" id="v-pills-messages-tab <?= (isset($_GET['id'])) ? 'active' : '' ?> " data-bs-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
                         <div class="profile-list">
                             <i class="bx bxs-inbox"></i>
                             Danh sách bài tuyển dụng
@@ -56,19 +59,18 @@
                             Logout
                         </div>
                     </a>
-
                 </div>
             </div>
 
-            <div class="col-lg-8">
+            <div class="col-lg-9">
 
                 <div class="tab-content" id="v-pills-tabContent">
 
-                    <?php 
-                        include "manageRecr/profile.php";
-                        include "manageRecr/postRecr.php";
-                        include "manageRecr/editRecr.php";
-                        include "manageRecr/m_listRecr.php";
+                    <?php
+                    include "manageRecr/profile.php";
+                    include "manageRecr/postRecr.php";
+                    include "manageRecr/editRecr.php";
+                    include "manageRecr/listRecr.php";
                     ?>
                 </div>
             </div>

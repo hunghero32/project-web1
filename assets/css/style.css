@@ -6929,16 +6929,83 @@ button:focus {
     color: var(--secondary)
 }
 
+.form-item {
+    border: 2px dashed var(--secondary);
+    background-color: white !important;
+    padding: 30px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.form-item .edit {
+    color: white;
+    background-color: var(--secondary);
+    border-radius: 5px;
+    padding: 4px 10px;
+    display: inline-block;
+    position: absolute;
+    right: 1%;
+    top: 1%;
+}
+
+.form-item .boxbtn {
+    display: inline-block;
+    position: absolute;
+    right: 1%;
+    top: 1%;
+}
+
+.form-item .boxbtn .save {
+    color: white;
+    background-color: var(--secondary);
+    border-radius: 5px;
+    padding: 4px 10px;
+}
+
+.form-item .boxbtn .save:hover {
+    box-shadow: 0 0 10px var(--secondary);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.form-item .boxbtn .cancer {
+    color: var(--font);
+    background-color: #ddd;
+    border-radius: 5px;
+    padding: 4px 10px;
+}
+
+.form-item .boxbtn .cancer:hover {
+    box-shadow: 0 0 5px var(--main);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+
+.form-item .edit:hover {
+    box-shadow: 0 0 10px var(--secondary);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.form-item input,
+.form-item select,
+.form-item textarea {
+    border-radius: 3px;
+    border: 1px dashed gray !important;
+    color: gray;
+}
+
 .contact-form-area .form-item {
     text-align: center;
     max-width: 800px;
     margin-left: auto;
     margin-right: auto;
-    background-color: #fafafa;
-    padding: 30px;
-    border-radius: 5px;
+    /* background-color: #fafafa; */
+    /* padding: 30px; */
+    /* border-radius: 5px; */
     position: relative;
-    border: 2px dashed var(--secondary)
+    /* border: 2px dashed var(--secondary) */
 }
 
 .contact-form-area .form-item h2 {
@@ -6983,7 +7050,7 @@ button:focus {
 .contact-form-area .form-item .form-group label {
     margin-bottom: 10px;
     font-weight: 500;
-    color: var(--font)
+    color: var(--font);
 }
 
 .contact-form-area .form-item .form-group .form-control {
