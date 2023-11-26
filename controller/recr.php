@@ -1,5 +1,5 @@
 <?php
-$date = data();
+
 $perPage = 5;
 $totall_address = total_address_recr();
 $valu_racr = get_records($kym = '');
@@ -9,7 +9,7 @@ $total_data = $total;
 $totalPages = ceil($total_data / $perPage);
 $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($currentPage - 1) * $perPage;
-$data_r = range(1, $total_data);
+$data = range(1, $total_data);
 $currentData = array_slice($valu_racr, $start, $perPage);
 switch ($act) {
     case 'listRecr':
@@ -86,14 +86,15 @@ switch ($act) {
         include 'view/recr/manage_recr.php';
         break;
     case 'edit_recr':
-        if (isset($_GET['id'])) {
-            $id = $_GET['id'];
+       
+        include 'view/recr/manage_recr.php';
+        break;
+    case 'up_recr': 
+        if (isset($_GET['idEdit'])) {
+            $id = $_GET['idEdit'];
             $value_id = recr_select_by_id($id);
             extract($value_id);
-        }
-        include 'view/recr/editRecr.php';
-        break;
-    case 'up_recr':
+       
         if (isset($_POST['submit'])) {
             $job = $_POST['job'];
             $idcorp = $_POST['idcorp'];
@@ -121,7 +122,7 @@ switch ($act) {
             // include "view/recr/manage_recr.php";
             // include 'view/recr/editRecr.php';
             echo "<script> alert('Bạn đã sửa thành công !') </script>";
-        }
+        } }
         $perPage = 10;
 
         $valu_racr = get_records($kym = '');
