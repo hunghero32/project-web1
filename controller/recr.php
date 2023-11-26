@@ -1,8 +1,8 @@
 <?php
 
 $perPage = 5;
-$totall_address = total_address_recr();
-$valu_racr = get_records($kym = '');
+
+$valu_racr = get_records();
 $total_recr = get_Total_Records();
 extract($total_recr);
 $total_data = $total;
@@ -13,16 +13,23 @@ $data = range(1, $total_data);
 $currentData = array_slice($valu_racr, $start, $perPage);
 switch ($act) {
     case 'listRecr':
-        // $total_recr = 40;
-        if (isset($_POST['search_recr'])) {
-            $kym = $_POST['key'];
-        } else {
-            $kym = "";
-        }
+        
+        
+          
+        $level = isset($_POST['level']) ? $_POST['level'] : '';
+        $kym = isset($_POST['key']) ? $_POST['key'] : '';
+        $typeRecr = isset($_POST['typeRecr']) ? $_POST['typeRecr'] : '';
+        $major = isset($_POST['major']) ? $_POST['major'] : '';
+        $exp = isset($_POST['exp']) ? $_POST['exp'] : '';
+        $address = isset($_POST['address']) ? $_POST['address'] : '';
+        $salary = isset($_POST['salary']) ? $_POST['salary'] : '';
+        $progLang = isset($_POST['progLang']) ? $_POST['progLang'] : '';
+        $date = isset($_POST['date']) ? $_POST['date'] : '';
+        
         $perPage = 5;
-        $total_type = total_type_recr();
 
-        $valu_racr = get_records($kym);
+        
+        $val_racr = recr_select_all($kym ,$level , $typeRecr , $salary , $progLang  , $address , $exp );
 
         include 'view/recr/listRecr.php';
         break;
@@ -35,7 +42,7 @@ switch ($act) {
         }
         include 'view/recr/infoRecr.php';
         break;
-    
+
     case 'post_recr':
         if (isset($_SESSION['username'])) {
             // echo "hihi";
@@ -45,13 +52,6 @@ switch ($act) {
 
             if (isset($_POST['add_recr'])) {
                 $job = $_POST['job'];
-                // echo $job;
-                //$image = $_FILES['img'];
-                // $img = $image['name'];
-                // $target_file = 'assets/img/' . $img;
-
-                // move_uploaded_file($image['tmp_name'], $target_file);
-
                 $request = $_POST['request'];
                 $type = $_POST['type'];
                 $progLang = $_POST['progLang'];
@@ -78,7 +78,6 @@ switch ($act) {
                 // header("location : index.php?act=post_recr");
             }
         }
-        // include 'view/recr/addRecr.php';
         include 'view/recr/manage_recr.php';
         break;
     case 'manage_recr':
@@ -86,46 +85,56 @@ switch ($act) {
         include 'view/recr/manage_recr.php';
         break;
     case 'edit_recr':
-       
-        include 'view/recr/manage_recr.php';
-        break;
-    case 'up_recr': 
         if (isset($_GET['idEdit'])) {
             $id = $_GET['idEdit'];
             $value_id = recr_select_by_id($id);
             extract($value_id);
-       
-        if (isset($_POST['submit'])) {
-            $job = $_POST['job'];
-            $idcorp = $_POST['idcorp'];
-            $id = $_POST['id'];
-            // $img = $_POST['img'];
-            // $image = $_FILES['img'];
-            // if($image['size'] >0){
-            //     $img = $image['name'];
-            // }
-            // $target_file = 'assets/img/' . $img;
-            // move_uploaded_file($image['tmp_name'], $target_file);
-            $request = $_POST['request'];
-            $type = $_POST['type'];
-            $progLang = $_POST['progLang'];
-            $salary = $_POST['salary'];
-            $exp = $_POST['exp'];
-            $level = $_POST['level'];
-            $request = $_POST['request'];
-            $description = $_POST['description'];
-            $end = $_POST['end'];
+        }
+        include 'view/recr/manage_recr.php';
+        break;
+    case 'up_recr':
 
-            recr_update($id,$idcorp,$job,$exp,$level,$salary,$progLang,
-            $type,$description,$end,$request
-            );
-            // include "view/recr/manage_recr.php";
-            // include 'view/recr/editRecr.php';
-            echo "<script> alert('Bạn đã sửa thành công !') </script>";
-        } }
+            if (isset($_POST['submit'])) {
+                $job = $_POST['job'];
+                $idcorp = $_POST['idcorp'];
+                $id = $_POST['id'];
+                // $img = $_POST['img'];
+                // $image = $_FILES['img'];
+                // if($image['size'] >0){
+                //     $img = $image['name'];
+                // }
+                // $target_file = 'assets/img/' . $img;
+                // move_uploaded_file($image['tmp_name'], $target_file);
+                $request = $_POST['request'];
+                $type = $_POST['type'];
+                $progLang = $_POST['progLang'];
+                $salary = $_POST['salary'];
+                $exp = $_POST['exp'];
+                $level = $_POST['level'];
+                $request = $_POST['request'];
+                $description = $_POST['description'];
+                $end = $_POST['end'];
+
+                recr_update(
+                    $id,
+                    $idcorp,
+                    $job,
+                    $exp,
+                    $level,
+                    $salary,
+                    $progLang,
+                    $type,
+                    $description,
+                    $end,
+                    $request
+                );
+                // include "view/recr/manage_recr.php";
+                // include 'view/recr/editRecr.php';
+                echo "<script> alert('Bạn đã sửa thành công !') </script>";
+            }
         $perPage = 10;
 
-        $valu_racr = get_records($kym = '');
+        $valu_racr = get_records();
         $total_recr = get_Total_Records();
 
         include 'view/recr/manage_recr.php';
@@ -138,7 +147,7 @@ switch ($act) {
         }
         $perPage = 10;
 
-        $valu_racr = get_records($kym = '');
+        $valu_racr = get_records();
         $total_recr = get_Total_Records();
 
         include 'view/recr/manage_recr.php';

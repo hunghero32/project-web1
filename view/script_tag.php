@@ -17,5 +17,6 @@
 <script src="assets/js/progressbar.min.js"></script>
 <script src="assets/js/custom.js"></script>
 <script src="assets/js/comboselect.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
 </html>
