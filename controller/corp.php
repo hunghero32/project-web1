@@ -22,8 +22,9 @@ switch ($act) {
             $idcorp = $corp['id'];
             $ownRecrs = loadRecr($idcorp);
             
-            // Xử lí các nhà tuyển dụng cùng địa điểm
-
+            // Các nhà tuyển dụng cùng địa điểm
+            $location = $corp['address'];
+            $sameLocat = sameLocation($idcorp,$location);
         }
 
         include 'view/corp/infoCorp.php';

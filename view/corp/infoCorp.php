@@ -5,7 +5,7 @@
                 <div class="row align-items-end">
                     <div class="d-flex justify-content-center justify-content-lg-start">
                         <div style="width: 100px; height: 100px" class="overflow-hidden rounded-circle mb-3">
-                            <img src='<?= checkUserAvaNull($avatar) ?>' alt='user ' class=''>
+                            <img src='<?= checkUserAvaNull($corp['avatar']) ?>' alt='user ' class=''>
                         </div>
                     </div>
                     <div class="col-lg-8">
@@ -14,18 +14,18 @@
                             <ul>
                                 <li>
                                     <i class="me-2 fa-solid fa-location-dot"></i>
-                                    <?= checknull($address); ?>
+                                    <?= checknull($corp['address']); ?>
                                 </li>
                                 <li>
                                     <i class="fa-solid fa-at"></i>
-                                    <a href="mailto:<?= checknull($email); ?>">
-                                        <?= checknull($email); ?>
+                                    <a href="mailto:<?= checknull($corp['email']); ?>">
+                                        <?= checknull($corp['email']); ?>
                                     </a>
                                 </li>
                                 <li>
                                     <i class="fa-solid fa-tty"></i>
-                                    <a href="tel:<?= checknull($phone) ?>">
-                                        <?= checknull($phone); ?>
+                                    <a href="tel:<?= checknull($corp['phone']) ?>">
+                                        <?= checknull($corp['phone']); ?>
                                     </a>
                                 </li>
                                 <li>
@@ -97,7 +97,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="widget-area">
-                    <h5><i class="fa-solid fa-pen-to-square"></i> Tuyển dụng của <?= $name ?></h5>
+                    <h5><i class="fa-solid fa-pen-to-square me-2"></i> Tuyển dụng của <?= $name ?></h5>
                     <?php if (!empty($ownRecrs)) {
                         foreach ($ownRecrs as $recr) {
                             extract($recr); ?>
@@ -112,22 +112,29 @@
                             </div>
                         <?php } ?>
                     <?php } else { ?>
-                        <div class="employer-item text-center">
+                        <div class="employer-item">
                             Không có dữ liệu tìm thấy !
                         </div>
                     <?php } ?>
                     <hr>
-                    <h5>Cũng tại <?= $address ?></h5>
-                    <div class="employer-item">
-                        <ul>
-                            <li>
-                                <img width="50px" data-cfsrc="<?= checkCorpAvaNull($avatar) ?>" alt="Details" style="display:none;visibility:hidden;">
+                    <h5><i class="fa-solid fa-map-location-dot me-2"></i> Cũng tại <?= $address ?></h5>
+                    <?php if (!empty($sameLocat)) {
+                        foreach ($sameLocat as $recr) {
+                            extract($recr); ?>
+                            <div class="employer-item" onclick="return window.location.href = 'index.php?act=infoCorp&id=<?= $id ?>'">
+                                <img width="50px" class="rounded-3" data-cfsrc="<?= checkCorpAvaNull($avatar) ?>" alt="Details" style="display:none;visibility:hidden;">
                                 <noscript><img src="<?= checkCorpAvaNull($avatar) ?>" alt="Details"></noscript>
                                 <h6 class="text-main"><?= $name ?></h6>
-                                <span>hahaha</span>
-                            </li>
-                        </ul>
-                    </div>
+                                <p class="m-0 p-0" style="font-size: 14px;"><i class="fa-solid fa-users"></i> <?= $size > 0 ? $size : 'Chưa cập nhật' ?></p>
+                                <p class="m-0 p-0" style="font-size: 14px;"><i class="fa-solid fa-calendar-days"></i><?= empty(checknull($activeYear)) ? ' Chưa cập nhật' : ' Thành lập ' . $activeYear; ?></p>
+                                <!-- <span class="span-two"><?= $type; ?></span> -->
+                            </div>
+                        <?php } ?>
+                    <?php } else { ?>
+                        <div class="employer-item">
+                            Không có dữ liệu tìm thấy !
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
