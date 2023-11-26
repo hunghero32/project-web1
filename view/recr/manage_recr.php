@@ -67,6 +67,7 @@
                     <?php 
                         include "manageRecr/profile.php";
                         include "manageRecr/postRecr.php";
+                        include "manageRecr/editRecr.php";
                         include "manageRecr/m_listRecr.php";
                     ?>
                 </div>

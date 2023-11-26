@@ -5,7 +5,7 @@ switch ($act) {
     case 'signin':
         if (isset($_POST['signin'])) {
             $user = login($_POST['username'], $_POST['pass']);
-            var_dump($user);
+            // var_dump($user);
             if (is_array($user)) {
                 $_SESSION['username'] = $user;
                 header('Location: index.php');

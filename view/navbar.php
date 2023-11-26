@@ -40,7 +40,8 @@
                     </ul>
                     <div class="side-nav three d-flex">
                         <?php if (isset($_SESSION['username'])) {
-                            extract($_SESSION['username']); ?>
+                            extract($_SESSION['username']);  
+                            // var_dump($_SESSION['username'])?>
                             <div class="login-left d-flex align-items-center">
                                 <div class="nav-item dropdown">
                                     <a class="text-white text-small-screen d-flex align-items-center" href="#" id="navbarDropdown" role="button" aria-expanded="false">
