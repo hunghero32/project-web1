@@ -5,7 +5,7 @@
                 <div class="row align-items-end">
                     <div class="col-lg-8">
                         <div class="left two">
-                            <img data-cfsrc="assets/img/candidate-details1.jpg" alt="CV Chi Tiết" style="display:none;visibility:hidden;"><noscript><img src="assets/img/candidate-details1.jpg" alt="Details"></noscript>
+                            <img data-cfsrc="<?= checkUserAvaNull($avatar) ?>" alt="CV Chi Tiết" style="display:none;visibility:hidden;width:25%;"><noscript><img src="assets/img/candidate-details1.jpg" alt="Details"></noscript>
                             <h2><?= checknull($name) ?></h2>
                             <ul>
                                 <li>
@@ -19,30 +19,24 @@
                             </ul>
                         </div>
                     </div>
-                    <!-- <div class="col-lg-4">
+                    <div class="col-lg-4">
                         <div class="right">
                             <ul>
-                                <li>
-                                    <a href="#" id="save">
-                                        <i class="bx bx-heart"></i>
-                                        Save
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" id="share">
+                                <li><click>
+                                    <a href="" id="save">
                                         <i class="bx bx-share-alt"></i>
-                                        Share
-                                    </a>
+                                        Save
+                                    </a></click>
                                 </li>
-                                <li>
-                                    <a href="#">
+                                <li><click>
+                                    <a href="" id="download">
                                         <i class="bx bxs-report"></i>
-                                        Report
-                                    </a>
+                                        Download
+                                    </a></click>
                                 </li>
                             </ul>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -86,7 +80,7 @@
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Kỹ năng:</h4>
-                                <span><?= checknull($skill) ?></span>
+                                <span><?= checknull($progLang) ?></span>
                             </li>
                             <li>
                                 <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
@@ -105,80 +99,62 @@
                     </div>
                     <div class="work bottom-item">
                         <h3>Kinh nghiệm làm Việc </h3>
-                        <?php foreach ($list_cv as $cv) { ?>
+                        <?php foreach ($list_cv as $idcv) { ?>
                             <ul>
                                 <li>
                                     <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
-                                    <?= checknull($corp) ?>
+                                    <span>Công việc chính :</span>
                                 </li>
                                 <li>
-                                    <span>Từ :<?= checknull($start) ?> | Đến :<?= checknull($end) ?></span>
+                                    <?= checknull($job) ?>
                                 </li>
                             </ul>
-                            <h4><?= checknull($job) ?></h4>
+                            <h4>Tại : <?= checknull($corp) ?></h4>
+
+                            <li>
+                                <span>Từ :<?= checknull($start) ?> </span>
+                            </li>
+                            <li>
+                                <span>Đến :<?= checknull($end) ?></span>
+                            </li>
+                            <hr>
                         <?php } ?>
                     </div>
 
                     <div class="work bottom-item">
                         <h3>Học Vấn</h3>
-                        <?php foreach ($list_cv as $cv) { ?>
+                        <?php foreach ($list_cv as $idcv) { ?>
                             <ul>
                                 <li>
                                     <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
-                                    <?= checknull($school) ?>
+                                    <span>Chuyên Ngành :</span>
+                                </li>
+                                <li>
+                                    <?= checknull($major) ?>
                                 </li>
                             </ul>
-                            <h4><?= checknull($school) ?> Từ năm <?= checknull($year) ?></h4>
+                            <h4>Tại Trường/Trung Tâm : <?= checknull($school) ?> </h4>
+                            <li>
+                                <span>Từ năm <?= checknull($year) ?></span>
+                            </li>
+                            <hr>
                         <?php } ?>
                     </div>
                     <div class="skills">
-                        <h3>Skills</h3>
+                        <h3>Ngôn ngữ sử dụng</h3>
                         <div class="skill-wrap">
-                        <?php foreach ($list_cv as $cv) { ?>
-                            <div class="skill">
-                                <h3><?= checknull($skill) ?></h3>
-                                <div class="skill-bar skill1 animate__slideInLeft animate__animated">
-                                    <span class="skill-count1">66%</span>
+                            <?php foreach ($list_cv as $cv) { ?>
+                                <div class="skill">
+                                    <h3><?= checknull($progLang) ?></h3>
+                                    <div class="skill-bar skill1 animate__slideInLeft animate__animated">
+                                        <span class="skill-count1">66%</span>
+                                    </div>
                                 </div>
-                            </div>
                             <?php } ?>
                         </div>
                     </div>
+                    <hr>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        // Gán sự kiện click cho nút "Share"
-        document.getElementById('share').addEventListener('click', function() {
-            // Lấy địa chỉ (URL) của trang đang hiển thị
-            var currentPageUrl = window.location.href;
-
-            // Tạo một thẻ input ẩn để sao chép nội dung vào clipboard
-            var tempInput = document.createElement("input");
-            tempInput.value = currentPageUrl;
-            document.body.appendChild(tempInput);
-
-            // Chọn toàn bộ nội dung trong input
-            tempInput.select();
-
-            // Sao chép nội dung vào clipboard
-            document.execCommand("copy");
-
-            // Xóa thẻ input ẩn
-            document.body.removeChild(tempInput);
-
-            //alert("Đã sao chép URL trang vào clipboard: " + currentPageUrl);
-        });
-        // Gán sự kiện click cho nút "Save"
-        document.getElementById('save').addEventListener('click', function() {
-            // Lấy địa chỉ (URL) của trang đang hiển thị
-            var currentPageUrl = window.location.href;
-
-            // Lưu địa chỉ URL vào localStorage
-            localStorage.setItem('savedUrl', currentPageUrl);
-
-            //alert("Đã lưu URL trang: " + currentPageUrl);
-        });
-    </script>
