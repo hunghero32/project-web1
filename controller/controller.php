@@ -15,9 +15,8 @@ $top_corp = top_Corp();
 $top_cv = top_cv();
 $list_corp = list_Corp('', '');
 $list_cv = list_cv('', '', '', '','','','');
-
-
-$list_recr = get_records($kym = "");
+$list_recr = get_records();
+// $search_hn_recr = search_hn_recr();
 
 include 'view/header.php';
 
