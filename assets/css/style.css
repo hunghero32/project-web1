@@ -6929,6 +6929,27 @@ button:focus {
     color: var(--secondary)
 }
 
+.file {
+    border: 1px dashed var(--main);
+    padding: 10px;
+}
+
+.cancerThumb {
+    display: flex;
+    width: fit-content;
+    height: 50px;
+    text-align: center;
+    align-items: center;
+    color: white;
+    background: red;
+    border-radius: 3px;
+}
+
+.cancerThumb:hover {
+    box-shadow: 0 0 5px red;
+    transition: 0.3s ease;
+}
+
 .form-item {
     border: 2px dashed var(--secondary);
     background-color: white !important;

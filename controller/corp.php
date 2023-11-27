@@ -55,7 +55,66 @@ switch ($act) {
 
         $benePara = explode("\n", $benefits);
         $bene = paragToLines($benePara);
-        
+
+        include 'view/corp/manage.php';
+        break;
+
+    case 'updateInfoCorp';
+        $idcorp = $_SESSION['username']['id'];
+        $corp = manageInfo($idcorp);
+        extract($corp);
+
+        if (isset($_POST['updateInfoCorp'])) {
+            $id = checkUpdate($_POST['id']);
+            $nameCorp = checkUpdate($_POST['name']);
+            $emailCorp = checkUpdate($_POST['email']);
+            $phoneCorp = checkUpdate($_POST['phone']);
+            $addressCorp = checkUpdate($_POST['address']);
+
+            updateUser($id,$nameCorp,$emailCorp,$phoneCorp,$addressCorp);
+
+            $active = checkUpdate($_POST['activeYear']);
+            $introd = checkUpdate($_POST['introduce']);
+            $workday = checkUpdate($_POST['workingday']);
+            $sizeCorp = checkUpdate($_POST['size']);
+            $linkCorp = checkUpdate($_POST['link']);
+            $beneCorp = checkUpdate($_POST['benefits']);
+
+            updateCorp($id,$active,$introd,$sizeCorp,$workday,$linkCorp,$beneCorp);
+
+            for ($i = 1; $i <= 5; $i++) {
+                if (isset($_FILES['thumbnail' . $i]) && ($_FILES['thumbnail' . $i]['size'] > 0)) {
+                    $file = $_FILES['thumbnail' . $i];
+                    // sử dụng str_replace để xóa các khoảng trắng, tránh lỗi chèn src có space trong thẻ img
+                    $file_name = str_replace(' ', '', $file['name']);
+                    $target_file = $img_path . $file_name;
+                    move_uploaded_file($file['tmp_name'], $target_file);
+                } else {
+                    $file_name = isset($_POST['thumbnail' . $i]) ? $_POST['thumbnail' . $i] : '';
+                }
+                $file_name !== '' ? updateImage($id, 'thumbnail' . $i, $file_name) : '';
+            }
+
+            if (isset($_FILES['avatar']) && ($_FILES['avatar']['size'] > 0)) {
+                $file = $_FILES['avatar'];
+                // sử dụng str_replace để xóa các khoảng trắng, tránh lỗi chèn src có space trong thẻ img
+                $file_avatar_name = str_replace(' ', '', $file['name']);
+                $target_file = $img_path . $file_avatar_name;
+                move_uploaded_file($file['tmp_name'], $target_file);
+            } else {
+                $file_avatar_name = isset($_POST['avatar']) ? $_POST['avatar'] : '';
+            }
+            $file_avatar_name !== '' ? updateImage($id, 'avatar', $file_avatar_name) : '';
+            $file_avatar_name !== '' ? $_SESSION['username']['avtar'] = $file_avatar_name : '';
+
+            $avatar !== '' && $_POST['avatar'] == '' ? removeImage($id,'avatar') : '';
+            $thumbnail1 !== '' && $_POST['thumbnail1'] == '' ? removeImage($id,'thumbnail1') : '';
+            $thumbnail2 !== '' && $_POST['thumbnail2'] == '' ? removeImage($id,'thumbnail2') : '';
+            $thumbnail3 !== '' && $_POST['thumbnail3'] == '' ? removeImage($id,'thumbnail3') : '';
+            $thumbnail4 !== '' && $_POST['thumbnail4'] == '' ? removeImage($id,'thumbnail4') : '';
+            $thumbnail5 !== '' && $_POST['thumbnail5'] == '' ? removeImage($id,'thumbnail5') : '';
+            $_SESSION['updated'] = 1;
+        }
         include 'view/corp/manage.php';
         break;
 
