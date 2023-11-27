@@ -61,7 +61,7 @@
                     <div class="details-inner">
                         <h5>Giới thiệu công ty <?= isset($intro) && $intro != ''  ? '' : '[ Chưa cập nhật ]'; ?></h5>
                         <!-- introduce  -->
-                        <textarea name="introduce" class="w-100 p-3 rounded-3" style="height: 250px;outline: none" required><?= checknull($introduce); ?></textarea>
+                        <textarea name="introduce" class="w-100 p-3 rounded-3" style="height: 250px;outline: none" maxlength="1000" required><?= checknull($introduce); ?></textarea>
                         <!--  -->
                     </div>
                     <div class="details-inner d-flex flex-column flex-sm-row justify-content-between">
@@ -135,7 +135,7 @@
                             <li><i class="fa-solid fa-star-of-life"></i> <strong style="width: 10%"> Quyền lợi </strong></li>
                             <li>
                                 <!-- benefits -->
-                                <textarea name="benefits" class="w-100 p-3 rounded-3" style="height: 200px;outline: none" required><?= checknull($benefits) ?></textarea>
+                                <textarea name="benefits" class="w-100 p-3 rounded-3" style="height: 200px;outline: none" maxlength="500" required><?= checknull($benefits) ?></textarea>
                                 <!--  -->
                             </li>
                         </ul>
