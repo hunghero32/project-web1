@@ -1,4 +1,4 @@
-<div class="tab-pane fade <?=(isset($_GET['id'])) ? 'show active' : '' ?>" id="v-pills-post" role="tabpanel" aria-labelledby="v-pills-post-tab">
+<div class="tab-pane fade <?= (isset($_GET['id'])) ? 'show active' : '' ?>" id="v-pills-post" role="tabpanel" aria-labelledby="v-pills-post-tab">
     <div class="post-job-area ptb-100">
         <div class="container">
             <form action="index.php?act=post_recr" method="POST">
@@ -7,14 +7,25 @@
                         <h2>Thêm bài tuyển dụng</h2>
 
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>
                                     Tiêu đề :
                                 </label>
-                                <input type="text" name="job" class="form-control" placeholder="Tuyển lập trình viên Backend ..." title="Tiêu đề không được để trống !" required>
+                   
+                                <input name="job" type="text" class="searchSelect" id="searchlevel" placeholder="<?= checkfind('', 'Công việc'); ?> &darr;">
+                                <div class="dropdown-content" id="dropdownlevel" style="width: 23%;">
+                                    <div class="dropdown-item">Không chọn</div>
+                                    <?php foreach ($datafilter as $cv) {
+                                        extract($cv);
+                                        if ($job !== '') { ?>
+                                            <div class="dropdown-item"><?= $job ?></div>
+                                        <?php } ?>
+                                    <?php } ?>
+                                    <div class="dropdown-item">Khác</div>
+                                </div>
                             </div>
                         </div>
 
@@ -58,7 +69,7 @@
                                 </select>
                             </div>
                         </div>
-                        
+
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>
@@ -86,7 +97,7 @@
                                         <?php extract($v);
                                         if (isset($level) && $level != "") { ?>
                                             <option value="<?= $level ?>"> <?= $level ?></option>
-                                            <?php }
+                                    <?php }
                                     } ?>
                                 </select>
                             </div>
@@ -116,7 +127,10 @@
                             <textarea name="request" class="form-control" cols="30" rows="10" style="resize: vertical;" title="Mô tả không được để trống !" required></textarea>
                         </div>
                     </div>
-                    
+                    <div class="col-lg-6">
+                        
+                    </div>
+
                     <button type="submit" name="add_recr" class="btn">Thêm </button>
                 </div>
             </form>
