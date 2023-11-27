@@ -40,7 +40,7 @@ function info_Corp($id)
             FROM user u
             LEFT JOIN corp c ON u.id = c.iduser
             LEFT JOIN gallery g ON u.id = g.iduser
-            WHERE u.role = 3 AND c.id = ?";
+            WHERE u.role = 3 AND u.id = ?";
     return pdo_query_one($sql, $id);
 }
 
@@ -78,24 +78,95 @@ function sameLocation($id, $location)
     return pdo_query($sql, 3, $location, $id);
 }
 
+function updateUser(
+    $id,
+    $name,
+    $email,
+    $phone,
+    $address,
+) {
+    $sql = "UPDATE user SET
+            name = ?,
+            email = ?,
+            phone = ?,
+            address = ? WHERE id = ?";
+    pdo_execute(
+        $sql,
+        $name,
+        $email,
+        $phone,
+        $address,
+        $id
+    );
+}
+
+function updateCorp(
+    $id,
+    $activeYear,
+    $introduce,
+    $size,
+    $workingday,
+    $link,
+    $benefits,
+) {
+    $sql = "UPDATE corp SET
+                activeYear = ?,
+                introduce = ?,
+                size = ?,
+                workingday = ?,
+                link = ?,
+                benefits = ?
+            WHERE iduser = ?";
+    pdo_execute(
+        $sql,
+        $activeYear,
+        $introduce,
+        $size,
+        $workingday,
+        $link,
+        $benefits,
+        $id
+    );
+}
+
 // function update_Corp(
-//     $id, $name, $email, $phone, $address,
-//     $activeYear, $introduce,
-//     $avatar, $thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5
+//     $id,
+//     $name,
+//     $email,
+//     $phone,
+//     $address,
+//     $activeYear,
+//     $introduce,
+//     $size,
+//     $workingday,
+//     $link,
+//     $benefits,
 // ) {
-//     $sql = "UPDATE user as u, corp as c, gallery as g
-//             SET u.username = '$name',
-//                 u.email = '$email',
-//                 u.phone = '$phone',
-//                 u.address = '$address',
-//                 c.activeYear = '$activeYear',
-//                 c.introduce = '$introduce',
-//                 g.avatar = '$avatar',
-//                 g.thumbnail1 = '$thumbnail1',
-//                 g.thumbnail2 = '$thumbnail2',
-//                 g.thumbnail3 = '$thumbnail3',
-//                 g.thumbnail4 = '$thumbnail4',
-//                 g.thumbnail5 = '$thumbnail5',
-//             WHERE u.id = '$id' AND c.iduser = '$id' AND g.iduser = '$id'";
-//     pdo_execute($sql);
-// }
+//     $sql = "UPDATE user as u, corp as c
+//             SET u.name = ? ,
+//                 u.email = ? ,
+//                 u.phone = ? ,
+//                 u.address = ? ,
+//                 c.activeYear = ? ,
+//                 c.introduce = ? ,
+//                 c.size = ? ,
+//                 c.workingday = ? ,
+//                 c.benefits = ? ,
+//                 c.link = ?
+//             WHERE u.id = ? AND c.iduser = ?";
+//     pdo_execute($sql, $name, $email, $phone, $address, $activeYear, $introduce, $size, $workingday, $benefits, $link, $id, $id);
+// };
+
+function updateImage($id, $col, $value)
+{
+    $sql = "UPDATE gallery
+            SET $col = ? WHERE iduser = ?";
+    pdo_execute($sql, $value, $id);
+}
+
+function removeImage($id, $col)
+{
+    $sql = "UPDATE gallery
+            SET $col = '' WHERE iduser = ?";
+    pdo_execute($sql, $id);
+}

@@ -40,8 +40,10 @@
 
                 
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
                     <!-- <a href="index.php?act=edit_recr&idEdit=<?=$id?>" class="nav-link  bg-info text-white me-3 p-2 px-4 fw-bold " id="v-pills-edit-tab" data-bs-toggle="pill"   aria-selected="false"> -->
                     <a href="<?= $edit_recr ?>" class="nav-link  bg-info text-white me-3 p-2 px-4 fw-bold" id="v-pills-edit-tab" role="tab">
+
                         <div class="profile-list">
                             Sửa
                         </div>

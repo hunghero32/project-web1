@@ -61,3 +61,23 @@ function paragToLines($paragraph)
     }
     return $return;
 }
+
+function checkUpdate($input) {
+    $return = isset($input) && $input == '' ? '' : $input;
+    return $return;
+}
+
+function updateImg($input,$input2) {
+    $file_name = '';
+    if (isset($input) && ($input['size'] > 0)) {
+        $file = $input;
+        // sử dụng str_replace để xóa các khoảng trắng, tránh lỗi chèn src có space trong thẻ img
+        $file_name = str_replace(' ', '', $file['name']);
+        $folder = 'assets/uploads/';
+        $target_file = $folder . $file_name;
+        move_uploaded_file($file['tmp_name'], $target_file);
+    } else {
+        $file_name = $input2 !== ''  ? $input2 : '';
+    }
+    return $file_name;
+}
