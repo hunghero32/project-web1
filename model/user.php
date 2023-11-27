@@ -49,3 +49,8 @@ function edit_user($id)
     $user = pdo_query_one($sql);
     return $user;
 }
+
+function existAccount() {
+    $sql = "SELECT user.name, user.email, user.phone, user.username FROM user";
+    return pdo_query($sql);
+}
