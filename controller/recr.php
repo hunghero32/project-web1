@@ -1,7 +1,5 @@
 <?php
-
 $perPage = 5;
-
 $valu_racr = get_records();
 $total_recr = get_Total_Records();
 extract($total_recr);
@@ -13,9 +11,6 @@ $data = range(1, $total_data);
 $currentData = array_slice($valu_racr, $start, $perPage);
 switch ($act) {
     case 'listRecr':
-        
-        
-          
         $level = isset($_POST['level']) ? $_POST['level'] : '';
         $kym = isset($_POST['key']) ? $_POST['key'] : '';
         $typeRecr = isset($_POST['typeRecr']) ? $_POST['typeRecr'] : '';
@@ -25,12 +20,8 @@ switch ($act) {
         $salary = isset($_POST['salary']) ? $_POST['salary'] : '';
         $progLang = isset($_POST['progLang']) ? $_POST['progLang'] : '';
         $date = isset($_POST['date']) ? $_POST['date'] : '';
-        
         $perPage = 5;
-
-        
         $val_racr = recr_select_all($kym ,$level , $typeRecr , $salary , $progLang  , $address , $exp );
-
         include 'view/recr/listRecr.php';
         break;
     case 'info_recr':
@@ -42,7 +33,6 @@ switch ($act) {
         }
         include 'view/recr/infoRecr.php';
         break;
-
     case 'post_recr':
         if (isset($_SESSION['username'])) {
             // echo "hihi";
@@ -61,7 +51,6 @@ switch ($act) {
                 $request = $_POST['request'];
                 $description = $_POST['description'];
                 $end = $_POST['end'];
-
                 recr_add(
                     $idcorp,
                     $job,
@@ -98,13 +87,6 @@ switch ($act) {
                 $job = $_POST['job'];
                 $idcorp = $_POST['idcorp'];
                 $id = $_POST['id'];
-                // $img = $_POST['img'];
-                // $image = $_FILES['img'];
-                // if($image['size'] >0){
-                //     $img = $image['name'];
-                // }
-                // $target_file = 'assets/img/' . $img;
-                // move_uploaded_file($image['tmp_name'], $target_file);
                 $request = $_POST['request'];
                 $type = $_POST['type'];
                 $progLang = $_POST['progLang'];
@@ -114,7 +96,6 @@ switch ($act) {
                 $request = $_POST['request'];
                 $description = $_POST['description'];
                 $end = $_POST['end'];
-
                 recr_update(
                     $id,
                     $idcorp,
@@ -128,8 +109,6 @@ switch ($act) {
                     $end,
                     $request
                 );
-                // include "view/recr/manage_recr.php";
-                // include 'view/recr/editRecr.php';
                 echo "<script> alert('Bạn đã sửa thành công !') </script>";
             }
         $perPage = 10;
@@ -153,6 +132,5 @@ switch ($act) {
         include 'view/recr/manage_recr.php';
         break;
     default:
-        // include "+567908234875.html";
         break;
 }
