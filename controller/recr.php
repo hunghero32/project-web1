@@ -13,9 +13,6 @@ $data = range(1, $total_data);
 $currentData = array_slice($valu_racr, $start, $perPage);
 switch ($act) {
     case 'listRecr':
-        
-        
-          
         $level = isset($_POST['level']) ? $_POST['level'] : '';
         $kym = isset($_POST['key']) ? $_POST['key'] : '';
         $typeRecr = isset($_POST['typeRecr']) ? $_POST['typeRecr'] : '';
@@ -25,10 +22,7 @@ switch ($act) {
         $salary = isset($_POST['salary']) ? $_POST['salary'] : '';
         $progLang = isset($_POST['progLang']) ? $_POST['progLang'] : '';
         $date = isset($_POST['date']) ? $_POST['date'] : '';
-        
         $perPage = 5;
-
-        
         $val_racr = recr_select_all($kym ,$level , $typeRecr , $salary , $progLang  , $address , $exp );
 
         include 'view/recr/listRecr.php';
@@ -47,7 +41,7 @@ switch ($act) {
         if (isset($_SESSION['username'])) {
             // echo "hihi";
             extract($_SESSION['username']);
-            $val_corp = info_Corp($id);
+            $val_corp = info_Corp_recr($id);
             $idcorp =  $val_corp['id'];
 
             if (isset($_POST['add_recr'])) {
@@ -62,49 +56,33 @@ switch ($act) {
                 $description = $_POST['description'];
                 $end = $_POST['end'];
 
-                recr_add(
-                    $idcorp,
-                    $job,
-                    $exp,
-                    $level,
-                    $salary,
-                    $progLang,
-                    $type,
-                    $end,
-                    $description,
-                    $request
+                recr_add( $idcorp,$job  ,$exp ,$level ,$salary ,$progLang ,$type ,
+     $description  ,$end , $request
                 );
                 echo "<script> alert('Bạn đã thêm thành công !') </script>";
                 // header("location : index.php?act=post_recr");
             }
         }
-        include 'view/recr/manage_recr.php';
+        include 'view/corp/manage.php';
         break;
     case 'manage_recr':
 
-        include 'view/recr/manage_recr.php';
+        include 'view/corp/manage.php';
         break;
     case 'edit_recr':
         if (isset($_GET['idEdit'])) {
             $id = $_GET['idEdit'];
             $value_id = recr_select_by_id($id);
-            extract($value_id);
+            
+            
         }
-        include 'view/recr/manage_recr.php';
+        include 'view/corp/manage.php';
         break;
     case 'up_recr':
-
             if (isset($_POST['submit'])) {
                 $job = $_POST['job'];
                 $idcorp = $_POST['idcorp'];
                 $id = $_POST['id'];
-                // $img = $_POST['img'];
-                // $image = $_FILES['img'];
-                // if($image['size'] >0){
-                //     $img = $image['name'];
-                // }
-                // $target_file = 'assets/img/' . $img;
-                // move_uploaded_file($image['tmp_name'], $target_file);
                 $request = $_POST['request'];
                 $type = $_POST['type'];
                 $progLang = $_POST['progLang'];
@@ -115,20 +93,10 @@ switch ($act) {
                 $description = $_POST['description'];
                 $end = $_POST['end'];
 
-                recr_update(
-                    $id,
-                    $idcorp,
-                    $job,
-                    $exp,
-                    $level,
-                    $salary,
-                    $progLang,
-                    $type,
-                    $description,
-                    $end,
-                    $request
+                recr_update( $id, $idcorp, $job, $exp, $level, $salary, $progLang, $type, $description, $end, $request
                 );
-                // include "view/recr/manage_recr.php";
+                
+                // include "view/corp/manage.php";
                 // include 'view/recr/editRecr.php';
                 echo "<script> alert('Bạn đã sửa thành công !') </script>";
             }
@@ -137,7 +105,7 @@ switch ($act) {
         $valu_racr = get_records();
         $total_recr = get_Total_Records();
 
-        include 'view/recr/manage_recr.php';
+        include 'view/corp/manage.php';
         break;
 
     case 'delete_recr':
@@ -150,7 +118,7 @@ switch ($act) {
         $valu_racr = get_records();
         $total_recr = get_Total_Records();
 
-        include 'view/recr/manage_recr.php';
+        include 'view/corp/manage.php';
         break;
     default:
         // include "+567908234875.html";

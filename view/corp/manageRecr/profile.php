@@ -1,5 +1,7 @@
-<div class="tab-pane fade <?= (!isset($_GET['id'])) ? 'show active' : '' ?>" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-    <form method="POST" action="index.php?act=updateInfoCorp" id="editInfoCorp" class="d-none job-details-area employer-details-area ptb-100 form-item" enctype="multipart/form-data">
+
+<div class="tab-pane fade <?= (!isset($_GET['id']) && !isset($_GET['idEdit'])) ? 'show active' : '' ?>" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+    <form id="editInfoCorp" class="d-none job-details-area employer-details-area ptb-100 form-item">
+
         <div class="boxbtn d-flex w-50 justify-content-end gap-3">
             <span class="cancer border-0" id="cancerEditInfoCorp">Hủy <i class="fa-solid fa-xmark"></i></span>
             <button name="updateInfoCorp" class="save border-0" type="submit">Lưu <i class="fa-solid fa-cloud-arrow-up"></i></button>
