@@ -1,3 +1,4 @@
+
 <div class="tab-pane fade <?=(isset($_GET['idEdit'])) ? 'show active' : '' ?>" id="v-pills-edit" role="tabpanel" aria-labelledby="v-pills-edit-tab">
     <div class="post-job-area ptb-100">
         <div class="container">
@@ -7,8 +8,8 @@
                         <h2>Sửa bài tuyển dụng</h2>
 
                     </div>
-                    <input type="hidden" value="<?= $id ?>" name="id">
-                    <input type="hidden" value="<?= $idcorp ?>" name="idcorp">
+                    <input type="hidden" value="<?= $value_id['id'] ?>" name="id">
+                    <input type="hidden" value="<?= $value_id['idcorp'] ?>" name="idcorp">
 
                     
                     <div class="row">
@@ -17,7 +18,18 @@
                                 <label>
                                     Tiêu đề :
                                 </label>
-                                <input type="text" value="<?= $job ?>" name="job" class="form-control" placeholder="Tuyển lập trình viên Backend ..." title="Tiêu đề không được để trống !" required>
+
+                                <input name="job" value="<?=$value_id['job'] ?>" type="text" class="searchSelect" id="searchlevel" placeholder="<?= checkfind( "", isset($value_id['job']) ? $value_id['job'] :'Công việc')  ?> &darr;">
+                                <div class="dropdown-content" id="dropdownlevel" style="width: 23%;">
+                                    <div class="dropdown-item">Không chọn</div>
+                                    <?php foreach ($datafilter as $v) {
+                                        
+                                        if ($v['job'] !== '') { ?>
+                                            <div class="dropdown-item"><?= $v['job'] ?></div>
+                                        <?php } ?>
+                                    <?php } ?>
+                                    <div class="dropdown-item">Khác</div>
+                                </div>
                             </div>
                         </div>
 
@@ -27,7 +39,7 @@
                                 <label>
                                     Ngôn ngữ :
                                 </label>
-                                <input type="text" value="<?= $progLang ?>" class="form-control" name="progLang" placeholder="Web Developer" title="Ngôn ngữ không được để trống !" requiredd>
+                                <input type="text" value="<?=$value_id['progLang'] ?>" class="form-control" name="progLang" placeholder="Web Developer" title="Ngôn ngữ không được để trống !" requiredd>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -40,7 +52,7 @@
                                     <?php foreach ($datafilter as $v) { ?>
                                         <?php
                                         if (isset($v['typeRecr']) && $v['typeRecr'] != "") { ?>
-                                            <option value="<?= $v['typeRecr'] ?>" <?= $type ==  $v['typeRecr'] ? "selected" : "" ?>> <?= $v['typeRecr'] ?></option>
+                                            <option value="<?= $v['typeRecr'] ?>" <?= $value_id['type'] ==  $v['typeRecr'] ? "selected" : "" ?>> <?= $v['typeRecr'] ?></option>
                                     <?php }
                                     } ?>
                                 </select>
@@ -56,7 +68,7 @@
                                     <?php foreach ($datafilter as $v) { ?>
                                         <?php
                                         if (isset($v['salary']) && $v['salary'] != "") { ?>
-                                            <option value="<?= $v['salary'] ?>" <?= $salary == $v['salary'] ? '' : '' ?>> <?= $v['salary'] ?></option>
+                                            <option value="<?= $v['salary'] ?>" <?= $value_id['salary'] == $v['salary'] ? "selected" : "" ?>> <?= $v['salary'] ?></option>
                                     <?php }
                                     } ?>
                                 </select>
@@ -72,7 +84,7 @@
                                     <?php foreach ($datafilter as $v) { ?>
                                         <?php
                                         if (isset($v['exp']) && $v['exp'] != "") { ?>
-                                            <option value="<?= $v['exp'] ?>" <?= $exp == $v['exp'] ? 'selected' : '' ?>> <?= $v['exp'] ?></option>
+                                            <option value="<?= $v['exp'] ?>" <?= $value_id['exp'] == $v['exp'] ? "selected" : "" ?>> <?= $v['exp'] ?></option>
                                     <?php }
                                     } ?>
 
@@ -84,7 +96,7 @@
                                 <label>
                                     Mô tả công việc :
                                 </label>
-                                <textarea name="description" class="form-control" cols="30" rows="10" style="resize: vertical;" title="Mô tả không được để trống !" required><?= $description ?></textarea>
+                                <textarea name="description" class="form-control" cols="30" rows="10" style="resize: vertical;" title="Mô tả không được để trống !" required><?=$value_id['description'] ?></textarea>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -92,7 +104,7 @@
                                 <label>
                                     Yêu cầu công việc :
                                 </label>
-                                <textarea name="request" class="form-control" cols="30" rows="10" style="resize: vertical;" title="Mô tả không được để trống !" required> <?= $request ?></textarea>
+                                <textarea name="request" class="form-control" cols="30" rows="10" style="resize: vertical;" title="Mô tả không được để trống !" required> <?=$value_id['request'] ?></textarea>
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -105,7 +117,7 @@
                                     <?php foreach ($datafilter as $v) { ?>
                                         <?php
                                         if (isset($v['level']) && $v['level'] != "") { ?>
-                                            <option value="<?= $v['level'] ?>" <?= $level == $v['level'] ? 'selected' : '' ?>> <?= $v['level'] ?></option>
+                                            <option value="<?= $v['level'] ?>" <?= $value_id['level'] == $v['level'] ? "selected" : "" ?>> <?= $v['level'] ?></option>
                                     <?php }
                                     } ?>
                                 </select>
@@ -116,11 +128,11 @@
                                 <label>
                                     Ngày hết hạn :
                                 </label>
-                                <input type="date" class="form-control" name="end" required value="<?= $end ?>">
+                                <input type="date" class="form-control" name="end" required value="<?=$value_id['end'] ?>">
                             </div>
                         </div>
                     </div>
-                    <button type="submit" name="submit" class="btn">Thêm </button>
+                    <button type="submit" name="submit" class="btn">Cập nhật </button>
                 </div>
             </form>
         </div>

@@ -73,7 +73,7 @@
                                         Tạo CV <i class="fa-solid fa-file-pen"></i>
                                     </a>
                                 <?php } else if ($role == 3) { ?>
-                                    <a class="job-right" href="index.php?act=user_cv&id=<?= $id ?>">
+                                    <a class="job-right" href="index.php?act=post_recr&id=<?= $id ?>">
                                         Tạo tuyển dụng <i class="fa-solid fa-file-pen"></i>
                                     </a>
                                 <?php } else { ?> <a class="job-right" href="index.php?act=post_recr&id=<?= $id ?>">
