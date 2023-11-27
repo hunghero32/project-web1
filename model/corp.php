@@ -40,7 +40,7 @@ function info_Corp($id)
             FROM user u
             LEFT JOIN corp c ON u.id = c.iduser
             LEFT JOIN gallery g ON u.id = g.iduser
-            WHERE u.role = 3 AND u.id = ?";
+            WHERE u.role = 3 AND c.id = ?";
     return pdo_query_one($sql, $id);
 }
 
