@@ -40,7 +40,7 @@
 
                 <!-- <a href="<?= $edit_recr ?>" class="btn btn-info me-3 text-white">Sửa</a> -->
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a href="<?= $edit_recr ?>" class="nav-link  bg-info text-white me-3 p-2 px-4 fw-bold" id="v-pills-edit-tab" data-bs-toggle="pill" href="#v-pills-edit" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                    <a href="" class="nav-link  bg-info text-white me-3 p-2 px-4 fw-bold" id="v-pills-edit-tab" data-bs-toggle="pill" href="#v-pills-edit" role="tab" aria-controls="v-pills-messages" aria-selected="false">
                         <div class="profile-list">
                             Sửa
                         </div>

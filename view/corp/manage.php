@@ -29,10 +29,10 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="d-flex w-100 align-items-center flex-column">
-                    <div style="width: 100px; height: 100px" class="overflow-hidden rounded-circle mb-3">
+                    <div style="width: 100px; height: 100px" class="overflow-hidden rounded-circle mb-3 d-flex justify-content-center align-items-center">
                         <img src='<?= checkUserAvaNull($avatar) ?>' alt='user ' class=''>
                     </div>
-                    <h2 class="mb-4"><?= $name ?></h2>
+                    <h3 class="mb-4 w-100 text-center"><?= $name ?></h3>
                 </div>
 
                 <!-- <span>Web developer</span> -->
