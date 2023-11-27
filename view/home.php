@@ -100,27 +100,27 @@
                 extract($c); ?>
                 <div class="col-lg-6">
                     <div class="employer-item" onclick="return window.location.href= 'index.php?act=infoCorp&id=<?= $id ?>'">
-                            <img width="65px" height="" class="rounded-3" data-cfsrc="<?= checkCorpAvaNull($avatar) ?>" alt="Details" style="display:none;visibility:hidden;">
-                            <noscript><img src="<?= checkCorpAvaNull($avatar) ?>" alt="Details"></noscript>
-                            <h3><?= $name ?></h3>
-                            <p>
-                                <span class="me-3">
-                                    <i class="fa-solid fa-location-dot"></i>
-                                    <?= checknull($address) ?>
-                                </span>
-                                <span class="me-3">
-                                    <i class="fa-solid fa-users"></i>
-                                    <?= checknull($size) ?>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-calendar-days"></i> Thành lập
-                                    <?= checknull($activeYear) ?>
-                                </span>
-                            </p>
-                            <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
-                                <span class="span-one"><i class="fa-solid fa-circle-info"></i> Thông tin chi tiết</span>
-                            </a>
-                            <!-- <span class="span-two">FULL TIME</span> -->
+                        <img width="65px" height="" class="rounded-3" data-cfsrc="<?= checkCorpAvaNull($avatar) ?>" alt="Details" style="display:none;visibility:hidden;">
+                        <noscript><img src="<?= checkCorpAvaNull($avatar) ?>" alt="Details"></noscript>
+                        <h3><?= $name ?></h3>
+                        <p>
+                            <span class="me-3">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <?= checknull($address) ?>
+                            </span>
+                            <span class="me-3">
+                                <i class="fa-solid fa-users"></i>
+                                <?= checknull($size) ?>
+                            </span>
+                            <span>
+                                <i class="fa-solid fa-calendar-days"></i> Thành lập
+                                <?= checknull($activeYear) ?>
+                            </span>
+                        </p>
+                        <a href="index.php?act=infoCorp&id=<?= $iduser ?>">
+                            <span class="span-one"><i class="fa-solid fa-circle-info"></i> Thông tin chi tiết</span>
+                        </a>
+                        <!-- <span class="span-two">FULL TIME</span> -->
                     </div>
                 </div>
             <?php } ?>
@@ -224,7 +224,7 @@
                 <div class="section-title three">
                     <div class="sub-title-wrap">
                         <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
-                        <span class="sub-title">Employers Offering Job</span>
+                        <span class="sub-title">Nhà tuyển dụng tuyển việc làm</span>
                     </div>
                     <h2>Các việc làm nổi bật</h2>
                 </div>
@@ -232,32 +232,37 @@
             <div class="col-lg-5">
                 <div class="sorting-menu">
                     <ul>
-                        <li class="filter" data-filter="all">Tất cả</li>
-                        <li class="filter" data-filter=".n">Xem nhiều nhất</li>
-                        <li class="filter" data-filter=".o">Mới nhất</li>
-                        <!-- <li class="filter" data-filter=".m">Featured</li> -->
+                        <ul>
+                            <li class="filter" data-filter="all" onclick="filterJobs('all')">Tất cả</li>
+                            <li class="filter" data-filter=".h" onclick="filterJobs('h')">Hà Nội</li>
+                            <li class="filter" data-filter=".m" onclick="filterJobs('m')">Hồ Chí Minh</li>
+                            <li class="filter" data-filter=".d" onclick="filterJobs('d')">Đà Nẵng</li>
+                        </ul>
+
                     </ul>
                 </div>
             </div>
         </div>
         <div id="container" class="row">
-            <?php foreach ($list_recr as $key) {
-                extract($key); 
+            <?php
+
+            foreach ($list_recr as $key) {
+                extract($key);
                 $link_recr = "index.php?act=info_recr&id=" . $id; ?>
-                <div class="col-sm-6 col-lg-3 mix n">
+                <div class="col-sm-6 col-lg-3 mix <?= ($sortingType == 'n') ? 'n' : (($sortingType == 'o') ? 'o' : 'all') ?>">
                     <div class="company-item">
-                        <a href="<?=$link_recr?>">
+                        <a href="<?= $link_recr ?>">
                             <div class="feature-top-right">
-                                <span>Most Viewed</span>
-                            </div>
-                            <div class="top flex-direction" >
-                                <a href="employer-details.html">
-                                    <img data-cfsrc="assets/img/home-one/company1.png" alt="Brand" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/company1.png" alt="Brand"></noscript>
-                                </a>
-                                <h3 style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1; ">
-                                    <a href="employer-details.html" ><?= $job ?></a>
-                                </h3>
                                 <span><?= $type ?></span>
+                            </div>
+                            <div class="top flex-direction">
+                                <a href="<?= $link_recr ?>">
+                                    <img data-cfsrc="<?= checkUserAvaNull($avatar) ?>" alt="Brand" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/company1.png" alt="Brand"></noscript>
+                                </a>
+                                <h3>
+                                    <a href="<?= $link_recr ?>" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1; -webkit-box-orient: vertical;max-height: 200px;"><?= $job ?></a>
+                                </h3>
+
                                 <p>
                                     <i class="flaticon-appointment"></i>
                                     <?= $start ?> / <?= $address ?>
@@ -271,7 +276,7 @@
                                 </ul>
                                 <span>Mức lương </span>
                                 <h4><?= $salary ?></h4>
-                                <a href="<?=$link_recr?>">
+                                <a href="<?= $link_recr ?>">
                                     <i class="flaticon-right-arrow"></i>
                                 </a>
                             </div>
@@ -279,230 +284,9 @@
                     </div>
                 </div>
             <?php } ?>
-            <!-- <div class="col-sm-6 col-lg-3 mix n">
-                <div class="company-item">
-                    <div class="feature-top-right">
-                        <span>Most Viewed</span>
-                    </div>
-                    <div class="top">
-                        <a href="employer-details.html">
-                            <img data-cfsrc="assets/img/home-one/company2.png" alt="Brand" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/company2.png" alt="Brand"></noscript>
-                        </a>
-                        <h3>
-                            <a href="employer-details.html">Kn It</a>
-                        </h3>
-                        <span>Permanent Job</span>
-                        <p>
-                            <i class="flaticon-appointment"></i>
-                            9 min ago / Tirana, Albania
-                        </p>
-                    </div>
-                    <div class="bottom">
-                        <ul>
-                            <li>Graphic Designer</li>
-                            <li>Remote Work</li>
-                            <li>Duration: 2 Years</li>
-                        </ul>
-                        <span>Annual Salary</span>
-                        <h4>56K</h4>
-                        <a href="employer-details.html">
-                            <i class="flaticon-right-arrow"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mix m">
-                <div class="company-item">
-                    <div class="feature-top-right">
-                        <span>Featured</span>
-                    </div>
-                    <div class="top">
-                        <a href="employer-details.html">
-                            <img data-cfsrc="assets/img/home-one/company3.png" alt="Brand" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/company3.png" alt="Brand"></noscript>
-                        </a>
-                        <h3>
-                            <a href="employer-details.html">Orbit Inc.</a>
-                        </h3>
-                        <span>Part Time Job</span>
-                        <p>
-                            <i class="flaticon-appointment"></i>
-                            8 min ago / Doha, Qatar
-                        </p>
-                    </div>
-                    <div class="bottom">
-                        <ul>
-                            <li>Product Manager</li>
-                            <li>Remote Work</li>
-                            <li>Duration: 5 Years</li>
-                        </ul>
-                        <span>Annual Salary</span>
-                        <h4>70K</h4>
-                        <a href="employer-details.html">
-                            <i class="flaticon-right-arrow"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mix o">
-                <div class="company-item">
-                    <div class="feature-top-right">
-                        <span>Newest</span>
-                    </div>
-                    <div class="top">
-                        <a href="employer-details.html">
-                            <img data-cfsrc="assets/img/home-one/company4.png" alt="Brand" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/company4.png" alt="Brand"></noscript>
-                        </a>
-                        <h3>
-                            <a href="employer-details.html">Dev Roside</a>
-                        </h3>
-                        <span>Full Time Job</span>
-                        <p>
-                            <i class="flaticon-appointment"></i>
-                            15 min ago / UK, England
-                        </p>
-                    </div>
-                    <div class="bottom">
-                        <ul>
-                            <li>Design & Developer</li>
-                            <li>Remote Work</li>
-                            <li>Duration: 2 Years</li>
-                        </ul>
-                        <span>Annual Salary</span>
-                        <h4>89K</h4>
-                        <a href="employer-details.html">
-                            <i class="flaticon-right-arrow"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mix o">
-                <div class="company-item">
-                    <div class="feature-top-right">
-                        <span>Newest</span>
-                    </div>
-                    <div class="top">
-                        <a href="employer-details.html">
-                            <img data-cfsrc="assets/img/home-one/company5.png" alt="Brand" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/company5.png" alt="Brand"></noscript>
-                        </a>
-                        <h3>
-                            <a href="employer-details.html">Roshu.co</a>
-                        </h3>
-                        <span>Part Time Job</span>
-                        <p>
-                            <i class="flaticon-appointment"></i>
-                            10 min ago / Cardiff, England
-                        </p>
-                    </div>
-                    <div class="bottom">
-                        <ul>
-                            <li>Internet Operator</li>
-                            <li>Remote Work</li>
-                            <li>Duration: 2 Years</li>
-                        </ul>
-                        <span>Annual Salary</span>
-                        <h4>66K</h4>
-                        <a href="employer-details.html">
-                            <i class="flaticon-right-arrow"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mix m">
-                <div class="company-item">
-                    <div class="feature-top-right">
-                        <span>Featured</span>
-                    </div>
-                    <div class="top">
-                        <a href="employer-details.html">
-                            <img data-cfsrc="assets/img/home-one/company6.png" alt="Brand" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/company6.png" alt="Brand"></noscript>
-                        </a>
-                        <h3>
-                            <a href="employer-details.html">Omti. Med</a>
-                        </h3>
-                        <span>Part Time Job</span>
-                        <p>
-                            <i class="flaticon-appointment"></i>
-                            40 min ago / Tokyo, Japan
-                        </p>
-                    </div>
-                    <div class="bottom">
-                        <ul>
-                            <li>Caring Officer</li>
-                            <li>Remote Work</li>
-                            <li>Duration: 2 Years</li>
-                        </ul>
-                        <span>Annual Salary</span>
-                        <h4>50K</h4>
-                        <a href="employer-details.html">
-                            <i class="flaticon-right-arrow"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mix o">
-                <div class="company-item">
-                    <div class="feature-top-right">
-                        <span>Newest</span>
-                    </div>
-                    <div class="top">
-                        <a href="employer-details.html">
-                            <img data-cfsrc="assets/img/home-one/company7.png" alt="Brand" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/company7.png" alt="Brand"></noscript>
-                        </a>
-                        <h3>
-                            <a href="employer-details.html">Rahbar</a>
-                        </h3>
-                        <span>Full Time Job</span>
-                        <p>
-                            <i class="flaticon-appointment"></i>
-                            7 min ago / Washington, US
-                        </p>
-                    </div>
-                    <div class="bottom">
-                        <ul>
-                            <li>Media Connector</li>
-                            <li>Remote Work</li>
-                            <li>Duration: 3 Years</li>
-                        </ul>
-                        <span>Annual Salary</span>
-                        <h4>87K</h4>
-                        <a href="employer-details.html">
-                            <i class="flaticon-right-arrow"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-lg-3 mix n">
-                <div class="company-item">
-                    <div class="feature-top-right">
-                        <span>Most Viewed</span>
-                    </div>
-                    <div class="top">
-                        <a href="employer-details.html">
-                            <img data-cfsrc="assets/img/home-one/company8.png" alt="Brand" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/company8.png" alt="Brand"></noscript>
-                        </a>
-                        <h3>
-                            <a href="employer-details.html">Doblin. Fo</a>
-                        </h3>
-                        <span>Part Time Job</span>
-                        <p>
-                            <i class="flaticon-appointment"></i>
-                            12 min ago / California, US
-                        </p>
-                    </div>
-                    <div class="bottom">
-                        <ul>
-                            <li>Private Officer</li>
-                            <li>Remote Work</li>
-                            <li>Duration: 1 Year</li>
-                        </ul>
-                        <span>Annual Salary</span>
-                        <h4>50K</h4>
-                        <a href="employer-details.html">
-                            <i class="flaticon-right-arrow"></i>
-                        </a>
-                    </div>
-                </div>
-            </div> -->
+            
+
+
         </div>
     </div>
 </section>
@@ -537,3 +321,15 @@
         </div>
     </div>
 </div>
+<script>
+function filterJobs(city) {
+    $.ajax({
+        url: 'index.php',
+        type: 'POST',
+        data: { city: city },
+        success: function(response){
+            $("#container").html(response);
+        }
+    });
+}
+</script>
