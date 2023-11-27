@@ -22,9 +22,9 @@ function list_cv($level, $age, $major, $exp, $address, $salary, $progLang)
         $sql .= " GROUP BY cv.id, g.avatar, u.role ORDER BY cv.id DESC";
         return pdo_query($sql);
 }
-function list_skillcv($progLang,$percent){};
-function list_expcv($level, $job, $corp, $start, $end){};
-function list_degree($level, $age, $major, $exp, $address, $salary, $progLang){};
+// function list_skillcv($progLang,$percent){};
+// function list_expcv($level, $job, $corp, $start, $end){};
+// function list_degree($level, $age, $major, $exp, $address, $salary, $progLang){};
 function filter_cv()
 {
         $sql = "SELECT cv.*,
@@ -41,7 +41,7 @@ function filter_cv()
                 LEFT JOIN info i ON cv.id = i.idcv
                 LEFT JOIN expcv ec ON cv.id = ec.idcv
                 LEFT JOIN degree d ON cv.id = d.idcv
-                LEFT JOIN filtercv fc ON cv.id = fc.id
+                -- LEFT JOIN filtercv fc ON cv.id = fc.id
                 WHERE cv.iduser IN (SELECT id FROM user WHERE role = 2)
                 GROUP BY cv.id
                 HAVING exp IS NOT NULL 

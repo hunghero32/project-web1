@@ -1,7 +1,7 @@
 <div class="tab-pane fade " id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
     <form action="" class="mb-5 d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
-            <input type="search" name="kym" id="" class="p-2 px-5 rounded-start border border-secondary" placeholder="Tìm kiếm ...">
+            <input type="search" name="kym"  class="p-2 px-5 rounded-start border border-secondary" placeholder="Tìm kiếm ...">
             <button class="btn btn-info rounded-end p-2" name="submit"><i class="fa-solid fa-magnifying-glass text-white fs-5"></i></button>
         </div>
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -38,9 +38,10 @@
             <!-- <span class='span-one'>Accounting</span> -->
             <div class="d-flex justify-content-end">
 
-                <!-- <a href="<?= $edit_recr ?>" class="btn btn-info me-3 text-white">Sửa</a> -->
+                
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a href="<?= $edit_recr ?>" class="nav-link  bg-info text-white me-3 p-2 px-4 fw-bold" id="v-pills-edit-tab" data-bs-toggle="pill" href="#v-pills-edit" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                    <!-- <a href="index.php?act=edit_recr&idEdit=<?=$id?>" class="nav-link  bg-info text-white me-3 p-2 px-4 fw-bold " id="v-pills-edit-tab" data-bs-toggle="pill"   aria-selected="false"> -->
+                    <a href="<?= $edit_recr ?>" class="nav-link  bg-info text-white me-3 p-2 px-4 fw-bold" id="v-pills-edit-tab" role="tab">
                         <div class="profile-list">
                             Sửa
                         </div>

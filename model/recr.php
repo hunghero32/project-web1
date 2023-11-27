@@ -2,18 +2,18 @@
 
     
     function recr_add( $idcorp,$job  ,$exp ,$level ,$salary ,$progLang ,$type ,
-     $end ,$description  , $request
+     $description  ,$end , $request
     )  {
         $sql = "INSERT INTO recr( idcorp, job, exp, level, salary,
          progLang, type, description, start, end, request) 
           VALUES (?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP,?,?)";
         pdo_execute($sql, $idcorp,$job  ,$exp ,$level ,$salary ,$progLang ,$type ,
-         $end ,$description ,  $request
+         $description ,$end ,  $request
         );
     }
 
     function recr_update($id ,$idcorp,$job,$exp ,$level ,$salary ,
-    $progLang ,$type  ,$description    ,$end , $request
+    $progLang ,$type  ,$description  ,$end , $request
     )  {
         $sql = "UPDATE  recr  SET   idcorp =?, job =?
         , exp =?, level =?, salary =?, progLang =?, type =?,
@@ -59,6 +59,16 @@
           WHERE r.idcorp = ?  LIMIT 0,3";
         return pdo_query($sql , $idcorp);
     }
+    function info_Corp_recr($id)
+{
+    $sql = "SELECT u.name, u.email, u.phone, u.address, c.*,
+            g.avatar, g.thumbnail1 ,g.thumbnail2 ,g.thumbnail3 ,g.thumbnail4 ,g.thumbnail5
+            FROM user u
+            LEFT JOIN corp c ON u.id = c.iduser
+            LEFT JOIN gallery g ON u.id = g.iduser
+            WHERE u.role = 3 AND u.id = ?";
+    return pdo_query_one($sql, $id);
+}
 
     function recr_select_by_id($id) {
 

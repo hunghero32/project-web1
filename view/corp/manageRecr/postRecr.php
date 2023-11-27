@@ -10,24 +10,28 @@
 
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="form-group">
+                            <div class=" form-group ">
                                 <label>
                                     Tiêu đề :
                                 </label>
-                   
-                                <input name="job" type="text" class="searchSelect" id="searchlevel" placeholder="<?= checkfind('', 'Công việc'); ?> &darr;">
-                                <div class="dropdown-content" id="dropdownlevel" style="width: 23%;">
-                                    <div class="dropdown-item">Không chọn</div>
-                                    <?php foreach ($datafilter as $cv) {
-                                        extract($cv);
-                                        if ($job !== '') { ?>
-                                            <div class="dropdown-item"><?= $job ?></div>
+
+
+                                <div class=" position-relative">
+                                    <input name="job" type="text" class="searchSelect" id="searchjob" placeholder="<?= checkfind('', 'Chuyên ngành'); ?> &darr;">
+                                    <div class="dropdown-content" id="dropdownjob">
+                                        <div class="dropdown-item">Không chọn</div>
+                                        <?php foreach ($datafilter as $cv) {
+                                            extract($cv);
+                                            if ($job !== '') { ?>
+                                                <div class="dropdown-item"><?= $job ?></div>
+                                            <?php } ?>
                                         <?php } ?>
-                                    <?php } ?>
-                                    <div class="dropdown-item">Khác</div>
+                                        <div class="dropdown-item">Khác</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
 
 
                         <div class="col-lg-6">
@@ -128,7 +132,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6">
-                        
+
                     </div>
 
                     <button type="submit" name="add_recr" class="btn">Thêm </button>

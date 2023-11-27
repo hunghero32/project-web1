@@ -1,4 +1,4 @@
-<div class="tab-pane fade <?= (!isset($_GET['id'])) ? 'show active' : '' ?>" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+<div class="tab-pane fade <?= (!isset($_GET['id']) && !isset($_GET['idEdit'])) ? 'show active' : '' ?>" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
     <form id="editInfoCorp" class="d-none job-details-area employer-details-area ptb-100 form-item">
         <div class="boxbtn d-flex w-50 justify-content-end gap-3">
             <button class="cancer border-0" id="cancerEditInfoCorp">Hủy <i class="fa-solid fa-xmark"></i></button>

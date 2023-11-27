@@ -37,11 +37,11 @@
 
                 <!-- <span>Web developer</span> -->
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link <?= (!isset($_GET['id'])) ? 'active' : '' ?> " id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                    <a class="nav-link <?= (!isset($_GET['id']) && !isset($_GET['idEdit'])) ? 'active' : '' ?> " id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
                         <i class="bx bx-user"></i>
                         Thông tin
                     </a>
-                    <a class="nav-link" id="v-pills-messages-tab <?= (isset($_GET['id'])) ? 'active' : '' ?> " data-bs-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                    <a class="nav-link" id="v-pills-messages-tab <?= (isset($_GET['id']) || isset($_GET['idEdit'])) ? 'active' : '' ?> " data-bs-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
                         <div class="profile-list">
                             <i class="bx bxs-inbox"></i>
                             Danh sách bài tuyển dụng
