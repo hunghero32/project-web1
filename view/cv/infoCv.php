@@ -5,7 +5,7 @@
                 <div class="row align-items-end">
                     <div class="col-lg-8">
                         <div class="left two">
-                            <img data-cfsrc="<?= checkUserAvaNull($avatar) ?>" alt="CV Chi Tiết" style="display:none;visibility:hidden;width:25%;"><noscript><img src="assets/img/candidate-details1.jpg" alt="Details"></noscript>
+                            <img data-cfsrc="<?= checkUserAvaNull($avatar) ?>" alt="CV Chi Tiết" style="display:none;visibility:hidden;width:25%;"><noscript><img src="<?= checkUserAvaNull($avatar) ?>" alt="Details"></noscript>
                             <h2><?= checknull($name) ?></h2>
                             <ul>
                                 <li>
