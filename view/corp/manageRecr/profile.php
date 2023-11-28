@@ -1,13 +1,14 @@
-<?php if (isset($_SESSION['updated'])) { ?>
+<?php if (isset($_SESSION['updated'])) {
+    unset($_SESSION['updated']);
+    if (isset($_SESSION['same'])) {
+        unset($_SESSION['same']);
+    }; ?>
     <script>
         alert('[ Cập nhật thành công ]');
     </script>
-<?php
-    unset($_SESSION['updated']);
-}
-?>
+<?php } ?>
 <div class="tab-pane fade <?= (!isset($_GET['id']) && !isset($_GET['idEdit'])) ? 'show active' : '' ?>" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-    <form method="POST" action="index.php?act=updateInfoCorp" enctype="multipart/form-data" id="editInfoCorp" class="<?= !isset($_SESSION['same']) ? 'd-none' : ''; ?> job-details-area employer-details-area ptb-100 form-item">
+    <form method="POST" action="index.php?act=updateInfoCorp" enctype="multipart/form-data" style="<?= isset($_SESSION['same']) ? 'display: block !important' : '' ?>" id="editInfoCorp" class="d-none job-details-area employer-details-area ptb-100 form-item">
         <div class="boxbtn d-flex w-50 justify-content-end gap-3">
             <span class="cancer border-0" id="cancerEditInfoCorp">Hủy <i class="fa-solid fa-xmark"></i></span>
             <button name="updateInfoCorp" id="updateInfoCorp" class="save border-0" type="submit">Lưu <i class="fa-solid fa-cloud-arrow-up"></i></button>
@@ -57,6 +58,7 @@
                                 <strong class="mb-2" for="">* Ảnh đại diện [ <span id="nameAvatar"><?= checknull($avatar); ?></span> ]</strong>
                                 <div class="d-flex justify-content-start">
                                     <input name="avatar" class="w-25 searchSelect mb-2 me-2 file-img" type="file" title="Vui lòng nhập đúng định dạng" accept=".jpg, .jpeg, .png, .jfif, .gif" class="w-25">
+                                    <?= isset($avatar) && $avatar !== '' ? 'có' : 'k có' ?>
                                     <?php if ($avatar !== '') { ?>
                                         <span class="cancerThumb border-0 m-0 ps-2 pe-2" id="cancerAvatar"><i class="p-0 m-0 text-white fa-regular fa-trash-can"></i></span>
                                         <input type="hidden" name="avatar" id="valueAvatar" value="<?= $avatar ?>">
@@ -192,7 +194,7 @@
             </div>
         </div>
     </form>
-    <div id="infoCorp" class="<?= isset($_SESSION['same']) ? 'd-none' : ''; ?> job-details-area employer-details-area ptb-100 form-item">
+    <div id="infoCorp" style="<?= isset($_SESSION['same']) ? 'display: none !important' : '' ?>" class="job-details-area employer-details-area ptb-100 form-item">
         <span class="edit" id="editBtnInfoCorp">Chỉnh sửa <i class="fa-solid fa-pen"></i></span>
         <div class="container">
             <div class="row">
