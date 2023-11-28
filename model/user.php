@@ -13,7 +13,7 @@ function login($username, $pass)
 {
     $sql = "SELECT u.* , g.avatar , g.thumbnail1 , g.thumbnail2 , g.thumbnail3 , g.thumbnail4 , g.thumbnail5
     FROM user u 
-    LEFT JOIN gallery g ON u.id = g.iduser  where username=? AND pass=?";
+    LEFT JOIN gallery g ON u.id = g.iduser  where u.username=? AND u.pass=?";
     $user = pdo_query_one($sql, $username, $pass);
     return $user;
 }
@@ -50,7 +50,14 @@ function edit_user($id)
     return $user;
 }
 
-function existAccount() {
+function existAccount()
+{
     $sql = "SELECT user.name, user.email, user.phone, user.username FROM user";
     return pdo_query($sql);
+}
+
+function updateExistAccount($id)
+{
+    $sql = "SELECT user.name, user.email, user.phone FROM user WHERE id  NOT LIKE ?";
+    return pdo_query($sql, $id);
 }

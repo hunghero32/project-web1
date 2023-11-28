@@ -1,10 +1,16 @@
-
+<?php if (isset($_SESSION['updated'])) { ?>
+    <script>
+        alert('[ Cập nhật thành công ]');
+    </script>
+<?php
+    unset($_SESSION['updated']);
+}
+?>
 <div class="tab-pane fade <?= (!isset($_GET['id']) && !isset($_GET['idEdit'])) ? 'show active' : '' ?>" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-    <form id="editInfoCorp" class="d-none job-details-area employer-details-area ptb-100 form-item">
-
+    <form method="POST" action="index.php?act=updateInfoCorp" enctype="multipart/form-data" id="editInfoCorp" class="<?= !isset($_SESSION['same']) ? 'd-none' : ''; ?> job-details-area employer-details-area ptb-100 form-item">
         <div class="boxbtn d-flex w-50 justify-content-end gap-3">
             <span class="cancer border-0" id="cancerEditInfoCorp">Hủy <i class="fa-solid fa-xmark"></i></span>
-            <button name="updateInfoCorp" class="save border-0" type="submit">Lưu <i class="fa-solid fa-cloud-arrow-up"></i></button>
+            <button name="updateInfoCorp" id="updateInfoCorp" class="save border-0" type="submit">Lưu <i class="fa-solid fa-cloud-arrow-up"></i></button>
         </div>
         <div class="container">
             <div class="row">
@@ -50,7 +56,7 @@
                             <li class="d-flex justify-content-start flex-column w-100">
                                 <strong class="mb-2" for="">* Ảnh đại diện [ <span id="nameAvatar"><?= checknull($avatar); ?></span> ]</strong>
                                 <div class="d-flex justify-content-start">
-                                    <input name="avatar" class="w-25 searchSelect mb-2 me-2" type="file" title="Vui lòng nhập đúng định dạng" accept=".jpg, .jpeg, .png, .jfif, .gif" class="w-25">
+                                    <input name="avatar" class="w-25 searchSelect mb-2 me-2 file-img" type="file" title="Vui lòng nhập đúng định dạng" accept=".jpg, .jpeg, .png, .jfif, .gif" class="w-25">
                                     <?php if ($avatar !== '') { ?>
                                         <span class="cancerThumb border-0 m-0 ps-2 pe-2" id="cancerAvatar"><i class="p-0 m-0 text-white fa-regular fa-trash-can"></i></span>
                                         <input type="hidden" name="avatar" id="valueAvatar" value="<?= $avatar ?>">
@@ -151,8 +157,8 @@
                             <?php if (!empty($gallery)) { ?>
                                 <?php foreach ($gallery as $e) { ?>
                                     <div style="width: 100%; height: 340px" class="slider-item rounded-3 overflow-hidden d-flex align-items-center">
-                                        <img data-cfsrc="<?= $img_path . $e ?>" alt="Details" style="display:none;visibility:hidden;">
-                                        <noscript><img class="" src="<?= $img_path . $e ?>" alt="Details"></noscript>
+                                        <img data-cfsrc="<?= $img_path . $e ?>" alt="<?= $img_path . $e ?>" style="display:none;visibility:hidden;">
+                                        <noscript><img class="" src="<?= $img_path . $e ?>" alt="<?= $img_path . $e ?>"></noscript>
                                     </div>
                                 <?php } ?>
                             <?php } ?>
@@ -161,7 +167,6 @@
                         <ul class="gallery">
                             <?php
                             $thumbs = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
-                            // var_dump($thumbs);
                             $count = 0;
                             foreach ($thumbs as $key) {
                                 $count++;
@@ -169,14 +174,14 @@
                                     <li class="d-flex justify-content-start flex-column w-100">
                                         <label class="mb-2" for="">Ảnh <?= $count; ?> [<span id="nameThumb<?= $count ?>"><?= $key ?></span>]</label>
                                         <div class="d-flex justify-content-start">
-                                            <input name="thumbnail<?= $count ?>" class="w-25 searchSelect mb-2 me-2" type="file" accept=".jpg, .jpeg, .png, .jfif, .gif" class="w-25"><span class="cancerThumb border-0 m-0 ps-2 pe-2" id="cancerThumb<?= $count ?>"><i class="p-0 m-0 text-white fa-regular fa-trash-can"></i></span>
+                                            <input name="thumb<?= $count ?>" class="w-25 searchSelect mb-2 me-2 file-img" type="file" accept=".jpg, .jpeg, .png, .jfif, .gif" class="w-25"><span class="cancerThumb border-0 m-0 ps-2 pe-2" id="cancerThumb<?= $count ?>"><i class="p-0 m-0 text-white fa-regular fa-trash-can"></i></span>
                                         </div>
-                                        <input name="thumbnail<?= $count ?>" id="valueThumb<?= $count ?>" type="hidden" value="<?= $key ?>" readonly>
+                                        <input name="thumb<?= $count ?>" id="valueThumb<?= $count ?>" type="hidden" value="<?= $key ?>" readonly>
                                     </li>
                                 <?php } else { ?>
                                     <li>
                                         <label class="mb-2" for="">Ảnh <?= $count; ?> [ Chưa cập nhật ]</label>
-                                        <input name="thumbnail<?= $count ?>" class="w-25 searchSelect mb-2" type="file" accept=".jpg, .jpeg, .png, .jfif, .gif" class="w-25">
+                                        <input name="thumb<?= $count ?>" class="w-25 searchSelect mb-2 file-img" type="file" accept=".jpg, .jpeg, .png, .jfif, .gif" class="w-25">
                                     </li>
                                 <?php } ?>
                             <?php } ?>
@@ -187,7 +192,7 @@
             </div>
         </div>
     </form>
-    <div id="infoCorp" class="job-details-area employer-details-area ptb-100 form-item">
+    <div id="infoCorp" class="<?= isset($_SESSION['same']) ? 'd-none' : ''; ?> job-details-area employer-details-area ptb-100 form-item">
         <span class="edit" id="editBtnInfoCorp">Chỉnh sửa <i class="fa-solid fa-pen"></i></span>
         <div class="container">
             <div class="row">

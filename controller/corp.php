@@ -59,19 +59,32 @@ switch ($act) {
         include 'view/corp/manage.php';
         break;
 
-    case 'updateInfoCorp';
+    case 'updateInfoCorp':
         $idcorp = $_SESSION['username']['id'];
         $corp = manageInfo($idcorp);
         extract($corp);
 
+        // Xử lí các thumbnail
+        $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
+        $gallery = gallery($arr);
+
+        // Xử lí đoạn văn thành dòng
+        $introPara = explode("\n", $introduce);
+        $intro = paragToLines($introPara);
+
+        $benePara = explode("\n", $benefits);
+        $bene = paragToLines($benePara);
+
         if (isset($_POST['updateInfoCorp'])) {
+            $same = '';
+            $overSizeAvatar = 0;
+            $overSizeThumb = 0;
+
             $id = checkUpdate($_POST['id']);
             $nameCorp = checkUpdate($_POST['name']);
             $emailCorp = checkUpdate($_POST['email']);
             $phoneCorp = checkUpdate($_POST['phone']);
             $addressCorp = checkUpdate($_POST['address']);
-
-            updateUser($id,$nameCorp,$emailCorp,$phoneCorp,$addressCorp);
 
             $active = checkUpdate($_POST['activeYear']);
             $introd = checkUpdate($_POST['introduce']);
@@ -80,40 +93,68 @@ switch ($act) {
             $linkCorp = checkUpdate($_POST['link']);
             $beneCorp = checkUpdate($_POST['benefits']);
 
-            updateCorp($id,$active,$introd,$sizeCorp,$workday,$linkCorp,$beneCorp);
+            $updateExist = updateExistAccount($iduser);
+            foreach ($updateExist as $key) {
+                $phoneCorp === $key['phone'] || $emailCorp === $key['email'] ? $same = '[ Sdt hoặc email đã tồn tại ! ]' : '';
+                $nameCorp === $key['name'] ? $same = '[ Tên nhà tuyển dụng đã tòn tại ! ]' : '';
+            }
 
-            for ($i = 1; $i <= 5; $i++) {
-                if (isset($_FILES['thumbnail' . $i]) && ($_FILES['thumbnail' . $i]['size'] > 0)) {
-                    $file = $_FILES['thumbnail' . $i];
+            if (isset($_SESSION['same'])) {
+                unset($_SESSION['same']);
+            }
+
+            if ($same == '') {
+
+                $arrThumb = ['', $thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5];
+
+                for ($i = 1; $i <= 5; $i++) {
+                    if (isset($_FILES['thumb' . $i]) && ($_FILES['thumb' . $i]['size'] <= 3000000)) {
+                        $file = $_FILES['thumb' . $i];
+                        // sử dụng str_replace để xóa các khoảng trắng, tránh lỗi chèn src có space trong thẻ img
+                        $file_name = str_replace(' ', '', $file['name']);
+                        $target_file = $img_path . $file_name;
+                        move_uploaded_file($file['tmp_name'], $target_file);
+                    } else {
+                        $overSizeThumb = 1;
+                        $file_name = isset($_POST['thumb' . $i]) && $arrThumb[$i] !== '' ? $_POST['thumb' . $i] : '';
+                    }
+                    $file_name !== '' ? updateImage($id, 'thumbnail' . $i, $file_name) : '';
+                }
+
+                if (isset($_FILES['avatar']) && ($_FILES['avatar']['size'] <= 1000000)) {
+                    $file = $_FILES['avatar'];
                     // sử dụng str_replace để xóa các khoảng trắng, tránh lỗi chèn src có space trong thẻ img
-                    $file_name = str_replace(' ', '', $file['name']);
-                    $target_file = $img_path . $file_name;
+                    $file_avatar_name = str_replace(' ', '', $file['name']);
+                    $target_file = $img_path . $file_avatar_name;
                     move_uploaded_file($file['tmp_name'], $target_file);
                 } else {
-                    $file_name = isset($_POST['thumbnail' . $i]) ? $_POST['thumbnail' . $i] : '';
+                    $overSizeAvatar = 1;
+                    $file_avatar_name = isset($_POST['avatar']) && $avatar !== '' ? $_POST['avatar'] : '';
                 }
-                $file_name !== '' ? updateImage($id, 'thumbnail' . $i, $file_name) : '';
-            }
 
-            if (isset($_FILES['avatar']) && ($_FILES['avatar']['size'] > 0)) {
-                $file = $_FILES['avatar'];
-                // sử dụng str_replace để xóa các khoảng trắng, tránh lỗi chèn src có space trong thẻ img
-                $file_avatar_name = str_replace(' ', '', $file['name']);
-                $target_file = $img_path . $file_avatar_name;
-                move_uploaded_file($file['tmp_name'], $target_file);
+                $file_avatar_name !== '' ? updateImage($id, 'avatar', $file_avatar_name) : '';
+                $file_avatar_name !== '' ? $_SESSION['username']['avatar'] = $file_avatar_name : '';
+
+                $avatar !== '' && $_POST['avatar'] == '' ? removeImage($id, 'avatar') : '';
+                $avatar !== '' && $_POST['avatar'] == '' ? $_SESSION['username']['avtar'] = '' : '';
+                $thumbnail1 !== '' && $_POST['thumb1'] == '' ? removeImage($id, 'thumbnail1') : '';
+                $thumbnail2 !== '' && $_POST['thumb2'] == '' ? removeImage($id, 'thumbnail2') : '';
+                $thumbnail3 !== '' && $_POST['thumb3'] == '' ? removeImage($id, 'thumbnail3') : '';
+                $thumbnail4 !== '' && $_POST['thumb4'] == '' ? removeImage($id, 'thumbnail4') : '';
+                $thumbnail5 !== '' && $_POST['thumb5'] == '' ? removeImage($id, 'thumbnail5') : '';
+
+                updateUser($id, $nameCorp, $emailCorp, $phoneCorp, $addressCorp);
+                updateCorp($id, $active, $introd, $sizeCorp, $workday, $linkCorp, $beneCorp);
             } else {
-                $file_avatar_name = isset($_POST['avatar']) ? $_POST['avatar'] : '';
+                echo "<script>alert('$same')</script>";
+                $_SESSION['same'] = '1';
             }
-            $file_avatar_name !== '' ? updateImage($id, 'avatar', $file_avatar_name) : '';
-            $file_avatar_name !== '' ? $_SESSION['username']['avtar'] = $file_avatar_name : '';
 
-            $avatar !== '' && $_POST['avatar'] == '' ? removeImage($id,'avatar') : '';
-            $thumbnail1 !== '' && $_POST['thumbnail1'] == '' ? removeImage($id,'thumbnail1') : '';
-            $thumbnail2 !== '' && $_POST['thumbnail2'] == '' ? removeImage($id,'thumbnail2') : '';
-            $thumbnail3 !== '' && $_POST['thumbnail3'] == '' ? removeImage($id,'thumbnail3') : '';
-            $thumbnail4 !== '' && $_POST['thumbnail4'] == '' ? removeImage($id,'thumbnail4') : '';
-            $thumbnail5 !== '' && $_POST['thumbnail5'] == '' ? removeImage($id,'thumbnail5') : '';
-            $_SESSION['updated'] = 1;
+            echo $overSizeAvatar == 1 ? "<script>alert('[ Ảnh đại diện vượt quá kích thước cho phép - 1 MB]')</script>" : '';
+            echo $overSizeThumb == 1 ? "<script>alert('[ Ảnh giới thiệu vượt quá kích thước cho phép - 3 MB]')</script>" : '';
+            $_SESSION['same'] = $overSizeAvatar > 0 ? '1' : '';
+            $_SESSION['same'] = $overSizeThumb > 0 ? '1' : '';
+            $overSizeAvatar == 0 && $overSizeThumb == 0 && $same == '' ? $_SESSION['updated'] = 1 : '';
         }
         include 'view/corp/manage.php';
         break;
