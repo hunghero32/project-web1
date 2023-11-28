@@ -69,7 +69,7 @@
                                         Quản trị <i class="fa-solid fa-user-gear"></i>
                                     </a>
                                 <?php } else if ($role == 2) { ?>
-                                    <a class="job-right" href="index.php?act=user_cv&id=<?= $id ?>">
+                                    <a class="job-right" href="index.php?act=manage_Cv">
                                         Tạo CV <i class="fa-solid fa-file-pen"></i>
                                     </a>
                                 <?php } else if ($role == 3) { ?>
