@@ -30,6 +30,7 @@ switch ($act) {
             $email = $_POST['email'];
             $role = $_POST['role'];
 
+
             $exist = existAccount();
             foreach ($exist as $key) {
                 $username === $key['username'] ? $same = '[ Tài khoản người dùng đã tòn tại ! ]' : '' ;
@@ -40,6 +41,7 @@ switch ($act) {
             echo $same !== '' ? "<script>alert('$same');</script>" : "<script>alert('[ Đăng kí thành công ! ]');</script>";
             $same == '' ? include 'view/user/signin.php' : include 'view/user/signup.php';
             $same == '' ? add_user($username, $pass, $name, $email, $phone, $role) : '';
+
         }
 
         include "view/user/signup.php";

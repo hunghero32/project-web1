@@ -244,48 +244,10 @@
             </div>
         </div>
         <div id="container" class="row">
-            <?php
-
-            foreach ($list_recr as $key) {
-                extract($key);
-                $link_recr = "index.php?act=info_recr&id=" . $id; ?>
-                <div class="col-sm-6 col-lg-3 mix <?= ($sortingType == 'n') ? 'n' : (($sortingType == 'o') ? 'o' : 'all') ?>">
-                    <div class="company-item">
-                        <a href="<?= $link_recr ?>">
-                            <div class="feature-top-right">
-                                <span><?= $type ?></span>
-                            </div>
-                            <div class="top flex-direction">
-                                <a href="<?= $link_recr ?>">
-                                    <img data-cfsrc="<?= checkUserAvaNull($avatar) ?>" alt="Brand" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/company1.png" alt="Brand"></noscript>
-                                </a>
-                                <h3>
-                                    <a href="<?= $link_recr ?>" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1; -webkit-box-orient: vertical;max-height: 200px;"><?= $job ?></a>
-                                </h3>
-
-                                <p>
-                                    <i class="flaticon-appointment"></i>
-                                    <?= $start ?> / <?= $address ?>
-                                </p>
-                            </div>
-                            <div class="bottom">
-                                <ul>
-                                    <li>Công ty <?= $name ?></li>
-                                    <li><?= $level ?></li>
-                                    <li>Kinh nghiệm: <?= $exp ?></li>
-                                </ul>
-                                <span>Mức lương </span>
-                                <h4><?= $salary ?></h4>
-                                <a href="<?= $link_recr ?>">
-                                    <i class="flaticon-right-arrow"></i>
-                                </a>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            <?php } ?>
             
-
+            <?php
+           include 'recr/search_address_home/listRecr_home.php'
+            ?>
 
         </div>
     </div>
@@ -322,14 +284,14 @@
     </div>
 </div>
 <script>
-function filterJobs(city) {
-    $.ajax({
-        url: 'index.php',
-        type: 'POST',
-        data: { city: city },
-        success: function(response){
-            $("#container").html(response);
-        }
-    });
-}
+    function filterJobs(city) {
+        // $.ajax({
+        //     url: 'recr/search_address_home/listRecr_home.php',
+        //     type: 'POST',
+        //     data: { city: city },
+
+        // });
+        if ()
+            document.getElementById('container').innerHTML = "heloo";
+    }
 </script>
