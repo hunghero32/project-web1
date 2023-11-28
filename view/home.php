@@ -283,15 +283,3 @@
         </div>
     </div>
 </div>
-<script>
-    function filterJobs(city) {
-        // $.ajax({
-        //     url: 'recr/search_address_home/listRecr_home.php',
-        //     type: 'POST',
-        //     data: { city: city },
-
-        // });
-        if ()
-            document.getElementById('container').innerHTML = "heloo";
-    }
-</script>

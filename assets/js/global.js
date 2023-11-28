@@ -13,7 +13,6 @@ cancerEditInfoCorp.onclick = () => {
     infoCorp.classList.toggle('d-none');
 }
 
-
 const allImgCorp = ['Avatar','Thumb1', 'Thumb2', 'Thumb3', 'Thumb4', 'Thumb5']
 
 for (let index = 0; index < allImgCorp.length; index++) {

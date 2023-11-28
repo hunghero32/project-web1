@@ -63,6 +63,7 @@ switch ($act) {
         $idcorp = $_SESSION['username']['id'];
         $corp = manageInfo($idcorp);
         extract($corp);
+        // var_dump($corp);
 
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
@@ -99,12 +100,10 @@ switch ($act) {
                 $nameCorp === $key['name'] ? $same = '[ Tên nhà tuyển dụng đã tòn tại ! ]' : '';
             }
 
-            if (isset($_SESSION['same'])) {
-                unset($_SESSION['same']);
-            }
-
             if ($same == '') {
-
+                if (isset($_SESSION['same'])) { 
+                    unset($_SESSION['same']);
+                }
                 $arrThumb = ['', $thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5];
 
                 for ($i = 1; $i <= 5; $i++) {
@@ -136,7 +135,7 @@ switch ($act) {
                 $file_avatar_name !== '' ? $_SESSION['username']['avatar'] = $file_avatar_name : '';
 
                 $avatar !== '' && $_POST['avatar'] == '' ? removeImage($id, 'avatar') : '';
-                $avatar !== '' && $_POST['avatar'] == '' ? $_SESSION['username']['avtar'] = '' : '';
+                $avatar !== '' && $_POST['avatar'] == '' ? $_SESSION['username']['avatar'] = '' : '';
                 $thumbnail1 !== '' && $_POST['thumb1'] == '' ? removeImage($id, 'thumbnail1') : '';
                 $thumbnail2 !== '' && $_POST['thumb2'] == '' ? removeImage($id, 'thumbnail2') : '';
                 $thumbnail3 !== '' && $_POST['thumb3'] == '' ? removeImage($id, 'thumbnail3') : '';
@@ -147,13 +146,13 @@ switch ($act) {
                 updateCorp($id, $active, $introd, $sizeCorp, $workday, $linkCorp, $beneCorp);
             } else {
                 echo "<script>alert('$same')</script>";
-                $_SESSION['same'] = '1';
             }
 
             echo $overSizeAvatar == 1 ? "<script>alert('[ Ảnh đại diện vượt quá kích thước cho phép - 1 MB]')</script>" : '';
             echo $overSizeThumb == 1 ? "<script>alert('[ Ảnh giới thiệu vượt quá kích thước cho phép - 3 MB]')</script>" : '';
             $_SESSION['same'] = $overSizeAvatar > 0 ? '1' : '';
             $_SESSION['same'] = $overSizeThumb > 0 ? '1' : '';
+            $_SESSION['same'] = $same !== '' ? '1' : '';
             $overSizeAvatar == 0 && $overSizeThumb == 0 && $same == '' ? $_SESSION['updated'] = 1 : '';
         }
         include 'view/corp/manage.php';
