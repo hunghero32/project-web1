@@ -4,14 +4,15 @@ const cancerEditInfoCorp = document.getElementById('cancerEditInfoCorp')
 const infoCorp = document.getElementById('infoCorp')
 
 editCorpBtn.onclick = () => {
-    editInfoCorp.classList.remove('d-none');
-    infoCorp.classList.add('d-none');
+    editInfoCorp.classList.toggle('d-none');
+    infoCorp.classList.toggle('d-none');
 }
 
 cancerEditInfoCorp.onclick = () => {
-    editInfoCorp.classList.add('d-none');
-    infoCorp.classList.remove('d-none');
+    editInfoCorp.classList.toggle('d-none');
+    infoCorp.classList.toggle('d-none');
 }
+
 
 const allImgCorp = ['Avatar','Thumb1', 'Thumb2', 'Thumb3', 'Thumb4', 'Thumb5']
 
