@@ -61,11 +61,9 @@
     }
     function info_Corp_recr($id)
 {
-    $sql = "SELECT u.name, u.email, u.phone, u.address, c.*,
-            g.avatar, g.thumbnail1 ,g.thumbnail2 ,g.thumbnail3 ,g.thumbnail4 ,g.thumbnail5
-            FROM user u
+    $sql = "SELECT u.name, u.email, u.phone, u.address, c.*
+             FROM user u
             LEFT JOIN corp c ON u.id = c.iduser
-            LEFT JOIN gallery g ON u.id = g.iduser
             WHERE u.role = 3 AND u.id = ?";
     return pdo_query_one($sql, $id);
 }
@@ -79,43 +77,28 @@
     }
 
     function get_records() {
-       
-    
-        // Truy vấn dữ liệu từ database
-        
-        $sql = "SELECT r.* , c.introduce , u.address , u.name FROM recr r INNER JOIN corp c ON c.id= r.idcorp 
-        INNER JOIN user u ON u.id = c.iduser INNER JOIN gallery g ON u.id = g.iduser " ;
+   
+        $sql = "SELECT r.* , c.introduce , u.address , u.name FROM recr r 
+        INNER JOIN corp c ON c.id= r.idcorp 
+        INNER JOIN user u ON u.id = c.iduser 
+        INNER JOIN gallery g ON u.id = g.iduser where 1 ORDER BY r.id DESC LIMIT 0,8" ;
         
         $valu = pdo_query($sql );
         return  $valu;
     }
 
   
-    // function search_address_recr($sortingType) {
-    //     $sql = "SELECT r.* , c.introduce  ,u.address , u.name FROM recr r 
-    //     INNER JOIN corp c ON c.id= r.idcorp 
-    //     INNER JOIN user u ON u.id = c.iduser WHERE 1" ;
-    //     if($sortingType == "h"){
-    //         $sql .= " AND u.address = 'Hà Nội'  ";
-    //     }
-    //     else if($sortingType == "m"){
-    //         $sql .= " AND u.address = 'Hà Nội'  ";
-    //     }else if($sortingType == "d"){
-    //         $sql .= " AND u.address = 'Đà Nẵng'  ";
-    //     }
-    //     $sql .= " AND ORDER BY r.id DESC LIMIT 0,6 ";
-        
-    //     $valu = pdo_query($sql );
-    //     return  $valu;
-    // }
-    // function search_hn_recr() {
-    //     $sql = "SELECT r.* , c.introduce  ,u.address , u.name FROM recr r 
-    //     INNER JOIN corp c ON c.id= r.idcorp 
-    //     INNER JOIN user u ON u.id = c.iduser WHERE 1 u.address = 'Hà Nội' ORDER BY r.id DESC LIMIT 0,6" ;
-        
-    //     $valu = pdo_query($sql );
-    //     return  $valu;
-    // }
+    function search_address_recr() {
+        $sql = "SELECT r.* , c.introduce  ,u.address , u.name FROM recr r 
+        INNER JOIN corp c ON c.id= r.idcorp 
+        INNER JOIN user u ON u.id = c.iduser 
+        INNER JOIN gallery g ON u.id = g.iduser 
+        where 1 ORDER BY r.id DESC LIMIT 0,8" ;
+
+        $valu = pdo_query($sql );
+        return  $valu;
+    }
+    
     function get_Total_Records() {
         
         $sql = "SELECT COUNT(id) AS total FROM recr";

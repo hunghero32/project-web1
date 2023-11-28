@@ -30,7 +30,7 @@ switch ($act) {
             $role = $_POST['role'];
 
             add_user($username, $pass, $name, $email, $phone, $role);
-            echo "<script>alert('Sai mật khẩu hoặc tên tài khoản !');</script>";
+            echo "<script>alert('Đăng ký thành công , Vui lòng đăng nhập !');</script>";
         }
 
         include "view/user/signup.php";

@@ -1,5 +1,4 @@
 <?php
-
 $perPage = 5;
 
 $valu_racr = get_records();
@@ -11,6 +10,22 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($currentPage - 1) * $perPage;
 $data = range(1, $total_data);
 $currentData = array_slice($valu_racr, $start, $perPage);
+
+if (isset($_SESSION['username'])) {
+    $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
+    $corp = manageInfo($idcorp);
+    extract($corp);
+    // Xử lí các thumbnail
+    $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
+    $gallery = gallery($arr);
+
+    // Xử lí đoạn văn thành dòng
+    $introPara = explode("\n", $introduce);
+    $intro = paragToLines($introPara);
+
+    $benePara = explode("\n", $benefits);
+    $bene = paragToLines($benePara);
+}
 switch ($act) {
     case 'listRecr':
         $level = isset($_POST['level']) ? $_POST['level'] : '';
@@ -23,7 +38,7 @@ switch ($act) {
         $progLang = isset($_POST['progLang']) ? $_POST['progLang'] : '';
         $date = isset($_POST['date']) ? $_POST['date'] : '';
         $perPage = 5;
-        $val_racr = recr_select_all($kym ,$level , $typeRecr , $salary , $progLang  , $address , $exp );
+        $val_racr = recr_select_all($kym, $level, $typeRecr, $salary, $progLang, $address, $exp);
 
         include 'view/recr/listRecr.php';
         break;
@@ -43,6 +58,7 @@ switch ($act) {
             extract($_SESSION['username']);
             $val_corp = info_Corp_recr($id);
             $idcorp =  $val_corp['id'];
+            // var_dump( $idcorp);
 
             if (isset($_POST['add_recr'])) {
                 $job = $_POST['job'];
@@ -55,9 +71,17 @@ switch ($act) {
                 $request = $_POST['request'];
                 $description = $_POST['description'];
                 $end = $_POST['end'];
-
-                recr_add( $idcorp,$job  ,$exp ,$level ,$salary ,$progLang ,$type ,
-     $description  ,$end , $request
+                recr_add(
+                    $idcorp,
+                    $job,
+                    $exp,
+                    $level,
+                    $salary,
+                    $progLang,
+                    $type,
+                    $description,
+                    $end,
+                    $request
                 );
                 echo "<script> alert('Bạn đã thêm thành công !') </script>";
                 // header("location : index.php?act=post_recr");
@@ -70,36 +94,47 @@ switch ($act) {
         include 'view/corp/manage.php';
         break;
     case 'edit_recr':
+
         if (isset($_GET['idEdit'])) {
             $id = $_GET['idEdit'];
             $value_id = recr_select_by_id($id);
-            
-            
         }
         include 'view/corp/manage.php';
         break;
     case 'up_recr':
-            if (isset($_POST['submit'])) {
-                $job = $_POST['job'];
-                $idcorp = $_POST['idcorp'];
-                $id = $_POST['id'];
-                $request = $_POST['request'];
-                $type = $_POST['type'];
-                $progLang = $_POST['progLang'];
-                $salary = $_POST['salary'];
-                $exp = $_POST['exp'];
-                $level = $_POST['level'];
-                $request = $_POST['request'];
-                $description = $_POST['description'];
-                $end = $_POST['end'];
 
-                recr_update( $id, $idcorp, $job, $exp, $level, $salary, $progLang, $type, $description, $end, $request
-                );
-                
-                // include "view/corp/manage.php";
-                // include 'view/recr/editRecr.php';
-                echo "<script> alert('Bạn đã sửa thành công !') </script>";
-            }
+        if (isset($_POST['submit'])) {
+            $job = $_POST['job'];
+            $idcorp = $_POST['idcorp'];
+            $id = $_POST['id'];
+            $request = $_POST['request'];
+            $type = $_POST['type'];
+            $progLang = $_POST['progLang'];
+            $salary = $_POST['salary'];
+            $exp = $_POST['exp'];
+            $level = $_POST['level'];
+            $request = $_POST['request'];
+            $description = $_POST['description'];
+            $end = $_POST['end'];
+
+            recr_update(
+                $id,
+                $idcorp,
+                $job,
+                $exp,
+                $level,
+                $salary,
+                $progLang,
+                $type,
+                $description,
+                $end,
+                $request
+            );
+
+            // include "view/corp/manage.php";
+            // include 'view/recr/editRecr.php';
+            echo "<script> alert('Bạn đã sửa thành công !') </script>";
+        }
         $perPage = 10;
 
         $valu_racr = get_records();

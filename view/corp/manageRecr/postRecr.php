@@ -16,7 +16,7 @@
                                 </label>
 
 
-                                <div class=" position-relative">
+                                <div class="form-group position-relative">
                                     <input name="job" type="text" class="searchSelect" id="searchjob" placeholder="<?= checkfind('', 'Chuyên ngành'); ?> &darr;">
                                     <div class="dropdown-content" id="dropdownjob">
                                         <div class="dropdown-item">Không chọn</div>
@@ -29,6 +29,7 @@
                                         <div class="dropdown-item">Khác</div>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
 
