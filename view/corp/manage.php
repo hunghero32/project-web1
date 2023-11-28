@@ -79,7 +79,7 @@
 </div>
 <script>
     function confirmDelete(deleteUrl) {
-        if (confirm('Bạn có muốn XÓA không ?')) {
+        if (confirm('Xóa bài tuyển dụng này ?')) {
             window.location.href = deleteUrl; // Chuyển hướng đến URL xóa nếu bạn đồng ý
         }
     }

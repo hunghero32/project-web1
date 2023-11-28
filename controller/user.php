@@ -22,6 +22,7 @@ switch ($act) {
 
         if (isset($_POST['signup'])) {
 
+            $same = '';
             $username = $_POST['username'];
             $pass = $_POST['pass'];
             $phone = $_POST['phone'];
@@ -29,8 +30,18 @@ switch ($act) {
             $email = $_POST['email'];
             $role = $_POST['role'];
 
-            add_user($username, $pass, $name, $email, $phone, $role);
-            echo "<script>alert('Đăng ký thành công , Vui lòng đăng nhập !');</script>";
+
+            $exist = existAccount();
+            foreach ($exist as $key) {
+                $username === $key['username'] ? $same = '[ Tài khoản người dùng đã tòn tại ! ]' : '' ;
+                $phone === $key['phone'] || $email === $key['email'] ? $same = '[ Sdt hoặc email đã tồn tại ! ]' : '';
+                $name === $key['name'] ? $same = '[ Tên người dùng đã tòn tại ! ]' : '' ;
+            }
+
+            echo $same !== '' ? "<script>alert('$same');</script>" : "<script>alert('[ Đăng kí thành công ! ]');</script>";
+            $same == '' ? include 'view/user/signin.php' : include 'view/user/signup.php';
+            $same == '' ? add_user($username, $pass, $name, $email, $phone, $role) : '';
+
         }
 
         include "view/user/signup.php";
