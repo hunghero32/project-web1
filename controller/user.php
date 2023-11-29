@@ -25,6 +25,7 @@ switch ($act) {
             $same = '';
             $username = $_POST['username'];
             $pass = $_POST['pass'];
+            $repass = $_POST['repass'];
             $phone = $_POST['phone'];
             $name = $_POST['name'];
             $email = $_POST['email'];
@@ -36,6 +37,8 @@ switch ($act) {
                 $phone === $key['phone'] || $email === $key['email'] ? $same = '[ Sdt hoặc email đã tồn tại ! ]' : '';
                 $name === $key['name'] ? $same = '[ Tên người dùng đã tòn tại ! ]' : '' ;
             }
+
+            $pass !== $repass ? $same = '[ Mật khẩu không khớp ! ]' : ''; 
 
             echo $same !== '' ? "<script>alert('$same');</script>" : '';
             $same == '' ? header('Location: index.php?act=signin') : '';

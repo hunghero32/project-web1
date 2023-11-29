@@ -10,13 +10,20 @@ switch ($act) {
         break;
 
     case 'listCv':
-        $level = $_POST['level'] ?? '';
-        $age = $_POST['age'] ?? '';
-        $major = $_POST['major'] ?? '';
-        $exp = $_POST['exp'] ?? '';
-        $address = $_POST['address'] ?? '';
-        $salary = $_POST['salary'] ?? '';
-        $progLang = $_POST['progLang'] ?? '';
+        echo $level = isset($_POST['level']) ? $_POST['level'] : '';
+        echo '<br>';
+        echo $age = isset($_POST['age']) ? $_POST['age'] : '';
+        echo '<br>';
+        echo $major = isset($_POST['major']) ? $_POST['major'] : '';
+        echo '<br>';
+        echo $exp = isset($_POST['exp']) ? $_POST['exp'] : '';
+        echo '<br>';
+        echo $address = isset($_POST['address']) ? $_POST['address'] : '';
+        echo '<br>';
+        echo $salary = isset($_POST['salary']) ? $_POST['salary'] : '';
+        echo '<br>';
+        echo $progLang = isset($_POST['progLang']) ? $_POST['progLang'] : '';
+        echo '<br>';
 
         $list_cv = list_cv($level, $age, $major, $exp, $salary, $address, $progLang);
         include 'view/cv/listCv.php';
