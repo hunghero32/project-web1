@@ -23,6 +23,41 @@ function add_user($username, $pass, $name, $email, $phone, $role)
     $sql = "INSERT INTO user( username, pass, name,  email, phone , role) 
         VALUES (?,?,?,?,?,?)";
     pdo_execute($sql, $username, $pass, $name, $email, $phone, $role);
+
+    $sql2 = "SELECT id , role FROM user WHERE username = ?";
+    $getID = pdo_query_one($sql2,$username);
+
+    $iduser = $getID['id'];
+
+    if ($getID['role'] == 3) {
+        $sql3 = "INSERT INTO corp (iduser) VALUES ($iduser)";
+        pdo_execute($sql3);
+        $sql4 = "INSERT INTO gallery (iduser) VALUES ($iduser)";
+        pdo_execute($sql4);
+    }else if ($getID['role'] == 2) {
+        $sql3 = "INSERT INTO cv (iduser) VALUES ($iduser)";
+        pdo_execute($sql3);
+        $sql4 = "INSERT INTO gallery (iduser) VALUES ($iduser)";
+        pdo_execute($sql4);
+    }
+}
+
+function getUser(){
+    $sql = "SELECT user.id as id , user.role as role FROM user ORDER BY user.id DESC LIMIT 0,1";
+    return pdo_query_one($sql);
+}
+
+function addUserWithRole($id, $role) {
+    if ($role == 3) {
+        $sql = "INSERT INTO corp (iduser) VALUES ($id)";
+        pdo_execute($sql);
+    }else if ($role == 2) {
+        $sql = "INSERT INTO cv (iduser) VALUES ($id)";
+        pdo_execute($sql);
+    }
+
+    $sql2 = "INSERT INTO gallery (iduser) VALUES (?)";
+    pdo_execute($sql2,$id);
 }
 
 function update_user($id, $username, $pass, $email, $name, $img, $phone, $address, $role)
