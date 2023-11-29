@@ -1,307 +1,246 @@
-<!-- <div class="page-title-area">
-        <div class="d-table">
-            <div class="d-table-cell">
-                <div class="container">
-                    <div class="title-item">
-                        <h2>Sửa CV</h2>
-                        <ul>
+<?php if (isset($_SESSION['updated'])) {
+    unset($_SESSION['updated']);
+    if (isset($_SESSION['same'])) {
+        unset($_SESSION['same']);
+    }; ?>
+    <script>
+        alert('[ Cập nhật thành công ]');
+    </script>
+<?php } ?>
+<div class="tab-pane fade <?= (!isset($_GET['id']) && !isset($_GET['idEdit'])) ? 'show active' : '' ?>" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+    <form method="POST" action="index.php?act=updateInfocv" enctype="multipart/form-data" style="<?= isset($_SESSION['same']) ? 'display: block !important' : '' ?>" id="editInfocv" class="d-none job-details-area employer-details-area ptb-100 form-item">
+        <div class="boxbtn d-flex w-50 justify-content-end gap-3">
+            <span class="cancer border-0" id="cancerEditInfocv">Hủy <i class="fa-solid fa-xmark"></i></span>
+            <button name="updateInfocv" id="updateInfocv" class="save border-0" type="submit">Lưu <i class="fa-solid fa-cloud-arrow-up"></i></button>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="details-item">
+                    <div class="details-inner mb-4">
+                        <h2>Cập nhật thông tin</h2>
+                    </div>
+                    <div class="details-inner">
+                        <ul class="mb-2 mb-sm-0 w-50">
+                            <li><strong style="width: 10%">* Tên Đầy Đủ </strong></li>
+                            <!-- name -->
                             <li>
-                                <img data-cfsrc="assets/img/home-three/title-img-two.png" alt="Image"
-                                    style="display:none;visibility:hidden;"><noscript><img
-                                        src="assets/img/home-three/title-img-two.png" alt="Image"></noscript>
-                                <a href="index.php">Trang chủ</a>
+                                <input type="hidden" name="id" value="<?= $iduser ?>">
+                                <input name="name" type="text" class="w-100 searchSelect" pattern=".{0,20}" maxlength="20" title="Tối đa 20 kí tự" value="<?= $name ?>" placeholder="<?= checknull($name) ?>" required>
                             </li>
-                            <li>
-                                <span>/</span>
+                            <!--  -->
+                        </ul>
+                    </div>
+                    <div class="details-inner mb-4 ">
+                        <ul class="">
+                            <!-- avatar -->
+                            <li class="position-relative w-50">
+                                <strong class="mb-2" for="">* Địa Chỉ</strong>
+                                <!-- <?= $cv['address'] ?> -->
+                                <input name="address" type="text" class="searchSelect" id="searchage" value="<?= $cv['address'] !== '' ? $cv['address'] : '' ?>" placeholder="<?= checknull($cv['address']) ?>" pattern=".*\S+.*" title='Chọn hoặc nhập địa chỉ' required>
+                                <div class="dropdown-content w-100" id="dropdownage">
+                                    <div class="dropdown-item">Không chọn</div>
+                                    <?php foreach ($datafilter as $cv) {
+                                        extract($cv);
+                                        if ($address !== '') { ?>
+                                            <div class="dropdown-item"><?= $address ?></div>
+                                        <?php } ?>
+                                    <?php } ?>
+                                    <div class="dropdown-item">Khác</div>
+                                </div>
                             </li>
+                            <!--  -->
+                        </ul>
+                    </div>
+                    <div class="details-inner mb-4">
+                        <ul class="">
+                            <!-- avatar -->
+                            <li class="d-flex justify-content-start flex-column w-100">
+                                <strong class="mb-2" for="">* Ảnh đại diện [ <span id="nameAvatar"><?= checknull($avatar); ?></span> ]</strong>
+                                <div class="d-flex justify-content-start">
+                                    <input name="avatar" class="w-25 searchSelect mb-2 me-2 file-img" type="file" title="Vui lòng nhập đúng định dạng" accept=".jpg, .jpeg, .png, .jfif, .gif" class="w-25">
+                                    <?= isset($avatar) && $avatar !== '' ? 'có' : 'k có' ?>
+                                    <?php if ($avatar !== '') { ?>
+                                        <span class="cancerThumb border-0 m-0 ps-2 pe-2" id="cancerAvatar"><i class="p-0 m-0 text-white fa-regular fa-trash-can"></i></span>
+                                        <input type="hidden" name="avatar" id="valueAvatar" value="<?= $avatar ?>">
+                                    <?php } ?>
+                                </div>
+                            </li>
+                            <!--  -->
+                        </ul>
+                    </div>
+                    <div class="details-inner">
+                        <h5>Giới Thiệu Cá Nhân <?= isset($intro) && $intro != ''  ? '' : '[ Chưa cập nhật ]'; ?></h5>
+                        <!-- introduce  -->
+                        <textarea name="introduce" class="w-100 p-3 rounded-3" style="height: 250px;outline: none" maxlength="1000" required><?= checknull($introduce); ?></textarea>
+                        <!--  -->
+                    </div>
+                    <div class="details-inner d-flex flex-column flex-sm-row justify-content-between">
+                        <ul class="mb-2 mb-sm-0 w-25">
+                        <li><strong style="width: 10%"> Ngày Sinh  </strong></li>
+                            <!-- Sinh Nhật -->
                             <li>
-                            Sửa CV
+                                <input type="date" name="birth" value="<?= $birth ?>" required>
                             </li>
                         </ul>
+                        <ul class="mb-2 mb-sm-0 w-25">
+                            <li><strong style="width: 10%">* Quy mô công ty </strong></li>
+                            <!-- size -->
+                            <li>
+                                <input name="size" type="number" class="w-100 searchSelect" min="50" max="50000" value="<?= $size !== '' ? $size : '' ?>" placeholder="<?= checknull($size) ?>" required>
+                            </li>
+                            <!--  -->
+                        </ul>
+                        <ul class="mb-2 mb-sm-0 w-25">
+                            <li><strong style="width: 10%">* Thời gian làm việc </strong></li>
+                            <!-- workingday -->
+                            <li class="position-relative">
+                                <input name="workingday" type="text" class="searchSelect" id="searchlevel" value="<?= $workingday !== '' ? $workingday : '' ?>" placeholder="<?= checknull($workingday); ?>" required>
+                                <div class="dropdown-content w-100 p-0" id="dropdownlevel">
+                                    <div class="dropdown-item">Thứ 2 - Thứ 6</div>
+                                    <div class="dropdown-item">Cả tuần ( nghỉ 1 ngày )</div>
+                                    <div class="dropdown-item">Linh động thời gian</div>
+                                    <div class="dropdown-item">Thứ 2 - Thứ 6 [ OT ]</div>
+                                    <div class="dropdown-item">Cả tuần ( nghỉ 1 ngày ) [ OT ]</div>
+                                    <div class="dropdown-item">Linh động thời gian [ OT ]</div>
+                                </div>
+                            </li>
+                            <!--  -->
+                        </ul>
+                    </div>
+                    <div class="details-inner d-flex flex-column flex-sm-row justify-content-between">
+                        <ul class="mb-2 mb-sm-0 w-25">
+                            <li><strong style="width: 10%">* Email </strong></li>
+                            <li>
+                                <!-- email  -->
+                                <input name="email" type="email" class="w-100 searchSelect" value="<?= $email !== '' ? $email : '' ?>" placeholder="<?= checknull($email) ?>" title="Vui lòng nhập đúng định dạng email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+                                <!--  -->
+                            </li>
+                        </ul>
+                        <ul class="mb-2 mb-sm-0 w-25">
+                            <li><strong style="width: 10%">* Số điện thoại </strong></li>
+                            <li>
+                                <!-- phone -->
+                                <input name="phone" class="w-100 searchSelect" type="tel" value="<?= $phone !== '' ? $phone : '' ?>" placeholder="<?= checknull($phone) ?>" pattern="[0-9]{1,13}" title="Vui lòng nhập đúng dịnh dạng số điện thoại" required>
+                                <!--  -->
+                            </li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="details-inner">
+                        <ul>
+                            <li><i class="fa-solid fa-star-of-life"></i> <strong style="width: 10%"> Quyền lợi </strong></li>
+                            <li>
+                                <!-- benefits -->
+                                <textarea name="benefits" class="w-100 p-3 rounded-3" style="height: 200px;outline: none" maxlength="500" required><?= checknull($benefits) ?></textarea>
+                                <!--  -->
+                            </li>
+                        </ul>
+                    </div>
+                    <hr class="opacity-0">
+                    <hr>
+                    <?= !empty($gallery) ? '<h5>Ảnh giới thiệu</h5>' : '<h5>Chưa cập nhật ảnh giới thiệu <i class="fa-solid fa-face-sad-tear"></i></h5>' ?>
+                    <div class="details-inner">
+                        <!-- Gallery -->
+                        <div class="job-details-slider owl-theme owl-carousel">
+                            <?php if (!empty($gallery)) { ?>
+                                <?php foreach ($gallery as $e) { ?>
+                                    <div style="width: 100%; height: 340px" class="slider-item rounded-3 overflow-hidden d-flex align-items-center">
+                                        <img data-cfsrc="<?= $img_path . $e ?>" alt="<?= $img_path . $e ?>" style="display:none;visibility:hidden;">
+                                        <noscript><img class="" src="<?= $img_path . $e ?>" alt="<?= $img_path . $e ?>"></noscript>
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
+                        </div>
+                        <!-- Cập nhật các ảnh tồn tại -->
+                        <ul class="gallery">
+                            <?php
+                            $thumbs = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
+                            $count = 0;
+                            foreach ($thumbs as $key) {
+                                $count++;
+                                if ($key !== '') { ?>
+                                    <li class="d-flex justify-content-start flex-column w-100">
+                                        <label class="mb-2" for="">Ảnh <?= $count; ?> [<span id="nameThumb<?= $count ?>"><?= $key ?></span>]</label>
+                                        <div class="d-flex justify-content-start">
+                                            <input name="thumb<?= $count ?>" class="w-25 searchSelect mb-2 me-2 file-img" type="file" accept=".jpg, .jpeg, .png, .jfif, .gif" class="w-25"><span class="cancerThumb border-0 m-0 ps-2 pe-2" id="cancerThumb<?= $count ?>"><i class="p-0 m-0 text-white fa-regular fa-trash-can"></i></span>
+                                        </div>
+                                        <input name="thumb<?= $count ?>" id="valueThumb<?= $count ?>" type="hidden" value="<?= $key ?>" readonly>
+                                    </li>
+                                <?php } else { ?>
+                                    <li>
+                                        <label class="mb-2" for="">Ảnh <?= $count; ?> [ Chưa cập nhật ]</label>
+                                        <input name="thumb<?= $count ?>" class="w-25 searchSelect mb-2 file-img" type="file" accept=".jpg, .jpeg, .png, .jfif, .gif" class="w-25">
+                                    </li>
+                                <?php } ?>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+    <div id="infocv" style="<?= isset($_SESSION['same']) ? 'display: none !important' : '' ?>" class="job-details-area employer-details-area ptb-100 form-item">
+        <span class="edit" id="editCV">Chỉnh sửa <i class="fa-solid fa-pen"></i></span>
+        <div class="container">
+            <div class="row">
+                <div class="details-inner mb-4">
+                    <h3>Giới Thiệu Cá Nhân</h3>
+                </div>
+                <div class="details-item">
+                    <div class="details-inner">
+                        <p style="text-align: justify">
+                            <?= empty($intro) ? 'Chưa cập nhật giới thiệu' : $intro; ?>
+                        </p>
+                    </div>
+                    <div class="details-inner d-flex flex-column flex-sm-row justify-content-between">
+                        <ul class="w-25">
+                            <li><strong style="width: 10%">* Ngày Sinh </strong></li>
+                            <li><i class="fa-solid fa-calendar me-2"></i><?= checknull($cv_birth) > 0 ? checknull($birth) : 'Chưa cập nhật'; ?></li>
+                        </ul>
+                        <ul class="w-25">
+                            <li><strong style="width: 10%">* Quy mô công ty </strong></li>
+                            <li><i class="fa-solid fa-users me-2"></i><?= checknull($size) > 0 ? checknull($size) . ' nhân viên' : 'Chưa cập nhật'; ?></li>
+                        </ul>
+                        <ul class="w-25">
+                            <li><strong style="width: 10%">* Thời gian làm việc </strong></li>
+                            <li><i class="fa-solid fa-calendar-day me-2"></i><?= checknull($workingday); ?></li>
+                        </ul>
+                    </div>
+                    <div class="details-inner d-flex flex-column flex-sm-row justify-content-between">
+                        <ul class="w-25">
+                            <li><strong style="width: 10%">* Email </strong></li>
+                            <li><i class="fa-solid fa-calendar me-2"></i><?= checknull($email) ?></li>
+                        </ul>
+                        <ul class="w-25">
+                            <li><strong style="width: 10%">* Số điện thoại </strong></li>
+                            <li><i class="fa-solid fa-users me-2"></i><?= checknull($phone); ?></li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="details-inner">
+                        <ul>
+                            <li><i class="fa-solid fa-star-of-life"></i> <strong style="width: 10%"> Quyền lợi </strong></li>
+                            <li><?= empty($bene) ? 'Chưa cập nhật quyền lợi' : $bene; ?></li>
+                        </ul>
+                    </div>
+                    <hr class="opacity-0">
+                    <hr>
+                    <?= !empty($gallery) ? '<h5>Ảnh giới thiệu</h5>' : '<h5>Chưa cập nhật ảnh giới thiệu <i class="fa-solid fa-face-sad-tear"></i></h5>' ?>
+                    <div class="details-inner">
+                        <div class="job-details-slider owl-theme owl-carousel">
+                            <?php if (!empty($gallery)) { ?>
+                                <?php foreach ($gallery as $e) { ?>
+                                    <div style="width: 100%; height: 340px" class="slider-item rounded-3 overflow-hidden d-flex align-items-center">
+                                        <img data-cfsrc="<?= $img_path . $e ?>" alt="Details" style="display:none;visibility:hidden;">
+                                        <noscript><img class="" src="<?= $img_path . $e ?>" alt="Details"></noscript>
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="post-job-area ptb-100">
-            <div class="container">
-             <form action="index.php?act=update-cv" method="POST" enctype="multipart/form-data"> Ver 1.0 
-                <form action="index.php?act=user_cv&id=<?= $id ?>" method="POST" enctype="multipart/form-data"> 
-
-                    <div class="post-item">
-                         <div class="section-title">
-                            <h2>Post A Job</h2>
-                            <p>Lorem ipsum dolor sit amet consectetur
-                                adipisicing elit. Eveniet placeat totam
-                                laboriosam ut labore aliquid veniam repellendus
-                                similique? Id molestiae pariatur molestias,
-                                alias quia sint autem nemo architecto facere
-                                asperiores.</p>
-                        </div> 
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>
-                                        Tên Của bạn:
-                                    </label>
-                                    <input type="text" name="name" class="form-control"
-                                        placeholder="<?= $name ?>">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>
-                                        Email:
-                                    </label>
-                                    <input type="email" name="email" class="form-control"
-                                        placeholder="<?= $email ?>">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>
-                                        Phone:
-                                    </label>
-                                    <input type="text" name="phone" class="form-control"
-                                        placeholder="<?= $phone ?>">
-                                </div>
-                            </div>
-                             <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>
-                                        Job Title:
-                                    </label>
-                                    <input type="text" class="form-control"
-                                        placeholder="">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>
-                                        Job Type:
-                                    </label>
-                                    <select>
-                                        <option>Full Time</option>
-                                        <option>Part Time</option>
-                                        <option>Internship</option>
-                                        <option>Freelancing</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>
-                                        Job Category:
-                                    </label>
-                                    <select>
-                                        <option>Digital & Creative</option>
-                                        <option>Sales & Marketing</option>
-                                        <option>Marketing & PR</option>
-                                        <option>IT Contractor</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>
-                                        Job Salary:
-                                    </label>
-                                    <select>
-                                        <option>500$ - 1000$</option>
-                                        <option>1000$ - 1500$</option>
-                                        <option>1500$ - 2000$</option>
-                                        <option>2000$ - 2500$</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>
-                                        Job Experience:
-                                    </label>
-                                    <select>
-                                        <option>0 - 1</option>
-                                        <option>1 - 2</option>
-                                        <option>2 - 3</option>
-                                        <option>3 - 4</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>
-                                        Job Qualification:
-                                    </label>
-                                    <select>
-                                        <option>Certificate</option>
-                                        <option>Diploma</option>
-                                        <option>Bachelor Degree</option>
-                                        <option>Master Degree</option>
-                                        <option>No Need</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>
-                                        Job Level:
-                                    </label>
-                                    <select>
-                                        <option>Senior</option>
-                                        <option>Junior</option>
-                                        <option>Manager</option>
-                                        <option>Lead</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn">Post A Job</button>
-                    </div>
-                </form>
-            </div>
-    </div> -->
-
-<div class="col-lg-8">
-    <div class="tab-content" id="v-pills-tabContent">
-        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-            <div class="profile-content">
-                <form action="index.php?act=manage_Cv" method="POST" enctype="multipart/form-data">
-                    <div class="profile-content-inner">
-                        <h2>Thông tin cơ bản</h2>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Tên của bạn:</label>
-                                    <input type="text" class="form-control" placeholder="<?= $name ?>">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Email của bạn:</label>
-                                    <input type="email" class="form-control" placeholder="<?= $email ?>">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Số Điện Thoại:</label>
-                                    <input type="text" class="form-control" placeholder="<?= $phone ?>">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Địa Chỉ :</label>
-                                    <input type="text" class="form-control" placeholder="<?= $address ?>">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Ngày Sinh :</label>
-                                    <input type="date" class="form-control" placeholder="<?= $birth ?>">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Cover Picture</label>
-                                    <input type="file">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="profile-content-inner">
-                        <h2>Lựa Chọn </h2>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Giới tính :</label>
-                                    <br>
-                                    <select name="cv_gender" class="form-control">
-                                        <?php foreach ($datafilter as $cvData) {
-                                            extract($cvData);
-                                            if ($gender !== '') { ?>
-                                                <option value="<?= $gender ?>" <?= ($gender == $gender) ? 'selected' : '' ?>><?= $gender ?></option>
-                                        <?php }
-                                        } ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Mức lương mong muốn :<?php echo $salary ?></label>
-                                    <br>
-                                    <select name="cv_gender" class="form-control">
-                                        <?php foreach ($datafilter as $cvData) {
-                                            extract($cvData);
-                                            if ($salary !== '') { ?>
-                                                <option value="<?= $salary ?>" <?= ($salary == $salary) ? 'selected' : '' ?>><?= $salary ?></option>
-                                        <?php }
-                                        } ?>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Institute:</label>
-                                    <input type="text" class="form-control" placeholder="Jecto University & Technology, UK">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="form-group">
-                                    <label>Year:</label>
-                                    <input type="text" class="form-control" placeholder="2015 - 2020">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn dashboard-btn">Cập Nhật Thông Tin</button>
-                </form>
-            </div>
-        </div>
-    </div>
 </div>
-<!-- <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-    <?php foreach ($cv as $cv) : ?>
-
-        <?php
-        var_dump($cv);
-        extract($cv);
-        $edit_cv = "index.php?act=infoCv&id=" . $iduser;
-        $delete_cv = "index.php?act=infoCv&id=" . $iduser; ?>
-        // <div class='employer-item position-relative'>
-            // <a href="index.php?act=infoCv&id=<?= $iduser ?>">
-                // <img data-cfsrc='assets/img/home-one/job1.png' alt='Employer' style='display:none;visibility:hidden;'><noscript><img src='assets/img/home-one/job1.png' alt='Employer'></noscript>
-                // <h3><?= $title ?></h3>
-                // <ul>
-                    // <li>
-                        // <i class='flaticon-send'></i>
-                        // <?= $address ?>
-                        // </li>
-                    // <li><?= $date ?></li>
-                    // </ul>
-                // <p><?= $major ?>
-                    // </p>
-                // <span class='span-one'>Accounting</span>
-                // <div class="d-flex justify-content-end">
-
-                    // <a href="<?= $edit_cv ?>" class="btn btn-info me-3 text-white">Sửa</a>
-                    // <button onclick="confirmDelete('<?= $delete_cv ?>')" class="btn btn-danger me-3 text-white">Xóa</button>
-                    // </div>
-                // </a>
-            // </div>
-        // <?php endforeach ?>
-    <div class="pagination-area">
-        <ul class="pagination">
-            <li><a href="#" id="prev">Prev</a></li>
-            <?php
-            for ($i = 1; $i <= $totalPages; $i++) {
-                echo "<li><a href='#' class='page' data-page='$i'>$i</a></li>";
-            }
-            ?>
-            <li><a href="#" id="next">Next</a></li>
-        </ul>
-    </div>
-
-</div>
-</div>
-</div> -->
