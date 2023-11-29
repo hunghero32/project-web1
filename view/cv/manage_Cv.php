@@ -22,48 +22,59 @@
     </div>
 </div>
 
-
 <div class="dashboard-area ptb-100">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4">
-                <div class="profile-item">
-                    <img data-cfsrc="<?= checkUserAvaNull($avatar) ?>" alt="Dashboard" style="display:none;visibility:hidden;width:25%"><noscript><img src="<?= checkUserAvaNull($avatar) ?>" alt="Dashboard"></noscript>
-                    <h2><?= $name ?></h2>
-                    <span>Hello Hello</span>
+            <div class="col-lg-3">
+                <div class="d-flex w-100 align-items-center flex-column">
+                    <div style="width: 100px; height: 100px" class="overflow-hidden rounded-circle mb-3 d-flex justify-content-center align-items-center">
+                        <img src='<?= checkUserAvaNull($avatar) ?>' alt='user' class=''>
+                    </div>
+                    <h3 class="mb-4 w-100 text-center"><?= $name ?></h3>
                 </div>
-                <div class="nav flex-column nav-pills" id="v-pills-tab<?= (isset($_GET['id'])) ? 'active' : '' ?>" role="tablist" aria-orientation="vertical">
-                    <a class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+
+                <!-- <span>Web developer</span> -->
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link <?= (!isset($_GET['id'])) ? 'active' : '' ?> " id="v-pills-home-tab" data-bs-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
                         <i class="bx bx-user"></i>
-                        Thông tin cá nhân
+                        Thông tin Cơ bản
                     </a>
-                    <a class="nav-link" id="v-pills-messages-tab<?= (isset($_GET['id'])) ? 'active' : '' ?>"  data-bs-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                    <a class="nav-link" id="v-pills-messages-tab <?= (isset($_GET['id'])) ? 'active' : '' ?> " data-bs-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
                         <div class="profile-list">
                             <i class="bx bxs-inbox"></i>
-                            Danh sách ứng tuyển
+                            Danh sách nộp bài tuyển dụng
                         </div>
                     </a>
                     <a href="index.php?act=infoCv&id=<?= $id ?>">
                         <div class="profile-list">
                             <i class="bx bx-note"></i>
-                            Thông tin của tôi
+                            CV của Tôi
                         </div>
                     </a>
                     <a href="index.php?act=signout">
                         <div class="profile-list">
                             <i class="bx bx-log-out"></i>
-                            Đăng xuất
+                            Đăng Xuất
                         </div>
                     </a>
                 </div>
             </div>
-            <?php include 'updateCV.php' ?>
+
+            <div class="col-lg-9">
+
+                <div class="tab-content" id="v-pills-tabContent">
+
+                    <?php
+                    include "updateCV.php";
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 <script>
     function confirmDelete(deleteUrl) {
-        if (confirm('Bạn có muốn XÓA không ?')) {
+        if (confirm('Xóa bài tuyển dụng này ?')) {
             window.location.href = deleteUrl; // Chuyển hướng đến URL xóa nếu bạn đồng ý
         }
     }
