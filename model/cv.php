@@ -2,33 +2,56 @@
 
 function list_cv($level, $age, $major, $exp, $address, $salary, $progLang)
 {
-    $sql = "SELECT cv.*, u.name, u.email, u.phone, u.address, u.role as userRole, g.avatar, s.progLang
-            FROM user u
-            LEFT JOIN cv ON u.id = cv.iduser
-            LEFT JOIN skillcv s ON cv.id = s.idcv
-            LEFT JOIN gallery g ON u.id = g.iduser
-            WHERE u.role = ?";
+        $sql = "SELECT 
+        cv.*, 
+        u.name AS name,
+        u.address, 
+        u.role AS userrole, 
+        g.avatar, 
+        s.progLang,
+        YEAR(NOW()) - YEAR(cv.birth) - (DATE_FORMAT(NOW(), '%m%d') < DATE_FORMAT(cv.birth, '%m%d')) AS age,
+        SUM(TIMESTAMPDIFF(MONTH, expcv.start, expcv.end)) AS exp
+        FROM cv
+        INNER JOIN user u ON cv.iduser = u.id
+        LEFT JOIN skillcv s ON cv.id = s.idcv
+        LEFT JOIN gallery g ON cv.iduser = g.iduser
+        LEFT JOIN expcv ON expcv.idcv = cv.id
+        WHERE u.role = 2";
 
-    $sql .= $address !== '' ? " AND u.address LIKE '%" . $address . "%' " : "";
-    $sql .= $level !== '' ? " AND cv.level = '" . $level . "' " : "";
-    $sql .= $age !== '' ? " AND cv.age = '" . $age . "' " : "";
-    $sql .= $major !== '' ? " AND cv.major LIKE '%" . $major . "%' " : "";
-    $sql .= $exp !== '' ? " AND cv.experience = '" . $exp . "' " : "";
-    $sql .= $salary !== '' ? " AND cv.salary = '" . $salary . "' " : "";
-    $sql .= $progLang !== '' ? " AND s.progLang = '" . $progLang . "' " : "";
+        $sql .= $level !== '' ? " AND cv.level LIKE '%" . $level . "%' " : "";
+        $sql .= $major !== '' ? " AND cv.major LIKE '%" . $major . "%' " : "";
+        $sql .= $address !== '' ? " AND u.address LIKE '%" . $address . "%' " : "";
+        $sql .= $salary !== '' ? " AND cv.salary LIKE '%" . $salary . "%' " : "";
+        $sql .= $progLang !== '' ? " AND s.progLang LIKE '%" . $progLang . "%' " : "";
 
-    if (!empty($progLang)) {
-        $sql .= " AND (";
-        foreach ($progLang as $lang) {
-            $sql .= "cv.programming_languages LIKE '%" . $lang . "%' OR ";
+        $sql .= " GROUP BY cv.id, g.avatar, u.role";
+
+        $sql .= $exp !== '' && $exp !== 'Khác' || $age !== '' && $age !== 'Khác' ? ' HAVING' : '';
+
+        if ($exp === '6 tháng ~ 2 năm') {
+                $sql .= " exp >= 6 AND exp <= 24";
+        }else if ($exp === '2 năm ~ 5 năm') {
+                $sql .= " exp > 24 AND exp <= 60";
+        }else if ($exp === 'Trên 5 năm'){
+                $sql .= " exp > 60 AND exp <= 120";
+        }else if ($exp === 'Trên 10 năm'){
+                $sql .= " exp > 120";
+        }else if ($exp === 'Chưa có kinh nghiệm'){
+                $sql .= " exp > 0 AND exp < 6";
         }
-        $sql = rtrim($sql, " OR ");
-        $sql .= ")";
-    }
+        
+        $and = $exp !== '' && $exp !== 'Khác' ? ' AND' : '';
 
-    $sql .= " GROUP BY cv.id, u.role ORDER BY cv.id DESC";
+        if ($age === '18 - 23') {
+                $sql .= $and." age >= 18 AND age <= 23";
+        }else if ($age === '> 23') {
+                $sql .= $and." age > 23 AND age < 30";
+        }else if ($age === '> 30'){
+                $sql .= $and." age > 30";
+        }
 
-    return pdo_query($sql, 2);
+        $sql .= " ORDER BY cv.id DESC";
+        return pdo_query($sql);
 }
 
 function top_cv()
