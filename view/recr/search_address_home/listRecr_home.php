@@ -19,7 +19,7 @@ foreach ($list_recr as $value) {
 
                         <p>
                             <i class="flaticon-appointment"></i>
-                            <?= $start ?> / <?= $address ?>
+                            <?= $address ?> / <?= $start ?>
                         </p>
                     </div>
                     <div class="bottom">
@@ -57,7 +57,7 @@ foreach ($list_recr as $value) {
 
                         <p>
                             <i class="flaticon-appointment"></i>
-                            <?= $start ?> / <?= $address ?>
+                            <?= $address ?> / <?= $start ?>
                         </p>
                     </div>
                     <div class="bottom">
@@ -95,7 +95,7 @@ foreach ($list_recr as $value) {
 
                         <p>
                             <i class="flaticon-appointment"></i>
-                            <?= $start ?> / <?= $address ?>
+                            <?= $address ?> / <?= $start ?>
                         </p>
                     </div>
                     <div class="bottom">

@@ -100,7 +100,7 @@
 
                             <div class="search mb-4">
                                 <h3>Tìm kiếm</h3>
-                                <div class="d-flex">
+                                <div class="d-flex ">
                                     <input type="text" class="form-control" placeholder="Từ khóa" name="key">
                                     <button type="submit" name="search_recr" class="btn " style="background-color: var(--secondary);">
                                         <i class="flaticon-send fw-bold"></i>
@@ -160,69 +160,7 @@
                                 </div>
 
                             </div>
-                            <!-- <div class="job-type cmn-padding">
-                            <h3>Ngôn ngữ</h3>
-                            <form>
-                                <ul class="job-cmn-cat">
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck16">
-                                            <label class="form-check-label" for="defaultCheck16">
-                                                Temporary (2)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck17">
-                                            <label class="form-check-label" for="defaultCheck17">
-                                                Remote (2)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck18">
-                                            <label class="form-check-label" for="defaultCheck18">
-                                                Part Time (2)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck19">
-                                            <label class="form-check-label" for="defaultCheck19">
-                                                Internship (1)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck20">
-                                            <label class="form-check-label" for="defaultCheck20">
-                                                Full Time (13)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck21">
-                                            <label class="form-check-label" for="defaultCheck21">
-                                                Freelancer (3)
-                                            </label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value id="defaultCheck22">
-                                            <label class="form-check-label" for="defaultCheck22">
-                                                Contract (0)
-                                            </label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </form>
-                        </div> -->
+                            
                             <div class="salary cmn-padding">
                                 <h3>Mức lương</h3>
                                 <div class="row job-cmn-cat">
