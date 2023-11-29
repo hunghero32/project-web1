@@ -11,21 +11,7 @@ $start = ($currentPage - 1) * $perPage;
 $data = range(1, $total_data);
 $currentData = array_slice($valu_racr, $start, $perPage);
 
-if (isset($_SESSION['username'])) {
-    $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
-    $corp = manageInfo($idcorp);
-    extract($corp);
-    // Xử lí các thumbnail
-    $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
-    $gallery = gallery($arr);
 
-    // Xử lí đoạn văn thành dòng
-    $introPara = explode("\n", $introduce);
-    $intro = paragToLines($introPara);
-
-    $benePara = explode("\n", $benefits);
-    $bene = paragToLines($benePara);
-}
 switch ($act) {
     case 'listRecr':
         $level = isset($_POST['level']) ? $_POST['level'] : '';
@@ -71,34 +57,71 @@ switch ($act) {
                 $request = $_POST['request'];
                 $description = $_POST['description'];
                 $end = $_POST['end'];
-                recr_add(
-                    $idcorp,
-                    $job,
-                    $exp,
-                    $level,
-                    $salary,
-                    $progLang,
-                    $type,
-                    $description,
-                    $end,
-                    $request
+                recr_add( $idcorp, $job, $exp, $level, $salary, $progLang, $type, $description, $end, $request
                 );
                 echo "<script> alert('Bạn đã thêm thành công !') </script>";
                 // header("location : index.php?act=post_recr");
             }
         }
+        $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
+        $corp = manageInfo($idcorp);
+        extract($corp);
+        $idcorp = $_SESSION['username']['id'];
+            $corp = manageInfo($idcorp);
+            extract($corp);
+        // Xử lí các thumbnail
+        $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
+        $gallery = gallery($arr);
+    
+        // Xử lí đoạn văn thành dòng
+        $introPara = explode("\n", $introduce);
+        $intro = paragToLines($introPara);
+    
+        $benePara = explode("\n", $benefits);
+        $bene = paragToLines($benePara);
         include 'view/corp/manage.php';
         break;
     case 'manage_recr':
-
+        $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
+        $corp = manageInfo($idcorp);
+        extract($corp);
+        $idcorp = $_SESSION['username']['id'];
+            $corp = manageInfo($idcorp);
+            extract($corp);
+        // Xử lí các thumbnail
+        $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
+        $gallery = gallery($arr);
+    
+        // Xử lí đoạn văn thành dòng
+        $introPara = explode("\n", $introduce);
+        $intro = paragToLines($introPara);
+    
+        $benePara = explode("\n", $benefits);
+        $bene = paragToLines($benePara);
         include 'view/corp/manage.php';
         break;
     case 'edit_recr':
-
+        
         if (isset($_GET['idEdit'])) {
             $id = $_GET['idEdit'];
             $value_id = recr_select_by_id($id);
         }
+        $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
+        $corp = manageInfo($idcorp);
+        extract($corp);
+        $idcorp = $_SESSION['username']['id'];
+            $corp = manageInfo($idcorp);
+            extract($corp);
+        // Xử lí các thumbnail
+        $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
+        $gallery = gallery($arr);
+    
+        // Xử lí đoạn văn thành dòng
+        $introPara = explode("\n", $introduce);
+        $intro = paragToLines($introPara);
+    
+        $benePara = explode("\n", $benefits);
+        $bene = paragToLines($benePara);
         include 'view/corp/manage.php';
         break;
     case 'up_recr':

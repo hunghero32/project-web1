@@ -14,11 +14,9 @@
                                 <label>
                                     Tiêu đề :
                                 </label>
-
-
                                 <div class="form-group position-relative">
-                                    <input name="job" type="text" class="searchSelect" id="searchjob" placeholder="<?= checkfind('', 'Chuyên ngành'); ?> &darr;">
-                                    <div class="dropdown-content" id="dropdownjob">
+                                    <input name="job" type="text" class="searchSelect" id="searchaddress" placeholder="<?= checkfind('', 'Chuyên ngành'); ?> &darr;">
+                                    <div class="dropdown-content" id="dropdownaddress">
                                         <div class="dropdown-item">Không chọn</div>
                                         <?php foreach ($datafilter as $cv) {
                                             extract($cv);
@@ -29,21 +27,7 @@
                                         <div class="dropdown-item">Khác</div>
                                     </div>
                                 </div>
-                                
                             </div>
-                        </div>
-
-
-
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>
-                                    Ngôn ngữ :
-                                </label>
-                                <input type="text" class="form-control" name="progLang" placeholder="Web Developer" title="Ngôn ngữ không được để trống !" requiredd>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label>
                                     Kiểu tuyển dụng :
@@ -57,7 +41,36 @@
                                     } ?>
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <label>
+                                    Kinh nghiệm :
+                                </label>
+                                <select name="exp" required>
+                                    <?php foreach ($datafilter as $v) { ?>
+                                        <?php extract($v);
+                                        if (isset($exp) && $exp != "") { ?>
+                                            <option value="<?= $exp ?>"> <?= $exp ?></option>
+                                    <?php }
+                                    } ?>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>
+                                    Ngôn ngữ :
+                                </label>
+                                <input type="text" class="form-control" name="progLang" placeholder="Web Developer" title="Ngôn ngữ không được để trống !" requiredd>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    Mô tả công việc :
+                                </label>
+                                <textarea name="description" class="form-control" cols="30" rows="10" style="resize: vertical; height: 100px;" title="Mô tả không được để trống !" required></textarea>
+                            </div>
                         </div>
+
 
                         <div class="col-lg-6">
                             <div class="form-group">
@@ -73,26 +86,7 @@
                                     } ?>
                                 </select>
                             </div>
-                        </div>
 
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>
-                                    Kinh nghiệm :
-                                </label>
-                                <select name="exp" required>
-                                    <?php foreach ($datafilter as $v) { ?>
-                                        <?php extract($v);
-                                        if (isset($exp) && $exp != "") { ?>
-                                            <option value="<?= $exp ?>"> <?= $exp ?></option>
-                                    <?php }
-                                    } ?>
-
-                                </select>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label>
                                     Cấp bậc / trình độ :
@@ -106,36 +100,26 @@
                                     } ?>
                                 </select>
                             </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label>
-                                    Mô tả công việc :
-                                </label>
-                                <textarea name="description" class="form-control" cols="30" rows="10" style="resize: vertical;" title="Mô tả không được để trống !" required></textarea>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
+
+                            
+
                             <div class="form-group">
                                 <label>
                                     Ngày hết hạn :
                                 </label>
                                 <input type="date" class="form-control" name="end" required>
                             </div>
+
+
+                            <div class="form-group">
+                                <label>
+                                    Yêu cầu công việc :
+                                </label>
+                                <textarea name="request" class="form-control" cols="30" rows="10" style="resize: vertical;height: 100px;" title="Mô tả không được để trống !" required></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="form-group">
-                            <label>
-                                Yêu cầu công việc :
-                            </label>
-                            <textarea name="request" class="form-control" cols="30" rows="10" style="resize: vertical;" title="Mô tả không được để trống !" required></textarea>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
 
                     </div>
-
                     <button type="submit" name="add_recr" class="btn">Thêm </button>
                 </div>
             </form>
