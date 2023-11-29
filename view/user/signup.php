@@ -48,8 +48,8 @@
                             <div class="form-group">
                                 <select name="role" id="" class="form-control w-100 mb-2 p-3 pt-1 text-secondary" required>
                                     <option value="">Vai trò của bạn là ?</option>
-                                    <option value="2">Nhà tuyển dụng</option>
-                                    <option value="3">Ứng cử viên</option>
+                                    <option value="3">Nhà tuyển dụng</option>
+                                    <option value="2">Ứng cử viên</option>
                                 </select>
                             </div>
                             <br><br>
