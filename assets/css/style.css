@@ -14,6 +14,7 @@ body {
     --secondary-child: rgba(78,205,196,0.5);
     --font: rgba(0,0,0,0.8);
     --semi-background: rgba(53,53,53,0.7);
+
 }
 
 h1,
@@ -6949,7 +6950,29 @@ button:focus {
     box-shadow: 0 0 5px red;
     transition: 0.3s ease;
 }
+#info_recr{
+    border: 2px dashed var(--secondary) ;
+    padding: 3rem;
+    border-radius: 5px;
+    position: relative;
+}
+#info_recr #v-pills-edit-tab{
+    position: absolute;
+    top: 3%;
+    right: 3%;
 
+}
+#info_recr h3{
+    padding-bottom: 30px;
+}
+#info_recr i {
+    color: var(--secondary);
+}
+#info_recr ul{
+    padding-left: 0;
+    list-style: none !important;
+
+}
 .form-item {
     border: 2px dashed var(--secondary);
     background-color: white !important;

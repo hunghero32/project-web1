@@ -98,7 +98,7 @@
                                 <li><?= $start ?></li>
                             </ul>
                             <p><?= $name ?></p>
-                            <span class="span-one"><a href="#">Ứng tuyển</a></span>
+                            <span class="span-one" style="background-color: var(--secondary);"><a href="#" class="text-white">Ứng tuyển</a></span>
                             <span class="span-two"><?= $type == 2 ? "FULL TIME" : "PART TIME" ?> </span>
 
                         </div>
