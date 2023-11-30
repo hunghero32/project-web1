@@ -16,16 +16,22 @@
                                     <i class="bx bx-phone-call"></i>
                                     <a href="tel:<?= checknull($phone) ?>"><?= checknull($phone) ?></a>
                                 </li>
+                                <li>
+                                    <i class="fa-solid fa-at"></i>
+                                    <a href="mailto:<?= checknull($email) ?>">
+                                    <?= checknull($email) ?>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="right">
+                        <!-- <div class="right">
                             <ul>
                                 <li><click>
                                     <a href="" id="save">
                                         <i class="bx bx-share-alt"></i>
-                                        Save
+                                        SHA
                                     </a></click>
                                 </li>
                                 <li><click>
@@ -35,7 +41,7 @@
                                     </a></click>
                                 </li>
                             </ul>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -49,11 +55,11 @@
         <div class="row">
             <div class="col-lg-4">
                 <div class="widget-area">
-                    <div class="resume-profile">
-                        <img data-cfsrc="assets/img/dashboard1.jpg" alt="Dashboard" style="display:none;visibility:hidden;"><noscript><img src="assets/img/dashboard1.jpg" alt="Dashboard"></noscript>
+                    <!-- <div class="resume-profile">
+                    <img data-cfsrc="<?= checkUserAvaNull($avatar) ?>" alt="CV Chi Tiết" style="display:none;visibility:hidden;width:60%;"><noscript><img src="<?= checkUserAvaNull($avatar) ?>" alt="Details"></noscript>
                         <h2><?= checknull($name) ?></h2>
                         <span><?= checknull($major) ?></span>
-                    </div>
+                    </div> -->
                     <div class="information widget-item">
                         <h3>Yêu Cầu</h3>
                         <ul>
@@ -102,8 +108,8 @@
                         <?php foreach ($list_cv as $idcv) { ?>
                             <ul>
                                 <li>
-                                    <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
-                                    <span>Công việc chính :</span>
+                                    <!-- <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript> -->
+                                    <h4>Công việc chính :</h4>
                                 </li>
                                 <li>
                                     <?= checknull($job) ?>
@@ -153,8 +159,9 @@
                             <?php } ?>
                         </div>
                     </div>
-                    <hr>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
