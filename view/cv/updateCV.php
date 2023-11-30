@@ -8,10 +8,10 @@
     </script>
 <?php } ?>
 <div class="tab-pane fade <?= (!isset($_GET['id']) && !isset($_GET['idEdit'])) ? 'show active' : '' ?>" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-    <form method="POST" action="index.php?act=updateInfocv" enctype="multipart/form-data" style="<?= isset($_SESSION['same']) ? 'display: block !important' : '' ?>" id="editInfocv" class="d-none job-details-area employer-details-area ptb-100 form-item">
+    <form method="POST" action="index.php?act=updateCv" enctype="multipart/form-data" style="<?= isset($_SESSION['same']) ? 'display: block !important' : '' ?>" id="editInfocv" class="d-none job-details-area employer-details-area ptb-100 form-item">
         <div class="boxbtn d-flex w-50 justify-content-end gap-3">
-            <span class="cancer border-0" id="cancerEditInfocv">Hủy <i class="fa-solid fa-xmark"></i></span>
-            <button name="updateInfocv" id="updateInfocv" class="save border-0" type="submit">Lưu <i class="fa-solid fa-cloud-arrow-up"></i></button>
+            <span class="cancer border-0" id="cancerupdateCv">Hủy <i class="fa-solid fa-xmark"></i></span>
+            <button name="updateCv" id="updateCv" class="save border-0" type="submit">Lưu <i class="fa-solid fa-cloud-arrow-up"></i></button>
         </div>
         <div class="container">
             <div class="row">
@@ -34,9 +34,51 @@
                         <ul class="">
                             <!-- avatar -->
                             <li class="position-relative w-50">
+                                <strong class="mb-2" for="">* Giới Tính</strong>
+                                <!-- <?= $cvData['cv_gender'] ?> -->
+                                <input name="cv_gender" type="text" class="searchSelect" id="searchage" value="<?= $cvData['cv_gender'] !== '' ? $cvData['cv_gender'] : '' ?>" placeholder="<?= checknull($cvData['cv_gender']) ?>" pattern=".*\S+.*" title='Chọn hoặc nhập địa chỉ' required>
+                                <div class="dropdown-content w-100" id="dropdownage">
+                                    <div class="dropdown-item">Không chọn</div>
+                                    <?php foreach ($datafilter as $cvData) {
+                                        extract($cvData);
+                                        if ($gender !== '') { ?>
+                                            <div class="dropdown-item"><?= $gender ?></div>
+                                        <?php } ?>
+                                    <?php } ?>
+                                    <div class="dropdown-item">Khác</div>
+                                </div>
+                            </li>
+                            <!--  -->
+                        </ul>
+                    </div>
+                    <div class="details-inner mb-4 ">
+                        <ul class="">
+                            <!-- avatar -->
+                            <li class="position-relative w-50">
                                 <strong class="mb-2" for="">* Địa Chỉ</strong>
-                                <!-- <?= $cv['address'] ?> -->
-                                <input name="address" type="text" class="searchSelect" id="searchage" value="<?= $cv['address'] !== '' ? $cv['address'] : '' ?>" placeholder="<?= checknull($cv['address']) ?>" pattern=".*\S+.*" title='Chọn hoặc nhập địa chỉ' required>
+                                <!-- <?= $cvData['cv_major'] ?> -->
+                                <input name="cv_major" type="text" class="searchSelect" id="searchage" value="<?= $cvData['cv_major'] !== '' ? $cvData['cv_major'] : '' ?>" placeholder="<?= checknull($cvData['cv_major']) ?>" pattern=".*\S+.*" title='Chọn hoặc nhập chuyên ngành' required>
+                                <div class="dropdown-content w-100" id="dropdownage">
+                                    <div class="dropdown-item">Không chọn</div>
+                                    <?php foreach ($datafilter as $cvData) {
+                                        extract($cvData);
+                                        if ($major !== '') { ?>
+                                            <div class="dropdown-item"><?= $major ?></div>
+                                        <?php } ?>
+                                    <?php } ?>
+                                    <div class="dropdown-item">Khác</div>
+                                </div>
+                            </li>
+                            <!--  -->
+                        </ul>
+                    </div>
+                    <div class="details-inner mb-4 ">
+                        <ul class="">
+                            <!-- avatar -->
+                            <li class="position-relative w-50">
+                                <strong class="mb-2" for="">* Chuyên Ngành</strong>
+                                <!-- <?= $cvData['address'] ?> -->
+                                <input name="address" type="text" class="searchSelect" id="searchage" value="<?= $cvData['address'] !== '' ? $cvData['address'] : '' ?>" placeholder="<?= checknull($cvData['address']) ?>" pattern=".*\S+.*" title='Chọn hoặc nhập địa chỉ' required>
                                 <div class="dropdown-content w-100" id="dropdownage">
                                     <div class="dropdown-item">Không chọn</div>
                                     <?php foreach ($datafilter as $cv) {
@@ -69,24 +111,24 @@
                         </ul>
                     </div>
                     <div class="details-inner">
-                        <h5>Giới Thiệu Cá Nhân <?= isset($intro) && $intro != ''  ? '' : '[ Chưa cập nhật ]'; ?></h5>
-                        <!-- introduce  -->
-                        <textarea name="introduce" class="w-100 p-3 rounded-3" style="height: 250px;outline: none" maxlength="1000" required><?= checknull($introduce); ?></textarea>
+                        <h5>Giới Thiệu Cá Nhân <?= isset($introduce) && $introduce != ''  ? '' : '[ Chưa cập nhật ]'; ?></h5>
+                        <!-- introduceduce  -->
+                        <textarea name="introduceduce" class="w-100 p-3 rounded-3" style="height: 250px;outline: none" maxlength="1000" required><?= checknull($introduceduce); ?></textarea>
                         <!--  -->
                     </div>
                     <div class="details-inner d-flex flex-column flex-sm-row justify-content-between">
                         <ul class="mb-2 mb-sm-0 w-25">
-                        <li><strong style="width: 10%"> Ngày Sinh  </strong></li>
+                            <li><strong style="width: 10%"> Ngày Sinh </strong></li>
                             <!-- Sinh Nhật -->
                             <li>
-                                <input type="date" name="birth" value="<?= $birth ?>" required>
+                                <input type="date" name="cv_birth" value="<?= $birth ?>" required>
                             </li>
                         </ul>
                         <ul class="mb-2 mb-sm-0 w-25">
-                            <li><strong style="width: 10%">* Quy mô công ty </strong></li>
-                            <!-- size -->
+                            <li><strong style="width: 10%">* Mức Lương Mong Muốn </strong></li>
+                            <!-- Lương -->
                             <li>
-                                <input name="size" type="number" class="w-100 searchSelect" min="50" max="50000" value="<?= $size !== '' ? $size : '' ?>" placeholder="<?= checknull($size) ?>" required>
+                                <input name="cv_salary" type="number" class="w-100 searchSelect" min="50" max="50000" value="<?= $salary !== '' ? $salary : '' ?>" placeholder="<?= checknull($salary) ?>" required>
                             </li>
                             <!--  -->
                         </ul>
@@ -190,17 +232,17 @@
                 <div class="details-item">
                     <div class="details-inner">
                         <p style="text-align: justify">
-                            <?= empty($intro) ? 'Chưa cập nhật giới thiệu' : $intro; ?>
+                            <?= empty($introduce) ? 'Chưa cập nhật giới thiệu' : $introduce; ?>
                         </p>
                     </div>
                     <div class="details-inner d-flex flex-column flex-sm-row justify-content-between">
                         <ul class="w-25">
                             <li><strong style="width: 10%">* Ngày Sinh </strong></li>
-                            <li><i class="fa-solid fa-calendar me-2"></i><?= checknull($cv_birth) > 0 ? checknull($birth) : 'Chưa cập nhật'; ?></li>
+                            <li><i class="fa-solid fa-calendar me-2"></i><?= checknull($birth) > 0 ? checknull($birth) : 'Chưa cập nhật'; ?></li>
                         </ul>
                         <ul class="w-25">
-                            <li><strong style="width: 10%">* Quy mô công ty </strong></li>
-                            <li><i class="fa-solid fa-users me-2"></i><?= checknull($size) > 0 ? checknull($size) . ' nhân viên' : 'Chưa cập nhật'; ?></li>
+                            <li><strong style="width: 10%">* Mức Lương Mong Muốn </strong></li>
+                            <li><i class="fa-solid fa-users me-2"></i><?= checknull($salary) > 0 ? checknull($salary) . ' nhân viên' : 'Chưa cập nhật'; ?></li>
                         </ul>
                         <ul class="w-25">
                             <li><strong style="width: 10%">* Thời gian làm việc </strong></li>
