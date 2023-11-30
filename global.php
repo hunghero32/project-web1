@@ -41,6 +41,12 @@ function checkUserAvaNull($input)
     return $return;
 }
 
+function checkUserCvNull($input)
+{
+    $return = $input == '' ? 'assets/img/unknowCv.png' : 'assets/uploads/' . $input;
+    return $return;
+}
+
 function gallery($arr = [])
 {
     $collect = array();

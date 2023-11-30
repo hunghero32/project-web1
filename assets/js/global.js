@@ -13,6 +13,23 @@ cancerEditInfoCorp.onclick = () => {
     infoCorp.classList.toggle('d-none');
 }
 
+
+const editCvBtn = document.getElementById('editBtnInfoCv');
+const editInfoCv = document.getElementById('editInfoCv')
+const cancerEditInfoCv = document.getElementById('cancerEditInfoCv')
+const infoCv = document.getElementById('infoCv')
+
+editCvBtn.onclick = () => {
+    editInfoCv.classList.toggle('d-none');
+    infoCv.classList.toggle('d-none');
+}
+
+cancerEditInfoCv.onclick = () => {
+    editInfoCv.classList.toggle('d-none');
+    infoCv.classList.toggle('d-none');
+}
+
+
 const allImgCorp = ['Avatar','Thumb1', 'Thumb2', 'Thumb3', 'Thumb4', 'Thumb5']
 
 for (let index = 0; index < allImgCorp.length; index++) {
