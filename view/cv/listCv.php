@@ -1,4 +1,3 @@
-
 <div class="page-title-area">
     <div class="d-table">
         <div class="d-table-cell">
@@ -145,7 +144,7 @@
                 foreach ($list_cv as $cv) {
                     extract($cv) ?>
                     <div class="col-lg-6">
-                        <div class="candidate-item two">
+                        <div class="candidate-item two" style="cursor:pointer;" onclick="return window.location.href='index.php?act=infoCv&id=<?= $iduser ?>'">
                             <div class="left">
                                 <h3>
                                     <a href="index.php?act=infoCv&id=<?= $iduser ?>"><?= $name ?></a>
@@ -168,8 +167,8 @@
                                     </a>
                                 </div>
                             </div>
-                            <img data-cfsrc="<?= checkUserAvaNull($avatar) ?>" alt="<?= $name ?>" style="display:none;visibility:hidden;">
-                            <noscript><img src="<?= checkUserAvaNull($avatar) ?>" alt="Candidate"></noscript>
+                            <img data-cfsrc="<?= checkUserCvNull($avatar) ?>" alt="<?= $name ?>" style="display:none;visibility:hidden; <?= $avatar == '' ? 'width: 80px;height: 80px' : '' ?>">
+                            <noscript><img style="<?= $avatar == '' ? 'width: 80px;height: 80px' : '' ?>" src="<?= checkUserCvNull($avatar) ?>" alt="Candidate"></noscript>
                         </div>
                     </div>
                 <?php } ?>

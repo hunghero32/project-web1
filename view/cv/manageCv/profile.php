@@ -1,17 +1,8 @@
-<?php if (isset($_SESSION['updated'])) {
-    unset($_SESSION['updated']);
-    if (isset($_SESSION['same'])) {
-        unset($_SESSION['same']);
-    }; ?>
-    <script>
-        alert('[ Cập nhật thành công ]');
-    </script>
-<?php } ?>
 <div class="tab-pane fade <?= (!isset($_GET['id']) && !isset($_GET['idEdit'])) ? 'show active' : '' ?>" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-    <form method="POST" action="index.php?act=updateCv" enctype="multipart/form-data" style="<?= isset($_SESSION['same']) ? 'display: block !important' : '' ?>" id="editInfocv" class="d-none job-details-area employer-details-area ptb-100 form-item">
+    <form method="POST" action="index.php?act=updateCv" enctype="multipart/form-data" style="<?= isset($_SESSION['sameCv']) ? 'display: block !important' : '' ?>" id="editInfoCv" class="d-none job-details-area employer-details-area ptb-100 form-item">
         <div class="boxbtn d-flex w-50 justify-content-end gap-3">
-            <span class="cancer border-0" id="cancerupdateCv">Hủy <i class="fa-solid fa-xmark"></i></span>
-            <button name="updateCv" id="updateCv" class="save border-0" type="submit">Lưu <i class="fa-solid fa-cloud-arrow-up"></i></button>
+            <span class="cancer border-0" id="cancerEditInfoCv">Hủy <i class="fa-solid fa-xmark"></i></span>
+            <button name="updateCv" class="save border-0" type="submit">Lưu <i class="fa-solid fa-cloud-arrow-up"></i></button>
         </div>
         <div class="container">
             <div class="row">
@@ -222,8 +213,8 @@
             </div>
         </div>
     </form>
-    <div id="infocv" style="<?= isset($_SESSION['same']) ? 'display: none !important' : '' ?>" class="job-details-area employer-details-area ptb-100 form-item">
-        <span class="edit" id="editCV">Chỉnh sửa <i class="fa-solid fa-pen"></i></span>
+    <div id="infoCv" style="<?= isset($_SESSION['sameCv']) ? 'display: none !important' : '' ?>" class="job-details-area employer-details-area ptb-100 form-item">
+        <span class="edit" id="editBtnInfoCv">Chỉnh sửa <i class="fa-solid fa-pen"></i></span>
         <div class="container">
             <div class="row">
                 <div class="details-inner mb-4">

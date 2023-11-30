@@ -61,21 +61,13 @@
             </div>
 
             <div class="col-lg-9">
-
                 <div class="tab-content" id="v-pills-tabContent">
-
                     <?php
-                    include "updateCv.php";
+                    include "manageCv/profile.php";
+                    include "manageCv/listRecr.php";
                     ?>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script>
-    function confirmDelete(deleteUrl) {
-        if (confirm('Xóa bài tuyển dụng này ?')) {
-            window.location.href = deleteUrl; // Chuyển hướng đến URL xóa nếu bạn đồng ý
-        }
-    }
-</script>
