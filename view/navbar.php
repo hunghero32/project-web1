@@ -56,7 +56,7 @@
                                             <li><a class="dropdown-item" href="index.php?act=manage_Cv">Thông tin người dùng</a></li>
                                         <?php } ?>
                                         <?php if ($role == 3) { ?>
-                                            <li><a class="dropdown-item" href="index.php?act=manageCorp">Thông tin doanh nghiệp</a></li>
+                                            <li><a class="dropdown-item" href="index.php?act=manageCorp&profile=1">Thông tin doanh nghiệp</a></li>
                                         <?php } ?>
                                         <li>
                                             <hr class="dropdown-divider">

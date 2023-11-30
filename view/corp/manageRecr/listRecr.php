@@ -1,10 +1,10 @@
-<div class="tab-pane fade " id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-    <form action="" class="mb-5 d-flex justify-content-between align-items-center">
+<div class="tab-pane fade  <?= (!isset($_GET['id']) && !isset($_GET['idEdit']) && !isset($_GET['idInfo']) && !isset($_GET['profile'])) || (isset($thongbao)) ? 'show active' : '' ?> " id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+    <form action="index.php?act=manage_recr" method="post" class="mb-5 d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <input type="search" name="kym" class="p-2 px-5 rounded-start border border-secondary mx-3" placeholder="Tìm kiếm ...">
             <div class="form-group position-relative">
-                <input name="job" type="text" class="p-2" id="searchage" placeholder="<?= checkfind('', 'Ngày hết hạn'); ?> &darr;">
-                <div class="dropdown-content" id="dropdownage">
+                <input name="end" type="text" class="p-2" id="searchexp" placeholder="<?= checkfind('', 'Ngày hết hạn'); ?> &darr;">
+                <div class="dropdown-content" id="dropdownexp">
                     <div class="dropdown-item">Không chọn</div>
                     <?php foreach ($valu_racr as $cv) {
                         // extract($cv);
@@ -18,7 +18,7 @@
             <button class="btn btn-info rounded-end p-2 mx-3" name="submit" style="background-color: var(--secondary);"><i class="fa-solid fa-magnifying-glass text-white fs-5"></i></button>
         </div>
         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link  text-white p-2 px-4 fw-bold" id="v-pills-post-tab" data-bs-toggle="pill" href="#v-pills-post" role="tab" aria-controls="v-pills-messages" aria-selected="false" style="background-color: var(--secondary);">
+            <a class="nav-link  text-white p-2 px-4 fw-bold" id="v-pills-post-tab" href="index.php?act=post_recr&id=1" role="tab" aria-selected="false" style="background-color: var(--secondary);">
                 <div class="profile-list">
 
                     Thêm Bài tuyển dụng
@@ -34,11 +34,11 @@
         extract($key);
         $edit_recr = "index.php?act=edit_recr&idEdit=" . $id;
         $delete_recr = "index.php?act=delete_recr&id=" . $id; ?>
-        <?php $link_recr = "index.php?act=info_recr&id=" . $id; ?>
+        <?php $link_recr = "index.php?act=infoRecr&idInfo=" . $id; ?>
         <div class='employer-item position-relative'>
 
             <img data-cfsrc='assets/img/home-one/job1.png' alt='Employer' style='display:none;visibility:hidden;'><noscript><img src='assets/img/home-one/job1.png' alt='Employer'></noscript>
-            <h3><a href='<?= $link_recr ?>' class="text-dark"><?= $job ?></a></h3>
+            <h3><?= $job ?></h3>
             <ul>
                 <li>
                     <i class='flaticon-send'></i>
@@ -46,23 +46,25 @@
                 </li>
                 <li><?= $start ?></li>
             </ul>
-            <p><?= $name ?>
+            <p><?= $level ?>
+            <p><?= $progLang ?>
             </p>
-            <!-- <span class='span-one'>Accounting</span> -->
-            <div class="d-flex justify-content-end">
+            <span class='span-two'><?= $type ?> </span>
 
 
-                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
+            <div class="nav  nav-pills d-flex justify-content-between" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <a href="<?= $link_recr ?>" class="nav-link text-white me-3 p-2 px-4 fw-bold w-25 bg-secondary bg-opacity-75" id="v-pills-info-tab" role="tab" >Thông tin chi tiết </a>
+                <div class="d-flex">
                     <!-- <a href="index.php?act=edit_recr&idEdit=<?= $id ?>" class="nav-link  bg-info text-white me-3 p-2 px-4 fw-bold " id="v-pills-edit-tab" data-bs-toggle="pill"   aria-selected="false"> -->
                     <a href="<?= $edit_recr ?>" class="nav-link text-white me-3 p-2 px-4 fw-bold" id="v-pills-edit-tab" role="tab" style="background-color: var(--secondary);">
 
                         <div class="profile-list">
-                            Sửa
+                            <i class="fa-regular fa-pen-to-square text-white"></i>
                         </div>
                     </a>
+                    <button onclick="confirmDelete('<?= $delete_recr ?>')" class="btn bg-secondary bg-opacity-75 me-3 text-white"><i class="fa-regular fa-trash-can"></i></button>
                 </div>
-                <button onclick="confirmDelete('<?= $delete_recr ?>')" class="btn btn-danger me-3 text-white">Xóa</button>
             </div>
 
         </div>

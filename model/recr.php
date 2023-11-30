@@ -81,21 +81,31 @@
         $sql = "SELECT r.* , c.introduce , u.address , u.name FROM recr r 
         INNER JOIN corp c ON c.id= r.idcorp 
         INNER JOIN user u ON u.id = c.iduser 
-        INNER JOIN gallery g ON u.id = g.iduser where 1 ORDER BY r.id DESC LIMIT 0,8" ;
+        INNER JOIN gallery g ON u.id = g.iduser where 1  ORDER BY r.id DESC LIMIT 0,8" ;
         
         $valu = pdo_query($sql );
         return  $valu;
     }
 
   
-    function search_address_recr() {
-        $sql = "SELECT r.* , c.introduce  ,u.address , u.name FROM recr r 
+    function search_address_recr($kym , $end , $id) {
+        $sql = "SELECT r.* , c.introduce , u.address , u.name FROM recr r 
         INNER JOIN corp c ON c.id= r.idcorp 
         INNER JOIN user u ON u.id = c.iduser 
-        INNER JOIN gallery g ON u.id = g.iduser 
-        where 1 ORDER BY r.id DESC LIMIT 0,8" ;
+        INNER JOIN gallery g ON u.id = g.iduser where 1 AND u.id = ? ";
+        if($kym != ""){
+            $sql .= " AND r.job LIKE '%" . $kym . "%'";
+            $sql .= " OR r.exp LIKE '%" . $kym . "%'"; 
+            $sql .= " OR r.salary LIKE '%" . $kym . "%'"; 
+            $sql .= " OR r.type LIKE '%" . $kym . "%'"; 
+            $sql .= " OR r.progLang LIKE '%" . $kym . "%'"; 
+            $sql .= " OR r.level LIKE '%" . $kym . "%'"; 
+           
+        }
+        $sql .= $end !== '' ? " AND r.end LIKE '%" . $end . "%' " : "";
+        $sql.= " ORDER BY r.id DESC LIMIT 0,8" ;
 
-        $valu = pdo_query($sql );
+        $valu = pdo_query($sql , $id);
         return  $valu;
     }
     
