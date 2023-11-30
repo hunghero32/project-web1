@@ -36,14 +36,14 @@ switch ($act) {
             //         'major' => $_POST['cv_major'],
             //         'introduce' => $_POST['cv_introduce']
             //     ];
-    
+
             //     $degreeData = [
             //         'id' => $_POST['degree_id'],
             //         'name' => $_POST['degree_name'],
             //         'school' => $_POST['degree_school'], 
             //         'year' => $_POST['degree_year']
             //     ];
-    
+
             //     $expData = [
             //         'id' => $_POST['experience_id'],
             //         'level' => $_POST['experience_level'],
@@ -58,73 +58,82 @@ switch ($act) {
             //         'percent' => $_POST['skill_percent']
             //     ];
             //     // Update all information
-    
+
             //     updateAllInfo($cvData, $degreeData, $expData, $skillData); 
-    
+
             // }
             $idcv = $_SESSION['username']['id'];
             $cvInfo = manageCv($id);
             extract($cvInfo);
-    
+
             // Xử lí các thumbnail
             $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
             $gallery = gallery($arr);
-    
-            // Xử lí đoạn văn thành dòng
-            $introPara = explode("\n", $introduce);
-            $intro = paragToLines($introPara); }
-    
-            include 'view/cv/manage_Cv.php';
-            break;
-    
-    
-    
-        case 'updateCv':
-            $idcorp = $_SESSION['username']['id'];
-            $corp = manageCv($id);
-            extract($corp);
-            // var_dump($corp);
-    
-            // Xử lí các thumbnail
-            $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
-            $gallery = gallery($arr);
-    
+
             // Xử lí đoạn văn thành dòng
             $introPara = explode("\n", $introduce);
             $intro = paragToLines($introPara);
-    
-            $benePara = explode("\n", $benefits);
-            $bene = paragToLines($benePara);
-    
-    
-            if (isset($_POST['updateCv'])) {
-    // update thằng CV
-                    $id = checkUpdate($_POST['cv_id']);
-                    $gender = checkUpdate($_POST['cv_gender']);
-                    $birth = checkUpdate($_POST['cv_birth']);
-                    $salary = checkUpdate($_POST['cv_salary']);
-                    $major = checkUpdate($_POST['cv_major']);
-                    $introduce = checkUpdate($_POST['cv_introduce']);
-    // update thằng giáo dục
-                    $name = checkUpdate($_POST['degree_name']);
-                    $school = checkUpdate($_POST['degree_school']);
-                    $year = checkUpdate($_POST['degree_year']);
-    //update thằng kinh nghiệm
-                    $level = checkUpdate($_POST['experience_level']);
-                    $job = checkUpdate($_POST['experience_job']);
-                    $corp = checkUpdate($_POST['experience_corp']);
-                    $start = checkUpdate($_POST['experience_start']);
-                    $end = checkUpdate($_POST['experience_end']);
-    // update thằng kỹ năng 
-                    $progLang = checkUpdate($_POST['skill_progLang']);
-                    $percent = checkUpdate($_POST['skill_percent']);
-    
-                updateAllInfo($cvData, $degreeData, $expData, $skillData);
-            }
-            include 'view/cv/updateCv.php';
-            break;
-    
-        default:
-            // Default case
-            break;
-    }
+        }
+
+        include 'view/cv/manage_Cv.php';
+        break;
+
+
+
+    case 'updateCv':
+        $idcorp = $_SESSION['username']['id'];
+        $corp = manageCv($id);
+        extract($corp);
+        // var_dump($corp);
+
+        // Xử lí các thumbnail
+        $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
+        $gallery = gallery($arr);
+
+        // Xử lí đoạn văn thành dòng
+        $introPara = explode("\n", $introduce);
+        $intro = paragToLines($introPara);
+
+        $benePara = explode("\n", $benefits);
+        $bene = paragToLines($benePara);
+
+
+        if (isset($_POST['updateCv'])) {
+            $id = checkUpdate($_POST['id']);
+            // update thằng CV
+            $cvData = [
+
+                $gender = checkUpdate($_POST['cv_gender']),
+                $birth = checkUpdate($_POST['cv_birth']),
+                $salary = checkUpdate($_POST['cv_salary']),
+                $major = checkUpdate($_POST['cv_major']),
+                $introduce = checkUpdate($_POST['cv_introduce']),
+            ];
+            // update thằng giáo dục
+            $degreeData = [
+                $name = checkUpdate($_POST['degree_name']),
+                $school = checkUpdate($_POST['degree_school']),
+                $year = checkUpdate($_POST['degree_year']),
+            ];
+            //update thằng kinh nghiệm
+            $expData = [
+                $level = checkUpdate($_POST['experience_level']),
+                $job = checkUpdate($_POST['experience_job']),
+                $corp = checkUpdate($_POST['experience_corp']),
+                $start = checkUpdate($_POST['experience_start']),
+                $end = checkUpdate($_POST['experience_end']),
+            ];
+            // update thằng kỹ năng 
+            $skillData = [
+                $progLang = checkUpdate($_POST['skill_progLang']),
+                $percent = checkUpdate($_POST['skill_percent']),
+            ];
+            updateAllInfo($cvData, $degreeData, $expData, $skillData);
+        }
+        include 'view/cv/updateCv.php';
+        break;
+
+    default:
+        // Default case
+        break;
+}

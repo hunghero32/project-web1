@@ -65,7 +65,7 @@
                 <div class="tab-content" id="v-pills-tabContent">
 
                     <?php
-                    include "updateCV.php";
+                    include "updateCv.php";
                     ?>
                 </div>
             </div>
