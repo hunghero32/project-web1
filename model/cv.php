@@ -53,7 +53,23 @@ function list_cv($level, $age, $major, $exp, $address, $salary, $progLang)
     $sql .= " ORDER BY c.id DESC";
     return pdo_query($sql);
 }
+function list_degree($idcv)
+{
+    $sql = "SELECT * FROM degree WHERE idcv = ?";
+    return pdo_query($sql, $idcv);
+}
 
+function list_expcv($idcv)
+{
+    $sql = "SELECT * FROM expcv WHERE idcv = ?";
+    return pdo_query($sql, $idcv);
+}
+
+function list_skillcv($idcv)
+{
+    $sql = "SELECT * FROM skillcv WHERE idcv = ?";
+    return pdo_query($sql, $idcv);
+}
 function top_cv()
 {
     $sql = "SELECT cv.*, u.name, u.email, u.phone, u.address
@@ -171,23 +187,7 @@ function updateAllInfo($cvData, $degreeData, $expData, $skillData)
 //     return pdo_query_one($sql, $idcv);
 // }
 
-// function get_degree_info($idcv)
-// {
-//     $sql = "SELECT * FROM degree WHERE idcv = ?";
-//     return pdo_query($sql, $idcv);
-// }
 
-// function get_expcv_info($idcv)
-// {
-//     $sql = "SELECT * FROM expcv WHERE idcv = ?";
-//     return pdo_query($sql, $idcv);
-// }
-
-// function get_skillcv_info($idcv)
-// {
-//     $sql = "SELECT * FROM skillcv WHERE idcv = ?";
-//     return pdo_query($sql, $idcv);
-// }
 
 // function info_all($idcv)
 // {
