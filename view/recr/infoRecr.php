@@ -113,47 +113,47 @@
                         <h3>Chi tiết</h3>
                         <ul>
                             <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
                                 <h4>Mức lương thỏa thuận</h4>
                                 <span><?= $salary ?></span>
                             </li>
                             <!-- <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
                                 <h4>Chuyên ngành</h4>
                                 <span></span>
                             </li> -->
                             <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
                                 <h4>Địa điểm</h4>
                                 <span><?= $address ?></span>
                             </li>
                             <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
                                 <h4>Ngày đăng</h4>
                                 <span><?= $start ?></span>
                             </li>
                             <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
                                 <h4>Kinh nghiệm yêu cầu</h4>
                                 <span><?= $exp ?> Years</span>
                             </li>
                             <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
                                 <h4>Ngôn ngữ lập trình</h4>
                                 <span><?= $progLang ?></span>
                             </li>
                             <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
                                 <h4>Cấp độ</h4>
                                 <span><?= $level ?></span>
                             </li>
                             <!-- <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
                                 <h4>Chỉ tiêu ứng tuyển</h4>
                                 <span></span>
                             </li> -->
                             <!-- <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
+                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
                                 <h4>Chỉ tiêu đã đạt</h4>
                                 <span>chưa</span>
                             </li> -->
