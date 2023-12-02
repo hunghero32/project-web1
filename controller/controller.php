@@ -25,13 +25,14 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
     $act == 'err' ? include 'view/404.php' : '';
 
     include 'user.php';
+    include 'admin.php';
     
     hide($act) == false ? include 'view/navbar.php' : '';
     
     // controller child
     include 'corp.php';
     include 'recr.php';
-    include 'admin.php';
+
     include 'cv.php';
     
     hide($act) == false ? include 'view/footer.php' : '';
