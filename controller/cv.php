@@ -32,113 +32,137 @@ switch ($act) {
         break;
 
     case 'manage_Cv':
+        $iduser = $_SESSION['username']['id'];
+        $cvInfo = manageCv($iduser);
+        $idcv = $cvInfo['idcv'];
+        $introduce = $cvInfo['introduce'];
+        extract($cvInfo);
 
-        if (isset($_POST['submit'])) {
-
-
-            //     $cvData = [
-            //         'id' => $_POST['cv_id'],                
-            //         'gender' => $_POST['cv_gender'],
-            //         'birth' => $_POST['cv_birth'],
-            //         'salary' => $_POST['cv_salary'],
-            //         'major' => $_POST['cv_major'],
-            //         'introduce' => $_POST['cv_introduce']
-            //     ];
-
-            //     $degreeData = [
-            //         'id' => $_POST['degree_id'],
-            //         'name' => $_POST['degree_name'],
-            //         'school' => $_POST['degree_school'], 
-            //         'year' => $_POST['degree_year']
-            //     ];
-
-            //     $expData = [
-            //         'id' => $_POST['experience_id'],
-            //         'level' => $_POST['experience_level'],
-            //         'job' => $_POST['experience_job'],
-            //         'corp' => $_POST['experience_corp'],
-            //         'start' => $_POST['experience_start'],
-            //         'end' => $_POST['experience_end']
-            //     ];
-            //     $skillData = [
-            //         'id' => $_POST['skill_id'],
-            //         'progLang' => $_POST['skill_progLang'],
-            //         'percent' => $_POST['skill_percent']
-            //     ];
-            //     // Update all information
-
-            //     updateAllInfo($cvData, $degreeData, $expData, $skillData); 
-
-            // }
-            $idcv = $_SESSION['username']['id'];
-            $cvInfo = manageCv($idcv);
-            extract($cvInfo);
-
-            // Xử lí các thumbnail
-            $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
-            $gallery = gallery($arr);
-
-            // Xử lí đoạn văn thành dòng
-            $introPara = explode("\n", $introduce);
-            $intro = paragToLines($introPara);
-        }
-
-        include 'view/cv/manage_Cv.php';
-        break;
-
-
-
-    case 'updateCv':
-        $idcv = $_SESSION['username']['id'];
-        $corp = manageCv($idcv);
-        extract($corp);
-        // var_dump($corp);
-
-        // Xử lí các thumbnail
-        $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
-        $gallery = gallery($arr);
+        $expCv = getExpCv($idcv);
+        $skillCv = getSkillCv($idcv);
+        $degree = getDegreeCv($idcv);
 
         // Xử lí đoạn văn thành dòng
         $introPara = explode("\n", $introduce);
         $intro = paragToLines($introPara);
 
-        $benePara = explode("\n", $benefits);
-        $bene = paragToLines($benePara);
+        include 'view/cv/manage_Cv.php';
+        break;
 
+    case 'updateCv':
+        $iduser = $_SESSION['username']['id'];
+        $cvInfo = manageCv($iduser);
+        $idcv = $cvInfo['idcv'];
+        $introduce = $cvInfo['introduce'];
+        extract($cvInfo);
 
-        if (isset($_POST['updateCv'])) {
-            $id = checkUpdate($_POST['id']);
-            // update thằng CV
-            $cvData = [
+        $expCv = getExpCv($idcv);
+        $skillCv = getSkillCv($idcv);
+        $degree = getDegreeCv($idcv);
 
-                $gender = checkUpdate($_POST['cv_gender']),
-                $birth = checkUpdate($_POST['cv_birth']),
-                $salary = checkUpdate($_POST['cv_salary']),
-                $major = checkUpdate($_POST['cv_major']),
-                $introduce = checkUpdate($_POST['cv_introduce']),
-            ];
-            // update thằng giáo dục
-            $degreeData = [
-                $name = checkUpdate($_POST['degree_name']),
-                $school = checkUpdate($_POST['degree_school']),
-                $year = checkUpdate($_POST['degree_year']),
-            ];
-            //update thằng kinh nghiệm
-            $expData = [
-                $level = checkUpdate($_POST['experience_level']),
-                $job = checkUpdate($_POST['experience_job']),
-                $corp = checkUpdate($_POST['experience_corp']),
-                $start = checkUpdate($_POST['experience_start']),
-                $end = checkUpdate($_POST['experience_end']),
-            ];
-            // update thằng kỹ năng 
-            $skillData = [
-                $progLang = checkUpdate($_POST['skill_progLang']),
-                $percent = checkUpdate($_POST['skill_percent']),
-            ];
-            updateAllInfo($cvData, $degreeData, $expData, $skillData);
+        // Xử lí đoạn văn thành dòng
+        $introPara = explode("\n", $introduce);
+        $intro = paragToLines($introPara);
+
+        if (isset($_POST['updateInfoCv'])) {
+            $sameCv = '';
+            $overSizeAvatar = 0;
+
+            $idcv = checkUpdate($_POST['id']);
+            $name = checkUpdate($_POST['name']);
+            $email = checkUpdate($_POST['email']);
+            $phone = checkUpdate($_POST['phone']);
+            $address = checkUpdate($_POST['address']);
+
+            $gender = checkUpdate($_POST['gender']);
+            $birth = checkUpdate($_POST['birth']);
+            $major = checkUpdate($_POST['major']);
+            $salary = checkUpdate($_POST['salary']);
+            $introduce = checkUpdate($_POST['introduce']);
+
+            $updateExist = updateExistAccount($iduser);
+            foreach ($updateExist as $key) {
+                $phone === $key['phone'] || $email === $key['email'] ? $sameCv = '[ Sdt hoặc email đã tồn tại ! ]' : '';
+                $name === $key['name'] ? $sameCv = '[ Tên đã tòn tại ! ]' : '';
+            }
+
+            $idExp = ['', '', '', '', '', ''];
+            $jobExp = ['', '', '', '', '', ''];
+            $corpExp = ['', '', '', '', '', ''];
+            $levelExp = ['', '', '', '', '', ''];
+            $startExp = ['', '', '', '', '', ''];
+            $endExp = ['', '', '', '', '', ''];
+
+            $idDeg =  ['', '', '', '', '', ''];
+            $nameDeg =  ['', '', '', '', '', ''];
+            $schoolDeg =  ['', '', '', '', '', ''];
+            $yearDeg =  ['', '', '', '', '', ''];
+
+            $idSkill =  ['', '', '', '', '', ''];
+            $progLangSkill =  ['', '', '', '', '', ''];
+            $percentSkill =  ['', '', '', '', '', ''];
+
+            for ($i = 1; $i <= 5; $i++) {
+                $idExp[$i] = checkUpdate($_POST['idExp' . $i]);
+                $jobExp[$i] = checkUpdate($_POST['job' . $i]);
+                $corpExp[$i] = checkUpdate($_POST['corp' . $i]);
+                $levelExp[$i] = checkUpdate($_POST['level' . $i]);
+                $startExp[$i] = checkUpdate($_POST['start' . $i]);
+                $endExp[$i] = checkUpdate($_POST['end' . $i]);
+
+                $idDeg[$i] = checkUpdate($_POST['idDeg' . $i]);
+                $nameDeg[$i] = checkUpdate($_POST['nameDeg' . $i]);
+                $schoolDeg[$i] = checkUpdate($_POST['schoolDeg' . $i]);
+                $yearDeg[$i] = checkUpdate($_POST['yearDeg' . $i]);
+
+                $idSkill[$i] = checkUpdate($_POST['idSkill' . $i]);
+                $progLangSkill[$i] = checkUpdate($_POST['progLangSkill' . $i]);
+                $percentSkill[$i] = checkUpdate($_POST['percentSkill' . $i]);
+            }
+
+            if ($sameCv == '') {
+                if (isset($_SESSION['sameCv'])) {
+                    unset($_SESSION['sameCv']);
+                }
+
+                if (isset($_FILES['avatar']) && ($_FILES['avatar']['size'] <= 1000000)) {
+                    $file = $_FILES['avatar'];
+                    // sử dụng str_replace để xóa các khoảng trắng, tránh lỗi chèn src có space trong thẻ img
+                    $file_avatar_name = str_replace(' ', '', $file['name']);
+                    $target_file = $img_path . $file_avatar_name;
+                    move_uploaded_file($file['tmp_name'], $target_file);
+                } else {
+                    $overSizeAvatar = 1;
+                    $file_avatar_name = isset($_POST['avatar']) && $avatar !== '' ? $_POST['avatar'] : '';
+                }
+
+                $file_avatar_name !== '' ? updateImage($iduser, 'avatar', $file_avatar_name) : '';
+                $file_avatar_name !== '' ? $_SESSION['username']['avatar'] = $file_avatar_name : '';
+
+                $avatar !== '' && $_POST['avatar'] == '' ? removeImage($iduser, 'avatar') : '';
+                $avatar !== '' && $_POST['avatar'] == '' ? $_SESSION['username']['avatar'] = '' : '';
+
+                updateInfoUser($id, $name, $email, $phone, $address);
+                updateCv($idcv, $gender, $birth, $salary, $major, $introduce);
+
+                for ($i = 1; $i <= 5; $i++) {
+                    update_expcv($idExp[$i], $levelExp[$i], $jobExp[$i], $corpExp[$i], $startExp[$i], $endExp[$i]);
+                    update_degree($idDeg[$i], $nameDeg[$i], $schoolDeg[$i], $yearDeg[$i]);
+                    update_skill($idSkill[$i], $progLangSkill[$i], $percentSkill[$i]);
+                }
+
+                header('Location: index.php?act=mangage_Cv');
+            } else {
+                echo "<script>alert('$sameCv')</script>";
+            }
+
+            echo $overSizeAvatar == 1 ? "<script>alert('[ Ảnh đại diện vượt quá kích thước cho phép - 1 MB]')</script>" : '';
+            $_SESSION['sameCv'] = $overSizeAvatar > 0 ? '1' : '';
+            $_SESSION['sameCv'] = $sameCv !== '' ? '1' : '';
+            $overSizeAvatar == 0 && $sameCv == '' ? $_SESSION['updatedCv'] = 1 : '';
         }
-        include 'view/cv/updateCv.php';
+        include 'view/cv/manage_Cv.php';
+
         break;
 
     default:
