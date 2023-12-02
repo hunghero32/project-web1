@@ -37,8 +37,22 @@ function add_user($username, $pass, $name, $email, $phone, $role)
     }else if ($getID['role'] == 2) {
         $sql3 = "INSERT INTO cv (iduser) VALUES ($iduser)";
         pdo_execute($sql3);
-        $sql4 = "INSERT INTO gallery (iduser) VALUES ($iduser)";
-        pdo_execute($sql4);
+
+        $sql4 = "SELECT id FROM cv WHERE iduser = ?";
+        $getIDcv = pdo_query_one($sql4,$iduser);
+        $idcv = $getIDcv['id'];
+
+        $sql5 = "INSERT INTO skillcv (idcv) VALUES ($idcv),($idcv),($idcv),($idcv),($idcv)";
+        pdo_execute($sql5);
+
+        $sql6 = "INSERT INTO expcv (idcv) VALUES ($idcv),($idcv),($idcv),($idcv),($idcv)";
+        pdo_execute($sql6);
+
+        $sql7 = "INSERT INTO degree (idcv) VALUES ($idcv),($idcv),($idcv),($idcv),($idcv)";
+        pdo_execute($sql7);
+
+        $sql8 = "INSERT INTO gallery (iduser) VALUES ($iduser)";
+        pdo_execute($sql8);
     }
 }
 

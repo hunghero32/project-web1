@@ -13,40 +13,25 @@ cancerEditInfoCorp.onclick = () => {
     infoCorp.classList.toggle('d-none');
 }
 
-
-const editCvBtn = document.getElementById('editBtnInfoCv');
-const editInfoCv = document.getElementById('editInfoCv')
-const cancerEditInfoCv = document.getElementById('cancerEditInfoCv')
-const infoCv = document.getElementById('infoCv')
-
-editCvBtn.onclick = () => {
-    editInfoCv.classList.toggle('d-none');
-    infoCv.classList.toggle('d-none');
-}
-
-cancerEditInfoCv.onclick = () => {
-    editInfoCv.classList.toggle('d-none');
-    infoCv.classList.toggle('d-none');
-}
-
-
-const allImgCorp = ['Avatar','Thumb1', 'Thumb2', 'Thumb3', 'Thumb4', 'Thumb5']
+const allImgCorp = ['Avatar','Thumb1', 'Thumb2', 'Thumb3', 'Thumb4', 'Thumb5','AvatarCv']
 
 for (let index = 0; index < allImgCorp.length; index++) {
     const cancerThumbBtn = document.getElementById('cancer' + allImgCorp[index]);
 
     if (cancerThumbBtn) {
-        console.log('nút ' + index);
         const nameThumb = document.getElementById('name' + allImgCorp[index]);
         const valueThumb = document.getElementById('value' + allImgCorp[index]);
 
         cancerThumbBtn.onclick = () => {
             valueThumb.value = '';
             nameThumb.innerText = 'Đã xóa';
-            console.log(valueThumb.value);
-            if (valueThumb.value == '') {
-                console.log('xóa rồi em ơi');
-            }
         }
     }
+}
+
+function removeDataCv(name,e){
+    const inputRemove = document.querySelectorAll('.data'+ name + e);
+    Array.from(inputRemove).forEach (input => {
+        input.value = '';
+    })
 }

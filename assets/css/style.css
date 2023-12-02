@@ -8140,6 +8140,26 @@ button:focus {
     color: var(--main);
 }
 
+.progress-bar-skill {
+    border-radius: 3px;
+    height: 12px;
+    background-color: var(--secondary);
+    transition: 0.5s ease-in-out;
+    opacity: 0;
+    animation: showout 1s ease-in forwards;
+}
+
+@keyframes showout {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
 @media (max-width: 760px) {
     .text-small-screen {
         color: var(--main) !important;

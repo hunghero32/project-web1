@@ -1,4 +1,4 @@
-const comboselect = ['level','age','address','skill','exp' ,'salary','job'];
+const comboselect = ['level','age','address','skill','exp' ,'salary','job','gender','1'];
 
 Array.from(comboselect).forEach(e => {
     var search = document.getElementById('search' + e);
