@@ -1,6 +1,6 @@
 <div class="row">
     <div class=" frmtitle">
-        <h1>DANH SÁCH BÌNH LUẬN</h1>
+        <h1>DANH SÁCH NHÀ TUYỂN DỤNG</h1>
     </div>
     <div class=" frmcontent ">
         <form action="index.php?act=dsbl" method="POST">
