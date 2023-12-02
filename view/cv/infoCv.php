@@ -19,7 +19,7 @@
                                 <li>
                                     <i class="fa-solid fa-at"></i>
                                     <a href="mailto:<?= checknull($email) ?>">
-                                    <?= checknull($email) ?>
+                                        <?= checknull($email) ?>
                                     </a>
                                 </li>
                             </ul>
@@ -105,18 +105,18 @@
                     </div>
                     <div class="work bottom-item">
                         <h3>Kinh nghiệm làm Việc </h3>
-                        <?php foreach ($list_cv as $idcv) { ?>
+                        <?php foreach ($expcv as $idcv) {
+                            extract($idcv); ?>
+                            <h4>Tại : <?= checknull($corp) ?></h4>
                             <ul>
                                 <li>
-                                    <!-- <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript> -->
-                                    <h4>Công việc chính :</h4>
+                                    <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
+                                    <span>Công việc chính :</span>
                                 </li>
                                 <li>
                                     <?= checknull($job) ?>
                                 </li>
                             </ul>
-                            <h4>Tại : <?= checknull($corp) ?></h4>
-
                             <li>
                                 <span>Từ :<?= checknull($start) ?> </span>
                             </li>
@@ -129,7 +129,9 @@
 
                     <div class="work bottom-item">
                         <h3>Học Vấn</h3>
-                        <?php foreach ($list_cv as $idcv) { ?>
+                        <?php foreach ($degree as $idcv) {
+                            extract($idcv); ?>
+                            <h4>Tại Trường/Trung Tâm : <?= checknull($school) ?> </h4>
                             <ul>
                                 <li>
                                     <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
@@ -139,7 +141,6 @@
                                     <?= checknull($major) ?>
                                 </li>
                             </ul>
-                            <h4>Tại Trường/Trung Tâm : <?= checknull($school) ?> </h4>
                             <li>
                                 <span>Từ năm <?= checknull($year) ?></span>
                             </li>
@@ -149,11 +150,12 @@
                     <div class="skills">
                         <h3>Ngôn ngữ sử dụng</h3>
                         <div class="skill-wrap">
-                            <?php foreach ($list_cv as $cv) { ?>
+                            <?php foreach ($skillcv as $idcv) {
+                                extract($idcv); ?>
                                 <div class="skill">
                                     <h3><?= checknull($progLang) ?></h3>
                                     <div class="skill-bar skill1 animate__slideInLeft animate__animated">
-                                        <span class="skill-count1">66%</span>
+                                        <span class="skill-count1"><?= checknull($percent) ?>%</span>
                                     </div>
                                 </div>
                             <?php } ?>
@@ -164,4 +166,3 @@
         </div>
     </div>
 </div>
-

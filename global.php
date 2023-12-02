@@ -10,7 +10,6 @@ function hide($act)
         }
     }
 }
-
 function checkfind($input, $output)
 {
     $return =  $input !== '' && $input !== 'Không chọn' && $input !== 'Khác' ? $input : $output;
