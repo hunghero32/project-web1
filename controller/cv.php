@@ -4,8 +4,16 @@ switch ($act) {
     case 'infoCv':
         if (isset($_GET['id']) && ($_GET['id'] > 0)) {
             $id = $_GET['id'];
-            $cv = info_cv($id);
+            $cv = info_cv($id);}
             extract($cv);
+
+            if (isset($cv['id'])) {
+            $idcv = $cv['id'];
+            
+            $degree = list_degree($idcv);
+            $expcv = list_expcv($idcv);
+            $skillcv = list_skillcv($idcv);
+
         }
         include 'view/cv/infoCv.php';
         break;
@@ -63,7 +71,7 @@ switch ($act) {
 
             // }
             $idcv = $_SESSION['username']['id'];
-            $cvInfo = manageCv($id);
+            $cvInfo = manageCv($idcv);
             extract($cvInfo);
 
             // Xử lí các thumbnail
@@ -81,8 +89,8 @@ switch ($act) {
 
 
     case 'updateCv':
-        $idcorp = $_SESSION['username']['id'];
-        $corp = manageCv($id);
+        $idcv = $_SESSION['username']['id'];
+        $corp = manageCv($idcv);
         extract($corp);
         // var_dump($corp);
 
