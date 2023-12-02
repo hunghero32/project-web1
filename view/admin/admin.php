@@ -32,7 +32,7 @@
             <ul class="menu" id="side-menu">
 
                 <li class="chu-lon">
-                    <a href="index.php">
+                    <a href="index.php?act=admin">
                         <p><i id="ic" class="fa-solid fa-house" style="font-size: 13px;"></i>TRANG CHỦ </p>
                     </a>
                 </li>
@@ -43,17 +43,17 @@
                     </a>
                     <ul class="chu-be" aria-expanded="false">
                         <li>
-                            <a href="index.php?act=user"><i id="ic" class="fa-solid fa-user"></i> Cá Nhân</a>
+                            <a href="index.php?act=listuser"><i id="ic" class="fa-solid fa-user"></i> Cá Nhân</a>
                         </li>
                     </ul>
                     <ul class="chu-be" aria-expanded="false">
                         <li>
-                            <a href="index.php?act=corp"><i id="ic" class="fas fa-building"></i></i> Doanh Nghiệp </a>
+                            <a href="index.php?act=listcorp"><i id="ic" class="fas fa-building"></i></i> Doanh Nghiệp </a>
                         </li>
                     </ul>
                     <ul class="chu-be" aria-expanded="false">
                         <li>
-                            <a href="index.php?act=admin"><i id="ic" class="fas fa-user-cog"></i> Quản Trị Viên </a>
+                            <a href="index.php?act=listadmin"><i id="ic" class="fas fa-user-cog"></i> Quản Trị Viên </a>
                         </li>
                     </ul>
                 </li>
@@ -65,12 +65,12 @@
                     </a>
                     <ul class="chu-be" aria-expanded="false">
                         <li>
-                            <a href="index.php?act=dsdh"><i class="fas fa-envelope-open-text"></i> Bài Tuyển </a>
+                            <a href="index.php?act=listrecr"><i class="fas fa-envelope-open-text"></i> Bài Tuyển </a>
                         </li>
                     </ul>
                     <ul class="chu-be" aria-expanded="false">
                         <li>
-                            <a href="index.php?act=dsdh"><i id="ic" class="fa-regular fa-file"></i> Danh Sách CV </a>
+                            <a href="index.php?act=listcv"><i id="ic" class="fa-regular fa-file"></i> Danh Sách CV </a>
                         </li>
                     </ul>
                 </li>
@@ -88,7 +88,7 @@
                 <li class="chu-lon">
 
                     <a href="index.php?act=thongke">
-                        <p> BIỂU ĐỒ <i id="angne" class="fa-solid fa-angle-right"></i></p>
+                        <p> Thống Kê  <i id="angne" class="fa-solid fa-angle-right"></i></p>
                     </a>
 
                 </li>
