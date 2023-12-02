@@ -1,0 +1,297 @@
+@import url(css.css);
+
+body {
+    overflow-x: hidden;
+    margin: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.all {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    font-family: Arial;
+    
+}
+
+/*============MENU DỌC==========*/
+
+.mnd {
+    background-color: #000000;
+    width: 230px;
+    bottom: 0;
+    padding: 0;
+    position: fixed;
+    margin-top: 33px;
+    height: 100%;
+    overflow-y: auto;
+    
+}
+
+.logo img {
+    width: 100px;
+    margin-top: 40px;
+    margin-left: 80px;
+    height: 50px;
+}
+
+.menu {
+    padding: 0;
+    list-style: none;
+    margin-top: 60px;
+    
+}
+
+.menu li {
+    position:relative ;
+}
+
+.menu ul .chu-be {
+    position: absolute;
+}
+.menu ul {
+    padding: 0;
+}
+
+.menu ul li {
+    width: 100%;
+}
+
+.menu .collapse {
+    display: none;
+}
+
+.menu .collapse.in {
+    display: block;
+}
+
+.menu .collapsing {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition-timing-function: ease;
+    transition-duration: .35s;
+    transition-property: height, visibility;
+}
+
+.menu a {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    padding:10px 30px;
+}
+
+.menu p {
+    line-height: 5px;
+}
+.chu-lon >a{
+    font-size: 13px;
+} 
+
+.chu-be li a {
+    padding: 10px 20px;
+    color: rgb(255, 255, 255);
+    display: block;
+    position: relative;
+    transition: all 0.4s;
+    margin-left: 60px;
+    border: 0.1px solid #343434;
+    font-size: 12px;
+
+}
+
+
+
+.menu .chu-lon a:hover {
+    background-color: rgb(34, 34, 34);
+    color: #fff;
+    border: 1px solid #d8d8d8;
+
+}
+.menu .chu-lon a{
+    border-bottom: 0.1px solid #343434;
+    
+}
+
+.menu .chu-be li {
+    background-color: #000000;
+}
+
+.menu .chu-be a:hover {
+    background-color: rgb(34, 34, 34);
+    border: 1px solid #7d7d7d;
+}
+
+
+#angne{
+
+    float: right;
+    margin-right: -10px;
+}
+
+#ic{
+    margin-right: 5px;
+    color: #5f5f5f;
+    
+}
+/*============MENU NGANG==========*/
+
+.mnn {
+    background-color: #000000;
+    padding: 20px 0;
+    height: 15px;
+}
+.mnn a {
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none ;
+    font-size: 12px;
+}
+
+.ex{
+    float: right;
+    margin-right: 10px;
+    margin-top: -12px;
+}
+i{
+    padding-left: 10px;
+}
+
+#adm{
+    padding-left: 14px;
+
+}
+.ex1{
+    margin-right: 30px;
+
+}
+
+
+
+@media (max-width: 767.98px) {
+    .mnd {
+        display: none;
+    }
+
+    .all {
+        margin-left: 0;
+    }
+
+    .mnn {
+        margin-left: 0;
+    }
+
+    .content-page,
+    .content-page.enlarged .mnd + .content-page {
+        margin-left: 0;
+        padding: 20px;
+    }
+}
+/*---------- CSS phần bảng trong admin -------------*/
+.row {
+    width: 100%;
+    padding-left: 230px;
+    box-sizing: border-box;
+}
+.formtaikhoan input[type="text"],
+.formtaikhoan input[type="password"],
+.formtaikhoan input[type="email"],
+.frmcontent input[type="text"] {
+    width: 50%;
+    border: 1px #CCC solid;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.formtaikhoan input[type="submit"],
+.formtaikhoan input[type="reset"],
+.frmcontent input[type="submit"],
+.frmcontent input[type="reset"],
+.frmcontent input[type="button"] {
+    background-color: rgb(0, 0, 0);
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.ghinho {
+    background-color: white;
+    border: 1px #CCC solid;
+    border-radius: 5px;
+}
+
+.formtaikhoan input[type="submit"]:hover,
+.formtaikhoan input[type="reset"]:hover,
+.frmcontent input[type="submit"]:hover,
+.frmcontent input[type="reset"]:hover,
+.frmcontent input[type="button"]:hover {
+    background-color: #CCC;
+    color: black;
+}
+
+.frmtitle {
+    background-color: #EEE;
+    border: 1px #CCC solid;
+    border-radius: 5px;
+    padding: 0px 20px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.frmcontent {
+    padding: 20px 0px
+}
+.frmcontent div {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.frmdsloai table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.frmdsloai table th {
+    padding: 20px;
+    background-color: #CCC;
+}
+.frmdsloai table td {
+    padding: 10px 20px;
+    border: 1px #999 solid;
+}
+.mb10 {
+    margin-bottom: 10px;
+}
+.row table{
+    text-align: center;
+}
+.bieudo{
+    margin-left: 230px;
+
+}
+.search-form input[type="text"]{
+    padding: 10px 20px;
+    border: none;
+    background-color: #dbdada;
+}
+.search-form input[type="submit"]{
+    background-color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: #fff;
+    cursor: pointer;
+}
+.search-form input[type="submit"]:hover{
+    background-color: #CCC;
+
+}
+.search-form select, .frmcontent select{
+    padding: 10px 20px ;
+    border-radius: 5px;
+    border: none;
+}
