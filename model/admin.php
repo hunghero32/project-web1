@@ -1,19 +1,15 @@
 <?php
-function list_user_admin ($id) {
-    $sql = "SELECT * FROM user WHERE id = $id";
-    return pdo_query($sql,$id);
+function list_admin($role) {
+    $sql = "SELECT * FROM user WHERE role = ? ";
+    return pdo_query($sql,$role);
 }
-function list_corp_admin ($id){
-    $sql = "SELECT corp*,
-    user.name,user.user.email,user.phone,user.address,user.role
-     FROM corp WHERE user.role = 3";
-    return pdo_query($sql,$id);
+function list_corp_admin ($role){
+    $sql = "SELECT * FROM user WHERE role = 2";
+    return pdo_query($sql,$role);
 }
-function list_cv_admin ($id){
-    $sql = "SELECT cv*,
-    user.name,user.user.email,user.phone,user.address,user.role
-     FROM cv WHERE user.role = 2";
-    return pdo_query($sql,$id);
+function list_cv_admin ($role){
+    $sql = "SELECT * FROM user WHERE role = 3";
+    return pdo_query($sql,$role);
 }
 
 function delete($id, $table)
