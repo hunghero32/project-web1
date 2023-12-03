@@ -1,4 +1,10 @@
-<div id="piechart"></div>
+<!-- <div class="row">
+    <div class=" frmtitle">
+        <h1>Thống Kê Toàn Bộ</h1>
+    </div>
+    <div class=" frmcontent">
+        <div class=" mb10 frmdsloai"> -->
+        <div id="piechart"></div>
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
@@ -12,9 +18,9 @@ function drawChart() {
   var data = google.visualization.arrayToDataTable([
   ['Danh mục', 'Số lượng sản phẩm'],
   <?php
-        foreach($dstk as $tk){
-            extract($tk);
-            echo "['".$tk['name']."',".$tk['countsp']."],";
+        foreach($listadmin as $user){
+            extract($user);
+            echo "['".$user['name']."',".$user['countsp']."],";
         } 
     ?>
 ]);

@@ -62,7 +62,7 @@ switch ($act) {
     //     }
     //     include 'view/user/editinfo.php';
     //     break;
-    case 'forgotpass':
+    case 'forgot':
         include 'view/user/forgotPass.php';
         break;
     case 'signout':

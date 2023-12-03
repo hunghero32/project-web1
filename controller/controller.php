@@ -17,7 +17,7 @@ $list_cv = list_cv('', '', '', '','','','');
 $list_recr = get_records();
 
 
-//include 'view/header.php';
+include 'view/header.php';
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
@@ -25,7 +25,6 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
     $act == 'err' ? include 'view/404.php' : '';
 
     include 'user.php';
-    include 'admin.php';
     
     hide($act) == false ? include 'view/navbar.php' : '';
     
@@ -33,6 +32,7 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
     include 'corp.php';
     include 'recr.php';
     include 'cv.php';
+    include 'admin.php';
     
     hide($act) == false ? include 'view/footer.php' : '';
 } else {

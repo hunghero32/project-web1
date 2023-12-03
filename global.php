@@ -1,9 +1,8 @@
 <?php
 $img_path = 'assets/uploads/';
-
 function hide($act)
 {
-    $hide = ['signup', 'signin', 'admin', 'listadmin','listcorp','listcv', 'err'];
+    $hide = ['signup', 'signin','forgot' ,'admin','addadmin', 'listadmin','listcorp','listcv','listrecr','thongke', 'err'];
     foreach ($hide as $value) {
         if ($act === $value) {
             return true;

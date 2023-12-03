@@ -2,55 +2,35 @@
     <div class=" frmtitle">
         <h1>DANH SÁCH BÀI TUYỂN</h1>
     </div>
-    <div class=" frmcontent ">
-        <form action="index.php?act=listRecr" method="POST">
-            <div class=" mb10 frmdsloai">
-                <table>
-                    <tr>
-                        <th></th>
+    <div class=" frmcontent">
+        <div class=" mb10 frmdsloai">
+            <table>
+            <tr>
                         <th>ID</th>
-                        <th>NỘI DUNG</th>
-                        <th>User</th>
-                        <th>Sản Phẩm</th>
-                        <th>NGÀY BÌNH LUẬN</th>
-                        <th></th>
+                        <th>Doanh Nghiệp</th>
+                        <th>JOB</th>
+                        <th>Salary</th>
+                        <th>Bắt Đầu</th>
+                        <th>Kết Thúc</th>
+                        <th>Xem Chi Tiết</th>
+                        <th>Xóa</th>
                     </tr>
-                    <?php 
-                        foreach($listBinhLuan as $binhluan) {
-                            extract($binhluan);
-                            echo '
-                                <tr>
-                                    <td><input type="checkbox" name="" id=""></td>
-                                    <td>'.$id.'</td>
-                                    <td>'.$idcorp.'</td>
-                                    <td>'.$job.'</td>
-                                    <td>'.$exp.'</td>
-                                    <td>'.$level.'</td>
-                                    <td>'.$salary.'</td>
-                                    <td>'.$progLang.'</td>
-                                    <td>'.$type.'</td>
-                                    <td>'.$description.'</td>
-                                    <td>'.$start.'</td>
-                                    <td>'.$end.'</td>
-                                    <td>'.$request.'</td>
-                                    // <td><a href="index.php?act=xoabl&id='.$id.'"><input type="button" value="Xóa"></a></td>
-                                </tr>
-                            ';
-                        }
-                    ?>
 
-
-                </table>
-            </div>
-            <!-- <div class=" mb10 ">
-                <input  type="button" value="CHỌN TẤT CẢ">
-                <input  type="button" value="BỎ CHỌN TẤT CẢ">
-            </div> -->
-        </form>
+                <?php
+                    foreach($listrecr as $recr) :
+                ?>
+                    <tr>
+                        <td><?= $recr['id'] ?></td>
+                        <td><?= $recr['name'] ?></td>
+                        <td><?= $recr['job'] ?></td>
+                        <td><?= $recr['salary'] ?></td>
+                        <td><?= $recr['start'] ?></td>
+                        <td><?= $recr['end'] ?></td>
+                        <td><a href="index.php?act=info_recr&id=<?= $recr['id'] ?>"><input type="button" value="Chi Tiết"></a></td>
+                        <td><a href="index.php?act=delete&id=<?= $recr['id'] ?>"><input type="button" value="Xóa"></a></td>
+                    </tr>
+                <?php     endforeach; ?>
+            </table>
+        </div>
     </div>
-</div>
-
-
-
-
 </div>
