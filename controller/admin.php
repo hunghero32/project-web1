@@ -30,7 +30,7 @@ switch ($act) {
         $phone = isset($_GET['phone']) ? $_GET['phone'] : '';
         $address = isset($_GET['address']) ? $_GET['address'] : '';
 
-        $listcv = list_cv_admin($id, $username, $name, $email, $phone, $address, $role);
+        $listcv = list_admin($id, $username, $name, $email, $phone, $address, $role);
         include 'view/admin/listCV.php';
         break;
     case 'listcorp':
@@ -43,15 +43,35 @@ switch ($act) {
         $phone = isset($_GET['phone']) ? $_GET['phone'] : '';
         $address = isset($_GET['address']) ? $_GET['address'] : '';
 
-        $listcorp = list_corp_admin($id, $username, $name, $email, $phone, $address, $role);
+        $listcorp = list_admin($id, $username, $name, $email, $phone, $address, $role);
         include 'view/admin/listCorp.php';
         break;
+    case 'listrecr':
+        include 'view/admin/admin.php';        
+        $id = isset($_GET['id']) ? $_GET['id'] : '';
+        $name = isset($_GET['name']) ? $_GET['name'] : '';
+        $job = isset($_GET['job']) ? $_GET['job'] : '';
+        $salary = isset($_GET['salary']) ? $_GET['salary'] : '';
+        $start = isset($_GET['phone']) ? $_GET['phone'] : '';
+        $end = isset($_GET['end']) ? $_GET['end'] : '';
+
+        $listrecr = list_recr($id,$name,$job,$salary,$start,$end);
+        include 'view/admin/listRecr.php';
+        break;
+    case 'thongke':
+        include 'view/admin/thongke.php';
+        break;
+        case 'addadmin':
+
+            if (isset($_POST['signup'])) {}
+                include 'view/admin/addAdmin.php';
+                break;
     case 'delete':
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            delete($id);
+            // delete($id);
             $thongbao = "<script> alert('Bạn đã XÓA thành công !');
-            location.href = 'index.php?act=manage_recr#v-pills-messages'; </script>";
+            location.href = 'index.php?act=admin'; </script>";
             echo $thongbao;
         }
         break;

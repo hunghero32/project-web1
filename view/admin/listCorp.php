@@ -1,6 +1,6 @@
 <div class="row">
     <div class=" frmtitle">
-        <h1>DANH SÁCH Quản Trị Viên</h1>
+        <h1>DANH SÁCH DOANH NGHIỆP</h1>
     </div>
     <div class=" frmcontent">
         <div class=" mb10 frmdsloai">
@@ -12,6 +12,7 @@
                     <th>Email</th>
                     <th>Số Điện Thoại</th>
                     <th>Địa Chỉ</th>
+                    <th>Xem Chi Tiết</th>
                     <th>Xóa</th>
                 </tr>
 
@@ -27,15 +28,11 @@
                         <td><?= $user['email'] ?></td>
                         <td><?= $user['phone'] ?></td>
                         <td><?= $user['address'] ?></td>
+                        <td><a href="index.php?act=infoCorp&id=<?= $user['id'] ?>"><input type="button" value="Chi Tiết"></a></td>
                         <td><a href="<?php $delete ?> "><input type="button" value="Xóa"></a></td>
                     </tr>
                 <?php endforeach; ?>
             </table>
         </div>
-        <!-- <div class=" mb10 ">
-                <input  type="button" value="CHỌN TẤT CẢ">
-                <input  type="button" value="BỎ CHỌN TẤT CẢ">
-            </div> -->
-        </form>
     </div>
 </div>
