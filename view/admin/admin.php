@@ -43,7 +43,7 @@
                     </a>
                     <ul class="chu-be" aria-expanded="false">
                         <li>
-                            <a href="index.php?act=listuser"><i id="ic" class="fa-solid fa-user"></i> Cá Nhân</a>
+                            <a href="index.php?act=listcv"><i id="ic" class="fa-solid fa-user"></i> Cá Nhân</a>
                         </li>
                     </ul>
                     <ul class="chu-be" aria-expanded="false">

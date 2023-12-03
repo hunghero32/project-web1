@@ -1,35 +1,35 @@
+
 <div class="row">
     <div class=" frmtitle">
-        <h1>DANH SÁCH CV</h1>
+        <h1>DANH SÁCH Quản Trị Viên</h1>
     </div>
     <div class=" frmcontent">
         <div class=" mb10 frmdsloai">
             <table>
                 <tr>
-                    <th></th>
-                    <th>MÃ LOẠI</th>
-                    <th>TÊN LOẠI</th>
-                    <th>CÀI ĐẶT</th>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Tên </th>
+                    <th>Email</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Địa Chỉ</th>
+                    <th>Xóa</th>
                 </tr>
 
                 <?php
-                foreach($listdanhmuc as $danhmuc){
-                    extract($danhmuc);
-                    $suadm='index.php?act=suadm&id='.$id;
-                    $xoadm='index.php?act=xoadm&id='.$id;
-                    echo '
-                            <tr>
-                                <td><input type="checkbox" name="" id=""></td>
-                                <td>'.$id.'</td>
-                                <td>'.$name.'</td>
-                                <td>
-                                <a href="'.$suadm.'"><input type="button" value="Sửa"></a>
-                                <a href="'.$xoadm.'"><input type="button" value="Xoá"></a>
-                                </td>
-                            </tr>
-                            ';
-                }
+                foreach ($listcv as $user): ;
+
                 ?>
+                    <tr>
+                        <td><?= $user['id'] ?></td>
+                        <td><?= $user['username'] ?></td>
+                        <td><?= $user['name'] ?></td>
+                        <td><?= $user['email'] ?></td>
+                        <td><?= $user['phone'] ?></td>
+                        <td><?= $user['address'] ?></td>
+                        <td><a href="index.php?act=delete&id=<?= $user['id'] ?>"><input type="button" value="Xóa"></a></td>
+                    </tr>
+                <?php    endforeach; ?>
             </table>
         </div>
         <div class=" mb10">

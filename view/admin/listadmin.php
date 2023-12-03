@@ -17,9 +17,8 @@
                 </tr>
 
                 <?php
-                foreach ($admin as $user): ;
-                    $suadm = 'index.php?act=suadm&id=' . $id;
-                    $xoadm = 'index.php?act=xoadm&id=' . $id;
+                foreach ($listadmin as $user): ;
+                    $delete = 'index.php?act=delete&id=' . $id;
                 ?>
                     <tr>
                         <td><?= $user['id'] ?></td>
@@ -28,7 +27,7 @@
                         <td><?= $user['email'] ?></td>
                         <td><?= $user['phone'] ?></td>
                         <td><?= $user['address'] ?></td>
-                        <td><a href="' . $suadm . '"><input type="button" value="Sửa"></a></td>
+                        <td><a href="<?php $delete ?>"><input type="button" value="Xóa"></a></td>
                     </tr>
                 <?php    endforeach; ?>
             </table>

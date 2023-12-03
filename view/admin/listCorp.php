@@ -1,55 +1,43 @@
+
 <div class="row">
     <div class=" frmtitle">
-        <h1>DANH SÁCH NHÀ TUYỂN DỤNG</h1>
+        <h1>DANH SÁCH Quản Trị Viên</h1>
     </div>
-    <div class=" frmcontent ">
-        <form action="index.php?act=dsbl" method="POST">
-            <div class=" mb10 frmdsloai">
-                <table>
+    <div class=" frmcontent">
+        <div class=" mb10 frmdsloai">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Tên </th>
+                    <th>Email</th>
+                    <th>Số Điện Thoại</th>
+                    <th>Địa Chỉ</th>
+                    <th>Xóa</th>
+                </tr>
+
+                <?php
+                foreach ($listcorp as $user): ;
+                $delete = 'index.php?act=delete&id=' . $id;
+
+                ?>
                     <tr>
-                        <th></th>
-                        <th>ID NHÀ TUYỂN DỤNG</th>
-                        <th>TÊN NHÀ TUYỂN DỤNG</th>
-                        <th>MÃ SỐ THUẾ =</th>
-                        <th>ĐỊA CHỈ</th>
-                        <th>SDT</th>
-                        <th>EMAIL</th>
-                        <th></th>
+                        <td><?= $user['id'] ?></td>
+                        <td><?= $user['username'] ?></td>
+                        <td><?= $user['name'] ?></td>
+                        <td><?= $user['email'] ?></td>
+                        <td><?= $user['phone'] ?></td>
+                        <td><?= $user['address'] ?></td>
+                        <td><a href="<?php $delete ?> "><input type="button" value="Xóa"></a></td>
                     </tr>
-                    <?php 
-                        foreach($listBinhLuan as $binhluan) {
-                            extract($binhluan);
-                            echo '
-                                <tr>
-                                    <td><input type="checkbox" name="" id=""></td>
-                                    <td>'.$id.'</td>
-                                    <td>'.$iduser.'</td>
-                                    <td>'.$activeYear.'</td>
-                                    <td>'.$major.'</td>
-                                    <td>'.$size.'</td>
-                                    <td>'.$type.'</td>
-                                    <td>'.$introduce.'</td>
-                                    <td>'.$link.'</td>
-                                    <td>'.$benefits.'</td>
-                                    <td>'.$workingday.'</td>
-                                    // <td><a href="index.php?act=xoabl&id='.$id.'"><input type="button" value="Xóa"></a></td>
-                                </tr>
-                            ';
-                        }
-                    ?>
-
-
-                </table>
-            </div>
-            <!-- <div class=" mb10 ">
-                <input  type="button" value="CHỌN TẤT CẢ">
-                <input  type="button" value="BỎ CHỌN TẤT CẢ">
-            </div> -->
-        </form>
+                <?php    endforeach; ?>
+            </table>
+        </div>
+        <div class=" mb10">
+            <input type="button" value="Chọn All" />
+            <input type="button" value="Bỏ chọn All" />
+            <input type="button" value="Xóa mục đã chọn" />
+            <a href="index.php?act=adddm"><input type="button" value="Nhập thêm" /></a>
+        </div>
     </div>
-</div>
-
-
-
-
 </div>
