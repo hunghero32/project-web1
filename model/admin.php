@@ -1,4 +1,11 @@
 <?php
+
+function manageAdmin($id)
+{
+    $sql = "SELECT * FROM user u
+            WHERE u.role = 1 AND u.id = ?";
+    return pdo_query_one($sql, $id);
+}
 function list_admin($id,$username,$name,$email,$phone,$address,$role) {
     $sql = "SELECT * FROM user WHERE role = ? ";
     $sql .= $id !== '' ? " AND id LIKE '%" . $id . "%' " : "";
@@ -31,12 +38,7 @@ function add_admin($username, $pass, $name, $email, $phone, $role)
     pdo_execute($sql, $username, $pass, $name, $email, $phone, $role);
 
 }
-function delete($id)
-{
-    $sql = "DELETE FROM user where id = '$id'";
-    
-    pdo_execute($sql,$id);
-}
+
 
 function delete_checkbox($checkbox = [], $table)
 {
