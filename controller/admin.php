@@ -4,10 +4,16 @@ switch ($act) {
 
     case 'admin':
         # code...
+        $id = $_SESSION['username']['id'];
+        $admin = manageAdmin($id);
+        extract($admin);
         include('view/admin/admin.php');
         break;
         // Danh Sách Nhà Tuyển Dụng 
     case 'listadmin':
+        $id = $_SESSION['username']['id'];
+        $admin = manageAdmin($id);
+        extract($admin);
         include 'view/admin/admin.php';
         $role = 1;
         $id = isset($_GET['id']) ? $_GET['id'] : '';
@@ -21,6 +27,9 @@ switch ($act) {
         include 'view/admin/listadmin.php';
         break;
     case 'listcv':
+        $id = $_SESSION['username']['id'];
+        $admin = manageAdmin($id);
+        extract($admin);
         include 'view/admin/admin.php';
         $role = 2;
         $id = isset($_GET['id']) ? $_GET['id'] : '';
@@ -34,6 +43,9 @@ switch ($act) {
         include 'view/admin/listCV.php';
         break;
     case 'listcorp':
+        $id = $_SESSION['username']['id'];
+        $admin = manageAdmin($id);
+        extract($admin);
         include 'view/admin/admin.php';
         $role = 3;
         $id = isset($_GET['id']) ? $_GET['id'] : '';
@@ -47,7 +59,10 @@ switch ($act) {
         include 'view/admin/listCorp.php';
         break;
     case 'listrecr':
-        include 'view/admin/admin.php';        
+        $id = $_SESSION['username']['id'];
+        $admin = manageAdmin($id);
+        extract($admin);
+        include 'view/admin/admin.php';
         $id = isset($_GET['id']) ? $_GET['id'] : '';
         $name = isset($_GET['name']) ? $_GET['name'] : '';
         $job = isset($_GET['job']) ? $_GET['job'] : '';
@@ -55,18 +70,30 @@ switch ($act) {
         $start = isset($_GET['phone']) ? $_GET['phone'] : '';
         $end = isset($_GET['end']) ? $_GET['end'] : '';
 
-        $listrecr = list_recr($id,$name,$job,$salary,$start,$end);
+        $listrecr = list_recr($id, $name, $job, $salary, $start, $end);
         include 'view/admin/listRecr.php';
         break;
     case 'thongke':
+        $id = $_SESSION['username']['id'];
+        $admin = manageAdmin($id);
+        extract($admin);
+        include 'view/admin/admin.php';
         include 'view/admin/thongke.php';
         break;
-        case 'addadmin':
-
-            if (isset($_POST['signup'])) {}
-                include 'view/admin/addAdmin.php';
-                break;
+    case 'addadmin':
+        $id = $_SESSION['username']['id'];
+        $admin = manageAdmin($id);
+        extract($admin);
+        include 'view/admin/admin.php';
+        if (isset($_POST['signup'])) {
+        }
+        include 'view/admin/addAdmin.php';
+        break;
     case 'delete':
+        $id = $_SESSION['username']['id'];
+        $admin = manageAdmin($id);
+        extract($admin);
+        include 'view/admin/admin.php';
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
             // delete($id);
