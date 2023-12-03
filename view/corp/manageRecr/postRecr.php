@@ -1,5 +1,5 @@
 <div class="tab-pane fade <?= (isset($_GET['id'])) ? 'show active' : '' ?>" id="v-pills-post" role="tabpanel" aria-labelledby="v-pills-post-tab">
-    <div class="post-job-area ptb-100">
+    <div class="post-job-area ptb-100 pt-0">
         <div class="container">
             <form action="index.php?act=post_recr" method="POST">
                 <div class="post-item">

@@ -29,8 +29,8 @@
     }
 
     function recr_select_all($kym ,$level , $typeRecr , $salary , $progLang  , $address , $exp) {
-        $sql = "SELECT r.* , c.introduce , u.address , u.name FROM recr r INNER JOIN corp c ON c.id= r.idcorp 
-        INNER JOIN user u ON u.id = c.iduser INNER JOIN gallery g ON u.id = g.iduser where 1 ";
+        $sql = "SELECT r.* , c.introduce , u.address , u.name FROM recr r LEFT JOIN corp c ON c.id= r.idcorp 
+        LEFT JOIN user u ON u.id = c.iduser LEFT JOIN gallery g ON u.id = g.iduser where 1 ";
         if($kym != ""){
             $sql .= " AND r.job LIKE '%" . $kym . "%'";
             $sql .= " OR r.exp LIKE '%" . $kym . "%'"; 
@@ -54,7 +54,7 @@
     }
     function recr_select_by_employers($idcorp) {
         $sql = "SELECT r.* , c.introduce  ,u.address , u.name  FROM  recr r 
-        INNER JOIN corp c ON c.id= r.idcorp INNER JOIN user u ON u.id = c.iduser INNER JOIN gallery g ON u.id = g.iduser 
+        LEFT JOIN corp c ON c.id= r.idcorp LEFT JOIN user u ON u.id = c.iduser LEFT JOIN gallery g ON u.id = g.iduser 
         
           WHERE r.idcorp = ?  LIMIT 0,3";
         return pdo_query($sql , $idcorp);
@@ -71,17 +71,24 @@
     function recr_select_by_id($id) {
 
         $sql = "SELECT r.* , c.introduce ,c.benefits   ,u.address , u.name  FROM  recr r 
-        INNER JOIN corp c ON c.id= r.idcorp  INNER JOIN user u ON u.id = c.iduser INNER JOIN gallery g ON u.id = g.iduser 
+        LEFT JOIN corp c ON c.id= r.idcorp  LEFT JOIN user u ON u.id = c.iduser LEFT JOIN gallery g ON u.id = g.iduser 
          WHERE r.id = ? ";
         return pdo_query_one($sql , $id);
+    }
+    function recr_select_by_similar($job , $id) {
+
+        $sql = "SELECT r.* , c.introduce ,c.benefits   ,u.address , u.name  FROM  recr r 
+        LEFT JOIN corp c ON c.id= r.idcorp  LEFT JOIN user u ON u.id = c.iduser LEFT JOIN gallery g ON u.id = g.iduser 
+         WHERE r.job = ? AND r.id != ? ";
+        return pdo_query($sql , $job , $id);
     }
 
     function get_records() {
    
         $sql = "SELECT r.* , c.introduce , u.address , u.name FROM recr r 
-        INNER JOIN corp c ON c.id= r.idcorp 
-        INNER JOIN user u ON u.id = c.iduser 
-        INNER JOIN gallery g ON u.id = g.iduser where 1  ORDER BY r.id DESC LIMIT 0,8" ;
+        LEFT JOIN corp c ON c.id= r.idcorp 
+        LEFT JOIN user u ON u.id = c.iduser 
+        LEFT JOIN gallery g ON u.id = g.iduser where 1  ORDER BY r.id DESC LIMIT 0,8" ;
         
         $valu = pdo_query($sql );
         return  $valu;
@@ -90,9 +97,9 @@
   
     function search_address_recr($kym , $end , $id) {
         $sql = "SELECT r.* , c.introduce , u.address , u.name FROM recr r 
-        INNER JOIN corp c ON c.id= r.idcorp 
-        INNER JOIN user u ON u.id = c.iduser 
-        INNER JOIN gallery g ON u.id = g.iduser where 1 AND u.id = ? ";
+        LEFT JOIN corp c ON c.id= r.idcorp 
+        LEFT JOIN user u ON u.id = c.iduser 
+        LEFT JOIN gallery g ON u.id = g.iduser where 1 AND u.id = ? ";
         if($kym != ""){
             $sql .= " AND r.job LIKE '%" . $kym . "%'";
             $sql .= " OR r.exp LIKE '%" . $kym . "%'"; 

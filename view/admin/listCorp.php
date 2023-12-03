@@ -1,4 +1,3 @@
-
 <div class="row">
     <div class=" frmtitle">
         <h1>DANH SÁCH DOANH NGHIỆP</h1>
@@ -18,8 +17,8 @@
                 </tr>
 
                 <?php
-                foreach ($listcorp as $user): ;
-                $delete = 'index.php?act=delete&id=' . $id;
+                foreach ($listcorp as $user) :;
+                    $delete = 'index.php?act=delete&id=' . $id;
 
                 ?>
                     <tr>
@@ -32,7 +31,7 @@
                         <td><a href="index.php?act=infoCorp&id=<?= $user['id'] ?>"><input type="button" value="Chi Tiết"></a></td>
                         <td><a href="<?php $delete ?> "><input type="button" value="Xóa"></a></td>
                     </tr>
-                <?php    endforeach; ?>
+                <?php endforeach; ?>
             </table>
         </div>
     </div>
