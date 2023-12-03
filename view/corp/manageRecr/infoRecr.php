@@ -72,14 +72,10 @@
                 ?></ul>
         </div>
         <div class="nav  nav-pills d-flex justify-content-between " id="v-pills-tab" role="tablist" aria-orientation="vertical">
-               
-                    <a href="index.php?act=edit_recr&idEdit=<?= $id ?>" class="nav-link text-white me-3  py-1 pb-2 px-2 fw-bold " id="v-pills-edit-tab" role="tab" style="background-color: var(--secondary); ">
+            <a href="index.php?act=edit_recr&idEdit=<?= $id ?>" class="nav-link text-white me-3 py-2 btn btn-info d-flex align-content-center " id="v-pills-edit-tab" role="tab" style="background-color: var(--secondary); font-size: 13px;">
+                Chỉnh sửa <i class="fa-regular fa-pen-to-square text-white ms-2" style="font-size: 15px;"></i>
+            </a>
 
-                        <div class="d-flex align-items-center">
-                            Chỉnh sửa<i class="fa-regular fa-pen-to-square text-white ms-2" style="font-size: 15px;"></i>
-                        </div>
-                    </a>
-                
         </div>
     </div>
 </div>

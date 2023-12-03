@@ -5,7 +5,9 @@
                 <div class="row align-items-end">
                     <div class="col-lg-8">
                         <div class="left">
-                            <img data-cfsrc="assets/img/job-details1.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details1.png" alt="Details"></noscript>
+                            <div style="width: 100px; height: 100px" class="overflow-hidden rounded-circle mb-3">
+                                <img src='<?= checkUserAvaNull($avatar) ?>' alt='user ' class=''>
+                            </div>
                             <h2><?= $job ?></h2>
                             <ul>
                                 <li>
@@ -83,26 +85,32 @@
                     <div class="section-title">
                         <h2>Việc làm tương tự</h2>
                     </div>
-                    <?php foreach ($val_c as $val) : ?>
-                        <?php extract($val) ?>
-                        <?php $link_recr = "index.php?act=info_recr&id=" . $id; ?>
-                        <div class="employer-item">
+                    <?php
+                    if (empty($val_c) ) {
+                        echo "<h5> Không có việc làm tương tự ! </h5>";
+                    } else {
+                        foreach ($val_c as $r) { ?>
+                            <?php extract($r);
+                            $link_recr = "index.php?act=info_recr&id=" . $id; ?>
+                            <div class="employer-item">
 
-                            <img data-cfsrc="assets/img/home-one/job1.png" alt="Employer" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/job1.png" alt="Employer"></noscript>
-                            <h3><a href="<?= $link_recr ?>" class="text-dark"><?= $job ?></a></h3>
-                            <ul>
-                                <li>
-                                    <i class="flaticon-send"></i>
-                                    <?= $address ?>
-                                </li>
-                                <li><?= $start ?></li>
-                            </ul>
-                            <p><?= $name ?></p>
-                            <span class="span-one" style="background-color: var(--secondary);"><a href="#" class="text-white">Ứng tuyển</a></span>
-                            <span class="span-two"><?= $type == 2 ? "FULL TIME" : "PART TIME" ?> </span>
+                                <img data-cfsrc='<?= checkCorpAvaNull($avatar)  ?>' alt='Employer' style='width: 70px; height: 70px;object-fit: cover;' class="rounded-circle ">
+                                <h3><a href="<?= $link_recr ?>" class="text-dark"><?= $job ?></a></h3>
+                                <ul>
+                                    <li>
+                                        <i class="flaticon-send"></i>
+                                        <?= $address ?>
+                                    </li>
+                                    <li><?= $start ?></li>
+                                </ul>
+                                <p><?= $name ?></p>
+                                <span class="span-one" style="background-color: var(--secondary);"><a href="#" class="text-white">Ứng tuyển</a></span>
+                                <span class="span-two"><?= $type ?> </span>
 
-                        </div>
-                    <?php endforeach ?>
+                            </div>
+                    <?php
+                        }
+                    } ?>
 
 
                 </div>
@@ -113,50 +121,42 @@
                         <h3>Chi tiết</h3>
                         <ul>
                             <li>
-                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
+
                                 <h4>Mức lương thỏa thuận</h4>
                                 <span><?= $salary ?></span>
                             </li>
-                            <!-- <li>
-                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
-                                <h4>Chuyên ngành</h4>
-                                <span></span>
-                            </li> -->
+
                             <li>
-                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
+
                                 <h4>Địa điểm</h4>
                                 <span><?= $address ?></span>
                             </li>
                             <li>
-                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
+
                                 <h4>Ngày đăng</h4>
                                 <span><?= $start ?></span>
                             </li>
                             <li>
-                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
+
                                 <h4>Kinh nghiệm yêu cầu</h4>
                                 <span><?= $exp ?> Years</span>
                             </li>
                             <li>
-                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
+
                                 <h4>Ngôn ngữ lập trình</h4>
                                 <span><?= $progLang ?></span>
                             </li>
                             <li>
-                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
+
                                 <h4>Cấp độ</h4>
                                 <span><?= $level ?></span>
                             </li>
-                            <!-- <li>
-                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
-                                <h4>Chỉ tiêu ứng tuyển</h4>
-                                <span></span>
-                            </li> -->
-                            <!-- <li>
-                                <img data-cfsrc="assets/img/favicon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/favicon.png" alt="Details"></noscript>
-                                <h4>Chỉ tiêu đã đạt</h4>
-                                <span>chưa</span>
-                            </li> -->
+                            <li>
+
+                                <h4>Hình thức làm việc</h4>
+                                <span><?= $type ?></span>
+                            </li>
+
                         </ul>
                     </div>
                 </div>

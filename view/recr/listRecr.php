@@ -41,7 +41,7 @@
                         <?php $link_recr = "index.php?act=info_recr&id=" . $id; ?>
                         <div class='employer-item '>
 
-                            <img data-cfsrc='assets/img/home-one/job1.png' alt='Employer' style='display:none;visibility:hidden;'><noscript><img src='assets/img/home-one/job1.png' alt='Employer'></noscript>
+                        <img  data-cfsrc='<?= checkCorpAvaNull($avatar)  ?>' alt='Employer' style='width: 70px; height: 70px;object-fit: cover;' class="rounded-circle ">
                             <h3><a href='<?= $link_recr ?>' class="text-dark"><?= $job ?></a></h3>
                             <ul>
                                 <li>
