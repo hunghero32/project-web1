@@ -61,35 +61,25 @@
                         <span><?= checknull($major) ?></span>
                     </div> -->
                     <div class="information widget-item">
-                        <h3>Yêu Cầu</h3>
+                        <h3>Thông tin cơ bản</h3>
                         <ul>
                             <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Mức Lương mong muốn:</h4>
                                 <span><?= checknull($salary) ?></span>
                             </li>
                             <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Kinh Nghiệm :</h4>
                                 <span><?= checknull($exp) ?></span>
                             </li>
                             <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Tuổi :</h4>
                                 <span><?= checknull($age) ?></span>
                             </li>
                             <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Giới Tính:</h4>
                                 <span><?= checknull($gender) ?></span>
                             </li>
                             <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
-                                <h4>Kỹ năng:</h4>
-                                <span><?= checknull($progLang) ?></span>
-                            </li>
-                            <li>
-                                <img data-cfsrc="assets/img/job-details-icon.png" alt="Details" style="display:none;visibility:hidden;"><noscript><img src="assets/img/job-details-icon.png" alt="Details"></noscript>
                                 <h4>Địa Chỉ:</h4>
                                 <span><?= checknull($address) ?></span>
                             </li>
@@ -103,63 +93,40 @@
                         <h3>Giới thiệu chung về tôi</h3>
                         <p><?= checknull($introduce) ?></p>
                     </div>
-                    <div class="work bottom-item">
-                        <h3>Kinh nghiệm làm Việc </h3>
-                        <?php foreach ($expcv as $idcv) {
-                            extract($idcv); ?>
-                            <h4>Tại : <?= checknull($corp) ?></h4>
-                            <ul>
-                                <li>
-                                    <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
-                                    <span>Công việc chính :</span>
-                                </li>
-                                <li>
-                                    <?= checknull($job) ?>
-                                </li>
-                            </ul>
-                            <li>
-                                <span>Từ :<?= checknull($start) ?> </span>
-                            </li>
-                            <li>
-                                <span>Đến :<?= checknull($end) ?></span>
-                            </li>
-                            <hr>
-                        <?php } ?>
-                    </div>
-
-                    <div class="work bottom-item">
-                        <h3>Học Vấn</h3>
-                        <?php foreach ($degree as $idcv) {
-                            extract($idcv); ?>
-                            <h4>Tại Trường/Trung Tâm : <?= checknull($school) ?> </h4>
-                            <ul>
-                                <li>
-                                    <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
-                                    <span>Chuyên Ngành :</span>
-                                </li>
-                                <li>
-                                    <?= checknull($major) ?>
-                                </li>
-                            </ul>
-                            <li>
-                                <span>Từ năm <?= checknull($year) ?></span>
-                            </li>
-                            <hr>
-                        <?php } ?>
-                    </div>
-                    <div class="skills">
-                        <h3>Ngôn ngữ sử dụng</h3>
-                        <div class="skill-wrap">
-                            <?php foreach ($skillcv as $idcv) {
-                                extract($idcv); ?>
-                                <div class="skill">
-                                    <h3><?= checknull($progLang) ?></h3>
-                                    <div class="skill-bar skill1 animate__slideInLeft animate__animated">
-                                        <span class="skill-count1"><?= checknull($percent) ?>%</span>
-                                    </div>
-                                </div>
+                    <div class="skills mb-3">
+                        <h5>Kinh nghiệm làm Việc </h5>
+                        <ul>
+                            <?php foreach ($expCv as $e) {
+                                if ($e['job'] !== '') { ?>
+                                    <li><i class="fa-solid fa-business-time me-2"></i> Từng làm <strong class=""><?= $e['job'] ?></strong> tại <?= $e['corp'] ?> ở trị trí <?= $e['level'] ?> thời gian từ <?= $e['start'] ?> ~ <?= $e['end'] ?></li>
+                                <?php } ?>
                             <?php } ?>
-                        </div>
+                        </ul>
+                    </div>
+                                    <hr>
+                    <div class="skills mb-3">
+                        <h5>Học vấn / bằng cấp</h5>
+                        <ul class="">
+                            <?php foreach ($degree as $deg) {
+                                if ($deg['name'] !== '') { ?>
+                                    <li><i class="fa-solid fa-graduation-cap me-2"></i>Tốt nghiệp ( chứng chỉ / bằng ) <strong><?= $deg['name'] ?></strong> tại <?= $deg['school'] ?> năm <?= $deg['year'] ?></li>
+                                <?php } ?>
+                            <?php } ?>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="skills mb-3">
+                        <h5>Kỹ năng / ngôn ngữ</h5>
+                        <ul class="ms-0 ps-0">
+                            <?php foreach ($skillCv as $s) {
+                                if ($s['progLang'] !== '') { ?>
+                                    <li class="row mb-4 ms-0 mt-3">
+                                        <strong class="mb-3"><i style="font-size: 1vw;" class="fa-solid fa-code"></i> <?= $s['progLang'] ?></strong>
+                                        <div class="ms-2 mt-2 rounded-3 progress-bar-skill" style="width:<?= $s['percent'] ?>%; height:10px"></div>
+                                    </li>
+                                <?php } ?>
+                            <?php } ?>
+                        </ul>
                     </div>
                 </div>
             </div>

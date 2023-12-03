@@ -45,34 +45,33 @@ switch ($act) {
 
         include 'view/recr/listRecr.php';
         break;
-    //info của phần công ty
+        //info của phần công ty
     case 'infoRecr':
         if (isset($_GET['id'])) {
             $id_recr = $_GET['id'];
             $val_recr = recr_select_by_id($id_recr);
             extract($val_recr);
-            
         }
         $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
         $corp = manageInfo($idcorp);
         extract($corp);
         $idcorp = $_SESSION['username']['id'];
-            $corp = manageInfo($idcorp);
-            extract($corp);
+        $corp = manageInfo($idcorp);
+        extract($corp);
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
         $gallery = gallery($arr);
-    
+
         // Xử lí đoạn văn thành dòng
         $introPara = explode("\n", $introduce);
         $intro = paragToLines($introPara);
-    
+
         $benePara = explode("\n", $benefits);
         $bene = paragToLines($benePara);
         include 'view/corp/manage.php';
         break;
 
-    //info của phần ứng cử viên 
+        //info của phần ứng cử viên 
     case 'info_recr':
         if (isset($_GET['id'])) {
             $id_recr = $_GET['id'];
@@ -84,6 +83,7 @@ switch ($act) {
             $infoCv = infoCv($_SESSION['username']['id']);
            
         }
+
         include 'view/recr/infoRecr.php';
         break;
 
@@ -106,27 +106,37 @@ switch ($act) {
                 $request = $_POST['request'];
                 $description = $_POST['description'];
                 $end = $_POST['end'];
-                recr_add( $idcorp, $job, $exp, $level, $salary, $progLang, $type, $description, $end, $request
+                recr_add(
+                    $idcorp,
+                    $job,
+                    $exp,
+                    $level,
+                    $salary,
+                    $progLang,
+                    $type,
+                    $description,
+                    $end,
+                    $request
                 );
                 $thongbao = "<script> alert('Bạn đã thêm thành công !');
             location.href = 'index.php?act=manage_recr#v-pills-messages'; </script>";
-            echo $thongbao;
+                echo $thongbao;
             }
         }
         $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
         $corp = manageInfo($idcorp);
         extract($corp);
         $idcorp = $_SESSION['username']['id'];
-            $corp = manageInfo($idcorp);
-            extract($corp);
+        $corp = manageInfo($idcorp);
+        extract($corp);
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
         $gallery = gallery($arr);
-    
+
         // Xử lí đoạn văn thành dòng
         $introPara = explode("\n", $introduce);
         $intro = paragToLines($introPara);
-    
+
         $benePara = explode("\n", $benefits);
         $bene = paragToLines($benePara);
         include 'view/corp/manage.php';
@@ -135,51 +145,51 @@ switch ($act) {
         $end = isset($_POST['end']) ? $_POST['end'] : '';
         $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
         $id = isset($_SESSION['username']) ? $_SESSION['username']['id'] : '';
-        $valu_racr = search_address_recr($kym , $end , $id);
+        $valu_racr = search_address_recr($kym, $end, $id);
         $thongbao = "<script> location.href = 'index.php?act=manage_recr#v-pills-messages';</script>";
         echo $thongbao;
-        
+
         $listApply = list_apply_cv();
+
 
         $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
         $corp = manageInfo($idcorp);
         extract($corp);
         $idcorp = $_SESSION['username']['id'];
-            $corp = manageInfo($idcorp);
-            extract($corp);
+        $corp = manageInfo($idcorp);
+        extract($corp);
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
         $gallery = gallery($arr);
-    
+
         // Xử lí đoạn văn thành dòng
         $introPara = explode("\n", $introduce);
         $intro = paragToLines($introPara);
-    
+
         $benePara = explode("\n", $benefits);
         $bene = paragToLines($benePara);
         include 'view/corp/manage.php';
         break;
     case 'edit_recr':
-        
+
         if (isset($_GET['idEdit'])) {
             $id = $_GET['idEdit'];
             $value_id = recr_select_by_id($id);
-            
         }
         $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
         $corp = manageInfo($idcorp);
         extract($corp);
         $idcorp = $_SESSION['username']['id'];
-            $corp = manageInfo($idcorp);
-            extract($corp);
+        $corp = manageInfo($idcorp);
+        extract($corp);
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
         $gallery = gallery($arr);
-    
+
         // Xử lí đoạn văn thành dòng
         $introPara = explode("\n", $introduce);
         $intro = paragToLines($introPara);
-    
+
         $benePara = explode("\n", $benefits);
         $bene = paragToLines($benePara);
         include 'view/corp/manage.php';
@@ -219,7 +229,6 @@ switch ($act) {
             $thongbao = "<script> alert('Bạn đã sửa thành công !');
             location.href = 'index.php?act=manage_recr#v-pills-messages'; </script>";
             echo $thongbao;
-           
         }
         $perPage = 10;
 
@@ -237,25 +246,25 @@ switch ($act) {
             location.href = 'index.php?act=manage_recr#v-pills-messages'; </script>";
             echo $thongbao;
         }
-        
+
         $perPage = 10;
 
-        
+
         $total_recr = get_Total_Records();
         $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
         $corp = manageInfo($idcorp);
         extract($corp);
         $idcorp = $_SESSION['username']['id'];
-            $corp = manageInfo($idcorp);
-            extract($corp);
+        $corp = manageInfo($idcorp);
+        extract($corp);
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
         $gallery = gallery($arr);
-    
+
         // Xử lí đoạn văn thành dòng
         $introPara = explode("\n", $introduce);
         $intro = paragToLines($introPara);
-    
+
         $benePara = explode("\n", $benefits);
         $bene = paragToLines($benePara);
         include 'view/corp/manage.php';

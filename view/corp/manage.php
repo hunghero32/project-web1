@@ -40,12 +40,13 @@
                         <i class="bx bx-user"></i>
                         Thông tin
                     </a>
-                    <a class="nav-link " id="v-pills-messages-tab " data-bs-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                    <a class="nav-link " id="v-pills-messages-tab " data-bs-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="true">
                         <div class="profile-list">
                             <i class="bx bxs-inbox"></i>
                             Danh sách bài tuyển dụng
                         </div>
                     </a>
+
                     <a class="nav-link " id="v-pills-apply-tab " data-bs-toggle="pill" href="#v-pills-apply" role="tab" aria-controls="v-pills-apply" aria-selected="false">
                         <div class="profile-list">
                             <i class="bx bxs-inbox"></i>
@@ -67,6 +68,7 @@
                     include "manageRecr/listRecr.php";
                     include "manageRecr/infoRecr.php";
                     include "manageRecr/listApplyCv.php";
+
                     ?>
                 </div>
             </div>
