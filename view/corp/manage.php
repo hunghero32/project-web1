@@ -46,12 +46,14 @@
                             Danh sách bài tuyển dụng
                         </div>
                     </a>
-                    <a class="nav-link " id="v-pills-messages-tab " data-bs-toggle="pill" href="#v-pills-cv-in-recr" role="tab" aria-controls="v-pills-cv-in-recr" aria-selected="true">
+
+                    <a class="nav-link " id="v-pills-apply-tab " data-bs-toggle="pill" href="#v-pills-apply" role="tab" aria-controls="v-pills-apply" aria-selected="false">
                         <div class="profile-list">
                             <i class="bx bxs-inbox"></i>
-                            Danh sách ứng viên
+                            Danh sách ứng cử viên
                         </div>
                     </a>
+                    
                 </div>
             </div>
 
@@ -65,7 +67,8 @@
                     include "manageRecr/editRecr.php";
                     include "manageRecr/listRecr.php";
                     include "manageRecr/infoRecr.php";
-                    include "manageRecr/listCv.php";
+                    include "manageRecr/listApplyCv.php";
+
                     ?>
                 </div>
             </div>

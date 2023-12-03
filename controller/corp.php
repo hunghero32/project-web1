@@ -43,6 +43,8 @@ switch ($act) {
     case 'manageCorp':
         $idcorp = $_SESSION['username']['id'];
         $corp = manageInfo($idcorp);
+        $listApply = list_apply_cv();
+        // var_dump($listApply);
         extract($corp);
 
         // Xử lí các thumbnail

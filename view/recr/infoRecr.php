@@ -6,7 +6,7 @@
                     <div class="col-lg-8">
                         <div class="left">
                             <div style="width: 100px; height: 100px" class="overflow-hidden rounded-circle mb-3">
-                                <img src='<?= checkUserAvaNull($avatar) ?>' alt='user ' class=''>
+                                <img src='<?= checkCorpAvaNull($avatar) ?>' alt='user ' class=''>
                             </div>
                             <h2><?= $job ?></h2>
                             <ul>
@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="right">
-                            <a class="cmn-btn" href="#">
+                            <a class="cmn-btn" href="#" data-bs-toggle="modal" data-bs-target="#myModal">
                                 Ứng tuyển
                                 <i class="bx bx-plus"></i>
                             </a>
@@ -35,6 +35,67 @@
     </div>
 </div>
 
+<div class="modal" id="myModal">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Ứng tuyển <Span style="color : var(--secondary);"><?= $job ?></Span></h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="d-flex justify-content-between align-content-center">
+                    <h6>Sử dụng CV có sẵn </h6>
+                    <!-- <button><a href=""   ><i class="fa-solid fa-pen me-2"></a></button> -->
+                    <a href="index.php?act=infoCv&id=<?= $infoCv['iduser'] ?>" class="btn btn-outline-secondary" style="font-size: 13px;"><i class="fa-solid fa-pen me-2"></i> Chỉnh sửa </a>
+
+                    <!-- <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#demoCv" style="font-size: 13px;">
+                    <i class="fa-solid fa-pen me-2"></i> Chỉnh sửa
+                    </button> -->
+                </div>
+                <div class="row p-2 m-1 mt-3" style="border: 1px dashed var(--secondary); height: 150px;">
+                    <div class="col-lg-8 d-flex flex-column ">
+                        <p class="fs-6 mb-0">Họ và tên : <?= $name ?></p>
+                        <p class="fs-6 mb-0">SĐT : <?= $phone ?></p>
+                        <p class="fs-6 mb-0">Email : <?= $email ?></p>
+                        <p class="fs-6 mb-0">Địa chỉ : <?= $address ?></p>
+                    </div>
+                    <div class="col-lg-4 ">
+                        <img src='<?= checkUserAvaNull($avatar)  ?>' alt='user ' style=' object-fit: cover !important;' class=" w-50 h-75 mt-2 rounded float-end img-fluid ">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <form action="index.php?act=apply_job" method="post">
+                    <input type="hidden" name="idRecr" value="<?= $id ?>">
+                    <input type="hidden" name="idCV" value="<?= $infoCv['id'] ?>">
+                    <button type="submit" name="applyjob" class="btn text-white " data-bs-dismiss="modal" style="background-color: var(--secondary);">Nộp CV</button>
+                </form>
+            </div>
+            <!-- <div class="p-4 m-4 mt-2" style="border: 1px dashed var(--secondary); ">
+                <p class="h5 fw-bold"><i class="fas fa-exclamation-triangle me-3"></i>Lưu ý
+                <p>
+                <p>1. TopCV khuyên tất cả các bạn hãy luôn cẩn trọng trong quá trình tìm việc và chủ động nghiên cứu về thông tin công ty, vị trí việc làm trước khi ứng tuyển.
+                    Ứng viên cần có trách nhiệm với hành vi ứng tuyển của mình. Nếu bạn gặp phải tin tuyển dụng hoặc nhận được liên lạc đáng ngờ của nhà tuyển dụng, hãy báo cáo ngay cho TopCV qua email hotro@topcv.vn để được hỗ trợ kịp thời.
+                <p>
+
+                <p>2. Tìm hiểu thêm kinh nghiệm phòng tránh lừa đảo tại đây.
+                <p>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+
+<!-- Demo CV -->
+<?php include "applyCv/demoCv.php"; ?>
 
 <div class="job-details-area ptb-100">
     <div class="container">
@@ -86,7 +147,7 @@
                         <h2>Việc làm tương tự</h2>
                     </div>
                     <?php
-                    if (empty($val_c) ) {
+                    if (empty($val_c)) {
                         echo "<h5> Không có việc làm tương tự ! </h5>";
                     } else {
                         foreach ($val_c as $r) { ?>
@@ -104,7 +165,7 @@
                                     <li><?= $start ?></li>
                                 </ul>
                                 <p><?= $name ?></p>
-                                <span class="span-one" style="background-color: var(--secondary);"><a href="#" class="text-white">Ứng tuyển</a></span>
+                                <span class="span-one" style="background-color: var(--secondary);"><a href="<?= $link_recr ?>" class="text-white">Ứng tuyển</a></span>
                                 <span class="span-two"><?= $type ?> </span>
 
                             </div>

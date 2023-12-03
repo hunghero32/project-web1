@@ -1,6 +1,10 @@
 <?php 
 
-    
+    function applyJob($idRecr , $idCV , $status) {
+        $sql = "INSERT INTO  info ( idrec ,  idcv ,  status ) VALUES (?,?,?)";
+        pdo_execute($sql,$idRecr , $idCV , $status);
+    }
+
     function recr_add( $idcorp,$job  ,$exp ,$level ,$salary ,$progLang ,$type ,
      $description  ,$end , $request
     )  {
@@ -29,7 +33,7 @@
     }
 
     function recr_select_all($kym ,$level , $typeRecr , $salary , $progLang  , $address , $exp) {
-        $sql = "SELECT r.* , c.introduce , u.address , u.name FROM recr r LEFT JOIN corp c ON c.id= r.idcorp 
+        $sql = "SELECT r.* , c.introduce , u.address , u.name , g.avatar FROM recr r LEFT JOIN corp c ON c.id= r.idcorp 
         LEFT JOIN user u ON u.id = c.iduser LEFT JOIN gallery g ON u.id = g.iduser where 1 ";
         if($kym != ""){
             $sql .= " AND r.job LIKE '%" . $kym . "%'";
@@ -70,14 +74,19 @@
 
     function recr_select_by_id($id) {
 
-        $sql = "SELECT r.* , c.introduce ,c.benefits   ,u.address , u.name  FROM  recr r 
+        $sql = "SELECT r.* , c.introduce ,c.benefits   ,u.address , u.name , u.phone , u.email ,  g.avatar FROM  recr r 
         LEFT JOIN corp c ON c.id= r.idcorp  LEFT JOIN user u ON u.id = c.iduser LEFT JOIN gallery g ON u.id = g.iduser 
+        
          WHERE r.id = ? ";
+        return pdo_query_one($sql , $id);
+    }
+    function infoCv($id)  {
+        $sql = "SELECT * FROM cv WHERE iduser = ?";
         return pdo_query_one($sql , $id);
     }
     function recr_select_by_similar($job , $id) {
 
-        $sql = "SELECT r.* , c.introduce ,c.benefits   ,u.address , u.name  FROM  recr r 
+        $sql = "SELECT r.* , c.introduce ,c.benefits   ,u.address , u.name , g.avatar FROM  recr r 
         LEFT JOIN corp c ON c.id= r.idcorp  LEFT JOIN user u ON u.id = c.iduser LEFT JOIN gallery g ON u.id = g.iduser 
          WHERE r.job = ? AND r.id != ? ";
         return pdo_query($sql , $job , $id);
@@ -123,7 +132,19 @@
         $valu = pdo_query_one($sql);
         return $valu;
     }
-    
+    function info() {
+        $sql = "SELECT * FROM info ";
+        $valu = pdo_query($sql );
+        return  $valu;
 
+    }
+    function list_apply_cv() {
+        $sql = "SELECT cv.*, u.name as namecv , r.job , g.avatar as avatarCv FROM cv  LEFT JOIN info i ON cv.id= i.idcv 
+         LEFT JOIN recr r ON r.id= i.idrec LEFT JOIN user u ON u.id = cv.iduser
+         LEFT JOIN gallery g ON u.id = g.iduser 
+        WHERE  i.idcv IS NOT NULL";
+        $valu = pdo_query($sql );
+        return  $valu;
+    }
 
 ?>

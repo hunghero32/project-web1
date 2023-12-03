@@ -52,7 +52,7 @@
                             </ul>
                             <p><?= $name ?>
                             </p>
-                            <a href="#" class="btn btn-info text-white" style="background-color: var(--secondary);">Ứng tuyển </a>
+                            <a href="<?= $link_recr ?>" class="btn btn-info text-white" style="background-color: var(--secondary);">Ứng tuyển </a>
                             <span class='span-two'><?= $type ?> </span>
 
                         </div>

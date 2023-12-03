@@ -13,6 +13,23 @@ $currentData = array_slice($valu_racr, $start, $perPage);
 
 
 switch ($act) {
+    case 'apply_job':
+        if (isset($_POST['applyjob'])){
+            $idRecr = isset( $_POST['idRecr']) ? $_POST['idRecr'] : '';
+            $idcv = isset( $_POST['idCV']) ? $_POST['idCV'] : '';
+            
+            $status = "Chờ xét duyệt";
+            applyJob($idRecr , $idcv , $status) ;
+            echo "<script>showSuccessNotification();</script>";
+            echo "<script> alert('Bạn đã thêm thành công !'); </script>";
+        }
+        // echo $idRecr;
+        $val_recr = recr_select_by_id($idRecr);
+            // var_dump($val_recr);
+            extract($val_recr);
+            $val_c = recr_select_by_similar($job , $idRecr);
+        include 'view/recr/infoRecr.php';
+        break;
     case 'listRecr':
         $level = isset($_POST['level']) ? $_POST['level'] : '';
         $kym = isset($_POST['key']) ? $_POST['key'] : '';
@@ -59,9 +76,12 @@ switch ($act) {
         if (isset($_GET['id'])) {
             $id_recr = $_GET['id'];
             $val_recr = recr_select_by_id($id_recr);
+            // var_dump($val_recr);
             extract($val_recr);
             $val_c = recr_select_by_similar($job , $id_recr);
-            var_dump($val_c);
+            
+            $infoCv = infoCv($_SESSION['username']['id']);
+           
         }
 
         include 'view/recr/infoRecr.php';
@@ -128,6 +148,10 @@ switch ($act) {
         $valu_racr = search_address_recr($kym, $end, $id);
         $thongbao = "<script> location.href = 'index.php?act=manage_recr#v-pills-messages';</script>";
         echo $thongbao;
+
+        $listApply = list_apply_cv();
+
+
         $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
         $corp = manageInfo($idcorp);
         extract($corp);
