@@ -79,26 +79,6 @@ function top_cv()
     return pdo_query($sql);
 }
 
-// function manageCv($id)
-// {
-//     $sql = "SELECT u.name, u.email, u.phone, u.address, cv.*,
-//             s.progLang, s.percent,
-//             ec.level, ec.job, ec.corp, ec.start as exp_start, ec.end as exp_end,
-//             d.name as degree_name, d.school, d.year as degree_year,
-//             g.avatar, g.thumbnail1 ,g.thumbnail2 ,g.thumbnail3 ,g.thumbnail4 ,g.thumbnail5,
-//             TIMESTAMPDIFF(MONTH , MIN(ec.start), MAX(ec.end)) as exp,
-//             TIMESTAMPDIFF(YEAR, CURRENT_DATE, cv.birth) as age
-//             FROM cv
-//             LEFT JOIN skillcv s ON cv.id = s.idcv
-//             LEFT JOIN expcv ec ON cv.id = ec.idcv
-//             LEFT JOIN degree d ON cv.id = d.idcv
-//             INNER JOIN user u ON cv.iduser = u.id
-//             LEFT JOIN gallery g ON cv.iduser = g.iduser
-//             WHERE u.role = 2 AND u.id = ?";
-
-//     return pdo_query_one($sql, $id);
-// }
-
 function manageCv($id)
 {
     $sql = "SELECT u.* , g.avatar, c.birth, c.introduce,  c.id as idcv, c.gender, c.salary, c.major
@@ -170,7 +150,7 @@ function update_skill($id, $progLang, $percent)
 function info_cv($id)
 {
     $sql = "SELECT cv.*, u.name, u.email, u.phone, u.address, s.progLang, s.percent, ec.corp, ec.start, ec.end, ec.job, d.school, d.year, g.avatar,
-            TIMESTAMPDIFF(YEAR, CURRENT_DATE, cv.birth) as age,
+            TIMESTAMPDIFF(YEAR, cv.birth, CURRENT_DATE) as age,
             TIMESTAMPDIFF(MONTH, MIN(ec.start), MAX(ec.end)) as exp
             FROM cv
             INNER JOIN user u ON cv.iduser = u.id

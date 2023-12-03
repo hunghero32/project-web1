@@ -10,9 +10,9 @@ switch ($act) {
             if (isset($cv['id'])) {
             $idcv = $cv['id'];
             
-            $degree = list_degree($idcv);
-            $expcv = list_expcv($idcv);
-            $skillcv = list_skillcv($idcv);
+            $expCv = getExpCv($idcv);
+            $skillCv = getSkillCv($idcv);
+            $degree = getDegreeCv($idcv);
 
         }
         include 'view/cv/infoCv.php';

@@ -40,22 +40,16 @@
                         <i class="bx bx-user"></i>
                         Thông tin
                     </a>
-                    <a class="nav-link " id="v-pills-messages-tab " data-bs-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
+                    <a class="nav-link " id="v-pills-messages-tab " data-bs-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="true">
                         <div class="profile-list">
                             <i class="bx bxs-inbox"></i>
                             Danh sách bài tuyển dụng
                         </div>
                     </a>
-                    <a href="single-resume.html">
+                    <a class="nav-link " id="v-pills-messages-tab " data-bs-toggle="pill" href="#v-pills-cv-in-recr" role="tab" aria-controls="v-pills-cv-in-recr" aria-selected="true">
                         <div class="profile-list">
-                            <i class="bx bx-note"></i>
-                            My Resume
-                        </div>
-                    </a>
-                    <a href="login.html">
-                        <div class="profile-list">
-                            <i class="bx bx-log-out"></i>
-                            Logout
+                            <i class="bx bxs-inbox"></i>
+                            Danh sách ứng viên
                         </div>
                     </a>
                 </div>
@@ -71,6 +65,7 @@
                     include "manageRecr/editRecr.php";
                     include "manageRecr/listRecr.php";
                     include "manageRecr/infoRecr.php";
+                    include "manageRecr/listCv.php";
                     ?>
                 </div>
             </div>
