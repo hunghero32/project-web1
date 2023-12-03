@@ -1,4 +1,6 @@
-<div class="tab-pane fade  <?= (!isset($_GET['id']) && !isset($_GET['idEdit']) && !isset($_GET['idInfo']) && !isset($_GET['profile']) && isset($_SESSION['same'])) || (isset($thongbao)) ? 'show active' : '' ?> " id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+
+<div class="tab-pane fade  <?= (!isset($_GET['id']) && !isset($_GET['idEdit']) && !isset($_GET['idInfo']) && !isset($_GET['profile'])) || (isset($thongbao)) ? 'show active' : '' ?> " 
+id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
     <form action="index.php?act=manage_recr" method="post" class="mb-5 d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <input type="search" name="kym" class="p-2 px-5 rounded-start border border-secondary mx-3" placeholder="Tìm kiếm ...">

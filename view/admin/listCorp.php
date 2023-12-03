@@ -1,4 +1,3 @@
-
 <div class="row">
     <div class=" frmtitle">
         <h1>DANH SÁCH Quản Trị Viên</h1>
@@ -17,8 +16,8 @@
                 </tr>
 
                 <?php
-                foreach ($listcorp as $user): ;
-                $delete = 'index.php?act=delete&id=' . $id;
+                foreach ($listcorp as $user) :;
+                    $delete = 'index.php?act=delete&id=' . $id;
 
                 ?>
                     <tr>
@@ -30,14 +29,13 @@
                         <td><?= $user['address'] ?></td>
                         <td><a href="<?php $delete ?> "><input type="button" value="Xóa"></a></td>
                     </tr>
-                <?php    endforeach; ?>
+                <?php endforeach; ?>
             </table>
         </div>
-        <div class=" mb10">
-            <input type="button" value="Chọn All" />
-            <input type="button" value="Bỏ chọn All" />
-            <input type="button" value="Xóa mục đã chọn" />
-            <a href="index.php?act=adddm"><input type="button" value="Nhập thêm" /></a>
-        </div>
+        <!-- <div class=" mb10 ">
+                <input  type="button" value="CHỌN TẤT CẢ">
+                <input  type="button" value="BỎ CHỌN TẤT CẢ">
+            </div> -->
+        </form>
     </div>
 </div>
