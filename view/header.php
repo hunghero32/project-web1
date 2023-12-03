@@ -20,16 +20,17 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <link rel="stylesheet" href="assets/css/theme-dark.css">
     <link rel="icon" type="image/png" href="assets/img/favicon.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/../ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>JI - Jobs IT</title>
 </head>
 
 <body>
-    <!-- <div class="loader">
+    <div class="loader">
         <div class="d-table">
             <div class="d-table-cell">
                 <div class="spinner"></div>
             </div>
         </div>
-    </div> -->
+    </div>
     <?php include 'model/notification.php' ;

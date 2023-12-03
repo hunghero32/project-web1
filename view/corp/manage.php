@@ -46,18 +46,13 @@
                             Danh sách bài tuyển dụng
                         </div>
                     </a>
-                    <a href="single-resume.html">
+                    <a class="nav-link " id="v-pills-apply-tab " data-bs-toggle="pill" href="#v-pills-apply" role="tab" aria-controls="v-pills-apply" aria-selected="false">
                         <div class="profile-list">
-                            <i class="bx bx-note"></i>
-                            My Resume
+                            <i class="bx bxs-inbox"></i>
+                            Danh sách ứng cử viên
                         </div>
                     </a>
-                    <a href="login.html">
-                        <div class="profile-list">
-                            <i class="bx bx-log-out"></i>
-                            Logout
-                        </div>
-                    </a>
+                    
                 </div>
             </div>
 
@@ -71,6 +66,7 @@
                     include "manageRecr/editRecr.php";
                     include "manageRecr/listRecr.php";
                     include "manageRecr/infoRecr.php";
+                    include "manageRecr/listApplyCv.php";
                     ?>
                 </div>
             </div>
