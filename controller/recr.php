@@ -61,7 +61,8 @@ switch ($act) {
             $id_recr = $_GET['id'];
             $val_recr = recr_select_by_id($id_recr);
             extract($val_recr);
-            $val_c = recr_select_by_employers($idcorp);
+            $val_c = recr_select_by_similar($job , $id_recr);
+            var_dump($val_c);
         }
         
         include 'view/recr/infoRecr.php';
