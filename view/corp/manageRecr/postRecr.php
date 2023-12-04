@@ -1,7 +1,13 @@
 <div class="tab-pane fade <?= (isset($_GET['id'])) ? 'show active' : '' ?>" id="v-pills-post" role="tabpanel" aria-labelledby="v-pills-post-tab">
     <div class="post-job-area ptb-100 pt-0">
         <div class="container">
-            <form action="index.php?act=post_recr" method="POST">
+        <?php if (isset($_SESSION['processed'])) {
+
+        echo "Dữ liệu đã được xử lý.";
+
+    unset($_SESSION['processed']);
+    } else {?>
+            <form action="index.php?act=post_recr" method="POST" onsubmit="return validateForm()">
                 <div class="post-item">
                     <div class="section-title">
                         <h2>Thêm bài tuyển dụng</h2>
@@ -101,15 +107,13 @@
                                 </select>
                             </div>
 
-                            
+
 
                             <div class="form-group">
-                                <label>
-                                    Ngày hết hạn :
-                                </label>
-                                <input type="date" class="form-control" name="end" required>
+                                <label for="expiryDate">Ngày hết hạn :</label>
+                                <input type="date" class="form-control" name="end" id="expiryDate" oninput="checkExpiryDate(this)">
+                                <p id="errorMessage" class="text-danger fst-italic"></p>
                             </div>
-
 
                             <div class="form-group">
                                 <label>
@@ -123,6 +127,7 @@
                     <button type="submit" name="add_recr" class="btn">Thêm </button>
                 </div>
             </form>
+            <?php } ?>
         </div>
     </div>
 </div>

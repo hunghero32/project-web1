@@ -163,3 +163,11 @@ function info_cv($id)
     $cv = pdo_query_one($sql, $id);
     return $cv;
 }
+function list_apply_recr($id) {
+    $sql = "SELECT DISTINCT  r.*, u.name as namecv , g.avatar as avatarCv FROM recr r 
+    LEFT JOIN info i ON i.idrec= r.id LEFT JOIN cv ON i.idcv = cv.id 
+    LEFT JOIN user u ON u.id = cv.iduser LEFT JOIN gallery g ON u.id = g.iduser 
+    WHERE u.id =?  AND i.idcv IS NOT NULL";
+    $valu = pdo_query($sql ,$id);
+    return  $valu;
+}

@@ -53,7 +53,7 @@
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <li><a class="dropdown-item" href="index.php?act=changepassword">Đổi mật khẩu</a></li>
                                         <?php if ($role == 2) { ?>
-                                            <li><a class="dropdown-item" href="index.php?act=manage_Cv">Thông tin người dùng</a></li>
+                                            <li><a class="dropdown-item" href="index.php?act=manage_Cv&profile=1">Thông tin người dùng</a></li>
                                         <?php } ?>
                                         <?php if ($role == 3) { ?>
                                             <li><a class="dropdown-item" href="index.php?act=manageCorp&profile=1">Thông tin doanh nghiệp</a></li>

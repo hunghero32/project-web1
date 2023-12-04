@@ -52,7 +52,7 @@
                             </ul>
                             <p><?= $name ?>
                             </p>
-                            <a href="<?= $link_recr ?>" class="btn btn-info text-white" style="background-color: var(--secondary);">Ứng tuyển </a>
+                            <span class="span-one" style="background-color: var(--secondary);"><a href="<?= $link_recr ?>" class="text-white">Ứng tuyển</a></span>
                             <span class='span-two'><?= $type ?> </span>
 
                         </div>
@@ -103,7 +103,7 @@
                                 <div class="d-flex ">
                                     <input type="text" class="form-control" placeholder="Từ khóa" name="key">
                                     <button type="submit" name="search_recr" class="btn " style="background-color: var(--secondary);">
-                                        <i class="flaticon-send fw-bold"></i>
+                                        <i class="flaticon-send fw-bold" style="color : #fff ;"></i>
                                     </button>
                                 </div>
                             </div>

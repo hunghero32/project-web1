@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="right">
-                            <a class="cmn-btn" href="#" data-bs-toggle="modal" data-bs-target="#myModal">
+                            <a class="cmn-btn <?= isset($_SESSION['username']['role']) && $_SESSION['username']['role'] == 3 ? "d-none" : '' ?>" href="#" data-bs-toggle="modal" data-bs-target="#myModal">
                                 Ứng tuyển
                                 <i class="bx bx-plus"></i>
                             </a>
@@ -38,20 +38,16 @@
 <div class="modal" id="myModal">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
         <div class="modal-content">
-
-            <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title">Ứng tuyển <Span style="color : var(--secondary);"><?= $job ?></Span></h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 
             </div>
-
-            <!-- Modal body -->
             <div class="modal-body">
                 <div class="d-flex justify-content-between align-content-center">
                     <h6>Sử dụng CV có sẵn </h6>
                     <!-- <button><a href=""   ><i class="fa-solid fa-pen me-2"></a></button> -->
-                    <a href="index.php?act=infoCv&id=<?= $infoCv['iduser'] ?>" class="btn btn-outline-secondary" style="font-size: 13px;"><i class="fa-solid fa-pen me-2"></i> Chỉnh sửa </a>
+                    <button onclick="editCV()" class="btn btn-outline-secondary" style="font-size: 13px;"><i class="fa-solid fa-pen me-2"></i> Chỉnh sửa </button>
 
                     <!-- <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#demoCv" style="font-size: 13px;">
                     <i class="fa-solid fa-pen me-2"></i> Chỉnh sửa
@@ -65,19 +61,24 @@
                         <p class="fs-6 mb-0">Địa chỉ : <?= $address ?></p>
                     </div>
                     <div class="col-lg-4 ">
-                        <img src='<?= checkUserAvaNull($avatar)  ?>' alt='user ' style=' object-fit: cover !important;' class=" w-50 h-75 mt-2 rounded float-end img-fluid ">
+                        <img src='<?= checkUserAvaNull($infoCv['avatarCV'])  ?>' alt='user ' class=" w-50 h-75 mt-2 rounded float-end img-fluid ">
                     </div>
                 </div>
 
             </div>
 
-            <!-- Modal footer -->
             <div class="modal-footer">
-                <form action="index.php?act=apply_job" method="post">
-                    <input type="hidden" name="idRecr" value="<?= $id ?>">
-                    <input type="hidden" name="idCV" value="<?= $infoCv['id'] ?>">
-                    <button type="submit" name="applyjob" class="btn text-white " data-bs-dismiss="modal" style="background-color: var(--secondary);">Nộp CV</button>
-                </form>
+                <?php if (isset($_SESSION['check_apply'])) {
+                    echo "Dữ liệu đã được xử lý.";
+
+                    unset($_SESSION['check_apply']);
+                    } else {?>
+                        <form action="index.php?act=apply_job" method="post">
+                            <input type="hidden" name="idRecr" value="<?= $id ?>">
+                            <input type="hidden" name="idCV" value="<?= $infoCv['id'] ?>">
+                            <button type="submit" name="applyjob" class="btn text-white " data-bs-dismiss="modal" style="background-color: var(--secondary);">Nộp CV</button>
+                        </form>
+                    <?php } ?>
             </div>
             <!-- <div class="p-4 m-4 mt-2" style="border: 1px dashed var(--secondary); ">
                 <p class="h5 fw-bold"><i class="fas fa-exclamation-triangle me-3"></i>Lưu ý
@@ -148,7 +149,11 @@
                     </div>
                     <?php
                     if (empty($val_c)) {
-                        echo "<h5> Không có việc làm tương tự ! </h5>";
+                        echo "<div class=' my-3'>
+                        <div class='employer-item text-center'>
+                            Không có việc làm tương tự !
+                        </div>
+                    </div>";
                     } else {
                         foreach ($val_c as $r) { ?>
                             <?php extract($r);
@@ -181,41 +186,47 @@
                     <div class="information widget-item">
                         <h3>Chi tiết</h3>
                         <ul>
-                            <li>
-
-                                <h4>Mức lương thỏa thuận</h4>
-                                <span><?= $salary ?></span>
+                            <li >
+                                    <h4>Mức lương thỏa thuận</h4>
+                                    <span><?= $salary ?></span>
+                                
                             </li>
 
-                            <li>
+                            <li >
 
-                                <h4>Địa điểm</h4>
-                                <span><?= $address ?></span>
+                                    <h4>Địa điểm</h4>
+                                    <span><?= $address ?></span>
+                                
                             </li>
-                            <li>
+                            <li >
 
-                                <h4>Ngày đăng</h4>
-                                <span><?= $start ?></span>
+                                    <h4>Ngày đăng</h4>
+                                    <span><?= $start ?></span>
+                                
                             </li>
-                            <li>
+                            <li >
 
-                                <h4>Kinh nghiệm yêu cầu</h4>
-                                <span><?= $exp ?> Years</span>
+                                    <h4>Kinh nghiệm yêu cầu</h4>
+                                    <span><?= $exp ?> Years</span>
+                                
                             </li>
-                            <li>
+                            <li >
 
-                                <h4>Ngôn ngữ lập trình</h4>
-                                <span><?= $progLang ?></span>
+                                    <h4>Ngôn ngữ lập trình</h4>
+                                    <span><?= $progLang ?></span>
+                                
                             </li>
-                            <li>
+                            <li >
 
-                                <h4>Cấp độ</h4>
-                                <span><?= $level ?></span>
+                                    <h4>Cấp độ</h4>
+                                    <span><?= $level ?></span>
+                                
                             </li>
-                            <li>
+                            <li >
 
-                                <h4>Hình thức làm việc</h4>
-                                <span><?= $type ?></span>
+                                    <h4>Hình thức làm việc</h4>
+                                    <span><?= $type ?></span>
+                                
                             </li>
 
                         </ul>

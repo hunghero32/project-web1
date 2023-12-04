@@ -8,8 +8,8 @@
                     <li><i class="fa-solid fa-calendar me-2"></i><?= checknull($salary) ?></li>
                 </ul>
                 <ul class="w-25">
-                    <li><strong style="width: 10%">* Địa điểm </strong></li>
-                    <li><i class="fas fa-map-marker-alt me-2"></i><?= checknull($address)  ?></li>
+                    <li><strong style="width: 10%">* Hình thức làm việc  </strong></li>
+                    <li><i class="fas fa-map-marker-alt me-2"></i><?= checknull($type)  ?></li>
                 </ul>
                 <ul class="w-25">
                     <li><strong style="width: 10%">* Ngày đăng </strong></li>
@@ -44,11 +44,7 @@
             </ul>
         </div>
         <hr>
-        <div class="details-inner">
-            <h6 class="my-4"><i class="fa-solid fa-star-of-life"></i> Giới thiệu công ty</h6>
-            <p><?= $introduce ?></p>
-        </div>
-        <hr>
+        
         <div class="details-inner">
             <h6 class="my-4"><i class="fa-solid fa-star-of-life"></i> Yêu cầu công việc</h6>
             <ul><?php
@@ -59,18 +55,8 @@
                 }
                 ?></ul>
         </div>
-        <hr>
-        <div class="details-inner">
-            <h6 class="my-4"><i class="fa-solid fa-star-of-life"></i> Quyền lợi</h6>
-            <ul><?php
-                $ben_arr =  explode("\n", $benefits);
-
-                // $ben_arr_2 = array_filter($ben_arr);
-                for ($i = 0; $i < count($ben_arr); $i++) {
-                    echo  "<li class='my-1' >- " . $ben_arr[$i] . " </li>";
-                }
-                ?></ul>
-        </div>
+        
+        
         <div class="nav  nav-pills d-flex justify-content-between " id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a href="index.php?act=edit_recr&idEdit=<?= $id ?>" class="nav-link text-white me-3 py-2 btn btn-info d-flex align-content-center " id="v-pills-edit-tab" role="tab" style="background-color: var(--secondary); font-size: 13px;">
                 Chỉnh sửa <i class="fa-regular fa-pen-to-square text-white ms-2" style="font-size: 15px;"></i>
