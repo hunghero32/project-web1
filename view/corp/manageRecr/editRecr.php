@@ -1,7 +1,7 @@
-<div class="tab-pane fade <?=(isset($_GET['idEdit'])) ? 'show active' : '' ?>" id="v-pills-edit" role="tabpanel" aria-labelledby="v-pills-edit-tab">
+<div class="tab-pane fade <?= (isset($_GET['idEdit'])) ? 'show active' : '' ?>" id="v-pills-edit" role="tabpanel" aria-labelledby="v-pills-edit-tab">
     <div class="post-job-area ptb-100 pt-0">
         <div class="container">
-            <form action="index.php?act=up_recr" method="POST" enctype="multipart/form-data">
+            <form action="index.php?act=up_recr" method="POST" onsubmit="return validateForm()">
                 <div class="post-item">
                     <div class="section-title">
                         <h2>Sửa bài tuyển dụng</h2>
@@ -18,8 +18,8 @@
                                     Tiêu đề :
                                 </label>
 
-                                <input name="job" value="<?= $value_id['job'] ?>" type="text" class="searchSelect" id="searchskill" placeholder="<?= checkfind("", isset($value_id['job']) ? $value_id['job'] : 'Công việc')  ?> &darr;">
-                                <div class="dropdown-content" id="dropdownskill" style="width: 26%;">
+                                <input name="job" value="<?= $value_id['job'] ?>" type="text" class="form-control" id="searchskill" placeholder="<?= checkfind("", isset($value_id['job']) ? $value_id['job'] : 'Công việc')  ?> &darr;">
+                                <div class="dropdown-content " id="dropdownskill" style="width: 27%;">
                                     <div class="dropdown-item">Không chọn</div>
                                     <?php foreach ($datafilter as $v) {
 
@@ -106,12 +106,10 @@
                                     } ?>
                                 </select>
                             </div>
-
                             <div class="form-group">
-                                <label>
-                                    Ngày hết hạn :
-                                </label>
-                                <input type="date" class="form-control" name="end" required value="<?= $value_id['end'] ?>">
+                                <label for="expiryDate">Ngày hết hạn :</label>
+                                <input type="date" class="form-control" name="end" id="expiryDate" oninput="checkExpiryDate(this)" value="<?= $value_id['end'] ?>">
+                                <p id="errorMessage" class="text-danger fst-italic"></p>
                             </div>
                             <div class="form-group">
                                 <label>

@@ -81,7 +81,8 @@
         return pdo_query_one($sql , $id);
     }
     function infoCv($id)  {
-        $sql = "SELECT * FROM cv WHERE iduser = ?";
+        $sql = "SELECT cv.* , g.avatar as avatarCV FROM cv LEFT JOIN user u ON u.id = cv.iduser 
+        LEFT JOIN gallery g ON u.id = g.iduser  WHERE cv.iduser = ?";
         return pdo_query_one($sql , $id);
     }
     function recr_select_by_similar($job , $id) {
@@ -139,7 +140,7 @@
 
     }
     function list_apply_cv() {
-        $sql = "SELECT cv.*, u.name as namecv , r.job , g.avatar as avatarCv FROM cv  LEFT JOIN info i ON cv.id= i.idcv 
+        $sql = "SELECT DISTINCT  cv.*, u.name as namecv , r.job , g.avatar as avatarCv FROM cv  LEFT JOIN info i ON cv.id= i.idcv 
          LEFT JOIN recr r ON r.id= i.idrec LEFT JOIN user u ON u.id = cv.iduser
          LEFT JOIN gallery g ON u.id = g.iduser 
         WHERE  i.idcv IS NOT NULL";

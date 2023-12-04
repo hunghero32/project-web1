@@ -44,7 +44,7 @@ function removeDataCv(name, e) {
   });
 }
 
-// thông báo khi ứng tuyển thành công
+//================== thông báo khi ứng tuyển thành công========================
 function showSuccessNotification() {
   Swal.fire({
     icon: "success",
@@ -52,4 +52,40 @@ function showSuccessNotification() {
     showConfirmButton: false,
     timer: 2000, // Tự động ẩn sau 2 giây
   });
+}
+
+//=======================check form hết hạn============================
+
+function checkExpiryDate(input) {
+  var errorMessage = document.getElementById("errorMessage");
+  var currentDate = new Date();
+  var expiryDate = new Date(input.value);
+  currentDate.setDate(currentDate.getDate() + 7);
+  if (expiryDate <= currentDate) {
+    errorMessage.textContent =
+      "Ngày hết hạn phải lớn hơn ngày hiện tại ít nhất 7 ngày.";
+    input.title = "Ngày hết hạn phải lớn hơn ngày hiện tại ít nhất 7 ngày.";
+  } else {
+    errorMessage.textContent = "";
+    input.title = "Ngày hết hạn";
+  }
+}
+
+function validateForm() {
+  var expiryDate = document.getElementById("expiryDate");
+  var errorMessage = document.getElementById("errorMessage");
+
+  checkExpiryDate(expiryDate);
+  if (errorMessage.textContent) {
+    return false;
+  }
+
+  
+  return true;
+}
+
+
+//====================Chỉnh sửa cv==========================
+function editCV(){
+  location.href = 'index.php?act=manage_Cv&sameCv=1#editInfoCv';
 }

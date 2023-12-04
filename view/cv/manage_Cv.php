@@ -52,6 +52,7 @@
                 <div class="tab-content" id="v-pills-tabContent">
                     <?php
                     include "manageCv/profile.php";
+                    include "manageCv/listApplyRecr.php";
                     ?>
                 </div>
             </div>

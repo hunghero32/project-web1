@@ -1,5 +1,8 @@
 
 <?php
+
+    
+
 switch ($act) {
     case 'infoCv':
         if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -38,6 +41,10 @@ switch ($act) {
         $introduce = $cvInfo['introduce'];
         extract($cvInfo);
 
+        if(isset($_GET['sameCv']) && $_GET['sameCv'] === 1){
+            $_SESSION['sameCv'] = $_GET['sameCv'];
+        } 
+        $list_apply_recr = list_apply_recr(isset($_SESSION['username']['id']) ? $_SESSION['username']['id'] : '') ;
         $expCv = getExpCv($idcv);
         $skillCv = getSkillCv($idcv);
         $degree = getDegreeCv($idcv);
