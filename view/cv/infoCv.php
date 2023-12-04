@@ -5,7 +5,7 @@
                 <div class="row align-items-end">
                     <div class="ps-0 col-lg-8">
                         <div class="left two">
-                            <div class="borderAva overflow-hidden rounded-circle ms-1 mb-3 ">
+                            <div class="borderAva overflow-hidden rounded-circle ms-1 mb-3 d-flex justify-content-center align-items-center">
                                 <img width="100%" height="100%" src='<?= checkUserAvaNull($avatar) ?>' alt='user ' class=''>
                             </div>
                             <h2><?= checknull($name) ?></h2>
@@ -71,10 +71,6 @@
                                 <span><?= checknull($salary) ?></span>
                             </li>
                             <li>
-                                <h4>Kinh Nghiệm :</h4>
-                                <span><?= checknull($exp) ?></span>
-                            </li>
-                            <li>
                                 <h4>Tuổi :</h4>
                                 <span><?= checknull($age) ?></span>
                             </li>
@@ -96,7 +92,7 @@
                         <h3>Giới thiệu chung về tôi</h3>
                         <p><?= checknull($introduce) ?></p>
                     </div>
-                    <div class="skills mb-3">
+                    <div class="skills mb-5">
                         <h5>Kinh nghiệm làm Việc </h5>
                         <ul>
                             <?php foreach ($expCv as $e) {
@@ -107,7 +103,7 @@
                         </ul>
                     </div>
                     <hr>
-                    <div class="skills mb-3">
+                    <div class="skills mb-5">
                         <h5>Học vấn / bằng cấp</h5>
                         <ul class="">
                             <?php foreach ($degree as $deg) {
@@ -118,7 +114,7 @@
                         </ul>
                     </div>
                     <hr>
-                    <div class="skills mb-3">
+                    <div class="skills mb-5">
                         <h5>Kỹ năng / ngôn ngữ</h5>
                         <ul class="ms-0 ps-0">
                             <?php foreach ($skillCv as $s) {
