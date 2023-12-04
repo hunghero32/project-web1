@@ -90,13 +90,9 @@ switch ($act) {
         include 'view/admin/addAdmin.php';
         break;
     case 'delete':
-        $id = $_SESSION['username']['id'];
-        $admin = manageAdmin($id);
-        extract($admin);
-        include 'view/admin/admin.php';
         if (isset($_GET['id'])) {
             $id = $_GET['id'];
-            // delete($id);
+            delete_admin($id);
             $thongbao = "<script> alert('Bạn đã XÓA thành công !');
             location.href = 'index.php?act=admin'; </script>";
             echo $thongbao;

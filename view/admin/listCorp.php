@@ -11,25 +11,22 @@
                     <th>Tên </th>
                     <th>Email</th>
                     <th>Số Điện Thoại</th>
-                    <th>Địa Chỉ</th>
                     <th>Xem Chi Tiết</th>
                     <th>Xóa</th>
                 </tr>
 
                 <?php
-                foreach ($listcorp as $user) :;
-                    $delete = 'index.php?act=delete&id=' . $id;
-
-                ?>
+                foreach ($listcorp as $user) :;?>
                     <tr>
                         <td><?= $user['id'] ?></td>
                         <td><?= $user['username'] ?></td>
                         <td><?= $user['name'] ?></td>
                         <td><?= $user['email'] ?></td>
                         <td><?= $user['phone'] ?></td>
-                        <td><?= $user['address'] ?></td>
                         <td><a href="index.php?act=infoCorp&id=<?= $user['id'] ?>"><input type="button" value="Chi Tiết"></a></td>
-                        <td><a href="<?php $delete ?> "><input type="button" value="Xóa"></a></td>
+                        <td><a href="index.php?act=delete&id=<?= $user['id'] ?>"><input type="button" value="Xóa"></a>
+                            <a href="index.php?act=edit&id=<?= $user['id'] ?>"><input type="button" value="Sửa"></a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </table>
