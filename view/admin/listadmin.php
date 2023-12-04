@@ -16,16 +16,14 @@
                 </tr>
 
                 <?php
-                foreach ($listadmin as $user): ;
-                    $delete = 'index.php?act=delete&id= $id';
-                ?>
+                foreach ($listadmin as $user): ;?>
                     <tr>
                         <td><?= $user['id'] ?></td>
                         <td><?= $user['username'] ?></td>
                         <td><?= $user['name'] ?></td>
                         <td><?= $user['email'] ?></td>
                         <td><?= $user['phone'] ?></td>
-                        <td><a href="<?php $delete ?>"><input type="button" value="Xóa"></a></td>
+                        <td><a href="index.php?act=delete&id=<?= $user['id'] ?>"><input type="button" value="Xóa"></a></td>
                     </tr>
                 <?php    endforeach; ?>
             </table>
