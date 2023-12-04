@@ -1,4 +1,4 @@
-<div class="navbar-area fixed-top">
+<div id="navbar" class="navbar-area fixed-top">
 
     <div class="mobile-nav">
         <a href="index.php" class="logo">
