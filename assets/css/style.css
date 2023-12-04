@@ -8184,11 +8184,10 @@ button:focus {
 }
 
 @media print {
-
     #navbar,
     #footer,
     #footPage,
-    #save {
+    #savePDF {
         display: none;
     }
 

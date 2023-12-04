@@ -150,8 +150,6 @@ switch ($act) {
                     update_degree($idDeg[$i], $nameDeg[$i], $schoolDeg[$i], $yearDeg[$i]);
                     update_skill($idSkill[$i], $progLangSkill[$i], $percentSkill[$i]);
                 }
-
-                header('Location: index.php?act=mangage_Cv');
             } else {
                 echo "<script>alert('$sameCv')</script>";
             }
