@@ -9,11 +9,11 @@ body {
 }
 
 :root {
-    --main: rgba(0,0,0,0.8);
-    --secondary: rgba(78,205,196,1);
-    --secondary-child: rgba(78,205,196,0.5);
-    --font: rgba(0,0,0,0.8);
-    --semi-background: rgba(53,53,53,0.7);
+    --main: rgba(0, 0, 0, 0.8);
+    --secondary: rgba(78, 205, 196, 1);
+    --secondary-child: rgba(78, 205, 196, 0.5);
+    --font: rgba(0, 0, 0, 0.8);
+    --semi-background: rgba(53, 53, 53, 0.7);
 
 }
 
@@ -68,6 +68,7 @@ img {
 .pt-50 {
     padding-top: 50px
 }
+
 .pb-70 {
     padding-bottom: 70px
 }
@@ -6040,17 +6041,13 @@ button:focus {
 
 .page-title-area.two .left.two {
     position: relative;
-    padding-left: 255px
 }
 
-.page-title-area.two .left.two img {
-    position: absolute;
-    bottom: -75px;
-    left: 0;
-    border-radius: 50%;
-    border: 5px solid #fff;
-    -webkit-box-shadow: 0 0 20px 0 #dddddd87;
-    box-shadow: 0 0 20px 0 #dddddd87
+.page-title-area.two .left.two .borderAva {
+    width: 125px;
+    height: 125px;
+    border: 3px solid white;
+    box-shadow: 0 0 5px gray;
 }
 
 .page-title-area.two .left.two ul li a {
@@ -6950,25 +6947,30 @@ button:focus {
     box-shadow: 0 0 5px red;
     transition: 0.3s ease;
 }
-#info_recr{
-    border: 2px dashed var(--secondary) ;
+
+#info_recr {
+    border: 2px dashed var(--secondary);
     padding: 3rem;
     border-radius: 5px;
     position: relative;
 }
-#info_recr #v-pills-edit-tab{
+
+#info_recr #v-pills-edit-tab {
     position: absolute;
     top: 3%;
     right: 3%;
 
 }
-#info_recr h3{
+
+#info_recr h3 {
     padding-bottom: 30px;
 }
+
 #info_recr i {
     color: var(--secondary);
 }
-#info_recr ul{
+
+#info_recr ul {
     padding-left: 0;
     list-style: none !important;
 
@@ -8154,15 +8156,47 @@ button:focus {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
 }
 
+#savePDF {
+    border: none;
+    outline: none;
+    color: white;
+    background-color: var(--secondary);
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: 0.5s ease;
+}
 
+#savePDF:hover {
+    background-color: var(--semi-background);
+    transition: 0.5s ease;
+}
 
 @media (max-width: 760px) {
     .text-small-screen {
         color: var(--main) !important;
+    }
+}
+
+@media print {
+
+    #navbar,
+    #footer,
+    #footPage,
+    #save {
+        display: none;
+    }
+
+    @page {
+        scale: 70;
+        scale: calc(100% - 30%);
+        size: A4;
+        orientation: landscape;
+        margin: none;
     }
 }

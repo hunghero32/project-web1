@@ -1,4 +1,4 @@
-<footer class="footer-area three pt-100 pb-70">
+<footer id="footer" class="footer-area three pt-100 pb-70">
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-lg-4">
@@ -101,7 +101,7 @@
     </div>
 </footer>
 
-<div class="copyright-area three">
+<div id="footPage" class="copyright-area three">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">

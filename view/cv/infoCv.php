@@ -1,11 +1,13 @@
-<div class="page-title-area two three">
+<div id="headCv" class="page-title-area two three">
     <div class="d-table">
         <div class="d-table-cell">
             <div class="container">
                 <div class="row align-items-end">
-                    <div class="col-lg-8">
+                    <div class="ps-0 col-lg-8">
                         <div class="left two">
-                            <img data-cfsrc="<?= checkUserAvaNull($avatar) ?>" alt="CV Chi Tiết" style="display:none;visibility:hidden;width:25%;"><noscript><img src="<?= checkUserAvaNull($avatar) ?>" alt="Details"></noscript>
+                            <div class="borderAva overflow-hidden rounded-circle ms-1 mb-3 ">
+                                <img width="100%" height="100%" src='<?= checkUserAvaNull($avatar) ?>' alt='user ' class=''>
+                            </div>
                             <h2><?= checknull($name) ?></h2>
                             <ul>
                                 <li>
@@ -26,22 +28,23 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <!-- <div class="right">
+                        <div class="right">
                             <ul>
-                                <li><click>
-                                    <a href="" id="save">
-                                        <i class="bx bx-share-alt"></i>
-                                        SHA
-                                    </a></click>
-                                </li>
-                                <li><click>
-                                    <a href="" id="download">
-                                        <i class="bx bxs-report"></i>
-                                        Download
-                                    </a></click>
+                                <li>
+                                    <click>
+                                        <button id="savePDF" onclick="savePDF()">
+                                            <i class="bx bxs-report"></i>
+                                            Save / Download
+                                        </button>
+                                        <script>
+                                            function savePDF() {
+                                                window.print();
+                                            }
+                                        </script>
+                                    </click>
                                 </li>
                             </ul>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -50,10 +53,10 @@
 </div>
 
 
-<div class="person-details-area resume-area ptb-100">
+<div id="bodyCv" class="person-details-area resume-area ptb-100">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-4">
+        <div class="row d-flex justify-content-between align-items-start">
+            <div id="col-left" class="col-lg-4">
                 <div class="widget-area">
                     <!-- <div class="resume-profile">
                     <img data-cfsrc="<?= checkUserAvaNull($avatar) ?>" alt="CV Chi Tiết" style="display:none;visibility:hidden;width:60%;"><noscript><img src="<?= checkUserAvaNull($avatar) ?>" alt="Details"></noscript>
@@ -87,7 +90,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-8">
+            <div id="col-right" class="col-lg-8">
                 <div class="details-item">
                     <div class="profile">
                         <h3>Giới thiệu chung về tôi</h3>
@@ -103,7 +106,7 @@
                             <?php } ?>
                         </ul>
                     </div>
-                                    <hr>
+                    <hr>
                     <div class="skills mb-3">
                         <h5>Học vấn / bằng cấp</h5>
                         <ul class="">
