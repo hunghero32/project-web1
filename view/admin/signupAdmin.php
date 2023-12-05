@@ -1,5 +1,5 @@
 <div class="user-form-area position-relative">
-    <a class="position-absolute top-0 end-0 me-3 mt-4 translate-middle" href="index.php">
+    <a class="position-absolute top-0 end-0 me-3 mt-4 translate-middle" href="index.php?act=admin">
         <i class="fa-solid fa-xmark"></i>
     </a>
     <div class="container-fluid p-0">
