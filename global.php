@@ -1,5 +1,13 @@
 <?php
+// [ DO NOT REMOVE THIS AREA ]
+
+// Email & pass PHPMailer ------------------------------
+$itjobEmail = 'jobsit.connect.jobs@gmail.com';
+$passEmail = 'vjcjfucbhoubajed';
+// -----------------------------------------------------
+
 $img_path = 'assets/uploads/';
+
 function hide($act)
 {
     $hide = ['signup', 'signin','forgot' ,'admin','addadmin', 'listadmin','listcorp','listcv','listrecr','thongke', 'err'];

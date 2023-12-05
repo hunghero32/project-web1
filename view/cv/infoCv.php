@@ -94,7 +94,7 @@
                     </div>
                     <div class="skills mb-5">
                         <h5>Kinh nghiệm làm Việc </h5>
-                        <ul>
+                        <ul style="list-style-type: none" class="m-0 p-0">
                             <?php foreach ($expCv as $e) {
                                 if ($e['job'] !== '') { ?>
                                     <li><i class="fa-solid fa-business-time me-2"></i> Từng làm <strong class=""><?= $e['job'] ?></strong> tại <?= $e['corp'] ?> ở trị trí <?= $e['level'] ?> thời gian từ <?= $e['start'] ?> ~ <?= $e['end'] ?></li>
@@ -105,7 +105,7 @@
                     <hr>
                     <div class="skills mb-5">
                         <h5>Học vấn / bằng cấp</h5>
-                        <ul class="">
+                        <ul style="list-style-type: none" class="m-0 p-0">
                             <?php foreach ($degree as $deg) {
                                 if ($deg['name'] !== '') { ?>
                                     <li><i class="fa-solid fa-graduation-cap me-2"></i>Tốt nghiệp ( chứng chỉ / bằng ) <strong><?= $deg['name'] ?></strong> tại <?= $deg['school'] ?> năm <?= $deg['year'] ?></li>
@@ -116,7 +116,7 @@
                     <hr>
                     <div class="skills mb-5">
                         <h5>Kỹ năng / ngôn ngữ</h5>
-                        <ul class="ms-0 ps-0">
+                        <ul style="list-style-type: none" class="ms-0 ps-0">
                             <?php foreach ($skillCv as $s) {
                                 if ($s['progLang'] !== '') { ?>
                                     <li class="row mb-4 ms-0 mt-3">

@@ -20,46 +20,19 @@
             <div class="col-lg-6 p-0">
                 <div class="user-content">
                     <div class="top">
-                        <h2>Lấy lại mật khẩu</h2>
-                        <form>
+                        <h2>Quên mật khẩu</h2>
+                        <form action="index.php?act=forgot" method="POST">
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Tài khoản / Email đăng kí">
+                                <input name="email" type="email" class="form-control" placeholder="Email đăng kí">
                             </div>
-                            <div class="form-group">
-                                <input type="tel" class="form-control" placeholder="Số điện thoại đăng kí">
-                            </div>
-                            <button type="submit" name="submit" class="btn">Lấy mật khẩu</button>
+                            <button type="submit" name="getpass" class="btn">Lấy mật khẩu</button>
                         </form>
-                        
+
                         <?php
-                if(isset($thongbao)&& $thongbao!=""){
-                    echo $thongbao;
-                }
-            ?>
-                    </div>
-                    <div class="end">
-                        <ul>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="bx bxl-facebook"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="bx bxl-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="bx bxl-linkedin"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" target="_blank">
-                                    <i class="bx bxl-pinterest-alt"></i>
-                                </a>
-                            </li>
-                        </ul>
+                        if (isset($thongbao) && $thongbao != "") {
+                            echo $thongbao;
+                        }
+                        ?>
                     </div>
                     <div class="end mt-3">
                         <a href="index.php?act=signin"> Đăng nhập</a> <a href="#">/</a>
