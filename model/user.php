@@ -1,14 +1,4 @@
 <?php
-function list_user($kyw)
-{
-    $sql = "SELECT * from user where 1";
-    if ($kyw != '') {
-        $sql .= " AND id LIKE '%" . $kyw . "%' OR user LIKE '%" . $kyw . "%' OR email LIKE '%" . $kyw . "%' OR tel LIKE '%" . $kyw . "%' OR address LIKE '%" . $kyw . "%' OR role LIKE '%" . $kyw . "%'";
-    }
-    $sql .= " order by id desc";
-    return pdo_query($sql);
-}
-
 function login($username, $pass)
 {
     $sql = "SELECT u.* , g.avatar , g.thumbnail1 , g.thumbnail2 , g.thumbnail3 , g.thumbnail4 , g.thumbnail5
@@ -101,7 +91,7 @@ function edit_user($id)
 
 function existAccount()
 {
-    $sql = "SELECT user.name, user.email, user.phone, user.username FROM user";
+    $sql = "SELECT user.name, user.email, user.phone, user.username, user.pass FROM user";
     return pdo_query($sql);
 }
 

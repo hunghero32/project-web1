@@ -1,5 +1,11 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+include '../mail/PHPMailer/src/Exception.php';
+include '../mail/PHPMailer/src/PHPMailer.php';
+include '../mail/PHPMailer/src/SMTP.php';
 
 switch ($act) {
     case 'signin':
@@ -19,7 +25,6 @@ switch ($act) {
         break;
 
     case 'signup':
-
         if (isset($_POST['signup'])) {
 
             $same = '';
@@ -33,12 +38,12 @@ switch ($act) {
 
             $exist = existAccount();
             foreach ($exist as $key) {
-                $username === $key['username'] ? $same = '[ Tài khoản người dùng đã tòn tại ! ]' : '' ;
+                $username === $key['username'] ? $same = '[ Tài khoản người dùng đã tòn tại ! ]' : '';
                 $phone === $key['phone'] || $email === $key['email'] ? $same = '[ Sdt hoặc email đã tồn tại ! ]' : '';
-                $name === $key['name'] ? $same = '[ Tên người dùng đã tòn tại ! ]' : '' ;
+                $name === $key['name'] ? $same = '[ Tên người dùng đã tòn tại ! ]' : '';
             }
 
-            $pass !== $repass ? $same = '[ Mật khẩu không khớp ! ]' : ''; 
+            $pass !== $repass ? $same = '[ Mật khẩu không khớp ! ]' : '';
 
             echo $same !== '' ? "<script>alert('$same');</script>" : '';
             $same == '' ? header('Location: index.php?act=signin') : '';
@@ -48,21 +53,60 @@ switch ($act) {
 
         include "view/user/signup.php";
         break;
-    // case 'editinfo':
-    //     if (isset($_POST['edit'])) {
 
-    //         $name = $_POST['name'];
-    //         $pass = $_POST['pass'];
-    //         $phone = $_POST['phone'];
-    //         $email = $_POST['email'];
-    //         $address = $_POST['adress'];
-    //         $role = $_POST['role'];
-    //         $target_file = 'assets/uploads/' . $img;
-    //         move_uploaded_file($image['tmp_name'], $target_file);
-    //     }
-    //     include 'view/user/editinfo.php';
-    //     break;
     case 'forgot':
+        if (isset($_POST['getpass'])) {
+            $subject = 'Get Password / Forget Password';
+            $content =
+                "Vui lòng đổi lại mật khẩu để đảm bảo bảo mật thông tin.
+                Mật khẩu của bạn là ";
+            $alert = '';
+            $exist = false;
+            $emailExist = existAccount();
+            foreach ($emailExist as $e) {
+                if ($_POST['email'] == $e['email']) {
+                    $exist = true;
+                    $pass = $e['pass'];
+                }
+            }
+
+            if ($exist == true) {
+                $mail = new PHPMailer(true);
+
+                $mail->SMTPDebug = 0;
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = $itjobEmail;
+                $mail->Password = $passEmail;
+                $mail->SMTPSecure = 'ssl';
+                $mail->Port = 465;
+
+                $mail->setFrom('jobsit.connect.jobs@gmail.com');
+                $mail->addAddress($_POST['email']);
+
+                $mail->isHTML(true);
+
+                $mail->Subject = $subject;
+                $mail->Body = $content . $pass;
+
+                $mail->send();
+
+                echo
+                "
+                <script>
+                alert('Mật khẩu đã được gửi về email của bạn !');
+                </script>
+                ";
+            } else {
+                echo
+                "
+                <script>
+                alert('Email đăng kí không tồn tại !');
+                </script>
+                ";
+            }
+        }
         include 'view/user/forgotPass.php';
         break;
     case 'signout':

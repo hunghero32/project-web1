@@ -58,7 +58,6 @@
                                 <strong class="mb-2" for="">* Ảnh đại diện [ <span id="nameAvatar"><?= checknull($avatar); ?></span> ]</strong>
                                 <div class="d-flex justify-content-start">
                                     <input name="avatar" class="w-25 searchSelect mb-2 me-2 file-img" type="file" title="Vui lòng nhập đúng định dạng" accept=".jpg, .jpeg, .png, .jfif, .gif" class="w-25">
-                                    <?= isset($avatar) && $avatar !== '' ? 'có' : 'k có' ?>
                                     <?php if ($avatar !== '') { ?>
                                         <span class="cancerThumb border-0 m-0 ps-2 pe-2" id="cancerAvatar"><i class="p-0 m-0 text-white fa-regular fa-trash-can"></i></span>
                                         <input type="hidden" name="avatar" id="valueAvatar" value="<?= $avatar ?>">

@@ -4,7 +4,7 @@
             <div class="container">
                 <div class="row align-items-end">
                     <div class="d-flex justify-content-center justify-content-lg-start">
-                        <div style="width: 100px; height: 100px" class="overflow-hidden rounded-circle mb-3">
+                        <div style="width: 100px; height: 100px; border: 3px solid white" class="overflow-hidden rounded-circle mb-3">
                             <img src='<?= checkUserAvaNull($corp['avatar']) ?>' alt='user ' class=''>
                         </div>
                     </div>
