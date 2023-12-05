@@ -21,14 +21,25 @@ switch ($act) {
     case 'apply_job':
         if (!isset($_SESSION['check_apply'])) {
             if (isset($_POST['applyjob'])) {
+                $exist = '';
                 $idRecr = isset($_POST['idRecr']) ? $_POST['idRecr'] : '';
                 $idcv = isset($_POST['idCV']) ? $_POST['idCV'] : '';
 
+                $existCv = existCvInRecr($idRecr);
+                foreach ($existCv as $e) {
+                    $idcv == $e['idcv'] ? $exist = 'True' : '';
+                }
+
                 $status = "Chờ xét duyệt";
-                applyJob($idRecr, $idcv, $status);
-                echo "<script>showSuccessNotification();</script>";
-                echo "<script> alert('Bạn đã thêm thành công !'); </script>";
-                $_SESSION['check_apply'] = true;
+                
+                if ($exist == '') {
+                    applyJob($idRecr, $idcv, $status);
+                    echo "<script>showSuccessNotification();</script>";
+                    echo "<script> alert('Nộp hồ sơ ứng tuyển thành công'); </script>";
+                    $_SESSION['check_apply'] = true;
+                }else {
+                    echo "<script> alert('Chỉ dược phép ứng tuyển 1 lần / 1 bài'); </script>";
+                }
             }
         }
         // echo $idRecr;
@@ -60,12 +71,11 @@ switch ($act) {
             $val_recr = recr_select_by_id($id_recr);
             extract($val_recr);
         }
-        $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
-        $corp = manageInfo($idcorp);
-        extract($corp);
+
         $idcorp = $_SESSION['username']['id'];
         $corp = manageInfo($idcorp);
         extract($corp);
+
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
         $gallery = gallery($arr);

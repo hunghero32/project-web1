@@ -29,7 +29,7 @@
         extract($key);
         $edit_recr = "index.php?act=edit_recr&idEdit=" . $id;
         $delete_recr = "index.php?act=delete_recr&id=" . $id; ?>
-        <?php $link_recr = "index.php?act=infoRecr&idInfo=" . $id; ?>
+        <?php $link_recr = "index.php?act=info_recr&id=" . $id; ?>
         <div class='employer-item position-relative'>
 
             <img  data-cfsrc='<?= checkCorpAvaNull($avatar)  ?>' alt='Employer' style='width: 70px; height: 70px;object-fit: cover;' class="rounded-circle ">

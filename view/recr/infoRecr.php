@@ -78,7 +78,6 @@
             <div class="modal-footer">
                 <?php if (isset($_SESSION['check_apply'])) {
                     echo "Dữ liệu đã được xử lý.";
-
                     unset($_SESSION['check_apply']);
                 } else { ?>
                     <form action="index.php?act=apply_job" method="post">
