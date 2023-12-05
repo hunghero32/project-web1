@@ -1,11 +1,11 @@
 <div class="tab-pane fade <?= (isset($_GET['id'])) ? 'show active' : '' ?>" id="v-pills-post" role="tabpanel" aria-labelledby="v-pills-post-tab">
     <div class="post-job-area ptb-100 pt-0">
         <div class="container">
-        <?php if (isset($_SESSION['processed'])) {
+        <?php if (isset($_SESSION['check'])) {
 
         echo "Dữ liệu đã được xử lý.";
 
-    unset($_SESSION['processed']);
+    unset($_SESSION['check']);
     } else {?>
             <form action="index.php?act=post_recr" method="POST" onsubmit="return validateForm()">
                 <div class="post-item">

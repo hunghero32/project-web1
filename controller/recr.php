@@ -150,7 +150,8 @@ switch ($act) {
         $end = isset($_POST['end']) ? $_POST['end'] : '';
         $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
         $id = isset($_SESSION['username']) ? $_SESSION['username']['id'] : '';
-        $valu_racr = search_address_recr($kym, $end, $id);
+        $list_racr = search_address_recr($kym, $end, $id);
+        var_dump($id);
         $thongbao = "<script> location.href = 'index.php?act=manage_recr#v-pills-messages';</script>";
         echo $thongbao;
 
