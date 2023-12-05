@@ -80,14 +80,13 @@ switch ($act) {
         include 'view/admin/admin.php';
         include 'view/admin/thongke.php';
         break;
-    case 'addadmin':
+    case 'signupAdmin':
         $id = $_SESSION['username']['id'];
         $admin = manageAdmin($id);
         extract($admin);
-        include 'view/admin/admin.php';
-        if (isset($_POST['signup'])) {
+        if (isset($_POST['signupAdmin'])) {
         }
-        include 'view/admin/addAdmin.php';
+        include 'view/admin/signupAdmin.php';
         break;
     case 'delete':
         if (isset($_GET['id'])) {

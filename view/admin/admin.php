@@ -14,10 +14,9 @@
     <!-- Bắt đầu trang -->
     <div class="all">
         <div class="mnn">
-
             <div class="ex">
-                <a href=""><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
-                <div class="thoat"><a href="index.php?act=signout">Thoát</a> </div>
+            <a class="position-absolute top-0 end-0 me-3 mt-4 translate-middle" href="index.php">Thoát Ngay
+        <i class="fa-solid fa-xmark"></i></a>
             </div>
         </div>
 
