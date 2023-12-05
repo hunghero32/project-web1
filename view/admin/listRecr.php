@@ -21,7 +21,7 @@
                 ?>
                     <tr>
                         <td><?= $recr['id'] ?></td>
-                        <td><?= $recr['name'] ?></td>
+                        <td><?= $recr['userName'] ?></td>
                         <td><?= $recr['job'] ?></td>
                         <td><?= $recr['salary'] ?></td>
                         <td><?= $recr['start'] ?></td>

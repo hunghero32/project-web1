@@ -37,20 +37,41 @@ function list_admin($id, $username, $name, $email, $phone, $address, $role)
 
 //========== Ver 2 ==========
 
-function list_recr($id, $name, $job, $salary, $start, $end)
-{
-    $sql = "SELECT recr.*,user.id , user.name , user.role, corp.iduser 
-    FROM recr
-    INNER JOIN corp ON recr.idcorp = corp.id
-    INNER JOIN user ON corp.iduser = user.id
-    WHERE user.role = 3";
+// function list_recr($id, $name, $job, $salary, $start, $end)
+// {
+//     $sql = "SELECT recr.*,user.id , user.name , user.role, corp.iduser 
+//     FROM recr
+//     INNER JOIN corp ON recr.idcorp = corp.id
+//     INNER JOIN user ON corp.iduser = user.id
+//     WHERE = 1 ";
+//     $sql .= $id !== '' ? " AND recr.id LIKE '%" . $id . "%' " : "";
+//     $sql .= $name !== '' ? " AND user.name LIKE '%" . $name . "%' " : "";
+//     $sql .= $job !== '' ? " AND recr.job LIKE '%" . $job . "%' " : "";
+//     $sql .= $salary !== '' ? " AND recr.salary LIKE '%" . $salary . "%' " : "";
+//     $sql .= $start !== '' ? " AND recr.start LIKE '%" . $start . "%' " : "";
+//     $sql .= $end !== '' ? " AND recr.end LIKE '%" . $end . "%' " : "";
+//     $sql .= " ORDER BY recr.id DESC";
+//     return pdo_query($sql);
+// }
+
+//========== Ver 3 ==========
+
+function list_recr($id, $name, $job, $salary, $start, $end) {
+    $sql = "SELECT recr.*, user.id AS userId, user.name AS userName, user.role, corp.iduser 
+            FROM recr
+            INNER JOIN corp ON recr.idcorp = corp.id
+            INNER JOIN user ON corp.iduser = user.id
+            WHERE 1 "; // Start with a true condition
+
     $sql .= $id !== '' ? " AND recr.id LIKE '%" . $id . "%' " : "";
     $sql .= $name !== '' ? " AND user.name LIKE '%" . $name . "%' " : "";
     $sql .= $job !== '' ? " AND recr.job LIKE '%" . $job . "%' " : "";
     $sql .= $salary !== '' ? " AND recr.salary LIKE '%" . $salary . "%' " : "";
     $sql .= $start !== '' ? " AND recr.start LIKE '%" . $start . "%' " : "";
     $sql .= $end !== '' ? " AND recr.end LIKE '%" . $end . "%' " : "";
-    $sql .= " ORDER BY recr.idcorp DESC";
+
+    $sql .= " ORDER BY recr.id DESC";
+    
     return pdo_query($sql);
 }
 function add_admin($username, $pass, $name, $email, $phone, $role)

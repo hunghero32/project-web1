@@ -3,9 +3,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-include '../mail/PHPMailer/src/Exception.php';
-include '../mail/PHPMailer/src/PHPMailer.php';
-include '../mail/PHPMailer/src/SMTP.php';
+include 'mail/PHPMailer/src/Exception.php';
+include 'mail/PHPMailer/src/PHPMailer.php';
+include 'mail/PHPMailer/src/SMTP.php';
 
 switch ($act) {
     case 'signin':

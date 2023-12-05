@@ -29,7 +29,7 @@
             </table>
         </div>
         <div class=" mb10" >
-            <a href="index.php?act=addadmin"><input type="button" value="Thêm Admin" /></a>
+            <a href="index.php?act=signupAdmin"><input type="button" value="Thêm Admin" /></a>
         </div>
     </div>
 </div>
