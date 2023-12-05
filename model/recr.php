@@ -142,10 +142,11 @@ function recr_select_by_similar($job, $id)
 function get_records()
 {
 
-    $sql = "SELECT r.* , c.introduce , u.address , u.name FROM recr r 
+    $sql = "SELECT r.* , c.introduce , u.address , u.name, g.avatar
+        FROM recr r 
         LEFT JOIN corp c ON c.id= r.idcorp 
         LEFT JOIN user u ON u.id = c.iduser 
-        LEFT JOIN gallery g ON u.id = g.iduser where 1  ORDER BY r.id DESC LIMIT 0,8";
+        LEFT JOIN gallery g ON c.iduser = g.iduser where 1 ORDER BY r.id DESC LIMIT 0,8";
 
     $valu = pdo_query($sql);
     return  $valu;

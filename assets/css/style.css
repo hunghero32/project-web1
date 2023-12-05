@@ -2587,7 +2587,7 @@ button:focus {
 }
 
 .support-area .owl-carousel .owl-item img {
-    width: unset
+    /* width: unset */
 }
 
 .support-area .owl-theme .owl-nav {
@@ -4277,7 +4277,7 @@ button:focus {
 }
 
 .partner-area.two {
-    background-color: #fafafa
+    background-color: transparent
 }
 
 .client-area {

@@ -129,33 +129,13 @@ function updateCorp(
     );
 }
 
-// function update_Corp(
-//     $id,
-//     $name,
-//     $email,
-//     $phone,
-//     $address,
-//     $activeYear,
-//     $introduce,
-//     $size,
-//     $workingday,
-//     $link,
-//     $benefits,
-// ) {
-//     $sql = "UPDATE user as u, corp as c
-//             SET u.name = ? ,
-//                 u.email = ? ,
-//                 u.phone = ? ,
-//                 u.address = ? ,
-//                 c.activeYear = ? ,
-//                 c.introduce = ? ,
-//                 c.size = ? ,
-//                 c.workingday = ? ,
-//                 c.benefits = ? ,
-//                 c.link = ?
-//             WHERE u.id = ? AND c.iduser = ?";
-//     pdo_execute($sql, $name, $email, $phone, $address, $activeYear, $introduce, $size, $workingday, $benefits, $link, $id, $id);
-// };
+function listBrand() {
+    $sql = "SELECT g.avatar, c.id FROM user u
+    LEFT JOIN gallery g ON g.iduser = u.id 
+    LEFT JOIN corp c ON u.id = c.iduser
+    WHERE u.role = 3";
+    return pdo_query($sql);
+}
 
 function updateImage($id, $col, $value)
 {

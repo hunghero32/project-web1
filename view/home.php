@@ -244,9 +244,9 @@
             </div>
         </div>
         <div id="container" class="row">
-            
+
             <?php
-           include 'recr/search_address_home/listRecr_home.php'
+            include 'recr/search_address_home/listRecr_home.php'
             ?>
 
         </div>
@@ -256,30 +256,12 @@
 <div class="partner-area two pb-70">
     <div class="container">
         <div class="partner-slider owl-theme owl-carousel">
-            <div class="partner-item">
-                <img data-cfsrc="assets/img/home-one/partner1.png" alt="Partner" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/partner1.png" alt="Partner"></noscript>
-                <img data-cfsrc="assets/img/home-one/partner1.png" alt="Partner" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/partner1.png" alt="Partner"></noscript>
-            </div>
-            <div class="partner-item">
-                <img data-cfsrc="assets/img/home-one/partner2.png" alt="Partner" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/partner2.png" alt="Partner"></noscript>
-                <img data-cfsrc="assets/img/home-one/partner2.png" alt="Partner" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/partner2.png" alt="Partner"></noscript>
-            </div>
-            <div class="partner-item">
-                <img data-cfsrc="assets/img/home-one/partner3.png" alt="Partner" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/partner3.png" alt="Partner"></noscript>
-                <img data-cfsrc="assets/img/home-one/partner3.png" alt="Partner" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/partner3.png" alt="Partner"></noscript>
-            </div>
-            <div class="partner-item">
-                <img data-cfsrc="assets/img/home-one/partner4.png" alt="Partner" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/partner4.png" alt="Partner"></noscript>
-                <img data-cfsrc="assets/img/home-one/partner4.png" alt="Partner" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/partner4.png" alt="Partner"></noscript>
-            </div>
-            <div class="partner-item">
-                <img data-cfsrc="assets/img/home-one/partner5.png" alt="Partner" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/partner5.png" alt="Partner"></noscript>
-                <img data-cfsrc="assets/img/home-one/partner5.png" alt="Partner" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/partner5.png" alt="Partner"></noscript>
-            </div>
-            <div class="partner-item">
-                <img data-cfsrc="assets/img/home-one/partner1.png" alt="Partner" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/partner1.png" alt="Partner"></noscript>
-                <img data-cfsrc="assets/img/home-one/partner1.png" alt="Partner" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/partner1.png" alt="Partner"></noscript>
-            </div>
+            <?php foreach ($brands as $b) { 
+                if ($b['avatar'] !== '')?>
+                <div class="partner-item" onclick="return window.location.href = 'index.php?act=infoCorp&id=<?= $b['id'] ?>'">
+                    <img data-cfsrc="<?= checkCorpAvaNull($b['avatar']) ?>" alt="Partner" style="display:none;visibility:hidden;"><noscript><img src="<?= checkCorpAvaNull($b['avatar']) ?>" alt="Partner"></noscript>
+                </div>
+            <?php } ?>
         </div>
     </div>
 </div>
