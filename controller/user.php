@@ -44,9 +44,7 @@ switch ($act) {
             }
 
             $pass !== $repass ? $same = '[ Mật khẩu không khớp ! ]' : '';
-
             echo $same !== '' ? "<script>alert('$same');</script>" : '';
-            $same == '' ? header('Location: index.php?act=signin') : '';
             $same == '' ? $_SESSION['signuped'] = 1 : '';
             $same == '' ? add_user($username, $pass, $name, $email, $phone, $role) : '';
         }
@@ -98,6 +96,7 @@ switch ($act) {
                 alert('Mật khẩu đã được gửi về email của bạn !');
                 </script>
                 ";
+
             } else {
                 echo
                 "

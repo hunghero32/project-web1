@@ -155,7 +155,7 @@ switch ($act) {
             $_SESSION['same'] = $overSizeAvatar > 0 ? '1' : '';
             $_SESSION['same'] = $overSizeThumb > 0 ? '1' : '';
             $_SESSION['same'] = $same !== '' ? '1' : '';
-            $overSizeAvatar == 0 && $overSizeThumb == 0 && $same == '' ? $_SESSION['updated'] = 1 : '';
+            $overSizeAvatar == 0 && $overSizeThumb == 0 && $same == '' ? $_SESSION['updatedCorp'] = 1 : '';
         }
         include 'view/corp/manage.php';
         break;
