@@ -16,6 +16,7 @@ switch ($act) {
         extract($admin);
         include 'view/admin/admin.php';
         $role = 1;
+        $userCount = countUser($role);
         $id = isset($_GET['id']) ? $_GET['id'] : '';
         $username = isset($_GET['username']) ? $_GET['username'] : '';
         $name = isset($_GET['name']) ? $_GET['name'] : '';
@@ -32,6 +33,7 @@ switch ($act) {
         extract($admin);
         include 'view/admin/admin.php';
         $role = 2;
+        $userCount = countUser($role);
         $id = isset($_GET['id']) ? $_GET['id'] : '';
         $username = isset($_GET['username']) ? $_GET['username'] : '';
         $name = isset($_GET['name']) ? $_GET['name'] : '';
@@ -48,6 +50,7 @@ switch ($act) {
         extract($admin);
         include 'view/admin/admin.php';
         $role = 3;
+        $userCount = countUser($role);
         $id = isset($_GET['id']) ? $_GET['id'] : '';
         $username = isset($_GET['username']) ? $_GET['username'] : '';
         $name = isset($_GET['name']) ? $_GET['name'] : '';
@@ -69,6 +72,11 @@ switch ($act) {
         $salary = isset($_GET['salary']) ? $_GET['salary'] : '';
         $start = isset($_GET['phone']) ? $_GET['phone'] : '';
         $end = isset($_GET['end']) ? $_GET['end'] : '';
+
+        // $recrId = isset($_GET['recrId']) ? $_GET['recrId'] : '';
+        // $jobCount = countRecr($recrId);
+
+        $jobCount = countRecr($id);
 
         $listrecr = list_recr($id, $name, $job, $salary, $start, $end);
         include 'view/admin/listRecr.php';

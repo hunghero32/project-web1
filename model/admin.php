@@ -132,3 +132,15 @@ function delete_checkbox($checkbox = [], $table)
         pdo_execute($sql);
     }
 }
+function countUser($role) {
+    $sql = "SELECT COUNT(*) as userCount FROM user WHERE role = ?";
+    $result = pdo_query_one($sql, $role);
+    return $result['userCount'];
+}
+function countRecr($id) {
+    $sql = "SELECT COUNT(*) AS jobCount FROM recr WHERE idcorp = ?";
+    return pdo_query_one($sql, $id);}
+function countUsersById($id) {
+    $sql = "SELECT COUNT(*) AS userCount FROM user WHERE id = ?";
+    return pdo_query_one($sql, $id);
+}
