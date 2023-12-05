@@ -5,7 +5,7 @@
                 <div class="row align-items-end">
                     <div class="col-lg-8">
                         <div class="left">
-                            <div style="width: 100px; height: 100px" class="overflow-hidden rounded-circle mb-3">
+                            <div style="width: 100px; height: 100px; border: 3px solid white" class="overflow-hidden rounded-circle mb-3">
                                 <img src='<?= checkCorpAvaNull($avatar) ?>' alt='user ' class=''>
                             </div>
                             <h2><?= $job ?></h2>
@@ -23,10 +23,18 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="right">
-                            <a class="cmn-btn <?= isset($_SESSION['username']['role']) && $_SESSION['username']['role'] == 3 ? "d-none" : '' ?>" href="#" data-bs-toggle="modal" data-bs-target="#myModal">
-                                Ứng tuyển
-                                <i class="bx bx-plus"></i>
-                            </a>
+                            <?php if (isset($_SESSION['username'])) { ?>
+                                <a class="cmn-btn <?= isset($_SESSION['username']['role']) && $_SESSION['username']['role'] !== 2 ? "d-none" : '' ?>"
+                                href="#" data-bs-toggle="modal" data-bs-target="#myModal">
+                                    Ứng tuyển
+                                    <i class="bx bx-plus"></i>
+                                </a>
+                            <?php } else { ?>
+                                <a class="cmn-btn" href="index.php?act=signin" onclick="return confirm('Bạn cần đăng nhập trước');">
+                                    Ứng tuyển
+                                    <i class="bx bx-plus"></i>
+                                </a>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -72,13 +80,13 @@
                     echo "Dữ liệu đã được xử lý.";
 
                     unset($_SESSION['check_apply']);
-                    } else {?>
-                        <form action="index.php?act=apply_job" method="post">
-                            <input type="hidden" name="idRecr" value="<?= $id ?>">
-                            <input type="hidden" name="idCV" value="<?= $infoCv['id'] ?>">
-                            <button type="submit" name="applyjob" class="btn text-white " data-bs-dismiss="modal" style="background-color: var(--secondary);">Nộp CV</button>
-                        </form>
-                    <?php } ?>
+                } else { ?>
+                    <form action="index.php?act=apply_job" method="post">
+                        <input type="hidden" name="idRecr" value="<?= $id ?>">
+                        <input type="hidden" name="idCV" value="<?= $infoCv['id'] ?>">
+                        <button type="submit" name="applyjob" class="btn text-white " data-bs-dismiss="modal" style="background-color: var(--secondary);">Nộp CV</button>
+                    </form>
+                <?php } ?>
             </div>
             <!-- <div class="p-4 m-4 mt-2" style="border: 1px dashed var(--secondary); ">
                 <p class="h5 fw-bold"><i class="fas fa-exclamation-triangle me-3"></i>Lưu ý
@@ -186,47 +194,47 @@
                     <div class="information widget-item">
                         <h3>Chi tiết</h3>
                         <ul>
-                            <li >
-                                    <h4>Mức lương thỏa thuận</h4>
-                                    <span><?= $salary ?></span>
-                                
+                            <li>
+                                <h4>Mức lương thỏa thuận</h4>
+                                <span><?= $salary ?></span>
+
                             </li>
 
-                            <li >
+                            <li>
 
-                                    <h4>Địa điểm</h4>
-                                    <span><?= $address ?></span>
-                                
+                                <h4>Địa điểm</h4>
+                                <span><?= $address ?></span>
+
                             </li>
-                            <li >
+                            <li>
 
-                                    <h4>Ngày đăng</h4>
-                                    <span><?= $start ?></span>
-                                
+                                <h4>Ngày đăng</h4>
+                                <span><?= $start ?></span>
+
                             </li>
-                            <li >
+                            <li>
 
-                                    <h4>Kinh nghiệm yêu cầu</h4>
-                                    <span><?= $exp ?> Years</span>
-                                
+                                <h4>Kinh nghiệm yêu cầu</h4>
+                                <span><?= $exp ?> Years</span>
+
                             </li>
-                            <li >
+                            <li>
 
-                                    <h4>Ngôn ngữ lập trình</h4>
-                                    <span><?= $progLang ?></span>
-                                
+                                <h4>Ngôn ngữ lập trình</h4>
+                                <span><?= $progLang ?></span>
+
                             </li>
-                            <li >
+                            <li>
 
-                                    <h4>Cấp độ</h4>
-                                    <span><?= $level ?></span>
-                                
+                                <h4>Cấp độ</h4>
+                                <span><?= $level ?></span>
+
                             </li>
-                            <li >
+                            <li>
 
-                                    <h4>Hình thức làm việc</h4>
-                                    <span><?= $type ?></span>
-                                
+                                <h4>Hình thức làm việc</h4>
+                                <span><?= $type ?></span>
+
                             </li>
 
                         </ul>

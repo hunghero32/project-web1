@@ -16,7 +16,7 @@ $top_cv = top_cv();
 $list_corp = list_Corp('', '');
 $list_cv = list_cv('', '', '', '','','','');
 $list_recr = get_records();
-
+$brands = listBrand();
 
 include 'view/header.php';
 
