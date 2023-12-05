@@ -158,27 +158,33 @@ function search_address_recr($kym, $end, $id)
     $sql = "SELECT r.* , c.introduce , u.address , u.name FROM recr r 
         LEFT JOIN corp c ON c.id= r.idcorp 
         LEFT JOIN user u ON u.id = c.iduser 
-        LEFT JOIN gallery g ON u.id = g.iduser where  u.id = ? ";
-    if ($kym == "") {
+        LEFT JOIN gallery g ON u.id = g.iduser where  c.id = ? ";
+    if ($kym != "") {
         $sql .= " AND r.job LIKE '%" . $kym . "%'";
         $sql .= " OR r.exp LIKE '%" . $kym . "%'";
         $sql .= " OR r.salary LIKE '%" . $kym . "%'";
         $sql .= " OR r.type LIKE '%" . $kym . "%'";
         $sql .= " OR r.progLang LIKE '%" . $kym . "%'";
         $sql .= " OR r.level LIKE '%" . $kym . "%'";
+      } 
+        $sql .= $end != "" ? " AND r.end LIKE '%" . $end . "%' " : "";
         $sql .= " ORDER BY r.id DESC LIMIT 0,8";
-        $valu = pdo_query($sql, $id);
-        return  $valu;
-    } else {
-        $sql .= $end == '' ? " AND r.end LIKE '%" . $end . "%' " : "";
-        $sql .= " ORDER BY r.id DESC LIMIT 0,8";
-        $valu = pdo_query($sql, $id);
-        return  $valu;
-    }
 
-    return;
+        $valu = pdo_query($sql, $id);
+        return  $valu;
 }
 
+function list_v_recr( $id) {
+    $sql = "SELECT r.* , c.introduce , u.address , u.name FROM recr r 
+        LEFT JOIN corp c ON c.id= r.idcorp 
+        LEFT JOIN user u ON u.id = c.iduser 
+        LEFT JOIN gallery g ON u.id = g.iduser where  u.id = ? ";
+  
+        $sql .= " ORDER BY r.id DESC LIMIT 0,8";
+
+        $valu = pdo_query($sql, $id);
+        return  $valu;
+}
 function get_Total_Records()
 {
 
