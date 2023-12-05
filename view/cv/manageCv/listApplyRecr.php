@@ -50,9 +50,9 @@
 
             <div class="nav  nav-pills d-flex justify-content-between" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a href="<?= $link_recr ?>" class="nav-link text-white me-3  pt-2 px-3 fw-bold  bg-secondary bg-opacity-75" id="v-pills-info-tab" role="tab" style="font-size: 13px ;padding-bottom: 0;" >Thông tin chi tiết </a>
-                <div class="d-flex">
+                <div class="d-flex"> 
                     <!-- <a href="index.php?act=edit_recr&idEdit=<?= $id ?>" class="nav-link  bg-info text-white me-3 pb--1 px-3 fw-bold " id="v-pills-edit-tab" data-bs-toggle="pill"   aria-selected="false"> -->
-                    <a href="<?= $edit_recr ?>" class="nav-link text-white me-3  py-1 px-3 fw-bold" id="v-pills-edit-tab" role="tab" style="background-color: var(--secondary); ">
+                    <!-- <a href="<?= $edit_recr ?>" class="nav-link text-white me-3  py-1 px-3 fw-bold" id="v-pills-edit-tab" role="tab" style="background-color: var(--secondary); ">
 
                         <div class="profile-list">
                             <i class="fa-regular fa-pen-to-square text-white" style="font-size: 15px;"></i>

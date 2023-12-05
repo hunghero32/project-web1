@@ -147,19 +147,24 @@ switch ($act) {
         include 'view/corp/manage.php';
         break;
     case 'manage_recr':
+        $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
+        $corp = manageInfo($idcorp);
+        extract($corp);
+       
         $end = isset($_POST['end']) ? $_POST['end'] : '';
         $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
-        $id = isset($_SESSION['username']) ? $_SESSION['username']['id'] : '';
-        $list_racr = search_address_recr($kym, $end, $id);
-        var_dump($id);
+        // $id = isset($_SESSION['username']) ? $_SESSION['username']['id'] : '';
+        
+        $list_recr = search_address_recr($kym = '', $end ='', $id);
+        // if(empty($list_recr)){
+        //     $list_recr = list_v_recr($id);
+        // }
+        // var_dump($id);
         $thongbao = "<script> location.href = 'index.php?act=manage_recr#v-pills-messages';</script>";
         echo $thongbao;
 
 
 
-        $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
-        $corp = manageInfo($idcorp);
-        extract($corp);
         $idcorp = $_SESSION['username']['id'];
         $corp = manageInfo($idcorp);
         extract($corp);
