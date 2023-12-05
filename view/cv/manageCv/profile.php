@@ -1,12 +1,8 @@
 <?php if (isset($_SESSION['updatedCv'])) {
-    unset($_SESSION['updatedCv']);
     if (isset($_SESSION['sameCv'])) {
         unset($_SESSION['sameCv']);
-    }; ?>
-    <script>
-        alert('[ Cập nhật thành công ]');
-    </script>
-<?php } ?>
+    };
+} ?>
 <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
     <form id="editInfoCv" method="POST" action="index.php?act=updateCv" enctype="multipart/form-data" style="<?= isset($_SESSION['sameCv']) ? 'display: block !important' : '' ?>" class="d-none job-details-area employer-details-area ptb-100 form-item">
         <div class="boxbtn d-flex w-50 justify-content-end gap-3">
@@ -302,63 +298,63 @@
 </div>
 <script>
     const editCvBtn = document.getElementById("editBtnInfoCv");
-const editInfoCv = document.getElementById("editInfoCv");
-const cancerEditInfoCv = document.getElementById("cancerEditInfoCv");
-const infoCv = document.getElementById("infoCv");
+    const editInfoCv = document.getElementById("editInfoCv");
+    const cancerEditInfoCv = document.getElementById("cancerEditInfoCv");
+    const infoCv = document.getElementById("infoCv");
 
-editCvBtn.onclick = () => {
-  editInfoCv.classList.toggle("d-none");
-  infoCv.classList.toggle("d-none");
-};
+    editCvBtn.onclick = () => {
+        editInfoCv.classList.toggle("d-none");
+        infoCv.classList.toggle("d-none");
+    };
 
-cancerEditInfoCv.onclick = () => {
-  editInfoCv.classList.toggle("d-none");
-  infoCv.classList.toggle("d-none");
-};
+    cancerEditInfoCv.onclick = () => {
+        editInfoCv.classList.toggle("d-none");
+        infoCv.classList.toggle("d-none");
+    };
 
-const comboselect2 = [
-  "1",
-  "2",
-  "3",
-  "4",
-  "5",
-  "6",
-  "7",
-  "8",
-  "9",
-  "10",
-  "11",
-  "12",
-];
+    const comboselect2 = [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+    ];
 
-Array.from(comboselect2).forEach((e) => {
-  var search = document.getElementById("search" + e);
-  var dropdown = document.getElementById("dropdown" + e);
+    Array.from(comboselect2).forEach((e) => {
+        var search = document.getElementById("search" + e);
+        var dropdown = document.getElementById("dropdown" + e);
 
-  search.addEventListener("input", function () {
-    var searchValue = search.value.toLowerCase();
-    var items = dropdown.getElementsByClassName("dropdown-item");
-    Array.from(items).forEach((item) => {
-      var itemText = item.textContent.toLowerCase();
-      var isVisible = itemText.includes(searchValue);
-      item.style.display = isVisible ? "block" : "none";
+        search.addEventListener("input", function() {
+            var searchValue = search.value.toLowerCase();
+            var items = dropdown.getElementsByClassName("dropdown-item");
+            Array.from(items).forEach((item) => {
+                var itemText = item.textContent.toLowerCase();
+                var isVisible = itemText.includes(searchValue);
+                item.style.display = isVisible ? "block" : "none";
+            });
+        });
+
+        search.addEventListener("focus", function() {
+            dropdown.classList.add("visible");
+        });
+
+        dropdown.addEventListener("click", function(e) {
+            if (e.target.classList.contains("dropdown-item")) {
+                search.value = e.target.textContent;
+                dropdown.classList.remove("visible");
+            }
+        });
     });
-  });
 
-  search.addEventListener("focus", function () {
-    dropdown.classList.add("visible");
-  });
-
-  dropdown.addEventListener("click", function (e) {
-    if (e.target.classList.contains("dropdown-item")) {
-      search.value = e.target.textContent;
-      dropdown.classList.remove("visible");
+    function removeAvaCv() {
+        document.getElementById("valueAvaCv").value = "";
+        document.getElementById("nameAvaCv").innerText = "Đã xóa";
     }
-  });
-});
-
-function removeAvaCv() {
-  document.getElementById("valueAvaCv").value = "";
-  document.getElementById("nameAvaCv").innerText = "Đã xóa";
-}
 </script>

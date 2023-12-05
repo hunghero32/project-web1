@@ -35,4 +35,3 @@
             </div>
         </div>
     </div>
-    <?php include 'model/notification.php' ;

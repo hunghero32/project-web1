@@ -1,12 +1,8 @@
-<?php if (isset($_SESSION['updated'])) {
-    unset($_SESSION['updated']);
+<?php if (isset($_SESSION['updatedCorp'])) {
     if (isset($_SESSION['same'])) {
         unset($_SESSION['same']);
-    }; ?>
-    <script>
-        alert('[ Cập nhật thành công ]');
-    </script>
-<?php } ?>
+    }
+} ?>
 <div class="tab-pane fade <?= (!isset($_GET['id']) && !isset($_GET['idEdit']) && !isset($thongbao) && !isset($_GET['idInfo'])) ? 'show active' : '' ?>" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
     <form method="POST" action="index.php?act=updateInfoCorp" enctype="multipart/form-data" style="<?= isset($_SESSION['same']) ? 'display: block !important' : '' ?>" id="editInfoCorp" class="d-none job-details-area employer-details-area ptb-100 form-item">
         <div class="boxbtn d-flex w-50 justify-content-end gap-3">

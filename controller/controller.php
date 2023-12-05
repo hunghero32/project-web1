@@ -8,6 +8,7 @@ include 'model/admin.php';
 include 'model/recr.php';
 include 'model/user.php';
 include 'model/datafilter.php';
+include 'model/notification.php';
 
 $datafilter = data();
 $top_corp = top_Corp();
@@ -35,6 +36,8 @@ if (isset($_GET['act']) && $_GET['act'] != '') {
     include 'admin.php';
     
     hide($act) == false ? include 'view/footer.php' : '';
+
+    notification($notification);
 } else {
     include 'view/navbar.php';
     include 'view/home.php';
