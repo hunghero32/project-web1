@@ -201,10 +201,15 @@ function info()
 }
 function list_apply_cv()
 {
-    $sql = "SELECT DISTINCT  cv.*, u.name as namecv , r.job , g.avatar as avatarCv FROM cv  LEFT JOIN info i ON cv.id= i.idcv 
+    $sql = "SELECT DISTINCT  cv.*, u.name as namecv , r.job , g.avatar as avatarCv , i.id as idinfo FROM cv  LEFT JOIN info i ON cv.id= i.idcv 
          LEFT JOIN recr r ON r.id= i.idrec LEFT JOIN user u ON u.id = cv.iduser
          LEFT JOIN gallery g ON u.id = g.iduser 
         WHERE  i.idcv IS NOT NULL";
     $valu = pdo_query($sql);
     return  $valu;
+}
+
+function update_add_Info($status , $id)  {
+    $sql = "UPDATE  info  SET  status =? WHERE id = ?";
+    pdo_execute($sql, $status , $id);
 }

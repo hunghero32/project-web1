@@ -13,6 +13,11 @@ $currentData = array_slice($valu_racr, $start, $perPage);
 $listApply = list_apply_cv();
 
 switch ($act) {
+    case 'addCV' :
+        $idinfo = isset($_GET['idinfo']) ? $_GET['idinfo'] : '';
+        $status = "Chấp nhận";
+        update_add_Info($status , $idinfo);
+        break;
     case 'apply_job':
         if (!isset($_SESSION['check_apply'])) {
             if (isset($_POST['applyjob'])) {
