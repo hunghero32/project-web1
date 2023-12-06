@@ -1,24 +1,14 @@
-
 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-    <form action="index.php?act=manage_recr" method="post" class="mb-5 d-flex justify-content-between align-items-center">
+    <form action="index.php?act=manage_Cv" method="post" class="mb-5 d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <input type="search" name="kym" class="p-2 px-5 rounded-start border border-secondary me-3" placeholder="Tìm kiếm ...">
-            <div class="form-group position-relative">
-                <input name="end" type="text" class="p-2" id="searchexp" placeholder="<?= checkfind('', 'Ngày hết hạn'); ?> &darr;">
-                <div class="dropdown-content" id="dropdownexp">
-                    <div class="dropdown-item">Không chọn</div>
-                    <?php foreach ($valu_racr as $cv) {
-                        // extract($cv);
-                        if ($cv['end'] !== '') { ?>
-                            <div class="dropdown-item"><?= $cv['end'] ?></div>
-                        <?php } ?>
-                    <?php } ?>
-                    <div class="dropdown-item">Khác</div>
-                </div>
-            </div>
+            <select name="status">
+                <option value="Chờ xét duyệt">Nộp thành công</option>
+                <option value="Rút CV">Rút CV</option>
+                <option value="Đã xét duyệt">Đã duyệt thàng công</option>
+            </select>
             <button class="btn btn-info rounded-end p-2 mx-3 text-white" name="submit" style="background-color: var(--secondary);">Tìm kiếm</button>
         </div>
-        
 
     </form>
 
@@ -28,12 +18,12 @@
         // var_dump($valu_racr);
         extract($key);
         $edit_recr = "index.php?act=edit_recr&idEdit=" . $id;
-        $delete_recr = "index.php?act=delete_recr&id=" . $id; ?>
+        $withdrawCv = "index.php?act=withdrawCv&id=" . $idinfo; ?>
         <?php $link_recr = "index.php?act=info_recr&id=" . $id; ?>
-        <div class='employer-item position-relative'>
+        <div class='employer-item position-relative <?= $status == "Rút CV" ? 'd-none' : '' ?>'>
 
-            <img  data-cfsrc='<?= checkCorpAvaNull($avatar)  ?>' alt='Employer' style='width: 70px; height: 70px;object-fit: cover;' class="rounded-circle ">
-            <h3><?= $job ?></h3>
+            <img data-cfsrc='<?= checkCorpAvaNull($avatar)  ?>' alt='Employer' style='width: 70px; height: 70px;object-fit: cover;' class="rounded-circle ">
+            <h3><a href="<?= $link_recr ?>" style="color: #5f5656;"><?= $job ?></a></h3>
             <ul>
                 <li>
                     <i class='flaticon-send'></i>
@@ -41,29 +31,27 @@
                 </li>
                 <li><?= $start ?></li>
             </ul>
-            <p><?= $level ?></p>
+            <p><?= $level ?> / <?= $type ?></p>
             <p><?= $progLang ?>
             </p>
-            <span class='span-two'><?= $type ?> </span>
+            <span class='span-two'><?= $status ?> </span>
 
 
 
             <div class="nav  nav-pills d-flex justify-content-between" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                <a href="<?= $link_recr ?>" class="nav-link text-white me-3  pt-2 px-3 fw-bold  bg-secondary bg-opacity-75" id="v-pills-info-tab" role="tab" style="font-size: 13px ;padding-bottom: 0;" >Thông tin chi tiết </a>
-                <div class="d-flex"> 
-                    <!-- <a href="index.php?act=edit_recr&idEdit=<?= $id ?>" class="nav-link  bg-info text-white me-3 pb--1 px-3 fw-bold " id="v-pills-edit-tab" data-bs-toggle="pill"   aria-selected="false"> -->
-                    <a href="<?= $edit_recr ?>" class="nav-link text-white me-3  py-1 px-3 fw-bold" id="v-pills-edit-tab" role="tab" style="background-color: var(--secondary); ">
-
-                        <div class="profile-list">
-                            <i class="fa-regular fa-pen-to-square text-white" style="font-size: 15px;"></i>
-                        </div>
-                    </a>
-                    <button onclick="confirmDelete('<?= $delete_recr ?>')" class="btn bg-secondary bg-opacity-75 me-3 text-white"><i class="fa-regular fa-trash-can" style="font-size: 15px;"></i></button>
-                </div>
+                <a href="<?= $link_recr ?>" class="nav-link text-white me-3  py-2 px-3 fw-bold  bg-secondary bg-opacity-75" id="v-pills-info-tab" role="tab" style="font-size: 13px ;padding-bottom: 0;">Thông tin chi tiết </a>
+            <?php if($status == 'Chờ xét duyệt') {?>
+                <button onclick="withdrawCv('<?= $withdrawCv ?>')" class="btn bg-opacity-25 me-3 text-white btn-secon" style="background-color: var(--secondary);">Rút hồ sơ </button>
+            <?php } ?>
             </div>
 
         </div>
     <?php endforeach ?>
-    
-
 </div>
+<script>
+    function withdrawCv(d) {
+        if (confirm('Bạn có muốn Rút CV không ?')) {
+            window.location.href = d;
+        }
+    }
+</script>

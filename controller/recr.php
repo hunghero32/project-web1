@@ -14,6 +14,33 @@ $currentData = array_slice($valu_racr, $start, $perPage);
 $dateNow = date("Y-m-d");
 
 switch ($act) {
+    case 'manage_recr':
+        $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
+        $corp = manageInfo($idcorp);
+        extract($corp);
+        $end = isset($_POST['end']) ? $_POST['end'] : '';
+        $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
+        $list_value_recr = search_address_recr($kym = '', $end = '', $idcorp);
+
+        // $count_cv = Count_info_CV($corp['idrecr']);
+
+        $listApply = list_apply_cv($id);
+
+        $thongbao = "<script> location.href = 'index.php?act=manage_recr#v-pills-messages';</script>";
+        echo $thongbao;
+
+        // Xử lí các thumbnail
+        $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
+        $gallery = gallery($arr);
+
+        // Xử lí đoạn văn thành dòng
+        $introPara = explode("\n", $introduce);
+        $intro = paragToLines($introPara);
+
+        $benePara = explode("\n", $benefits);
+        $bene = paragToLines($benePara);
+        include 'view/corp/manage.php';
+        break;
     case 'infoCvOnRecr':
         $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
         $corp = manageInfo($idcorp);
@@ -21,7 +48,7 @@ switch ($act) {
         if (isset($_GET['idrec'])) {
             $idrec = isset($_GET['idrec']) ? $_GET['idrec'] : '';
         }
-        $valu_r_cv = recr_count_cv( $idrec);
+        $valu_r_cv = recr_count_cv($idrec);
         $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
         $listApply = list_apply_cv($id, $idrec);
         $end = isset($_POST['end']) ? $_POST['end'] : '';
@@ -48,6 +75,18 @@ switch ($act) {
         update_add_Info($status, $idinfo);
         $thongbaoApply = "<script> alert('Bạn đã từ chối CV !');
         location.href = 'index.php?act=manage_recr#v-pills-apply'; </script>";
+        echo  $thongbaoApply;
+
+        include 'view/corp/manage.php';
+        break;
+
+    case 'reconsider':
+        $idinfo = isset($_GET['idinfo']) ? $_GET['idinfo'] : '';
+        $status = "Chờ xét duyệt";
+        update_add_Info($status, $idinfo);
+        $thongbaoApply = "<script>
+        location.href = 'index.php?act=manage_recr#v-pills-apply'; </script>";
+        
         echo  $thongbaoApply;
 
         include 'view/corp/manage.php';
@@ -85,13 +124,13 @@ switch ($act) {
                 }
 
                 $status = "Chờ xét duyệt";
-                
+
                 if ($exist == '') {
                     applyJob($idRecr, $idcv, $status);
                     echo "<script>showSuccessNotification();</script>";
                     echo "<script> alert('Nộp hồ sơ ứng tuyển thành công'); </script>";
                     $_SESSION['check_apply'] = true;
-                }else {
+                } else {
                     echo "<script> alert('Chỉ dược phép ứng tuyển 1 lần / 1 bài'); </script>";
                 }
             }
@@ -160,7 +199,7 @@ switch ($act) {
 
             $infoCv = infoCv(isset($_SESSION['username']['id']) ? $_SESSION['username']['id'] : '');
         }
-
+$_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
         include 'view/recr/infoRecr.php';
         break;
     case 'post_recr':
@@ -224,33 +263,7 @@ switch ($act) {
         $bene = paragToLines($benePara);
         include 'view/corp/manage.php';
         break;
-    case 'manage_recr':
-        $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
-        $corp = manageInfo($idcorp);
-        extract($corp);
-        $end = isset($_POST['end']) ? $_POST['end'] : '';
-        $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
-        $list_value_recr = search_address_recr($kym = '', $end = '', $idcorp);
 
-        // $count_cv = Count_info_CV($corp['idrecr']);
-
-        $listApply = list_apply_cv($id);
-
-        $thongbao = "<script> location.href = 'index.php?act=manage_recr#v-pills-messages';</script>";
-        echo $thongbao;
-
-        // Xử lí các thumbnail
-        $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
-        $gallery = gallery($arr);
-
-        // Xử lí đoạn văn thành dòng
-        $introPara = explode("\n", $introduce);
-        $intro = paragToLines($introPara);
-
-        $benePara = explode("\n", $benefits);
-        $bene = paragToLines($benePara);
-        include 'view/corp/manage.php';
-        break;
     case 'edit_recr':
 
         if (isset($_GET['idEdit'])) {

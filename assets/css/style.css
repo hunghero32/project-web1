@@ -16,7 +16,9 @@ body {
     --semi-background: rgba(53, 53, 53, 0.7);
 
 }
-
+.btn-secon:active{
+    transform: scale(0.95) !important;
+}
 h1,
 h2,
 h3,

@@ -228,3 +228,8 @@ function update_add_Info($status, $id)
     $sql = "UPDATE  info  SET  status =? WHERE id = ?";
     pdo_execute($sql, $status, $id);
 }
+function existCvInRecr($idrec)
+{
+    $sql = "SELECT info.idcv FROM info WHERE idrec LIKE ?";
+    return pdo_query($sql, $idrec);
+}
