@@ -9,7 +9,7 @@
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Quản Trị Viên</p>
                                 <h5 class="font-weight-bolder mb-0">
                                     Số Tài Khoản :
-                                    <span class="text-success text-sm font-weight-bold mb-0"> <?= $userCount ?></span> <span class=" text-sm font-weight-bolder">Tài Khoản</span>
+                                    <span class="text-success font-weight-bold mb-0"> <?= $userCount ?></span> <span class=" text-sm font-weight-bolder">Tài Khoản</span>
                                 </h5>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                                                     <span class="badge badge-sm bg-gradient-success"><?= $user['phone'] ?></span></a>
                                             </td>
                                             <td class="align-middle text-center text-sm"><a href="index.php?act=delete&id=<?= $user['id'] ?>">
-                                                    <span type="button" class="badge badge-sm bg-gradient-secondary">Xóa</span></a>
+                                                    <span type="button" class="badge bg-gradient-danger">Xóa</span></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class=" text-sm"><a href="index.php?act=signupAdmin">
-                        <span type="button" class="badge badge-sm bg-gradient-secondary">Thêm Admin</span></a>
+                        <button type="button" class="btn bg-gradient-info">Thêm Admin</button></a>
                 </div>
             </div>
         </div>

@@ -9,7 +9,7 @@
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Bài Tuyển Dụng</p>
                                 <h5 class="font-weight-bolder mb-0">
                                     Số Bài :
-                                    <span class="text-success text-sm font-weight-bold mb-0"> </span> <span class=" text-sm font-weight-bolder">Bài Tuyển</span>
+                                    <strong class="text-danger font-weight-bold mb-0"> <?= $totalRecr?> </strong> <span class=" text-sm font-weight-bolder">Bài Tuyển</span>
                                 </h5>
                             </div>
                         </div>
@@ -33,6 +33,7 @@
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mức Lương</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bắt Đầu</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kết Thúc</th>
+                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Số Lượng Đơn</th>
                                         <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tùy Chọn</th>
 
                                         <th class="text-secondary opacity-7"></th>
@@ -60,9 +61,14 @@
                                             <td class="align-middle text-center">
                                                 <span class="badge badge-sm bg-gradient-success"><?= $recr['end'] ?></span>
                                             </td>
+                                            <td class="align-middle text-center">
+                                                <h6 class="badge badge-sm bg-gradient-success">Tổng :<?= $recr['job'] ?></h6><br>
+                                                <span class="text-xs text-danger text-secondary mb-0">Hủy<?= $recr['start'] ?></span> |
+                                                <span class="text-xs text-success text-secondary mb-0">Nhận<?= $recr['end'] ?></span>
+                                            </td>
                                             <td class="align-middle text-center text-sm" >
                                                 <a href="index.php?act=info_recr&id=<?= $recr['id'] ?>"target="_blank"><span type="button" class="badge badge-sm bg-gradient-secondary">Xem Chi Tiết</span></a>
-                                                <a href="index.php?act=delete&id=<?= $user['id'] ?>"><span type="button" class="badge badge-sm bg-gradient-secondary">Xóa</span></a>
+                                                <a href="index.php?act=recr_delete&id=<?= $recr['id'] ?>"><span type="button" class="badge bg-gradient-danger">Xóa</span></a>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
