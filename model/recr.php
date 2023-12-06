@@ -103,15 +103,14 @@ function recr_select_by_employers($idcorp)
     $sql = "SELECT r.* , c.introduce  ,u.address , u.name  FROM  recr r 
         LEFT JOIN corp c ON c.id= r.idcorp LEFT JOIN user u ON u.id = c.iduser LEFT JOIN gallery g ON u.id = g.iduser 
         
-          WHERE r.idcorp = ?  LIMIT 0,3";
+        WHERE r.idcorp = ?  LIMIT 0,3";
     return pdo_query($sql, $idcorp);
 }
 function info_Corp_recr($id)
 {
-    $sql = "SELECT u.name, u.email, u.phone, u.address, c.*
-             FROM user u
-            LEFT JOIN corp c ON u.id = c.iduser
-            WHERE u.role = 3 AND u.id = ?";
+    $sql = "SELECT u.name, u.email, u.phone, u.address, c.* 
+        FROM user u LEFT JOIN corp c ON u.id = c.iduser 
+        WHERE u.role = 3 AND u.id = ?";    
     return pdo_query_one($sql, $id);
 }
 
@@ -158,32 +157,33 @@ function search_address_recr($kym, $end, $id)
     $sql = "SELECT r.* , c.introduce , u.address , u.name FROM recr r 
         LEFT JOIN corp c ON c.id= r.idcorp 
         LEFT JOIN user u ON u.id = c.iduser 
-        LEFT JOIN gallery g ON u.id = g.iduser where  c.id = ? ";
-    if ($kym != "") {
+        LEFT JOIN gallery g ON u.id = g.iduser where  u.id = ? ";
+    if ($kym !== "") {
         $sql .= " AND r.job LIKE '%" . $kym . "%'";
         $sql .= " OR r.exp LIKE '%" . $kym . "%'";
         $sql .= " OR r.salary LIKE '%" . $kym . "%'";
         $sql .= " OR r.type LIKE '%" . $kym . "%'";
         $sql .= " OR r.progLang LIKE '%" . $kym . "%'";
         $sql .= " OR r.level LIKE '%" . $kym . "%'";
-      } 
-        $sql .= $end != "" ? " AND r.end LIKE '%" . $end . "%' " : "";
-        $sql .= " ORDER BY r.id DESC LIMIT 0,8";
+    }
+    $sql .= $end !== "" ? " AND r.end LIKE '%" . $end . "%' " : "";
+    $sql .= " ORDER BY r.id DESC LIMIT 0,8";
 
-        $valu = pdo_query($sql, $id);
-        return  $valu;
+    $valu = pdo_query($sql, $id);
+    return  $valu;
 }
 
-function list_v_recr( $id) {
+function list_v_recr($id)
+{
     $sql = "SELECT r.* , c.introduce , u.address , u.name FROM recr r 
         LEFT JOIN corp c ON c.id= r.idcorp 
         LEFT JOIN user u ON u.id = c.iduser 
         LEFT JOIN gallery g ON u.id = g.iduser where  u.id = ? ";
-  
-        $sql .= " ORDER BY r.id DESC LIMIT 0,8";
 
-        $valu = pdo_query($sql, $id);
-        return  $valu;
+    $sql .= " ORDER BY r.id DESC LIMIT 0,8";
+
+    $valu = pdo_query($sql, $id);
+    return  $valu;
 }
 function get_Total_Records()
 {
@@ -199,17 +199,32 @@ function info()
     $valu = pdo_query($sql);
     return  $valu;
 }
-function list_apply_cv()
+function list_apply_cv($id )
 {
-    $sql = "SELECT DISTINCT  cv.*, u.name as namecv , r.job , g.avatar as avatarCv , i.id as idinfo FROM cv  LEFT JOIN info i ON cv.id= i.idcv 
+    $sql = "SELECT DISTINCT  cv.*, u.name as namecv , r.job , g.avatar as avatarCv , i.id as idinfo , i.status FROM cv  LEFT JOIN info i ON cv.id= i.idcv 
          LEFT JOIN recr r ON r.id= i.idrec LEFT JOIN user u ON u.id = cv.iduser
-         LEFT JOIN gallery g ON u.id = g.iduser 
-        WHERE  i.idcv IS NOT NULL";
-    $valu = pdo_query($sql);
+         LEFT JOIN gallery g ON u.id = g.iduser LEFT JOIN corp c ON r.idcorp= c.id
+        WHERE c.id = ? AND  i.idcv IS NOT NULL";
+        
+    $valu = pdo_query($sql, $id );
     return  $valu;
 }
-
-function update_add_Info($status , $id)  {
+function Count_info_CV($idrec)
+{
+    $sql = "SELECT COUNT(idcv) as totalCV FROM info  WHERE idrec = ? ";
+    $valu = pdo_query_one($sql, $idrec);
+    return $valu;
+}
+function recr_count_cv( $idrec) {
+    $sql = " SELECT DISTINCT cv.*, u.name as namecv , r.job , g.avatar as avatarCv , i.id as idinfo , i.status FROM cv 
+    LEFT JOIN info i ON cv.id= i.idcv LEFT JOIN recr r ON r.id= i.idrec LEFT JOIN user u ON u.id = cv.iduser 
+    LEFT JOIN gallery g ON u.id = g.iduser LEFT JOIN corp c ON r.idcorp= c.id 
+    WHERE i.idcv IS NOT NULL AND i.idrec = ?";
+    $valu = pdo_query($sql, $idrec);
+    return $valu;
+}
+function update_add_Info($status, $id)
+{
     $sql = "UPDATE  info  SET  status =? WHERE id = ?";
-    pdo_execute($sql, $status , $id);
+    pdo_execute($sql, $status, $id);
 }

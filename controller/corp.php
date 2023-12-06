@@ -9,7 +9,7 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($currentPage - 1) * $perPage;
 $data = range(1, $total_data);
 $currentData = array_slice($valu_racr, $start, $perPage);
-
+$dateNow = date("Y-m-d");
 switch ($act) {
     case 'infoCorp':
         if (isset($_GET['id']) && ($_GET['id'] > 0)) {
@@ -43,9 +43,20 @@ switch ($act) {
     case 'manageCorp':
         $idcorp = $_SESSION['username']['id'];
         $corp = manageInfo($idcorp);
-        $listApply = list_apply_cv();
-        // var_dump($listApply);
         extract($corp);
+        
+        // var_dump($$corp);
+        $listApply = list_apply_cv($id );
+        $end = isset($_POST['end']) ? $_POST['end'] : '';
+        $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
+        // $id = isset($_SESSION['username']) ? $_SESSION['username']['id'] : '';
+        
+        $list_value_recr = search_address_recr($kym, $end, $idcorp);
+        if (isset($_GET['idrec'])) {
+            $idrec = isset($_GET['idrec']) ? $_GET['idrec'] : '';
+            $valu_r_cv = recr_count_cv( $idrec);
+        }
+        // $count_cv = Count_info_CV($corp['idrecr']);
 
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
@@ -66,7 +77,11 @@ switch ($act) {
         $corp = manageInfo($idcorp);
         extract($corp);
         // var_dump($corp);
-
+        $end = isset($_POST['end']) ? $_POST['end'] : '';
+        $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
+        // $id = isset($_SESSION['username']) ? $_SESSION['username']['id'] : '';
+        
+        $list_value_recr = search_address_recr($kym, $end, $idcorp);
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
         $gallery = gallery($arr);

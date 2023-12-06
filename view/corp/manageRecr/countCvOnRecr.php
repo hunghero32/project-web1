@@ -1,5 +1,6 @@
-<div class="tab-pane fade  <?= (!isset($_GET['id']) && !isset($_GET['idEdit'])  && !isset($_GET['profile']) && !isset($_GET['idrec']) && isset($_SESSION['same'])) || isset($thongbaoApply) ? 'show active' : '' ?> " id="v-pills-apply" role="tabpanel" aria-labelledby="v-pills-apply-tab">
-    <form action="index.php?act=manage_recr" method="post" class="mb-5 d-flex justify-content-between align-items-center">
+<div class="tab-pane fade  <?= isset($_GET['idrec'] ) ? 'show active' : '' ?> " id="v-pills-list-cv" role="tabpanel" aria-labelledby="v-pills-list-cv-tab">
+<h5 class="mb-4">Các CV đang ứng tuyển : </h5>
+    <!-- <form action="index.php?act=manage_recr" method="post" class="mb-5 d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <input type="search" name="kym" class="p-2 px-5 rounded-start border border-secondary me-3" placeholder="Tìm kiếm ...">
             <div class="form-group position-relative">
@@ -19,18 +20,18 @@
         </div>
 
 
-    </form>
-    <?php if (empty($listApply)) { ?>
+    </form> -->
+    <?php if (empty($valu_r_cv)) { ?>
         <div class=" my-3">
             <div class="employer-item text-center">
                 Không có dữ liệu tìm thấy !
             </div>
         </div>
         <?php } else {
-        foreach ($listApply as $cv) {
+        foreach ($valu_r_cv as $cv) {
             extract($cv) ?>
 
-            <div class="candidate-item two" style="cursor:pointer;" onclick="return window.location.href='index.php?act=infoCv&id=<?= $iduser ?>&browseR=<?=$status ?>'">
+            <div class="candidate-item two " style="cursor:pointer;" onclick="return window.location.href='index.php?act=infoCv&id=<?= $iduser ?>&browseR=<?=$status ?>'">
                 <div class="w-100">
                     <h4><?= $namecv ?></h4>
                     <span class="w-100">Công việc ứng tuyển : <?= $job ?></span>
@@ -43,18 +44,15 @@
 
                         <li>Ngôn ngữ : <?= $progLang ?></li>
                     </ul>
-                    <span id='span-two'><?=$status ?></span>
                     <div class="d-flex justify-content-between align-content-center">
 
                         <div class="d-flex">
                             <?php if ($status == "Chờ xét duyệt") { ?>
-                                <a href="index.php?act=addCV&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);"><i class="fa-solid fa-check"></i></a>
-                                <a href="index.php?act=deleteCv&idinfo=<?= $idinfo ?>" class="btn btn-secondary py-1 px-2"><i class="fa-solid fa-xmark"></i></a>
-                            <?php } else if ($status == "Từ chối"){ ?>
-                                <a href="index.php?act=addCV&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);"><i class="fa-solid fa-check"></i></a>
-                            <?php }else if ($status == "Chấp nhận") {?>
-                                <a href="index.php?act=deleteCv&idinfo=<?= $idinfo ?>" class="btn btn-secondary py-1 px-2"><i class="fa-solid fa-xmark"></i></a>
-                                <?php } ?>
+                                <a href="index.php?act=addCV&idinfo=<?= $idinfo ?>" class="btn text-white me-3" style="background-color: var(--secondary);">Xét duyệt</a>
+                                <a href="index.php?act=deleteCv&idinfo=<?= $idinfo ?>" class="btn btn-secondary">Từ chối</a>
+                            <?php } else { ?>
+                                <button  class="btn text-white " style="background-color: var(--secondary);" disabled >Đã xét duyệt</button>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
@@ -64,16 +62,6 @@
 
         <?php } ?>
     <?php } ?>
-    <div class="pagination-area">
-        <ul class="pagination">
-            <li><a href="#" id="prev">Prev</a></li>
-            <?php
-            for ($i = 1; $i <= $totalPages; $i++) {
-                echo "<li><a href='#' class='page' data-page='$i'>$i</a></li>";
-            }
-            ?>
-            <li><a href="#" id="next">Next</a></li>
-        </ul>
-    </div>
+   
 
 </div>

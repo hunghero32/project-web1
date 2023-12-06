@@ -3168,13 +3168,25 @@ button:focus {
 }
 
 .candidate-item {
+    position: relative;
     border: 2px dashed #dffedb;
     padding: 25px;
     border-radius: 5px;
     position: relative;
     margin-bottom: 30px
 }
-
+.candidate-item #span-two{
+    color: #fff;
+    background-color: #21a212;
+    border-radius: 5px;
+    padding: 4px 10px;
+    font-size: 13px;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5 !important;
+}
 .candidate-item .left {
     max-width: 240px
 }
@@ -3254,7 +3266,9 @@ button:focus {
     right: 0;
     height: 100%;
     border-radius: 5px;
-    max-width: 250px
+    max-width: 250px;
+    z-index: 1 !important;
+
 }
 
 .testimonial-area {

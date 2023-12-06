@@ -1,4 +1,5 @@
-<div class="tab-pane fade  <?= (!isset($_GET['id']) && !isset($_GET['idEdit']) && !isset($_GET['idInfo']) && !isset($_GET['profile']) && isset($_SESSION['same'])) || (isset($thongbao)) ? 'show active' : '' ?> " id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+<div class="tab-pane fade  <?= (!isset($_GET['id']) && !isset($_GET['idEdit']) && !isset($_GET['idInfo']) && !isset($_GET['profile']) && isset($_SESSION['same']) && !isset($_GET['idinfo']) 
+&& !isset($_GET['idrec']) && !isset($thongbaoApply)) || (isset($thongbao)) ? 'show active' : '' ?> " id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
     <form action="index.php?act=manage_recr" method="post" class="mb-5 d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center">
             <input type="search" name="kym" class="p-2 px-5 rounded-start border border-secondary me-3" placeholder="Tìm kiếm ...">
@@ -6,7 +7,7 @@
                 <input name="end" type="text" class="p-2" id="searchexp" placeholder="<?= checkfind('', 'Ngày hết hạn'); ?> &darr;">
                 <div class="dropdown-content" id="dropdownexp">
                     <div class="dropdown-item"></div>
-                    <?php foreach ($list_recr as $cv) {
+                    <?php foreach ($list_value_recr as $cv) {
                         // extract($cv);
                         if ($cv['end'] !== '') { ?>
                             <div class="dropdown-item"><?= $cv['end'] ?></div>
@@ -29,14 +30,14 @@
     </form>
 
     <?php
-    if (empty($list_recr)) { ?>
-       <div class="col-lg-12">
-                    <div class="employer-item text-center">
-                        Không có dữ liệu tìm thấy !
-                    </div>
-                </div>
+    if (empty($list_value_recr)) { ?>
+        <div class="col-lg-12">
+            <div class="employer-item text-center">
+                Không có dữ liệu tìm thấy !
+            </div>
+        </div>
         <?php } else {
-        foreach ($list_recr as $key) { ?>
+        foreach ($list_value_recr as $key) { ?>
 
             <?php
             extract($key);
@@ -48,20 +49,28 @@
 
                 <img data-cfsrc='<?= checkCorpAvaNull($avatar)  ?>' alt='Employer' style='width: 70px; height: 70px;object-fit: cover;' class="rounded-circle ">
                 <h3><?= $job ?></h3>
-                <ul>
+                <ul class="mb-2">
                     <li>
                         <i class='flaticon-send'></i>
-                        <?= $address ?>
+                        <?= $type ?>
                     </li>
                     <li><?= $start ?></li>
                 </ul>
-                <p><?= $level ?></p>
+                <p class="mb-2"><?= $level ?></p>
                 <p><?= $progLang ?>
                 </p>
-                <span class='span-two'><?= $type ?> </span>
-
-
-
+                <span class='span-two' style="background-color: transparent;">
+                <div class="nav  nav-pills " id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a href="index.php?act=infoCvOnRecr&idrec=<?= $id ?>" class="btn btn-success text-white position-relative p-1" style=" font-size: 13px; " id="v-pills-list-cv-tab" role="tab">
+                        <?= ($end === $dateNow) ? 'Đã hết hạn ' : 'Đang tuyển' ?>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            <?php $countCv = (Count_info_CV($id)); 
+                                echo $countCv['totalCV'] ;?>
+                            <span class="visually-hidden">unread messages</span>
+                        </span>
+                    </a> 
+                </div>
+                </span>
                 <div class="nav  nav-pills d-flex justify-content-between" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <a href="<?= $link_recr ?>" class="nav-link text-white me-3  pt-2 px-3 fw-bold  bg-secondary bg-opacity-75" id="v-pills-info-tab" role="tab" style="font-size: 13px ;padding-bottom: 0;">Thông tin chi tiết </a>
                     <div class="d-flex">
