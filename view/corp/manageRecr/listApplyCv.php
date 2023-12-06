@@ -50,10 +50,8 @@
                             <?php if ($status == "Chờ xét duyệt") { ?>
                                 <a href="index.php?act=addCV&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);"><i class="fa-solid fa-check"></i></a>
                                 <a href="index.php?act=deleteCv&idinfo=<?= $idinfo ?>" class="btn btn-secondary py-1 px-2"><i class="fa-solid fa-xmark"></i></a>
-                            <?php } else if ($status == "Từ chối"){ ?>
-                                <a href="index.php?act=addCV&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);"><i class="fa-solid fa-check"></i></a>
-                            <?php }else if ($status == "Chấp nhận") {?>
-                                <a href="index.php?act=deleteCv&idinfo=<?= $idinfo ?>" class="btn btn-secondary py-1 px-2"><i class="fa-solid fa-xmark"></i></a>
+                            <?php } else {?>
+                                <a href="index.php?act=reconsider&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);">Xét duyệt lại</a>
                                 <?php } ?>
                         </div>
                     </div>
@@ -64,16 +62,16 @@
 
         <?php } ?>
     <?php } ?>
-    <div class="pagination-area">
+    <!-- <div class="pagination-area">
         <ul class="pagination">
             <li><a href="#" id="prev">Prev</a></li>
             <?php
-            for ($i = 1; $i <= $totalPages; $i++) {
-                echo "<li><a href='#' class='page' data-page='$i'>$i</a></li>";
-            }
+            // for ($i = 1; $i <= $totalPages; $i++) {
+            //     echo "<li><a href='#' class='page' data-page='$i'>$i</a></li>";
+            // }
             ?>
             <li><a href="#" id="next">Next</a></li>
         </ul>
-    </div>
+    </div> -->
 
 </div>

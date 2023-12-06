@@ -82,6 +82,7 @@ switch ($act) {
         // $id = isset($_SESSION['username']) ? $_SESSION['username']['id'] : '';
         
         $list_value_recr = search_address_recr($kym, $end, $idcorp);
+        $listApply = list_apply_cv($id );
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
         $gallery = gallery($arr);

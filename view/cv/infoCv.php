@@ -31,19 +31,20 @@
                         <div class="right">
                             <ul>
 
-                                <?php if (isset($_GET['browseR']) && $_GET['browseR'] == 'Chờ xét duyệt') { ?>
-                                    <li>
+                                <?php if (isset($_GET['browseR']) ){
+                                    if( $_GET['browseR'] == 'Chờ xét duyệt') { ?>
+                                    <li class="border-end-0">
                                         <a href="index.php?act=addCV&idinfo=<?= $idinfo ?>" class="btn text-white btn-secondary" style="background-color: var(--secondary);"><i class="fa-solid fa-check"></i></a>
                                     </li>
                                     <li>
                                         <a href="index.php?act=deleteCv&idinfo=<?= $idinfo ?>" class="btn btn-secondary"><i class="fa-solid fa-xmark"></i></a>
                                     </li>
 
-                                <?php } else if ($_GET['browseR'] == "Chấp nhận") { ?>
+                                <?php } else { ?>
                                     <li>
-                                        <button class="btn text-white p-1 me-3" style="background-color: var(--secondary);" disabled>Đã xét duyệt</button>
+                                        <a href="index.php?act=reconsider&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);">Xét duyệt lại</a>
                                     </li>
-                                <?php  } ?>
+                                <?php  }}else{} ?>
 
                                 <li>
                                     <click>

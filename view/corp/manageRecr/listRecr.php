@@ -48,7 +48,7 @@
             <div class='employer-item position-relative'>
 
                 <img data-cfsrc='<?= checkCorpAvaNull($avatar)  ?>' alt='Employer' style='width: 70px; height: 70px;object-fit: cover;' class="rounded-circle ">
-                <h3><?= $job ?></h3>
+                <h3 style="color: #5f5656;"><?= $job ?></h3>
                 <ul class="mb-2">
                     <li>
                         <i class='flaticon-send'></i>

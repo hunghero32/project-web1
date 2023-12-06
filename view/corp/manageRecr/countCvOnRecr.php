@@ -44,15 +44,16 @@
 
                         <li>Ngôn ngữ : <?= $progLang ?></li>
                     </ul>
+                    <span id='span-two'><?=$status ?></span>
                     <div class="d-flex justify-content-between align-content-center">
 
-                        <div class="d-flex">
+                    <div class="d-flex">
                             <?php if ($status == "Chờ xét duyệt") { ?>
-                                <a href="index.php?act=addCV&idinfo=<?= $idinfo ?>" class="btn text-white me-3" style="background-color: var(--secondary);">Xét duyệt</a>
-                                <a href="index.php?act=deleteCv&idinfo=<?= $idinfo ?>" class="btn btn-secondary">Từ chối</a>
-                            <?php } else { ?>
-                                <button  class="btn text-white " style="background-color: var(--secondary);" disabled >Đã xét duyệt</button>
-                            <?php } ?>
+                                <a href="index.php?act=addCV&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);"><i class="fa-solid fa-check"></i></a>
+                                <a href="index.php?act=deleteCv&idinfo=<?= $idinfo ?>" class="btn btn-secondary py-1 px-2"><i class="fa-solid fa-xmark"></i></a>
+                            <?php } else {?>
+                                <a href="index.php?act=reconsider&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);">Xét duyệt lại</a>
+                                <?php } ?>
                         </div>
                     </div>
                 </div>
