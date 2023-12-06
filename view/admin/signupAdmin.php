@@ -1,5 +1,5 @@
 <div class="user-form-area position-relative">
-    <a class="position-absolute top-0 end-0 me-3 mt-4 translate-middle" href="index.php">
+    <a class="position-absolute top-0 end-0 me-3 mt-4 translate-middle" href="index.php?act=admin">
         <i class="fa-solid fa-xmark"></i>
     </a>
     <div class="container-fluid p-0">
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <select name="role" id="" class="form-control w-100 mb-2 p-3 pt-1 text-secondary" required>
                                 <option value="">Vai trò của bạn là ?</option>
-                                    <option value="3">Quản Trị Viên</option>
+                                    <option value="1">Quản Trị Viên</option>
                                     <option value="2">Ứng cử viên</option>
                                     <option value="3">Nhà tuyển dụng</option>
                                 </select>

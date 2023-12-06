@@ -1,11 +1,12 @@
 <?php
-
+// Cấp quyền chỉ admin với có thể truy cập 
 function manageAdmin($id)
-{
+{ 
     $sql = "SELECT * FROM user u
             WHERE u.role = 1 AND u.id = ?";
     return pdo_query_one($sql, $id);
 }
+// Truy xuất danh sách theo role 
 function list_admin($id, $username, $name, $email, $phone, $address, $role)
 {
     $sql = "SELECT * FROM user WHERE role = ? ";
@@ -18,51 +19,13 @@ function list_admin($id, $username, $name, $email, $phone, $address, $role)
     $sql .= " ORDER BY id DESC";
     return pdo_query($sql, $role);
 }
-//========== Ver 1 ==========
-
-// function list_recr($id,$name,$job,$salary,$start,$end) {
-//     $sql = "SELECT recr.* , user.name
-//     FROM recr 
-//     INNER JOIN user  ON recr.idcorp = user.id
-//     WHERE user.role = 3 ";
-//     $sql .= $id !== '' ? " AND recr.id LIKE '%" . $id . "%' " : "";
-//     $sql .= $name !== '' ? " AND user.name LIKE '%" . $name . "%' " : "";
-//     $sql .= $job !== '' ? " AND recr.job LIKE '%" . $job . "%' " : "";
-//     $sql .= $salary !== '' ? " AND recr.salary LIKE '%" . $salary . "%' " : "";
-//     $sql .= $start !== '' ? " AND recr.start LIKE '%" . $start . "%' " : "";
-//     $sql .= $end !== '' ? " AND recr.end LIKE '%" . $end . "%' " : "";
-//     $sql .= " ORDER BY recr.idcorp DESC";
-//     return pdo_query($sql);
-// }
-
-//========== Ver 2 ==========
-
-// function list_recr($id, $name, $job, $salary, $start, $end)
-// {
-//     $sql = "SELECT recr.*,user.id , user.name , user.role, corp.iduser 
-//     FROM recr
-//     INNER JOIN corp ON recr.idcorp = corp.id
-//     INNER JOIN user ON corp.iduser = user.id
-//     WHERE = 1 ";
-//     $sql .= $id !== '' ? " AND recr.id LIKE '%" . $id . "%' " : "";
-//     $sql .= $name !== '' ? " AND user.name LIKE '%" . $name . "%' " : "";
-//     $sql .= $job !== '' ? " AND recr.job LIKE '%" . $job . "%' " : "";
-//     $sql .= $salary !== '' ? " AND recr.salary LIKE '%" . $salary . "%' " : "";
-//     $sql .= $start !== '' ? " AND recr.start LIKE '%" . $start . "%' " : "";
-//     $sql .= $end !== '' ? " AND recr.end LIKE '%" . $end . "%' " : "";
-//     $sql .= " ORDER BY recr.id DESC";
-//     return pdo_query($sql);
-// }
-
-//========== Ver 3 ==========
-
+// truy xuất danh sách theo id recr
 function list_recr($id, $name, $job, $salary, $start, $end) {
     $sql = "SELECT recr.*, user.id AS userId, user.name AS userName, user.role, corp.iduser 
             FROM recr
             INNER JOIN corp ON recr.idcorp = corp.id
             INNER JOIN user ON corp.iduser = user.id
-            WHERE 1 "; // Start with a true condition
-
+            WHERE 1 "; 
     $sql .= $id !== '' ? " AND recr.id LIKE '%" . $id . "%' " : "";
     $sql .= $name !== '' ? " AND user.name LIKE '%" . $name . "%' " : "";
     $sql .= $job !== '' ? " AND recr.job LIKE '%" . $job . "%' " : "";
@@ -74,36 +37,16 @@ function list_recr($id, $name, $job, $salary, $start, $end) {
     
     return pdo_query($sql);
 }
+// thêm admin 
 function add_admin($username, $pass, $name, $email, $phone, $role)
 {
     $sql = "INSERT INTO user( username, pass, name,  email, phone , role) 
         VALUES (?,?,?,?,?,?)";
     pdo_execute($sql, $username, $pass, $name, $email, $phone, $role);
 }
-//========== Ver 1 ==========
-
-// function delete_admin($id)
-// {
-//     $sql = "DELETE FROM  user  WHERE id = ?
-
-//     DELETE FROM  corp  WHERE corp.iduser =  user.id
-//     DELETE FROM  cv    WHERE cv.iduser =  user.id
-//     DELETE FROM  gallery    WHERE gallery.iduser =  user.id
-
-//     DELETE FROM  skillCv  WHERE skillCv.idcv =  cv.iduser
-//     DELETE FROM  expCv  WHERE expCv.idcv =  cv.iduser
-//     DELETE FROM  degree  WHERE degree.idcv =  cv.iduser
-
-//     DELETE FROM  recr  WHERE recr.idcorp =  corp.iduser
-//     ";
-
-//     pdo_execute($sql, $id);
-// }
-//========== Ver 2 ==========
-
+//Quyền Xóa Tài khoản và toàn bộ thông tin liên quan bằng admin
 function delete_admin($id)
 {
-    // Set up your SQL statements
     $sql1 = "DELETE FROM user WHERE id = ?";
     $sql2 = "DELETE FROM corp WHERE iduser = (SELECT id FROM user WHERE id = ?)";
     $sql3 = "DELETE FROM cv WHERE iduser = (SELECT id FROM user WHERE id = ?)";
@@ -113,7 +56,6 @@ function delete_admin($id)
     $sql7 = "DELETE FROM degree WHERE idcv = (SELECT id FROM cv WHERE iduser = ?)";
     $sql8 = "DELETE FROM recr WHERE idcorp = (SELECT iduser FROM corp WHERE iduser = (SELECT id FROM user WHERE id = ?))";
 
-    // Execute each SQL statement separately
     pdo_execute($sql5, $id);
     pdo_execute($sql6, $id);
     pdo_execute($sql7, $id);
@@ -124,11 +66,27 @@ function delete_admin($id)
     pdo_execute($sql1, $id);
 }
 
-
-function delete_checkbox($checkbox = [], $table)
-{
-    foreach ($checkbox as $box) {
-        $sql = "DELETE from $table where id=" . $box;
-        pdo_execute($sql);
-    }
+// đếm số lượng Người dùng theo role 
+function countUser($role) {
+    $sql = "SELECT COUNT(*) as userCount FROM user WHERE role = ?";
+    $result = pdo_query_one($sql, $role);
+    return $result['userCount'];
+}
+// đếm số lượng Người dùng theo id
+function countUserId() {
+    $sql = "SELECT COUNT(id) as total FROM user";
+    $result = pdo_query_one($sql);
+    return $result['total'];
+}
+// Đếm số lượng bài tuyển dụng 
+function countRecr() {
+    $sql = "SELECT COUNT(id) as total FROM recr";
+    $result = pdo_query_one($sql);
+    return $result['total'];
+}
+// Đếm số Đã Duyệt 
+function countInfo($idrec) {
+    $sql = "SELECT COUNT(id) as total FROM info WHERE idrecr = ?";
+    $result = pdo_query_one($sql,$idrec);
+    return $result['total'];
 }

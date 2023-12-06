@@ -118,7 +118,8 @@ function updateInfoUser($id, $name, $email, $phone, $address)
     pdo_execute($sql, $name, $email, $phone, $address, $id);
 }
 
-function updateCv($idcv, $gender, $birth, $salary, $major, $introduce){
+function updateCv($idcv, $gender, $birth, $salary, $major, $introduce)
+{
     $sql = "UPDATE cv SET 
             gender = ?,
             birth = ?,
@@ -164,11 +165,14 @@ function info_cv($id)
     $cv = pdo_query_one($sql, $id);
     return $cv;
 }
-function list_apply_recr($id) {
-    $sql = "SELECT DISTINCT  r.*, u.name as namecv , g.avatar as avatarCv FROM recr r 
-    LEFT JOIN info i ON i.idrec= r.id LEFT JOIN cv ON i.idcv = cv.id 
-    LEFT JOIN user u ON u.id = cv.iduser LEFT JOIN gallery g ON u.id = g.iduser 
-    WHERE u.id =?  AND i.idcv IS NOT NULL";
-    $valu = pdo_query($sql ,$id);
-    return  $valu;
+function list_apply_recr($idcv)
+{
+    $sql = "SELECT r.*, u.name as namecv, g.avatar, i.status, cv.id as idcv
+            FROM info i
+            LEFT JOIN cv ON i.idcv = cv.id
+            LEFT JOIN recr r ON r.id = i.idrec
+            LEFT JOIN corp c ON r.idcorp = c.id
+            LEFT JOIN user u ON c.iduser = u.id
+            LEFT JOIN gallery g ON u.id = g.iduser WHERE i.idcv = ?";
+    return pdo_query($sql,$idcv);
 }
