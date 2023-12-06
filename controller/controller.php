@@ -18,7 +18,7 @@ $list_cv = list_cv('', '', '', '','','','');
 $list_recr = get_records();
 $brands = listBrand();
 
-//include 'view/header.php';
+include 'view/header.php';
 
 if (isset($_GET['act']) && $_GET['act'] != '') {
     $act = $_GET['act'];
