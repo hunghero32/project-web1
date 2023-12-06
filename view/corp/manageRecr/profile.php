@@ -3,7 +3,7 @@
         unset($_SESSION['same']);
     }
 } ?>
-<div class="tab-pane fade <?= (!isset($_GET['id']) && !isset($_GET['idEdit']) && !isset($thongbao) && !isset($_GET['idInfo'])) ? 'show active' : '' ?>" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+<div class="tab-pane fade <?= (!isset($_GET['id']) && !isset($_GET['idEdit']) && !isset($thongbao) && !isset($_GET['idInfo']) && !isset($_GET['idrec'])) ? 'show active' : '' ?>" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
     <form method="POST" action="index.php?act=updateInfoCorp" enctype="multipart/form-data" style="<?= isset($_SESSION['same']) ? 'display: block !important' : '' ?>" id="editInfoCorp" class="d-none job-details-area employer-details-area ptb-100 form-item">
         <div class="boxbtn d-flex w-50 justify-content-end gap-3">
             <span class="cancer border-0" id="cancerEditInfoCorp">Hủy <i class="fa-solid fa-xmark"></i></span>

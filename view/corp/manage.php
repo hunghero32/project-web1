@@ -68,6 +68,7 @@
                     include "manageRecr/listRecr.php";
                     include "manageRecr/infoRecr.php";
                     include "manageRecr/listApplyCv.php";
+                    include "manageRecr/countCvOnRecr.php";
 
                     ?>
                 </div>

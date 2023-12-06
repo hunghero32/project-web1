@@ -10,13 +10,67 @@ $currentPage = isset($_GET['page']) ? $_GET['page'] : 1;
 $start = ($currentPage - 1) * $perPage;
 $data = range(1, $total_data);
 $currentData = array_slice($valu_racr, $start, $perPage);
-$listApply = list_apply_cv();
+// $listApply = list_apply_cv();
+$dateNow = date("Y-m-d");
 
 switch ($act) {
-    case 'addCV' :
+    case 'infoCvOnRecr':
+        $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
+        $corp = manageInfo($idcorp);
+        extract($corp);
+        if (isset($_GET['idrec'])) {
+            $idrec = isset($_GET['idrec']) ? $_GET['idrec'] : '';
+        }
+        $valu_r_cv = recr_count_cv( $idrec);
+        $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
+        $listApply = list_apply_cv($id, $idrec);
+        $end = isset($_POST['end']) ? $_POST['end'] : '';
+        $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
+        $list_value_recr = search_address_recr($kym, $end, $idcorp);
+        // $count_cv = Count_info_CV($corp['idrecr']);
+
+        // Xử lí các thumbnail
+        $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
+        $gallery = gallery($arr);
+
+        // Xử lí đoạn văn thành dòng
+        $introPara = explode("\n", $introduce);
+        $intro = paragToLines($introPara);
+
+        $benePara = explode("\n", $benefits);
+        $bene = paragToLines($benePara);
+
+        include 'view/corp/manage.php';
+        break;
+    case 'deleteCv':
         $idinfo = isset($_GET['idinfo']) ? $_GET['idinfo'] : '';
-        $status = "Chấp nhận";
-        update_add_Info($status , $idinfo);
+        $status = "Từ chối";
+        update_add_Info($status, $idinfo);
+        $thongbaoApply = "<script> alert('Bạn đã từ chối CV !');
+        location.href = 'index.php?act=manage_recr#v-pills-apply'; </script>";
+        echo  $thongbaoApply;
+
+        include 'view/corp/manage.php';
+        break;
+    case 'addCV':
+        $idinfo = isset($_GET['idinfo']) ? $_GET['idinfo'] : '';
+        $status = "Đã xét duyệt";
+        update_add_Info($status, $idinfo);
+        if (isset($_GET['id'])) {
+            $id_recr = $_GET['id'];
+            $val_recr = recr_select_by_id($id_recr);
+            // var_dump($val_recr);
+            extract($val_recr);
+            $val_c = recr_select_by_similar($job, $id_recr);
+
+            $infoCv = infoCv(isset($_SESSION['username']['id']) ? $_SESSION['username']['id'] : '');
+            include 'view/recr/infoRecr.php';
+        }
+        $thongbaoApply = "<script> alert('Bạn đã xét duyệt CV thánh công !');
+        location.href = 'index.php?act=manage_recr#v-pills-apply'; </script>";
+        echo  $thongbaoApply;
+
+        include 'view/corp/manage.php';
         break;
     case 'apply_job':
         if (!isset($_SESSION['check_apply'])) {
@@ -72,9 +126,15 @@ switch ($act) {
             extract($val_recr);
         }
 
-        $idcorp = $_SESSION['username']['id'];
+        $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
         $corp = manageInfo($idcorp);
         extract($corp);
+        $listApply = list_apply_cv($id);
+        $end = isset($_POST['end']) ? $_POST['end'] : '';
+        $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
+        $list_value_recr = search_address_recr($kym, $end, $idcorp);
+        // $count_cv = Count_info_CV($corp['idrecr']);
+
 
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
@@ -146,9 +206,12 @@ switch ($act) {
         $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
         $corp = manageInfo($idcorp);
         extract($corp);
-        $idcorp = $_SESSION['username']['id'];
-        $corp = manageInfo($idcorp);
-        extract($corp);
+        $end = isset($_POST['end']) ? $_POST['end'] : '';
+        $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
+        $list_value_recr = search_address_recr($kym, $end, $idcorp);
+        // $count_cv = Count_info_CV($corp['idrecr']);
+        $listApply = list_apply_cv($id);
+
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
         $gallery = gallery($arr);
@@ -165,24 +228,17 @@ switch ($act) {
         $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
         $corp = manageInfo($idcorp);
         extract($corp);
-       
         $end = isset($_POST['end']) ? $_POST['end'] : '';
         $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
-        // $id = isset($_SESSION['username']) ? $_SESSION['username']['id'] : '';
-        
-        $list_recr = search_address_recr($kym = '', $end ='', $id);
-        // if(empty($list_recr)){
-        //     $list_recr = list_v_recr($id);
-        // }
-        // var_dump($id);
+        $list_value_recr = search_address_recr($kym = '', $end = '', $idcorp);
+
+        // $count_cv = Count_info_CV($corp['idrecr']);
+
+        $listApply = list_apply_cv($id);
+
         $thongbao = "<script> location.href = 'index.php?act=manage_recr#v-pills-messages';</script>";
         echo $thongbao;
 
-
-
-        $idcorp = $_SESSION['username']['id'];
-        $corp = manageInfo($idcorp);
-        extract($corp);
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
         $gallery = gallery($arr);
@@ -204,9 +260,13 @@ switch ($act) {
         $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
         $corp = manageInfo($idcorp);
         extract($corp);
-        $idcorp = $_SESSION['username']['id'];
-        $corp = manageInfo($idcorp);
-        extract($corp);
+        $listApply = list_apply_cv($id);
+        $end = isset($_POST['end']) ? $_POST['end'] : '';
+        $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
+
+        $list_value_recr = search_address_recr($kym = '', $end = '', $idcorp);
+
+        // $count_cv = Count_info_CV($corp['idrecr']);
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
         $gallery = gallery($arr);
@@ -279,9 +339,8 @@ switch ($act) {
         $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
         $corp = manageInfo($idcorp);
         extract($corp);
-        $idcorp = $_SESSION['username']['id'];
-        $corp = manageInfo($idcorp);
-        extract($corp);
+        $listApply = list_apply_cv($id, $idrec);
+
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
         $gallery = gallery($arr);

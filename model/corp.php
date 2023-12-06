@@ -47,7 +47,7 @@ function info_Corp($id)
 function manageInfo($id)
 {
     $sql = "SELECT u.name, u.email, u.phone, u.address, c.*,
-            g.avatar, g.thumbnail1 ,g.thumbnail2 ,g.thumbnail3 ,g.thumbnail4 ,g.thumbnail5
+            g.avatar, g.thumbnail1 ,g.thumbnail2 ,g.thumbnail3 ,g.thumbnail4 ,g.thumbnail5 , c.id as idCorp
             FROM user u
             LEFT JOIN corp c ON u.id = c.iduser
             LEFT JOIN gallery g ON u.id = g.iduser

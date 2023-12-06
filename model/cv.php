@@ -150,7 +150,7 @@ function update_skill($id, $progLang, $percent)
 
 function info_cv($id)
 {
-    $sql = "SELECT cv.*, u.name, u.email, u.phone, u.address, s.progLang, s.percent, ec.corp, ec.start, ec.end, ec.job, d.school, d.year, g.avatar,
+    $sql = "SELECT cv.*, u.name, u.email, u.phone, u.address, s.progLang, s.percent, ec.corp, ec.start, ec.end, ec.job, d.school, d.year, g.avatar, i.id as idinfo ,
             TIMESTAMPDIFF(YEAR, cv.birth, CURRENT_DATE) as age,
             TIMESTAMPDIFF(MONTH, MIN(ec.start), MAX(ec.end)) as exp
             FROM cv
@@ -159,6 +159,7 @@ function info_cv($id)
             LEFT JOIN gallery g ON cv.iduser = g.iduser
             LEFT JOIN degree d ON cv.id = d.idcv
             LEFT JOIN expcv ec ON ec.idcv = cv.id
+            LEFT JOIN info  i ON i.idcv = cv.id
             WHERE u.role = 2 AND cv.iduser = ?
             GROUP BY cv.id, u.name, u.email, u.phone, g.avatar, u.address, cv.birth, s.progLang, ec.idcv";
     $cv = pdo_query_one($sql, $id);
