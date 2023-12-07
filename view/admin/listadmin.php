@@ -29,10 +29,10 @@
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">ID</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">UserName</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tên Đầy Đủ</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Số Điện Thoại</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Xóa</th>
+                                        <th class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tên Đầy Đủ</th>
+                                        <th class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
+                                        <th class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Số Điện Thoại</th>
+                                        <th class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Xóa</th>
 
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
@@ -55,16 +55,16 @@
                                             <td>
                                                 <h6 class="mb-0 text-sm"><?= $user['username'] ?></h6>
                                             </td>
-                                            <td class="align-middle text-center text-sm">
+                                            <td class="align-middle text-left text-sm">
                                                 <h6 class="mb-0 text-sm"><?= $user['name'] ?></h6>
                                             </td>
-                                            <td class="align-middle text-center"><a href="mailto:<?= $user['email'] ?>">
-                                                    <span class="badge badge-sm bg-gradient-success"><?= $user['email'] ?></span></a>
+                                            <td class="align-middle text-left"><a href="mailto:<?= $user['email'] ?>">
+                                                    <span class="badge badge-sm  text-secondary"><?= $user['email'] ?></span></a>
                                             </td>
-                                            <td class="align-middle text-center"><a href="tel:<?= $user['phone'] ?>">
-                                                    <span class="badge badge-sm bg-gradient-success"><?= $user['phone'] ?></span></a>
+                                            <td class="align-middle text-left"><a href="tel:<?= $user['phone'] ?>">
+                                                    <span class="badge badge-sm  text-secondary"><?= $user['phone'] ?></span></a>
                                             </td>
-                                            <td class="align-middle text-center text-sm"><a href="index.php?act=delete&id=<?= $user['id'] ?>">
+                                            <td class="align-middle text-left text-sm"><a href="index.php?act=delete&id=<?= $user['id'] ?>">
                                                     <?php echo $delete ?>
                                             </td>
                                         </tr>
