@@ -1,13 +1,21 @@
 
 <?php
 $notification = [
+    "withdrawCv" => [
+        "notice" => "Đã rút hồ sơ ứng tuyển",
+        "link" => "index.php?act=info_recr&id="
+    ],
+    "check_apply" => [
+        "notice" => "Nộp hồ sơ ứng tuyển thành công",
+        "link" => "index.php?act=info_recr&id="
+    ],
+    "exist_apply" => [
+        "notice" => "Chỉ dược phép ứng tuyển 1 lần / 1 bài",
+        "link" => "index.php?act=info_recr&id="
+    ],
     "signuped" => [
         "notice" => "Đăng kí thành công",
         "link" => "index.php?act=signin"
-    ],
-    "delete" => [
-        "notice" => "Xóa thành công",
-        "link" => ""
     ],
     "updatedCorp" => [
         "notice" => "Cập nhật thành công !",
@@ -23,10 +31,18 @@ function notification($notification)
 {
     foreach (array_keys($notification) as $key) {
         if (isset($_SESSION[$key])) {
-            unset($_SESSION[$key]);
             $alert = $notification[$key]['notice'];
             $link = $notification[$key]['link'] !== '' ? $notification[$key]['link'] : '';
-            $reload = $link !== '' ? "window.location.href = '$link';" : '';
+
+            $reload = '';
+
+            if ($_SESSION[$key] > 0) {
+                $reload = "window.location.href = '$link$_SESSION[$key]'";
+            } else {
+                $reload = $link !== '' ? "window.location.href = '$link'" : '';
+            }
+
+            unset($_SESSION[$key]);
 
             echo "<script>";
             echo "alert('$alert');";

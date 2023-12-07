@@ -1,33 +1,37 @@
 
 <?php
-
-    
-
 switch ($act) {
-    case 'withdrawCv' :
+    case 'withdrawCv':
         $idinfo = isset($_GET['id']) ? $_GET['id'] : '';
-        
-        $status = "Rút CV";
-        update_add_Info($status, $idinfo);
-        $thongbaoApply = "<script> alert('Bạn đã rút CV thành công!');
-        location.href = 'index.php?act=manage_Cv#v-pills-messages'; </script>";
-        echo $thongbaoApply ;
-        include 'view/cv/manage_Cv.php';
+        $idrec = isset($_GET['idrec']) ? $_GET['idrec'] : '';
+        $recruimentInfo = recruimentInfo($idinfo);
+        $attachFile = $recruimentInfo['attach'];
+        deleteFile($attach_path . $attachFile);
+        removeRecInfo($idinfo);
+        $_SESSION['withdrawCv'] = $idrec;
         break;
+
     case 'infoCv':
         if (isset($_GET['id']) && ($_GET['id'] > 0)) {
             $id = $_GET['id'];
-            $cv = info_cv($id);}
-            extract($cv);
+            $cv = info_cv($id);
+        }
+        extract($cv);
 
-            if (isset($cv['id'])) {
+        if (isset($cv['id'])) {
             $idcv = $cv['id'];
-            
+
             $expCv = getExpCv($idcv);
             $skillCv = getSkillCv($idcv);
             $degree = getDegreeCv($idcv);
-
         }
+
+        if (isset($_GET['idinfo']) && $_GET['idinfo'] > 0) {
+            $recrInfoId = $_GET['idinfo'];
+            $recruimentInfo = recruimentInfo($recrInfoId);
+            $attachFile = $recruimentInfo['attach'];
+        }
+
         include 'view/cv/infoCv.php';
         break;
 
@@ -53,10 +57,10 @@ switch ($act) {
         $thongbao = "<script> location.href = 'index.php?act=manage_Cv#v-pills-messages';</script>";
         echo $thongbao;
 
-        if(isset($_GET['sameCv']) && $_GET['sameCv'] === 1){
+        if (isset($_GET['sameCv']) && $_GET['sameCv'] === 1) {
             $_SESSION['sameCv'] = $_GET['sameCv'];
-        } 
-        $list_apply_recr = list_apply_recr($idcv) ;
+        }
+        $list_apply_recr = list_apply_recr($idcv);
         $expCv = getExpCv($idcv);
         $skillCv = getSkillCv($idcv);
         $degree = getDegreeCv($idcv);

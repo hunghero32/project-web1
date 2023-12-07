@@ -41,6 +41,7 @@ switch ($act) {
         $bene = paragToLines($benePara);
         include 'view/corp/manage.php';
         break;
+        
     case 'infoCvOnRecr':
         $idcorp = isset($_SESSION['username']) ? $_SESSION['username']['id'] : "";
         $corp = manageInfo($idcorp);
@@ -69,6 +70,7 @@ switch ($act) {
 
         include 'view/corp/manage.php';
         break;
+
     case 'deleteCv':
         $idinfo = isset($_GET['idinfo']) ? $_GET['idinfo'] : '';
         $status = "Từ chối";
@@ -86,11 +88,12 @@ switch ($act) {
         update_add_Info($status, $idinfo);
         $thongbaoApply = "<script>
         location.href = 'index.php?act=manage_recr#v-pills-apply'; </script>";
-        
+
         echo  $thongbaoApply;
 
         include 'view/corp/manage.php';
         break;
+
     case 'addCV':
         $idinfo = isset($_GET['idinfo']) ? $_GET['idinfo'] : '';
         $status = "Đã xét duyệt";
@@ -112,36 +115,47 @@ switch ($act) {
         include 'view/corp/manage.php';
         break;
     case 'apply_job':
-        if (!isset($_SESSION['check_apply'])) {
-            if (isset($_POST['applyjob'])) {
-                $exist = '';
-                $idRecr = isset($_POST['idRecr']) ? $_POST['idRecr'] : '';
-                $idcv = isset($_POST['idCV']) ? $_POST['idCV'] : '';
+        if (isset($_POST['applyjob'])) {
+            $exist = '';
+            $idRecr = isset($_POST['idRecr']) ? $_POST['idRecr'] : '';
+            $idcv = isset($_POST['idCV']) ? $_POST['idCV'] : '';
 
-                $existCv = existCvInRecr($idRecr);
-                foreach ($existCv as $e) {
-                    $idcv == $e['idcv'] ? $exist = 'True' : '';
+            $existCv = existCvInRecr($idRecr);
+            foreach ($existCv as $e) {
+                $idcv == $e['idcv'] ? $exist = 'True' : '';
+            }
+
+            $status = "Chờ xét duyệt";
+
+            if ($exist == '') {
+                $file_name = '';
+                if (isset($_FILES['attach'])) {
+                    $file = $_FILES['attach'];
+                    var_dump($file);
+                    $file_name = $file['name'];
+                    $target_file = $attach_path . $file_name;
+                    echo $target_file;
+                    // Xử lý file ở đây, ví dụ: lưu vào thư mục
+                    move_uploaded_file($file['tmp_name'], $target_file);
                 }
 
-                $status = "Chờ xét duyệt";
+                applyJob($idRecr, $idcv, $status);
+                uploadAttachFile($idRecr, $idcv, $file_name);
 
-                if ($exist == '') {
-                    applyJob($idRecr, $idcv, $status);
-                    echo "<script>showSuccessNotification();</script>";
-                    echo "<script> alert('Nộp hồ sơ ứng tuyển thành công'); </script>";
-                    $_SESSION['check_apply'] = true;
-                } else {
-                    echo "<script> alert('Chỉ dược phép ứng tuyển 1 lần / 1 bài'); </script>";
-                }
+                $attachExist !== '' ? deleteFile($attach_path . $attachExist) : '';
+                $_SESSION['check_apply'] = $idRecr;
+            } else {
+                $_SESSION['exist_apply'] = $idRecr;
             }
         }
-        // echo $idRecr;
+
         $val_recr = recr_select_by_id($idRecr);
-        // var_dump($val_recr);
         extract($val_recr);
+
         $val_c = recr_select_by_similar($job, $idRecr);
         include 'view/recr/infoRecr.php';
         break;
+
     case 'listRecr':
         $level = isset($_POST['level']) ? $_POST['level'] : '';
         $kym = isset($_POST['key']) ? $_POST['key'] : '';
@@ -157,6 +171,7 @@ switch ($act) {
 
         include 'view/recr/listRecr.php';
         break;
+
         //info của phần công ty
     case 'infoRecr':
         if (isset($_GET['id'])) {
@@ -199,7 +214,7 @@ switch ($act) {
 
             $infoCv = infoCv(isset($_SESSION['username']['id']) ? $_SESSION['username']['id'] : '');
         }
-$_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
+        $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
         include 'view/recr/infoRecr.php';
         break;
     case 'post_recr':
@@ -265,7 +280,6 @@ $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
         break;
 
     case 'edit_recr':
-
         if (isset($_GET['idEdit'])) {
             $id = $_GET['idEdit'];
             $value_id = recr_select_by_id($id);
@@ -292,8 +306,8 @@ $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
         $bene = paragToLines($benePara);
         include 'view/corp/manage.php';
         break;
-    case 'up_recr':
 
+    case 'up_recr':
         if (isset($_POST['submit'])) {
             $job = $_POST['job'];
             $idcorp = $_POST['idcorp'];
@@ -321,7 +335,6 @@ $_SESSION['current_page'] = $_SERVER['REQUEST_URI'];
                 $end,
                 $request
             );
-
             // include "view/corp/manage.php";
             // include 'view/recr/editRecr.php';
             $thongbao = "<script> alert('Bạn đã sửa thành công !');

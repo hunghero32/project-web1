@@ -7,6 +7,7 @@ $passEmail = 'vjcjfucbhoubajed';
 // -----------------------------------------------------
 
 $img_path = 'assets/uploads/';
+$attach_path = 'assets/uploads/attach/';
 
 function hide($act)
 {
@@ -92,4 +93,10 @@ function updateImg($input,$input2) {
         $file_name = $input2 !== ''  ? $input2 : '';
     }
     return $file_name;
+}
+
+function deleteFile($file_path)
+{
+    $del = file_exists($file_path) ? unlink($file_path) : '';
+    $result = $del == true ? 'Đã xóa' : 'Có lõi khi xóa hoặc file không tồn tại';
 }
