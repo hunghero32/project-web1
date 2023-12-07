@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2023 at 02:18 PM
+-- Generation Time: Dec 07, 2023 at 04:21 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -51,7 +51,8 @@ CREATE TABLE `cv` (
   `birth` date NOT NULL,
   `salary` varchar(255) NOT NULL,
   `major` varchar(255) NOT NULL,
-  `introduce` text NOT NULL
+  `introduce` text NOT NULL,
+  `attach` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -221,6 +222,7 @@ CREATE TABLE `info` (
   `id` int(10) NOT NULL,
   `idrec` int(10) NOT NULL,
   `idcv` int(10) NOT NULL,
+  `attach` varchar(255) NOT NULL,
   `status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -392,7 +394,7 @@ ALTER TABLE `gallery`
 -- AUTO_INCREMENT for table `info`
 --
 ALTER TABLE `info`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `recr`
