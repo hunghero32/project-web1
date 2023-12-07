@@ -27,7 +27,7 @@ switch ($act) {
         $user = countUser(2);
         $corp = countUser(3);
 
-        
+
         // $id = isset($_GET['id']) ? $_GET['id'] : '';
         // $username = isset($_GET['username']) ? $_GET['username'] : '';
         // $name = isset($_GET['name']) ? $_GET['name'] : '';
@@ -114,7 +114,8 @@ switch ($act) {
         $end = isset($_GET['end']) ? $_GET['end'] : '';
 
         $listrecr = list_recr($id, $name, $job, $salary, $start, $end);
-        $totalRecr = countRecr();  
+        $totalRecr = countRecr();
+
         include 'view/admin/listRecr.php';
         break;
 

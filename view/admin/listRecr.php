@@ -42,10 +42,10 @@
                                 <tbody>
                                     <?php foreach ($listrecr as $recr) : 
                                         $idrec = $recr['id']; 
-                                        $status = isset($recr['status']) ? $recr['status'] : ''; // Check if 'status' key exists
-                                    
                                         $infoCount = countInfo($idrec);
-
+                                        $approved = countstatus($idrec, 'Đã xét duyệt');
+                                        $rejected = countstatus($idrec, 'Từ chối');
+                                
                                         ?>
                                         <tr>
                                             <td>
@@ -69,8 +69,8 @@
                                             </td>
                                             <td class="align-middle text-center">
                                                 <h6 class="badge badge-sm bg-gradient-secondary">Tổng :<?= $infoCount ?></h6><br>
-                                                <span class="text-xs text-danger text-secondary mb-0">Hủy :</span> |
-                                                <span class="text-xs text-success text-secondary mb-0">Nhận :</span>
+                                                <span class="text-xs text-danger text-secondary mb-0">Hủy :<?=$rejected?></span> |
+                                                <span class="text-xs text-success text-secondary mb-0">Nhận :<?=$approved?></span>
                                             </td>
                                             <td class="align-middle text-center text-sm" >
                                                 <a href="index.php?act=info_recr&id=<?= $recr['id'] ?>"target="_blank"><span type="button" class="badge badge-sm bg-gradient-dark">Xem Chi Tiết</span></a>
