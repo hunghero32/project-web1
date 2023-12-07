@@ -8,6 +8,7 @@ function manageAdmin($id)
 }
 // Truy xuất danh sách theo role 
 function list_admin($id, $username, $name, $email, $phone, $address, $role)
+
 {
     $sql = "SELECT * FROM user WHERE role = ? ";
     $sql .= $id !== '' ? " AND id LIKE '%" . $id . "%' " : "";
@@ -18,6 +19,12 @@ function list_admin($id, $username, $name, $email, $phone, $address, $role)
     $sql .= $address !== '' ? " AND address LIKE '%" . $address . "%' " : "";
     $sql .= " ORDER BY id DESC";
     return pdo_query($sql, $role);
+}
+// Truy xuất danh sách theo id 
+function list_user()
+{
+    $sql = "SELECT * FROM user ";
+    return pdo_query($sql);
 }
 // truy xuất danh sách theo id recr
 function list_recr($id, $name, $job, $salary, $start, $end) {
@@ -84,9 +91,20 @@ function countRecr() {
     $result = pdo_query_one($sql);
     return $result['total'];
 }
-// Đếm số Đã Duyệt 
-function countInfo($idrec) {
-    $sql = "SELECT COUNT(id) as total FROM info WHERE idrecr = ?";
-    $result = pdo_query_one($sql,$idrec);
+// Đếm số lượng bài tuyển dụng 
+function countIn4() {
+    $sql = "SELECT COUNT(id) as total FROM info";
+    $result = pdo_query_one($sql);
     return $result['total'];
+}
+// Đếm số lượng Hồ Sơ/Bài tuyển của Doanh Nghiệp
+function countInfo($idrec) {
+    $sql = "SELECT COUNT(*) as count FROM info WHERE idrec = ?";
+    return pdo_query_one($sql, $idrec)['count'];
+}
+// Đếm số lượng Trạng Thái/Bài tuyển của Doanh Nghiệp
+function countstatus($idrec) {
+    $status = '';
+    $sql = "SELECT COUNT(*) as countstatus FROM info WHERE idrec = ? AND status = ?";
+    return pdo_query_one($sql, [$idrec, $status])['countstatus'];
 }
