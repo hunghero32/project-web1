@@ -103,8 +103,8 @@ function countInfo($idrec) {
     return pdo_query_one($sql, $idrec)['count'];
 }
 // Đếm số lượng Trạng Thái/Bài tuyển của Doanh Nghiệp
-function countstatus($idrec) {
-    $status = '';
+function countstatus($idrec, $status) {
     $sql = "SELECT COUNT(*) as countstatus FROM info WHERE idrec = ? AND status = ?";
-    return pdo_query_one($sql, [$idrec, $status])['countstatus'];
+    $result = pdo_query_one($sql, $idrec, $status);
+    return $result['countstatus'];
 }

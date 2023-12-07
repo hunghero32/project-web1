@@ -161,7 +161,7 @@
     new Chart(ctx, {
         type: "bar",
         data: {
-            labels: ["Doanh Nghiệp", "Ứng Viên", "Đơn ứng tuyển", "Bài Tuyển Dụng"],
+            labels: ["Doanh Nghiệp", "Ứng Viên", "Bài Tuyển Dụng","Đơn ứng tuyển"],
             datasets: [{
                 label: "Số Lượng ",
                 tension: 0.2,
@@ -169,7 +169,7 @@
                 borderRadius: 4,
                 borderSkipped: true,
                 backgroundColor: ["#FF99CC", '#CCFF00', '#33CCFF','#00DD00'],
-                data: [<?= $corp ?>, <?= $user ?>,<?=$info ?>,<?= $totalRecr ?>],
+                data: [<?= $corp ?>, <?= $user ?>,<?= $totalRecr ?>,<?=$info ?>],
                 maxBarThickness: 40
             }, ],
         },
@@ -196,7 +196,7 @@
                     ticks: {
                         suggestedMin: 0,
                         suggestedMax: 100,
-                        beginAtZero: true,
+                        beginAtZero: false,
                         padding: 20,
                         font: {
                             size: 12,
@@ -215,7 +215,7 @@
                         drawTicks: false
                     },
                     ticks: {
-                        display: true
+                        display: false
                     },
                 },
             },
