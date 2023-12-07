@@ -169,11 +169,13 @@ switch ($act) {
         $exp = isset($_POST['exp']) ? $_POST['exp'] : '';
         $address = isset($_POST['address']) ? $_POST['address'] : '';
         $salary = isset($_POST['salary']) ? $_POST['salary'] : '';
+        $job = isset($_POST['job']) ? $_POST['job'] : '';
         $progLang = isset($_POST['progLang']) ? $_POST['progLang'] : '';
         $date = isset($_POST['date']) ? $_POST['date'] : '';
         $perPage = 5;
-        $val_racr = recr_select_all($kym, $level, $typeRecr, $salary, $progLang, $address, $exp);
-
+        $val_racr = recr_select_all($kym, $level, $typeRecr, $salary, $progLang, $address, $exp , $job);
+        $total_recr = get_Total_Records();
+       extract($total_recr);
         include 'view/recr/listRecr.php';
         break;
 

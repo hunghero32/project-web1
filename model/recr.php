@@ -74,7 +74,7 @@ function recr_delete($id)
     pdo_execute($sql, $id);
 }
 
-function recr_select_all($kym, $level, $typeRecr, $salary, $progLang, $address, $exp)
+function recr_select_all($kym, $level, $typeRecr, $salary, $progLang, $address, $exp , $job)
 {
     $sql = "SELECT r.* , c.introduce , u.address , u.name , g.avatar FROM recr r LEFT JOIN corp c ON c.id= r.idcorp 
         LEFT JOIN user u ON u.id = c.iduser LEFT JOIN gallery g ON u.id = g.iduser where 1 ";
@@ -91,6 +91,7 @@ function recr_select_all($kym, $level, $typeRecr, $salary, $progLang, $address, 
     $sql .= $address !== '' ? " AND u.address LIKE '%" . $address . "%' " : "";
     $sql .= $salary !== '' ? " AND r.salary LIKE '%" . $salary . "%' " : "";
     $sql .= $progLang !== '' ? " AND r.progLang LIKE '%" . $progLang . "%' " : "";
+    $sql .= $job !== '' ? " AND r.job LIKE '%" . $job . "%' " : "";
     // $sql .= $date !== '' ? " AND TIMESTAMPDIFF(MONTH, MIN(r.start), MAX(r.end)) LIKE '%" . $date . "%' " : "";
 
 
