@@ -22,10 +22,10 @@
             </div>
         </div>
         <?php } else {
+            // var_dump($listApply);
         foreach ($listApply as $cv) {
             extract($cv) ?>
-
-            <div class="candidate-item two" style="cursor:pointer;" onclick="return window.location.href='index.php?act=infoCv&id=<?= $iduser ?>&browseR=<?= $status ?>'">
+            <div class="candidate-item two" style="cursor:pointer;" onclick="return window.location.href='index.php?act=infoCv&id=<?= $iduser ?>&idinfo=<?= $idinfo ?>&browseR=<?= $status ?>'">
                 <div class="w-100">
                     <h4><?= $namecv ?></h4>
                     <span class="w-100">Công việc ứng tuyển : <?= $job ?></span>
@@ -38,9 +38,10 @@
 
                         <li>Ngôn ngữ : <?= $progLang ?></li>
                     </ul>
-                    <span id='span-two'><?= $status ?></span>
+                    <span id='<?php if ($status == 'Đã xét duyệt') { echo 'span-two'; } else if ($status == 'Từ chối') { echo 'span-denied' ;} else { echo 'span-checking'; }?>'>
+                        <?= $status ?>
+                    </span>
                     <div class="d-flex justify-content-between align-content-center">
-
                         <div class="d-flex">
                             <?php if ($status == "Chờ xét duyệt") { ?>
                                 <a href="index.php?act=addCV&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);"><i class="fa-solid fa-check"></i></a>
@@ -51,8 +52,8 @@
                         </div>
                     </div>
                 </div>
-                <img data-cfsrc="<?= checkUserCvNull($avatarCv) ?>" alt="<?= $name ?>" style="display:none;visibility:hidden; <?= $avatarCv == '' ? 'width: 80px;height: 80px' : '' ?>">
-                <noscript><img style="<?= $avatar == '' ? 'width: 80px;height: 80px' : '' ?>" src="<?= checkUserCvNull($avatar) ?>" alt="Candidate"></noscript>
+                <img data-cfsrc="<?= checkUserCvNull($avatarCv) ?>" alt="<?= $name ?>" style="display:none;visibility:hidden; <?= $avatarCv == '' ? 'width: 80px;height: 80px; margin: 50px 0 0 0' : '' ?>">
+                <noscript><img style="<?= $avatar == '' ? 'width: 80px;height: 80px;' : '' ?>" src="<?= checkUserCvNull($avatar) ?>" alt="Candidate"></noscript>
             </div>
 
         <?php } ?>

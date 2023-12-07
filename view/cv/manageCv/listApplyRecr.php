@@ -18,8 +18,9 @@
         // var_dump($valu_racr);
         extract($key);
         $edit_recr = "index.php?act=edit_recr&idEdit=" . $id;
-        $withdrawCv = "index.php?act=withdrawCv&id=" . $idinfo; ?>
-        <?php $link_recr = "index.php?act=info_recr&id=" . $id; ?>
+        $withdrawCv = "index.php?act=withdrawCv&id=" . $idinfo . "&idrec=" . $id;
+        $link_recr = "index.php?act=info_recr&id=" . $id;
+        ?>
         <div class='employer-item position-relative <?= $status == "Rút CV" ? 'd-none' : '' ?>'>
 
             <img data-cfsrc='<?= checkCorpAvaNull($avatar)  ?>' alt='Employer' style='width: 70px; height: 70px;object-fit: cover;' class="rounded-circle ">
@@ -40,9 +41,9 @@
 
             <div class="nav  nav-pills d-flex justify-content-between" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a href="<?= $link_recr ?>" class="nav-link text-white me-3  py-2 px-3 fw-bold  bg-secondary bg-opacity-75" id="v-pills-info-tab" role="tab" style="font-size: 13px ;padding-bottom: 0;">Thông tin chi tiết </a>
-            <?php if($status == 'Chờ xét duyệt') {?>
-                <button onclick="withdrawCv('<?= $withdrawCv ?>')" class="btn bg-opacity-25 me-3 text-white btn-secon" style="background-color: var(--secondary);">Rút hồ sơ </button>
-            <?php } ?>
+                <?php if ($status == 'Chờ xét duyệt') { ?>
+                    <button onclick="withdrawCv('<?= $withdrawCv ?>')" class="btn bg-opacity-25 me-3 text-white btn-secon" style="background-color: var(--secondary);">Rút hồ sơ </button>
+                <?php } ?>
             </div>
 
         </div>

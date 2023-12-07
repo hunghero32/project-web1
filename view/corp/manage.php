@@ -53,14 +53,13 @@
                             Danh sách ứng cử viên
                         </div>
                     </a>
-                    
+
                 </div>
             </div>
 
             <div class="col-lg-9">
 
                 <div class="tab-content" id="v-pills-tabContent">
-
                     <?php
                     include "manageRecr/profile.php";
                     include "manageRecr/postRecr.php";
@@ -69,7 +68,6 @@
                     include "manageRecr/infoRecr.php";
                     include "manageRecr/listApplyCv.php";
                     include "manageRecr/countCvOnRecr.php";
-
                     ?>
                 </div>
             </div>

@@ -14,7 +14,7 @@ body {
     --secondary-child: rgba(78, 205, 196, 0.5);
     --font: rgba(0, 0, 0, 0.8);
     --semi-background: rgba(53, 53, 53, 0.7);
-
+    color: #353535;
 }
 .btn-secon:active{
     transform: scale(0.95) !important;
@@ -3177,7 +3177,8 @@ button:focus {
     position: relative;
     margin-bottom: 30px
 }
-.candidate-item #span-two{
+
+.candidate-item #span-two {
     color: #fff;
     background-color: #21a212;
     border-radius: 5px;
@@ -3189,6 +3190,33 @@ button:focus {
     right: 10px;
     z-index: 5 !important;
 }
+
+.candidate-item #span-checking {
+    color: #fff;
+    background-color: rgba(53, 53, 53, 0.9);
+    border-radius: 5px;
+    padding: 4px 10px;
+    font-size: 13px;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5 !important;
+}
+
+.candidate-item #span-denied {
+    color: #fff;
+    background-color: red;
+    border-radius: 5px;
+    padding: 4px 10px;
+    font-size: 13px;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 5 !important;
+}
+
 .candidate-item .left {
     max-width: 240px
 }
@@ -8203,7 +8231,8 @@ button:focus {
     #navbar,
     #footer,
     #footPage,
-    #savePDF {
+    #savePDF,
+    #checkForApprove {
         display: none;
     }
 
@@ -8214,4 +8243,53 @@ button:focus {
         orientation: landscape;
         margin: none;
     }
+}
+
+.custom-file-upload {
+    padding: .375rem .75rem;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    vertical-align: middle;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+.custom-file-upload:hover {
+    box-shadow: 0 0 5px red;
+    transition: 0.3s ease;
+}
+
+#openPDFLink span,
+#deletePDF {
+    padding: .375rem .75rem;
+    cursor: pointer;
+    border-radius: 4px;
+    color: white;
+    text-decoration: none;
+    vertical-align: middle;
+    font-weight: 400;
+    line-height: 1.5;
+    font-size: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+
+#deletePDF,
+#openPDFLink span {
+    background-color: var(--semi-background);
+}
+
+#deletePDF:hover,
+#openPDFLink span:hover {
+    box-shadow: 0 0 5px var(--semi-background);
+}
+
+.custom-file-upload input[type="file"] {
+    display: none;
 }

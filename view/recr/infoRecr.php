@@ -24,8 +24,7 @@
                     <div class="col-lg-4">
                         <div class="right">
                             <?php if (isset($_SESSION['username'])) { ?>
-                                <a class="cmn-btn <?= isset($_SESSION['username']['role']) && $_SESSION['username']['role'] !== 2 ? "d-none" : '' ?>"
-                                href="#" data-bs-toggle="modal" data-bs-target="#myModal">
+                                <a class="cmn-btn <?= isset($_SESSION['username']['role']) && $_SESSION['username']['role'] !== 2 ? "d-none" : '' ?>" href="#" data-bs-toggle="modal" data-bs-target="#myModal">
                                     Ứng tuyển
                                     <i class="bx bx-plus"></i>
                                 </a>
@@ -53,50 +52,72 @@
             </div>
             <div class="modal-body">
                 <div class="d-flex justify-content-between align-content-center">
-                    <h6>Sử dụng CV có sẵn </h6>
-                    <!-- <button><a href=""   ><i class="fa-solid fa-pen me-2"></a></button> -->
-                    <button onclick="editCV()" class="btn btn-outline-secondary" style="font-size: 13px;"><i class="fa-solid fa-pen me-2"></i> Chỉnh sửa </button>
-
-                    <!-- <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#demoCv" style="font-size: 13px;">
-                    <i class="fa-solid fa-pen me-2"></i> Chỉnh sửa
-                    </button> -->
+                    <h5>Thông tin </h5>
+                    <button onclick="editCV()" class="btn btn-outline-secondary" style="font-size: 13px;"><i class="fa-solid fa-pen me-2"></i> Chỉnh sửa hồ sơ</button>
                 </div>
                 <div class="row p-2 m-1 mt-3" style="border: 1px dashed var(--secondary); height: 150px;">
                     <div class="col-lg-8 d-flex flex-column ">
-                        <p class="fs-6 mb-0">Họ và tên : <?= $name ?></p>
-                        <p class="fs-6 mb-0">SĐT : <?= $phone ?></p>
-                        <p class="fs-6 mb-0">Email : <?= $email ?></p>
-                        <p class="fs-6 mb-0">Địa chỉ : <?= $address ?></p>
+                        <p class="fs-6 mb-0">Họ và tên : <?= $_SESSION['username']['name'] ?></p>
+                        <p class="fs-6 mb-0">SĐT : <?= $_SESSION['username']['phone'] ?></p>
+                        <p class="fs-6 mb-0">Email : <?= $_SESSION['username']['email'] ?></p>
+                        <p class="fs-6 mb-0">Địa chỉ : <?= $_SESSION['username']['address'] ?></p>
+                        <p><i class="fa-solid fa-ellipsis"></i></p>
                     </div>
                     <div class="col-lg-4 ">
-                        <img src='<?= checkUserAvaNull($infoCv['avatarCV'])  ?>' alt='user ' class=" w-50 h-75 mt-2 rounded float-end img-fluid ">
+                        <img src='<?= checkUserAvaNull($_SESSION['username']['avatar'])  ?>' alt='user ' class=" w-50 h-75 mt-2 rounded float-end img-fluid ">
                     </div>
                 </div>
-
             </div>
-
             <div class="modal-footer">
-                <?php if (isset($_SESSION['check_apply'])) {
-                    echo "Dữ liệu đã được xử lý.";
-                    unset($_SESSION['check_apply']);
-                } else { ?>
-                    <form action="index.php?act=apply_job" method="post">
-                        <input type="hidden" name="idRecr" value="<?= $id ?>">
-                        <input type="hidden" name="idCV" value="<?= $infoCv['id'] ?>">
-                        <button type="submit" name="applyjob" class="btn text-white " data-bs-dismiss="modal" style="background-color: var(--secondary);">Nộp CV</button>
-                    </form>
-                <?php } ?>
-            </div>
-            <!-- <div class="p-4 m-4 mt-2" style="border: 1px dashed var(--secondary); ">
-                <p class="h5 fw-bold"><i class="fas fa-exclamation-triangle me-3"></i>Lưu ý
-                <p>
-                <p>1. TopCV khuyên tất cả các bạn hãy luôn cẩn trọng trong quá trình tìm việc và chủ động nghiên cứu về thông tin công ty, vị trí việc làm trước khi ứng tuyển.
-                    Ứng viên cần có trách nhiệm với hành vi ứng tuyển của mình. Nếu bạn gặp phải tin tuyển dụng hoặc nhận được liên lạc đáng ngờ của nhà tuyển dụng, hãy báo cáo ngay cho TopCV qua email hotro@topcv.vn để được hỗ trợ kịp thời.
-                <p>
+                <form action="index.php?act=apply_job" enctype="multipart/form-data" method="POST">
+                    <input type="hidden" name="idRecr" value="<?= $id ?>">
+                    <input type="hidden" name="idCV" value="<?= $infoCv['id'] ?>">
+                    <span class="text-white" id="deletePDF" style="display: none;"><i class="fa-solid fa-xmark"></i></span>
+                    <a id="openPDFLink" href="#" target="_blank" style="display: none;">
+                        <span class="text-white"><i class="fa-solid fa-folder-open"></i> Chi tiết</span>
+                    </a>
+                    <label id="labelPDF" for="attachCv" class="custom-file-upload m-0">
+                        <span> Đính kèm <i class="fa-solid fa-file-word"></i> hoặc <i class="fa-solid fa-file-pdf"></i> </span>
+                        <input type="file" name="attach" accept=".pdf, .doc, .docx" id="attachCv" class="p-0 m-0" title="Vui lòng chọn file có định dạng PDF.">
+                    </label>
+                    <button type="submit" name="applyjob" class="btn text-white m-0" data-bs-dismiss="modal" style="background-color: var(--secondary);">Nộp hồ sơ</button>
+                </form>
 
-                <p>2. Tìm hiểu thêm kinh nghiệm phòng tránh lừa đảo tại đây.
-                <p>
-            </div> -->
+                <script>
+                    const attach = document.getElementById('attachCv');
+                    const labelPDF = document.getElementById('labelPDF');
+                    const openPDFLink = document.getElementById('openPDFLink');
+                    const label = document.querySelector('#labelPDF span');
+                    var file, fileName
+
+                    attach.addEventListener('change', (event) => {
+                        file = event.target.files[0];
+
+                        if (file.size > 0 && file.size <= 10000000) {
+                            fileName = attach.files[0].name;
+                            label.innerHTML = `<i class="fa-solid fa-file-export"></i> ` + fileName
+                            openPDFLink.href = URL.createObjectURL(file);
+                            deletePDF.style.display = 'inline'; // Ẩn nút xóa
+                            openPDFLink.style.display = 'inline'; // Hiển thị liên kết
+                            openPDFLink.onclick = () => window.open(openPDFLink.href, '_blank');
+                        } else {
+                            alert('Vượt kích thước cho phép\n[ ! ] Kích thước tệp tối đa 10 MB');
+                            attach.value = '';
+                        }
+                    });
+
+                    deletePDF.addEventListener('click', (event) => {
+                        file = '';
+                        fileName = '';
+                        label.innerHTML = ` Đính kèm <i class="fa-solid fa-file-word"></i> hoặc <i class="fa-solid fa-file-pdf"></i>`;
+                        attach.value = '';
+                        deletePDF.style.display = 'none'; // Ẩn nút xóa
+                        openPDFLink.style.display = 'none'; // Ẩn hiển thị liên kết
+                    });
+                </script>
+            </div>
+            <script>
+            </script>
         </div>
     </div>
 </div>

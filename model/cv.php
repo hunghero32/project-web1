@@ -81,7 +81,7 @@ function top_cv()
 
 function manageCv($id)
 {
-    $sql = "SELECT u.* , g.avatar, c.birth, c.introduce,  c.id as idcv, c.gender, c.salary, c.major
+    $sql = "SELECT u.* , g.avatar, c.birth, c.introduce,  c.id as idcv, c.gender, c.salary, c.major, c.attach
             FROM user u 
             LEFT JOIN gallery g ON u.id = g.iduser
             LEFT JOIN cv c ON u.id = c.iduser
@@ -186,4 +186,16 @@ function list_apply_recr($idcv ,$kym , $status)
     $sql .= " ORDER BY r.id DESC LIMIT 0,8";
 
     return pdo_query($sql, $idcv);
+}
+
+function uploadAttachFile($idrec, $idcv, $value)
+{
+    $sql = "UPDATE info
+            SET attach = ? WHERE idrec = ? AND idcv = ?";
+    pdo_execute($sql, $value, $idrec, $idcv);
+}
+
+function recruimentInfo($id) {
+    $sql = "SELECT * FROM info WHERE id = ?";
+    return pdo_query_one($sql,$id);
 }

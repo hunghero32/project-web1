@@ -110,7 +110,7 @@ function info_Corp_recr($id)
 {
     $sql = "SELECT u.name, u.email, u.phone, u.address, c.* 
         FROM user u LEFT JOIN corp c ON u.id = c.iduser 
-        WHERE u.role = 3 AND u.id = ?";    
+        WHERE u.role = 3 AND u.id = ?";
     return pdo_query_one($sql, $id);
 }
 
@@ -185,6 +185,7 @@ function list_v_recr($id)
     $valu = pdo_query($sql, $id);
     return  $valu;
 }
+
 function get_Total_Records()
 {
 
@@ -193,6 +194,7 @@ function get_Total_Records()
     $valu = pdo_query_one($sql);
     return $valu;
 }
+
 function info()
 {
     $sql = "SELECT * FROM info ";
@@ -226,13 +228,16 @@ function list_apply_cv($id ,$kym ,$status )
     $valu = pdo_query($sql, $id );
     return  $valu;
 }
+
 function Count_info_CV($idrec)
 {
     $sql = "SELECT COUNT(idcv) as totalCV FROM info  WHERE idrec = ? ";
     $valu = pdo_query_one($sql, $idrec);
     return $valu;
 }
-function recr_count_cv( $idrec) {
+
+function recr_count_cv($idrec)
+{
     $sql = " SELECT DISTINCT cv.*, u.name as namecv , r.job , g.avatar as avatarCv , i.id as idinfo , i.status FROM cv 
     LEFT JOIN info i ON cv.id= i.idcv LEFT JOIN recr r ON r.id= i.idrec LEFT JOIN user u ON u.id = cv.iduser 
     LEFT JOIN gallery g ON u.id = g.iduser LEFT JOIN corp c ON r.idcorp= c.id 
@@ -240,11 +245,19 @@ function recr_count_cv( $idrec) {
     $valu = pdo_query($sql, $idrec);
     return $valu;
 }
+
 function update_add_Info($status, $id)
 {
     $sql = "UPDATE  info  SET  status =? WHERE id = ?";
     pdo_execute($sql, $status, $id);
 }
+
+function removeRecInfo($id)
+{
+    $sql = "DELETE FROM info WHERE id = ?";
+    pdo_execute($sql, $id);
+}
+
 function existCvInRecr($idrec)
 {
     $sql = "SELECT info.idcv FROM info WHERE idrec LIKE ?";

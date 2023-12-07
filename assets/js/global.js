@@ -44,16 +44,6 @@ function removeDataCv(name, e) {
   });
 }
 
-//================== thông báo khi ứng tuyển thành công========================
-function showSuccessNotification() {
-  Swal.fire({
-    icon: "success",
-    title: "Đăng ký thành công!",
-    showConfirmButton: false,
-    timer: 2000, // Tự động ẩn sau 2 giây
-  });
-}
-
 //=======================check form hết hạn============================
 
 function checkExpiryDate(input) {
