@@ -21,7 +21,7 @@
                             <!-- name -->
                             <li>
                                 <input type="hidden" name="id" value="<?= $iduser ?>">
-                                <input name="name" type="text" class="w-100 searchSelect" pattern=".{0,20}" maxlength="20" title="Tối đa 20 kí tự" value="<?= $name ?>" placeholder="<?= checknull($name) ?>" required>
+                                <input name="name" type="text" class="w-100 searchSelect" pattern=".{0,30}" maxlength="30" title="Tối đa 30 kí tự" value="<?= $name ?>" placeholder="<?= checknull($name) ?>" required>
                             </li>
                             <!--  -->
                         </ul>

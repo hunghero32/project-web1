@@ -181,7 +181,7 @@ switch ($act) {
             echo $overSizeAvatar == 1 ? "<script>alert('[ Ảnh đại diện vượt quá kích thước cho phép - 1 MB]')</script>" : '';
             $_SESSION['sameCv'] = $overSizeAvatar > 0 ? '1' : '';
             $_SESSION['sameCv'] = $sameCv !== '' ? '1' : '';
-            $overSizeAvatar == 0 && $sameCv == '' ? $_SESSION['updatedCv'] = 1 : '';
+            $overSizeAvatar == 0 && $sameCv == '' ? $_SESSION['updatedCv'] = 'true' : '';
         }
         include 'view/cv/manage_Cv.php';
 
