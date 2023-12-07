@@ -28,37 +28,48 @@
                         </div>
                     </div>
                     <div class="col-lg-4">
-                        <div class="right">
-                            <ul>
-
-                                <?php if (isset($_GET['browseR']) ){
-                                    if( $_GET['browseR'] == 'Chờ xét duyệt') { ?>
-                                    <li class="border-end-0">
-                                        <a href="index.php?act=addCV&idinfo=<?= $idinfo ?>" class="btn text-white btn-secondary" style="background-color: var(--secondary);"><i class="fa-solid fa-check"></i></a>
-                                    </li>
+                        <div class="right" id="checkForApprove">
+                            <ul class="d-flex justify-content-end align-items-center">
+                                <?php if (isset($attachFile) && $attachFile !== '') {
+                                    $attachURL = $attach_path . $attachFile;
+                                ?>
                                     <li>
-                                        <a href="index.php?act=deleteCv&idinfo=<?= $idinfo ?>" class="btn btn-secondary"><i class="fa-solid fa-xmark"></i></a>
+                                        <a href="<?= $attachURL ?>" target="_blank">
+                                            <button class="custom-file-upload" onclick="downloadAttach(<?= $link ?>)">
+                                                <i class="fa-solid fa-paperclip"></i>
+                                                CV đính kèm
+                                            </button>
+                                        </a>
                                     </li>
-
                                 <?php } else { ?>
                                     <li>
-                                        <a href="index.php?act=reconsider&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);">Xét duyệt lại</a>
-                                    </li>
-                                <?php  }}else{} ?>
-
-                                <li>
-                                    <click>
                                         <button id="savePDF" onclick="savePDF()">
                                             <i class="bx bxs-report"></i>
-                                            Save / Download
+                                            Lưu Hồ Sơ Ứng viên
                                         </button>
                                         <script>
                                             function savePDF() {
                                                 window.print();
                                             }
                                         </script>
-                                    </click>
-                                </li>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+                            <ul id="AccAndDen" class="mt-3 d-flex justify-content-end align-items-center">
+                                <?php if (isset($_GET['browseR'])) {
+                                    if ($_GET['browseR'] == 'Chờ xét duyệt') { ?>
+                                        <li class="border-end-0">
+                                            <a href="index.php?act=addCV&idinfo=<?= $idinfo ?>" class="btn text-white btn-secondary" style="background-color: var(--secondary);"><i class="fa-solid fa-check"></i> Xét duyệt</a>
+                                        </li>
+                                        <li>
+                                            <a href="index.php?act=deleteCv&idinfo=<?= $idinfo ?>" class="btn btn-secondary"><i class="fa-solid fa-xmark"></i> Từ chối</a>
+                                        </li>
+                                    <?php } else { ?>
+                                        <li>
+                                            <a href="index.php?act=reconsider&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);">Xét duyệt lại</a>
+                                        </li>
+                                    <?php } ?>
+                                <?php } ?>
                             </ul>
                         </div>
                     </div>
