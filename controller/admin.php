@@ -14,6 +14,9 @@ switch ($act) {
         $info = countIn4();
         $user = countUser(2);
         $corp = countUser(3);
+        $approved =  status( 'Đã xét duyệt');
+        $rejected = status('Từ chối');
+        $wait = status( 'Chờ xét duyệt');
         include('view/admin/thongke.php');
         break;
 
@@ -24,6 +27,7 @@ switch ($act) {
         include 'view/admin/navAdmin.php';
 
         $totalUsers = countUserId();
+        $admin = countUser(1);
         $user = countUser(2);
         $corp = countUser(3);
 
@@ -68,7 +72,6 @@ switch ($act) {
 
         $role = 2;
         $userCount = countUser($role);
-
         $id = isset($_GET['id']) ? $_GET['id'] : '';
         $username = isset($_GET['username']) ? $_GET['username'] : '';
         $name = isset($_GET['name']) ? $_GET['name'] : '';
@@ -90,13 +93,14 @@ switch ($act) {
         $userCount = countUser($role);
 
         $id = isset($_GET['id']) ? $_GET['id'] : '';
+        $idcorp = isset($_GET['idcorp']) ? $_GET['idcorp'] : '';
         $username = isset($_GET['username']) ? $_GET['username'] : '';
         $name = isset($_GET['name']) ? $_GET['name'] : '';
         $email = isset($_GET['email']) ? $_GET['email'] : '';
         $phone = isset($_GET['phone']) ? $_GET['phone'] : '';
         $address = isset($_GET['address']) ? $_GET['address'] : '';
 
-        $listcorp = list_admin($id, $username, $name, $email, $phone, $address, $role);
+        $listcorp = list_corp_admin($id,$idcorp, $username, $name, $email, $phone, $address, $role);
         include 'view/admin/listCorp.php';
         break;
 
@@ -115,6 +119,9 @@ switch ($act) {
 
         $listrecr = list_recr($id, $name, $job, $salary, $start, $end);
         $totalRecr = countRecr();
+        $info = countIn4();
+        $approved =  status( 'Đã xét duyệt');
+        $rejected = status('Từ chối');
 
         include 'view/admin/listRecr.php';
         break;

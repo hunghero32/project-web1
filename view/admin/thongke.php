@@ -1,6 +1,7 @@
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <a href="index.php?act=account">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">
@@ -19,9 +20,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div></a>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <a href="index.php?act=listrecr">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">
@@ -40,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div></a>
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
@@ -50,35 +52,13 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Tổng Số Hồ Sơ Đã Nộp</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                <?= $info ?>
+                                    <?= $info ?>
                                 </h5>
                             </div>
                         </div>
                         <div class="col-4 text-end">
                             <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
                                 <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-            <div class="card">
-                <div class="card-body p-3">
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="numbers">
-                                <p class="text-sm mb-0 text-capitalize font-weight-bold">Sales</p>
-                                <h5 class="font-weight-bolder mb-0">
-                                    $103,430
-                                    <span class="text-success text-sm font-weight-bolder">+5%</span>
-                                </h5>
-                            </div>
-                        </div>
-                        <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                                <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
@@ -127,23 +107,14 @@
         </div>
         <div class="col-lg-7">
             <div class="card z-index-2">
-                <div class="card-header pb-0">
-                    <h6>Sales overview</h6>
-                    <p class="text-sm">
-                        <i class="fa fa-arrow-up text-success"></i>
-                        <span class="font-weight-bold">4% more</span> in 2021
-                    </p>
-                </div>
                 <div class="card-body p-3">
-                    <div class="chart">
-                        <canvas id="chart-line" class="chart-canvas" height="300"></canvas>
+                    <div class="bg-gradient-dark border-radius-lg py-3 pe-1 mb-3">
+                        <div class="chart">
+                            <canvas id="bar-chart-horizontal" class="chart-canvas" height="300px"></canvas>
+                        </div>
                     </div>
+                    <h6 class="ms-2 mt-4 mb-0"> Thông tin Tuyển Dụng</h6>
                 </div>
-                <!-- <div class="card-body p-3">
-                    <div class="chart">
-                        <canvas id="bar-chart-horizontal" class="chart-canvas" height="300px"></canvas>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
@@ -161,15 +132,15 @@
     new Chart(ctx, {
         type: "bar",
         data: {
-            labels: ["Doanh Nghiệp", "Ứng Viên", "Bài Tuyển Dụng","Đơn ứng tuyển"],
+            labels: ["Doanh Nghiệp", "Ứng Viên", "Bài Tuyển Dụng", "Đơn ứng tuyển"],
             datasets: [{
                 label: "Số Lượng ",
                 tension: 0.2,
                 borderWidth: 0,
                 borderRadius: 4,
                 borderSkipped: true,
-                backgroundColor: ["#FF99CC", '#CCFF00', '#33CCFF','#00DD00'],
-                data: [<?= $corp ?>, <?= $user ?>,<?= $totalRecr ?>,<?=$info ?>],
+                backgroundColor: ["#00DD00", '#CCFF00', '#33CCFF', '#9b59b6'],
+                data: [<?= $corp ?>, <?= $user ?>, <?= $totalRecr ?>, <?= $info ?>],
                 maxBarThickness: 40
             }, ],
         },
@@ -223,52 +194,27 @@
     });
 
 
-    var ctx2 = document.getElementById("chart-line").getContext("2d");
-
-    var gradientStroke1 = ctx2.createLinearGradient(0, 230, 0, 50);
-
-    gradientStroke1.addColorStop(1, 'rgba(203,12,159,0.2)');
-    gradientStroke1.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-    gradientStroke1.addColorStop(0, 'rgba(203,12,159,0)'); //purple colors
-
-    var gradientStroke2 = ctx2.createLinearGradient(0, 230, 0, 50);
-
-    gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
-    gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
-    gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
+    var ctx2 = document.getElementById("bar-chart-horizontal").getContext("2d");
 
     new Chart(ctx2, {
-        type: "line",
+        type: "bar",
         data: {
-            labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            labels: ["Hồ Sơ Đã Nộp", "Chờ Xét Duyệt", "Đã Xét Duyệt", "Từ Chối"],
             datasets: [{
-                    label: "Mobile apps",
-                    tension: 0.4,
-                    borderWidth: 0,
-                    pointRadius: 0,
-                    borderColor: "#cb0c9f",
-                    borderWidth: 3,
-                    backgroundColor: gradientStroke1,
-                    fill: true,
-                    data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-                    maxBarThickness: 6
-
-                },
-                {
-                    label: "Websites",
-                    tension: 0.4,
-                    borderWidth: 0,
-                    pointRadius: 0,
-                    borderColor: "#3A416F",
-                    borderWidth: 3,
-                    backgroundColor: gradientStroke2,
-                    fill: true,
-                    data: [30, 90, 40, 140, 290, 290, 340, 230, 400],
-                    maxBarThickness: 6
-                },
-            ],
+                axis: 'y',
+                label: "Số Lượng ",
+                tension: 0.2,
+                borderWidth: 0,
+                borderRadius: 4,
+                borderSkipped: true,
+                fill: false,
+                backgroundColor: ["#33CCFF", '#CCFF00', '#00FA9A', '#FF3333'],
+                data: [<?= $info ?>, <?= $wait ?>, <?= $approved ?>, <?= $rejected ?>],
+                maxBarThickness: 40
+            }, ],
         },
         options: {
+            indexAxis: 'y',
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
@@ -277,49 +223,41 @@
                 }
             },
             interaction: {
-                intersect: false,
+                intersect: true,
                 mode: 'index',
             },
             scales: {
-                y: {
-                    grid: {
-                        drawBorder: false,
-                        display: true,
-                        drawOnChartArea: true,
-                        drawTicks: false,
-                        borderDash: [5, 5]
-                    },
-                    ticks: {
-                        display: true,
-                        padding: 10,
-                        color: '#b2b9bf',
-                        font: {
-                            size: 11,
-                            family: "Open Sans",
-                            style: 'normal',
-                            lineHeight: 2
-                        },
-                    }
-                },
                 x: {
                     grid: {
                         drawBorder: false,
                         display: false,
                         drawOnChartArea: false,
-                        drawTicks: false,
-                        borderDash: [5, 5]
+                        drawTicks: false
                     },
                     ticks: {
-                        display: true,
-                        color: '#b2b9bf',
+                        display: false
+                    },
+                },
+                y: {
+                    grid: {
+                        drawBorder: false,
+                        display: false,
+                        drawOnChartArea: false,
+                        drawTicks: false,
+                    },
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 100,
+                        beginAtZero: false,
                         padding: 20,
                         font: {
-                            size: 11,
+                            size: 12,
                             family: "Open Sans",
                             style: 'normal',
                             lineHeight: 2
                         },
-                    }
+                        color: "#fff"
+                    },
                 },
             },
         },

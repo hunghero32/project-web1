@@ -1,6 +1,6 @@
 <div class="container-fluid py-2">
     <div class="row">
-        <div class="col-xl-5 col-sm-6 mb-xl-0 mb-4">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
             <div class="card">
                 <div class="card-body p-3">
                     <div class="row">
@@ -8,9 +8,13 @@
                             <div class="numbers">
                                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Ứng Viên</p>
                                 <h5 class="font-weight-bolder mb-0">
-                                    Số Tài Khoản :
-                                    <span class="text-success font-weight-bold mb-0"> <?= $userCount ?></span> <span class=" text-sm font-weight-bolder">Tài Khoản</span>
+                                    <?= $userCount ?> Tài Khoản
                                 </h5>
+                            </div>
+                        </div>
+                        <div class="col-4 text-end">
+                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                <i class="fa-solid fa-user-tie" aria-hidden="true"></i>
                             </div>
                         </div>
                     </div>
