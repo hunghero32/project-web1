@@ -46,12 +46,13 @@ switch ($act) {
         extract($corp);
         
         // var_dump($$corp);
-        $listApply = list_apply_cv($id );
-        $end = isset($_POST['end']) ? $_POST['end'] : '';
+        $status = isset($_POST['status']) ? $_POST['status'] : '';
         $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
-        // $id = isset($_SESSION['username']) ? $_SESSION['username']['id'] : '';
-        
-        $list_value_recr = search_address_recr($kym, $end, $idcorp);
+        $listApply = list_apply_cv($id ,$kym ,$status);
+        $end = isset($_POST['end']) ? $_POST['end'] : '';
+        $key = isset($_POST['kym']) ? $_POST['kym'] : '';
+
+        $list_value_recr = search_address_recr($key = '', $end = '', $idcorp);
         if (isset($_GET['idrec'])) {
             $idrec = isset($_GET['idrec']) ? $_GET['idrec'] : '';
             $valu_r_cv = recr_count_cv( $idrec);
@@ -78,11 +79,12 @@ switch ($act) {
         extract($corp);
         // var_dump($corp);
         $end = isset($_POST['end']) ? $_POST['end'] : '';
+        $key = isset($_POST['kym']) ? $_POST['kym'] : '';
+
+        $list_value_recr = search_address_recr($key = '', $end = '', $idcorp);
+        $status = isset($_POST['status']) ? $_POST['status'] : '';
         $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
-        // $id = isset($_SESSION['username']) ? $_SESSION['username']['id'] : '';
-        
-        $list_value_recr = search_address_recr($kym, $end, $idcorp);
-        $listApply = list_apply_cv($id );
+        $listApply = list_apply_cv($id ,$kym ,$status);
         // Xử lí các thumbnail
         $arr = array($thumbnail1, $thumbnail2, $thumbnail3, $thumbnail4, $thumbnail5);
         $gallery = gallery($arr);

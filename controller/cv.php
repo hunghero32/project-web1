@@ -7,8 +7,7 @@ switch ($act) {
     case 'withdrawCv' :
         $idinfo = isset($_GET['id']) ? $_GET['id'] : '';
         
-        $status = "Rút CV";
-        update_add_Info($status, $idinfo);
+        info_delete($idinfo);
         $thongbaoApply = "<script> alert('Bạn đã rút CV thành công!');
         location.href = 'index.php?act=manage_Cv#v-pills-messages'; </script>";
         echo $thongbaoApply ;
@@ -56,7 +55,9 @@ switch ($act) {
         if(isset($_GET['sameCv']) && $_GET['sameCv'] === 1){
             $_SESSION['sameCv'] = $_GET['sameCv'];
         } 
-        $list_apply_recr = list_apply_recr($idcv) ;
+        $kym = isset($_POST['kym']) ? $_POST['kym'] : '';
+        $status = isset($_POST['status']) ? $_POST['status'] : '';
+        $list_apply_recr = list_apply_recr($idcv ,$kym , $status) ;
         $expCv = getExpCv($idcv);
         $skillCv = getSkillCv($idcv);
         $degree = getDegreeCv($idcv);

@@ -199,12 +199,29 @@ function info()
     $valu = pdo_query($sql);
     return  $valu;
 }
-function list_apply_cv($id )
+function list_apply_cv($id ,$kym ,$status )
 {
     $sql = "SELECT DISTINCT  cv.*, u.name as namecv , r.job , g.avatar as avatarCv , i.id as idinfo , i.status FROM cv  LEFT JOIN info i ON cv.id= i.idcv 
          LEFT JOIN recr r ON r.id= i.idrec LEFT JOIN user u ON u.id = cv.iduser
          LEFT JOIN gallery g ON u.id = g.iduser LEFT JOIN corp c ON r.idcorp= c.id
+         LEFT JOIN skillcv s ON cv.id = s.idcv LEFT JOIN degree d ON cv.id = d.idcv 
+         LEFT JOIN expcv ec ON ec.idcv = cv.id
         WHERE c.id = ? AND  i.idcv IS NOT NULL";
+         if ($kym !== "") {
+            $sql .= " AND u.name LIKE '%" . $kym . "%'";
+            $sql .= " OR ec.level LIKE '%" . $kym . "%'";
+            $sql .= " OR ec.job LIKE '%" . $kym . "%'";
+            $sql .= " OR cv.salary LIKE '%" . $kym . "%'";
+            $sql .= " OR r.type LIKE '%" . $kym . "%'";
+            $sql .= " OR r.progLang LIKE '%" . $kym . "%'";
+            $sql .= " OR r.level LIKE '%" . $kym . "%'";
+            $sql .= " OR c.major LIKE '%" . $kym . "%' ";
+            $sql .= " OR u.address LIKE '%" . $kym . "%' ";
+            $sql .= " OR s.progLang LIKE '%" . $kym . "%' ";
+        }
+        $sql .= $status !== "" ? " AND i.status LIKE '%" . $status . "%' " : "";
+        $sql .= " ORDER BY r.id DESC LIMIT 0,8";
+    
         
     $valu = pdo_query($sql, $id );
     return  $valu;
@@ -232,4 +249,9 @@ function existCvInRecr($idrec)
 {
     $sql = "SELECT info.idcv FROM info WHERE idrec LIKE ?";
     return pdo_query($sql, $idrec);
+}
+function info_delete($id)
+{
+    $sql = "DELETE FROM  info  WHERE id = ?";
+    pdo_execute($sql, $id);
 }

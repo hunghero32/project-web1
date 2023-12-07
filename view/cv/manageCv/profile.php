@@ -231,11 +231,11 @@
                         </ul>
                         <ul class="w-25">
                             <li><strong style="width: 10%">* Mức lương mong muốn </strong></li>
-                            <li><i class="fa-solid fa-calendar me-2"></i><?= checknull($cvInfo['salary']) ?></li>
+                            <li><i class="fa-solid fa-briefcase me-2"></i><?= checknull($cvInfo['salary']) ?></li>
                         </ul>
                         <ul class="w-25">
                             <li><strong style="width: 10%">* Địa điểm </strong></li>
-                            <li><i class="fa-solid fa-calendar me-2"></i><?= checknull($cvInfo['address']) ?></li>
+                            <li><i class="fa-solid fa-location-dot me-2"></i><?= checknull($cvInfo['address']) ?></li>
                         </ul>
                     </div>
                 </div>
