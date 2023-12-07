@@ -9,32 +9,43 @@
                     <p>Cầu nối nhà tuyển dụng & ứng cử viên</p>
                     <h1>Ứng tuyển & tìm công việc IT với <span> JIT</span> </h1>
                     <div class="banner-form-area">
-                        <form>
+                        <form action="index.php?act=listRecr" method="post">
                             <div class="row">
                                 <div class="col-lg-4">
                                     <div class="form-group">
                                         <label>
                                             <i class="bx bx-search"></i>
                                         </label>
-                                        <input type="text" class="form-control" placeholder="       .   .   .">
+                                        <input type="text" class="form-control" name="key" placeholder="       .   .   .">
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group">
-                                        <select>
-                                            <option>Chuyên ngành</option>
-                                            <option>Another option</option>
-                                            <option>A option</option>
-                                            <option>Potato</option>
-                                        </select>
+                                        <div class=" position-relative cmn-padding">
+                                            <input name="job" type="text" class="form-control w-100 " id="searchlevel" placeholder="<?= checkfind('', 'Chuyên ngành'); ?> &darr;">
+                                            <div class="dropdown-content w-100" id="dropdownlevel">
+                                                <div class="dropdown-item">Không chọn</div>
+                                                <?php foreach ($datafilter as $cv) {
+                                                    extract($cv);
+                                                    if ($job !== '') { ?>
+                                                        <div class="dropdown-item"><?= $job ?></div>
+                                                    <?php } ?>
+                                                <?php } ?>
+                                                <div class="dropdown-item">Khác</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-lg-4">
                                     <div class="form-group two">
-                                        <label>
-                                            <i class="bx bx-location-plus"></i>
-                                        </label>
-                                        <input type="text" class="form-control" placeholder="Địa diểm">
+                                        <select name="address" id="">
+                                            <option value="">Địa chỉ</option>
+                                            <?php foreach ($datafilter as $r) {
+                                                if (isset($r['address']) && ($r['address'] !== "")) { ?>
+                                                    <option value="<?= $r['address']?>"><?= $r['address']?></option>
+                                            <?php }
+                                            } ?>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -256,8 +267,8 @@
 <div class="partner-area two pb-70">
     <div class="container">
         <div class="partner-slider owl-theme owl-carousel">
-            <?php foreach ($brands as $b) { 
-                if ($b['avatar'] !== '')?>
+            <?php foreach ($brands as $b) {
+                if ($b['avatar'] !== '') ?>
                 <div class="partner-item" onclick="return window.location.href = 'index.php?act=infoCorp&id=<?= $b['id'] ?>'">
                     <img data-cfsrc="<?= checkCorpAvaNull($b['avatar']) ?>" alt="Partner" style="display:none;visibility:hidden;"><noscript><img src="<?= checkCorpAvaNull($b['avatar']) ?>" alt="Partner"></noscript>
                 </div>

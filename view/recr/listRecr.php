@@ -1,4 +1,4 @@
-<?php extract($total_recr) ?>
+
 <div class="page-title-area">
     <div class="d-table">
         <div class="d-table-cell">
