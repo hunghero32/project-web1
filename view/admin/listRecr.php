@@ -29,12 +29,12 @@
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">ID</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Doanh Nghiệp</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">JOB</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mức Lương</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bắt Đầu</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kết Thúc</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Số Lượng Đơn</th>
-                                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tùy Chọn</th>
+                                        <th class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">JOB</th>
+                                        <th class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Mức Lương</th>
+                                        <th class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Bắt Đầu</th>
+                                        <th class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kết Thúc</th>
+                                        <th class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Số Lượng Đơn</th>
+                                        <th class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tùy Chọn</th>
 
                                         <th class="text-secondary opacity-7"></th>
                                     </tr>
@@ -55,24 +55,24 @@
                                             <td>
                                                 <h6 class="mb-0 text-sm"><?= $recr['userName'] ?></h6>
                                             </td>
-                                            <td class="align-middle text-center text-sm">
+                                            <td class="align-middle text-left text-sm">
                                                 <h6 class="mb-0 text-sm"><?= $recr['job'] ?></h6>
                                             </td>
-                                            <td class="align-middle text-center text-sm">
+                                            <td class="align-middle text-left text-sm">
                                                 <h6 class="mb-0 text-sm"><?= $recr['salary'] ?></h6>
                                             </td>
-                                            <td class="align-middle text-center">
+                                            <td class="align-middle text-left">
                                                 <span class="badge badge-sm bg-gradient-success"><?= $recr['start'] ?></span>
                                             </td>
-                                            <td class="align-middle text-center">
+                                            <td class="align-middle text-left">
                                                 <span class="badge badge-sm bg-gradient-success"><?= $recr['end'] ?></span>
                                             </td>
-                                            <td class="align-middle text-center">
+                                            <td class="align-middle text-left">
                                                 <h6 class="badge badge-sm bg-gradient-secondary">Tổng :<?= $infoCount ?></h6><br>
                                                 <span class="text-xs text-danger text-secondary mb-0">Hủy :<?=$rejected?></span> |
                                                 <span class="text-xs text-success text-secondary mb-0">Nhận :<?=$approved?></span>
                                             </td>
-                                            <td class="align-middle text-center text-sm" >
+                                            <td class="align-middle text-left text-sm" >
                                                 <a href="index.php?act=info_recr&id=<?= $recr['id'] ?>"target="_blank"><span type="button" class="badge badge-sm bg-gradient-dark">Xem Chi Tiết</span></a>
                                                 <a href="index.php?act=recr_delete&id=<?= $recr['id'] ?>"><span type="button" class="badge bg-gradient-danger">Xóa</span></a>
                                             </td>
