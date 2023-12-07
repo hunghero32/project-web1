@@ -38,7 +38,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($listadmin as $user) :; ?>
+                                    <?php foreach ($listadmin as $user) :;
+                                        if ($user['id'] == 9) {
+                                            $delete ='';
+                                        }elseif ($user['id'] == $_SESSION['username']['id']) {
+                                            $delete ='';
+                                         } else {
+                                            $delete = '<span type="button" class="badge bg-gradient-danger">Xóa</span></a>';
+                                        }
+                                    ?>
                                         <tr>
                                             <td>
                                                 <div class="d-flex px-3 py-1"><?= $user['id'] ?>
@@ -57,7 +65,7 @@
                                                     <span class="badge badge-sm bg-gradient-success"><?= $user['phone'] ?></span></a>
                                             </td>
                                             <td class="align-middle text-center text-sm"><a href="index.php?act=delete&id=<?= $user['id'] ?>">
-                                                    <span type="button" class="badge bg-gradient-danger">Xóa</span></a>
+                                                    <?php echo $delete ?>
                                             </td>
                                         </tr>
                                     <?php endforeach; ?>
