@@ -1,10 +1,10 @@
 <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-    <form action="index.php?act=manage_Cv" method="post" class="mb-5 d-flex justify-content-between align-items-center">
+    <form action="index.php?act=manage_Cv" method="post" class="mb-5 ">
         <div class="d-flex align-items-center">
-            <input type="search" name="kym" class="p-2 px-5 rounded-start border border-secondary me-3" placeholder="Tìm kiếm ...">
-            <select name="status">
+            <input type="search" name="kym" class="p-2 px-5 rounded-start border border-secondary me-3" placeholder="Tìm kiếm ..." style="border: 1px solid rgba(53, 53, 53, 0.1);">
+            <select name="status"  class="w-25">
+                <option value="">Tất cả</option>
                 <option value="Chờ xét duyệt">Nộp thành công</option>
-                <option value="Rút CV">Rút CV</option>
                 <option value="Đã xét duyệt">Đã duyệt thàng công</option>
             </select>
             <button class="btn btn-info rounded-end p-2 mx-3 text-white" name="submit" style="background-color: var(--secondary);">Tìm kiếm</button>
@@ -35,7 +35,7 @@
             <p><?= $level ?> / <?= $type ?></p>
             <p><?= $progLang ?>
             </p>
-            <span class='span-two'><?= $status ?> </span>
+            <span class='span-two'><?= $status == 'Đã xét duyệt' ? 'Công ty đã duyệt' : $status ?> </span>
 
 
 

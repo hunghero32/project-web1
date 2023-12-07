@@ -1,20 +1,15 @@
-<div class="tab-pane fade <?= (!isset($_GET['id']) && !isset($_GET['idEdit'])  && !isset($_GET['profile']) && !isset($_GET['idrec']) && isset($_SESSION['same'])) || isset($thongbaoApply) ? 'show active' : '' ?> " id="v-pills-apply" role="tabpanel" aria-labelledby="v-pills-apply-tab">
-    <form action="index.php?act=manage_recr" method="post" class="mb-5 d-flex justify-content-between align-items-center">
+<div class="tab-pane fade  <?= (!isset($_GET['id']) && !isset($_GET['idEdit'])  && !isset($_GET['profile']) && !isset($_GET['idrec']) && isset($_SESSION['same'])) || isset($thongbaoApply) ? 'show active' : '' ?> " id="v-pills-apply" role="tabpanel" aria-labelledby="v-pills-apply-tab">
+    <form action="index.php?act=manage_recr" method="post" class="mb-5 ">
         <div class="d-flex align-items-center">
             <input type="search" name="kym" class="p-2 px-5 rounded-start border border-secondary me-3" placeholder="Tìm kiếm ...">
-            <div class="form-group position-relative">
-                <input name="end" type="text" class="p-2" id="searchexp" placeholder="<?= checkfind('', 'Ngày hết hạn'); ?> &darr;">
-                <div class="dropdown-content" id="dropdownexp">
-                    <div class="dropdown-item">Không chọn</div>
-                    <?php foreach ($valu_racr as $cv) {
-                        // extract($cv);
-                        if ($cv['end'] !== '') { ?>
-                            <div class="dropdown-item"><?= $cv['end'] ?></div>
-                        <?php } ?>
-                    <?php } ?>
-                    <div class="dropdown-item">Khác</div>
-                </div>
-            </div>
+            
+                <select name="status" class="w-25">
+                    <option value="">Tất cả</option>
+                    <option value="Chờ xét duyệt">Chờ xét duyệt</option>
+                    <option value="Đã xét duyệt">Đã xét duyệt </option>
+                    <option value="Từ chối">Từ chối </option>
+                </select>
+           
             <button class="btn btn-info rounded-end p-2 mx-3 text-white" name="submit" style="background-color: var(--secondary);">Tìm kiếm</button>
         </div>
 
@@ -30,7 +25,6 @@
             // var_dump($listApply);
         foreach ($listApply as $cv) {
             extract($cv) ?>
-
             <div class="candidate-item two" style="cursor:pointer;" onclick="return window.location.href='index.php?act=infoCv&id=<?= $iduser ?>&idinfo=<?= $idinfo ?>&browseR=<?= $status ?>'">
                 <div class="w-100">
                     <h4><?= $namecv ?></h4>
@@ -52,9 +46,9 @@
                             <?php if ($status == "Chờ xét duyệt") { ?>
                                 <a href="index.php?act=addCV&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);"><i class="fa-solid fa-check"></i></a>
                                 <a href="index.php?act=deleteCv&idinfo=<?= $idinfo ?>" class="btn btn-secondary py-1 px-2"><i class="fa-solid fa-xmark"></i></a>
-                            <?php } else {?>
+                            <?php } else { ?>
                                 <a href="index.php?act=reconsider&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);">Xét duyệt lại</a>
-                                <?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

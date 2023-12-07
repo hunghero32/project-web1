@@ -9,7 +9,7 @@
                 </ul>
                 <ul class="w-25">
                     <li><strong style="width: 10%">* Hình thức làm việc  </strong></li>
-                    <li><i class="fas fa-map-marker-alt me-2"></i><?= checknull($type)  ?></li>
+                    <li><i class="fa-solid fa-briefcase me-2"></i><?= checknull($type)  ?></li>
                 </ul>
                 <ul class="w-25">
                     <li><strong style="width: 10%">* Ngày đăng </strong></li>
@@ -19,7 +19,7 @@
             <div class="details-inner d-flex flex-column flex-sm-row justify-content-between mb-3 mt-4">
                 <ul class="w-25">
                     <li><strong style="width: 10%">* Kinh nghiệm yêu cầu </strong></li>
-                    <li><i class="fa-solid fa-calendar me-2"></i><?= checknull($exp) ?></li>
+                    <li><i class="fa-solid fa-briefcase me-2"></i><?= checknull($exp) ?></li>
                 </ul>
                 <ul class="w-25">
                     <li><strong style="width: 10%">* Ngôn ngữ lập trình </strong></li>

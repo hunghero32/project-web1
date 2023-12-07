@@ -165,7 +165,7 @@ function info_cv($id)
     $cv = pdo_query_one($sql, $id);
     return $cv;
 }
-function list_apply_recr($idcv )
+function list_apply_recr($idcv ,$kym , $status)
 {
     $sql = "SELECT r.*, u.name as namecv, g.avatar, i.status, cv.id as idcv , i.id as idinfo
             FROM info i
@@ -174,16 +174,16 @@ function list_apply_recr($idcv )
             LEFT JOIN corp c ON r.idcorp = c.id
             LEFT JOIN user u ON c.iduser = u.id
             LEFT JOIN gallery g ON u.id = g.iduser WHERE i.idcv = ?";
-    // if ($kym !== "") {
-    //     $sql .= " AND r.job LIKE '%" . $kym . "%'";
-    //     $sql .= " OR r.exp LIKE '%" . $kym . "%'";
-    //     $sql .= " OR r.salary LIKE '%" . $kym . "%'";
-    //     $sql .= " OR r.type LIKE '%" . $kym . "%'";
-    //     $sql .= " OR r.progLang LIKE '%" . $kym . "%'";
-    //     $sql .= " OR r.level LIKE '%" . $kym . "%'";
-    // }
-    // $sql .= $status !== "" ? " AND i.status LIKE '%" . $status . "%' " : "";
-    // $sql .= " ORDER BY r.id DESC LIMIT 0,8";
+    if ($kym !== "") {
+        $sql .= " AND r.job LIKE '%" . $kym . "%'";
+        $sql .= " OR r.exp LIKE '%" . $kym . "%'";
+        $sql .= " OR r.salary LIKE '%" . $kym . "%'";
+        $sql .= " OR r.type LIKE '%" . $kym . "%'";
+        $sql .= " OR r.progLang LIKE '%" . $kym . "%'";
+        $sql .= " OR r.level LIKE '%" . $kym . "%'";
+    }
+    $sql .= $status !== "" ? " AND i.status LIKE '%" . $status . "%' " : "";
+    $sql .= " ORDER BY r.id DESC LIMIT 0,8";
 
     return pdo_query($sql, $idcv);
 }
