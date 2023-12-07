@@ -81,7 +81,7 @@ function top_cv()
 
 function manageCv($id)
 {
-    $sql = "SELECT u.* , g.avatar, c.birth, c.introduce,  c.id as idcv, c.gender, c.salary, c.major, c.attach
+    $sql = "SELECT u.* , g.avatar, c.birth, c.introduce,  c.id as idcv, c.gender, c.salary, c.major
             FROM user u 
             LEFT JOIN gallery g ON u.id = g.iduser
             LEFT JOIN cv c ON u.id = c.iduser

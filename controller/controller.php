@@ -10,6 +10,10 @@ include 'model/user.php';
 include 'model/datafilter.php';
 include 'model/notification.php';
 
+include 'mail/PHPMailer/src/Exception.php';
+include 'mail/PHPMailer/src/PHPMailer.php';
+include 'mail/PHPMailer/src/SMTP.php';
+
 $datafilter = data();
 $top_corp = top_Corp();
 $top_cv = top_cv();

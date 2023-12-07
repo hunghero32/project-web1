@@ -22,7 +22,7 @@
             </div>
         </div>
         <?php } else {
-            // var_dump($listApply);
+        // var_dump($listApply);
         foreach ($listApply as $cv) {
             extract($cv) ?>
             <div class="candidate-item two" style="cursor:pointer;" onclick="return window.location.href='index.php?act=infoCv&id=<?= $iduser ?>&idinfo=<?= $idinfo ?>&browseR=<?= $status ?>'">
@@ -38,14 +38,20 @@
 
                         <li>Ngôn ngữ : <?= $progLang ?></li>
                     </ul>
-                    <span id='<?php if ($status == 'Đã xét duyệt') { echo 'span-two'; } else if ($status == 'Từ chối') { echo 'span-denied' ;} else { echo 'span-checking'; }?>'>
+                    <span id='<?php if ($status == 'Đã xét duyệt') {
+                                    echo 'span-two';
+                                } else if ($status == 'Từ chối') {
+                                    echo 'span-denied';
+                                } else {
+                                    echo 'span-checking';
+                                } ?>'>
                         <?= $status ?>
                     </span>
                     <div class="d-flex justify-content-between align-content-center">
                         <div class="d-flex">
                             <?php if ($status == "Chờ xét duyệt") { ?>
-                                <a href="index.php?act=addCV&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);"><i class="fa-solid fa-check"></i></a>
-                                <a href="index.php?act=deleteCv&idinfo=<?= $idinfo ?>" class="btn btn-secondary py-1 px-2"><i class="fa-solid fa-xmark"></i></a>
+                                <a href="index.php?act=addCV&idinfo=<?= $idinfo ?>&idcv=<?= $iduser ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);"><i class="fa-solid fa-check"></i></a>
+                                <a href="index.php?act=deleteCv&idinfo=<?= $idinfo ?>&idcv=<?= $iduser ?>" class="btn btn-secondary py-1 px-2"><i class="fa-solid fa-xmark"></i></a>
                             <?php } else { ?>
                                 <a href="index.php?act=reconsider&idinfo=<?= $idinfo ?>" class="btn text-white me-3 py-1 px-2" style="background-color: var(--secondary);">Xét duyệt lại</a>
                             <?php } ?>

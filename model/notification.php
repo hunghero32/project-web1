@@ -36,7 +36,7 @@ function notification($notification)
 
             $reload = '';
 
-            if ($_SESSION[$key] > 0) {
+            if (is_numeric($_SESSION[$key])) {
                 $reload = "window.location.href = '$link$_SESSION[$key]'";
             } else {
                 $reload = $link !== '' ? "window.location.href = '$link'" : '';
