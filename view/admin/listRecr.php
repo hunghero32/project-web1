@@ -40,7 +40,13 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($listrecr as $recr) : ?>
+                                    <?php foreach ($listrecr as $recr) : 
+                                        $idrec = $recr['id']; 
+                                        $status = isset($recr['status']) ? $recr['status'] : ''; // Check if 'status' key exists
+                                    
+                                        $infoCount = countInfo($idrec);
+
+                                        ?>
                                         <tr>
                                             <td>
                                                 <div class="d-flex px-3 py-1"><?= $recr['id'] ?>
@@ -62,12 +68,12 @@
                                                 <span class="badge badge-sm bg-gradient-success"><?= $recr['end'] ?></span>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <h6 class="badge badge-sm bg-gradient-success">Tổng :<?= $recr['job'] ?></h6><br>
-                                                <span class="text-xs text-danger text-secondary mb-0">Hủy<?= $recr['start'] ?></span> |
-                                                <span class="text-xs text-success text-secondary mb-0">Nhận<?= $recr['end'] ?></span>
+                                                <h6 class="badge badge-sm bg-gradient-secondary">Tổng :<?= $infoCount ?></h6><br>
+                                                <span class="text-xs text-danger text-secondary mb-0">Hủy :</span> |
+                                                <span class="text-xs text-success text-secondary mb-0">Nhận :</span>
                                             </td>
                                             <td class="align-middle text-center text-sm" >
-                                                <a href="index.php?act=info_recr&id=<?= $recr['id'] ?>"target="_blank"><span type="button" class="badge badge-sm bg-gradient-secondary">Xem Chi Tiết</span></a>
+                                                <a href="index.php?act=info_recr&id=<?= $recr['id'] ?>"target="_blank"><span type="button" class="badge badge-sm bg-gradient-dark">Xem Chi Tiết</span></a>
                                                 <a href="index.php?act=recr_delete&id=<?= $recr['id'] ?>"><span type="button" class="badge bg-gradient-danger">Xóa</span></a>
                                             </td>
                                         </tr>

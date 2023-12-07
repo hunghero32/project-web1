@@ -51,13 +51,13 @@
                                                 <h6 class="mb-0 text-sm"><?= $user['name'] ?></h6>
                                             </td>
                                             <td class="align-middle text-center"><a href="mailto:<?= $user['email'] ?>">
-                                                    <span class="badge badge-sm bg-gradient-success"><?= $user['email'] ?></span></a>
+                                                    <span class="badge badge-sm text-secondary"><?= $user['email'] ?></span></a>
                                             </td>
                                             <td class="align-middle text-center"><a href="tel:<?= $user['phone'] ?>">
-                                                    <span class="badge badge-sm bg-gradient-success"><?= $user['phone'] ?></span></a>
+                                                    <span class="badge badge-sm text-secondary"><?= $user['phone'] ?></span></a>
                                             </td>
                                             <td class="align-middle text-center text-sm" >
-                                                <a href="index.php?act=infoCorp&id=<?= $user['id'] ?>"target="_blank"><span type="button" class="badge badge-sm bg-gradient-secondary">Xem Chi Tiết</span></a>
+                                                <a href="index.php?act=infoCorp&id=<?= $user['id'] ?>"target="_blank"><span type="button" class="badge badge-sm bg-gradient-dark">Xem Chi Tiết</span></a>
                                                 <a href="index.php?act=delete&id=<?= $user['id'] ?>"><span type="button" class="badge bg-gradient-danger">Xóa</span></a>
                                             </td>
                                         </tr>
