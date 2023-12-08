@@ -409,10 +409,10 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `pass`, `name`, `email`, `phone`, `address`, `role`) VALUES
 (1, 'longlhph31572', '12345678', 'Lương Hoàng Long', 'longlhph31572@fpt.edu.vn', '0346540479', 'Văn Quán , Hà Nội', 2),
 (2, 'dungntph31678', '12345678', 'Ngô Thị Dung', 'dungntph31678@fpt.edu.vn', '0346540478', '', 2),
-(3, 'hungnvph38409', '12345678', 'Nguyễn Việt Hưng', 'hungnvph38409@fpt.edu.vn', '0346540477', '', 2),
+(3, 'user', '123', 'Nguyễn Việt Hưng', 'hungnvph38409@fpt.edu.vn', '0375343852', '', 2),
 (4, 'tuannaph38619', '12345678', 'Nguyễn Anh Tuấn', 'tuannaph38619@fpt.edu.vn', '0346540476', '', 2),
 (5, 'nitecovietnam', '12345678', 'Niteco Vietnam Co', 'long1234@gmail.com', '0982130660', 'Hà Nội', 3),
-(6, 'nfqasia', '12345678', 'NFQ Asia', 'nfqasia@gmail.com', '0982130661', 'TP. Hồ Chí Minh', 3),
+(6, 'corp', '123', 'NFQ Asia', 'corp@gmail.com', '0982130661', 'TP. Hồ Chí Minh', 3),
 (7, 'kmstech', '12345678', 'KMS Technology', 'kmstech@gmail.com', '0982130662', 'TP. Hồ Chí Minh', 3),
 (8, 'zuhlkeco', '12345678', ' Zuhlke Engineering VIE', 'zuhlkeco@gmail.com', '0982130663', 'Đà Nẵng', 3),
 (9, 'admin', '123', '', '', '', '', 1);

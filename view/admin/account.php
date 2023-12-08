@@ -13,7 +13,7 @@
                             </div>
                         </div>
                         <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                            <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
                                 <i class="fa-solid fa-users" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -35,7 +35,7 @@
                             </div>
                         </div>
                         <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                            <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
                                 <i class="fa-solid fa-user-tie" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="col-4 text-end">
-                                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                                <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
                                     <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
                                 </div>
                             </div>
@@ -80,7 +80,7 @@
                             </div>
                         </div>
                         <div class="col-4 text-end">
-                            <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                            <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
                                 <i class="fa-solid fa-user-secret" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -96,9 +96,10 @@
             <div class="card mb-4">
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0">
+                        <table class="table align-items-center mb-0" id="myTable">
                             <thead>
                                 <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ">STT</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Tên Đăng Nhập</th>
                                     <th class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tên Đầy Đủ</th>
                                     <th class="text-left text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Email</th>
@@ -125,6 +126,7 @@
                                         $delete = '<span type="button" class="badge bg-gradient-danger">Xóa</span>';
                                     } ?>
                                     <tr>
+                                        <td class="align-middle text-center text-sm"></td>
                                         <td>
                                             <h6 class="mb-0 text-sm"><?= $user['username'] ?></h6>
                                         </td>
