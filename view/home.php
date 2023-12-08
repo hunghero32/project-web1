@@ -23,7 +23,7 @@
                                     <div class="form-group">
                                         <div class=" position-relative cmn-padding">
                                             <input name="job" type="text" class="form-control w-100 " id="searchlevel" placeholder="<?= checkfind('', 'Chuyên ngành'); ?> &darr;">
-                                            <div class="dropdown-content w-100" id="dropdownlevel">
+                                            <div class="dropdown-content w-100 mt-2 " id="dropdownlevel">
                                                 <div class="dropdown-item">Không chọn</div>
                                                 <?php foreach ($datafilter as $cv) {
                                                     extract($cv);
@@ -100,9 +100,9 @@
 <section id="job" class="employer-area pb-100">
     <div class="container">
         <div class="section-title three">
-            <div class="sub-title-wrap">
-                <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
-                <span class="sub-title">Nhà tuyển dụng cung cấp việc làm</span>
+            <div class="sub-title-wrap ">
+                <img data-cfsrc="assets/img/favicon.png" alt="Icon" style="display:none;visibility:hidden; width: 25px;" ><noscript><img src="assets/img/favicon.png" alt="Icon" ></noscript>
+                <span class="sub-title mt-1">Nhà tuyển dụng cung cấp việc làm</span>
             </div>
             <h2>Nhà tuyển dụng nổi bật</h2>
         </div>
@@ -194,8 +194,8 @@
     <div class="container">
         <div class="section-title three">
             <div class="sub-title-wrap">
-                <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
-                <span class="sub-title">Quy trình ứng tuyển</span>
+            <img data-cfsrc="assets/img/favicon.png" alt="Icon" style="display:none;visibility:hidden; width: 25px;" ><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
+                <span class="sub-title mt-1">Quy trình ứng tuyển</span>
             </div>
             <h2>Cách thức hoạt động</h2>
         </div>
@@ -234,8 +234,8 @@
             <div class="col-lg-7">
                 <div class="section-title three">
                     <div class="sub-title-wrap">
-                        <img data-cfsrc="assets/img/home-three/title-img.png" alt="Icon" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
-                        <span class="sub-title">Nhà tuyển dụng tuyển việc làm</span>
+                    <img data-cfsrc="assets/img/favicon.png" alt="Icon" style="display:none;visibility:hidden; width: 25px;" ><noscript><img src="assets/img/home-three/title-img.png" alt="Icon"></noscript>
+                        <span class="sub-title mt-1">Nhà tuyển dụng tuyển việc làm</span>
                     </div>
                     <h2>Các việc làm nổi bật</h2>
                 </div>

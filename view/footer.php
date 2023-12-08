@@ -1,7 +1,7 @@
 <footer id="footer" class="footer-area three pt-100 pb-70">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 col-lg-4">
+            <div class="col-sm-6 col-lg-5">
                 <div class="footer-item three">
                     <div class="footer-logo">
                         <a class="logo" href="index.html">
@@ -9,26 +9,26 @@
                         </a>
                         <ul>
                             <li>
-                                <span>Address: </span>
-                                2659 Autostrad St, London, UK
+                                <span>Địa chỉ: </span>
+                                Tòa nhà FPT Polytechnic, 13 phố Trịnh Văn Bô, phường Phương Canh, quận Nam Từ Liêm, Hà Nội
                             </li>
                             <li>
-                                <span>Message: </span>
-                                <a href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#f8909d949497b8929d9b8c97d69b9795"><span class="__cf_email__" data-cfemail="177f727b7b78577d727463783974787a">[email&#160;protected]</span></a>
+                                <span>Email : </span>
+                                <a href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#f8909d949497b8929d9b8c97d69b9795">jobsit.connect.jobs@gmail.com</a>
                             </li>
                             <li>
-                                <span>Phone: </span>
-                                <a href="tel:2151234567">215 - 123 - 4567</a>
+                                <span>Hà nội: </span>
+                                <a href="tel:2151234567">0221897567</a>
                             </li>
                             <li>
-                                <span>Open: </span>
-                                Mon - Fri / 9:00 AM - 6:00 PM
+                                <span>Hồ Chí Minh : </span>
+                                <a href="tel:2151234567">0221897567</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-3">
+            <!-- <div class="col-sm-6 col-lg-3">
                 <div class="footer-item three">
                     <div class="footer-service">
                         <h3>Our Services</h3>
@@ -54,35 +54,33 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-6 col-lg-2">
+            </div> -->
+            <div class="col-sm-6 col-lg-3 ps-5 pt-2">
                 <div class="footer-item three">
                     <div class="footer-service">
-                        <h3>Tuyển dụng</h3>
+                        <h3>Về JobsIT</h3>
                         <ul>
                             <li>
-                                <a href="index.php?act=privacy" target="_blank">Privacy Policy</a>
+                                <a href="index.php" target="_blank">Trang chủ</a>
                             </li>
                             <li>
-                                <a href="terms-conditions.html" target="_blank">Terms & Conditions</a>
+                                <a href="index.php?act=listCorp" target="_blank">Nhà tuyển dụng</a>
                             </li>
                             <li>
-                                <a href="index.php?act=listRecr" target="_blank">Jobs</a>
+                                <a href="index.php?act=listRecr" target="_blank">Công việc</a>
                             </li>
                             <li>
-                                <a href="candidates.html" target="_blank">CV nổi bật</a>
+                                <a href="index.php?act=listCv" target="_blank">CV nổi bật</a>
                             </li>
+                            
                             <li>
-                                <a href="blog.html" target="_blank">Blog</a>
-                            </li>
-                            <li>
-                                <a href="contact.html" target="_blank">Contact</a>
+                                <a href="contact.html" target="_blank">Giới thiệu</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-lg-3">
+            <div class="col-sm-6 col-lg-4">
                 <div class="footer-item three">
                     <div class="footer-newsletter">
                         <h3>Đăng kí thông báo</h3>
@@ -102,9 +100,9 @@
 </footer>
 
 <div id="footPage" class="copyright-area three">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
+    <div class="container ">
+        <div class="text-center ">
+            <!-- <div class="col-lg-6">
                 <div class="copyright-item">
                     <ul>
                         <li>
@@ -134,13 +132,13 @@
                         </li>
                     </ul>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="copyright-item">
-                    <p>Copyright &copy; Group2/WD18316/Datlt36/FPolyHN
+            </div> -->
+            <!-- <div class="col-lg-6"> -->
+                <!-- <div class="copyright-item "> -->
+                    <p class="fw-bold my-0">Copyright &copy; Group2/WD18316/Datlt36/FPolyHN
                     </p>
-                </div>
-            </div>
+                <!-- </div> -->
+            <!-- </div> -->
         </div>
     </div>
 

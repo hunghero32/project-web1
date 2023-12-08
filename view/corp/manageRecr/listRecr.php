@@ -45,7 +45,7 @@
             $edit_recr = "index.php?act=edit_recr&idEdit=" . $id;
             $delete_recr = "index.php?act=delete_recr&id=" . $id; ?>
             <?php $link_recr = "index.php?act=infoRecr&idInfo=" . $id; ?>
-            <div class='employer-item position-relative'>
+            <div class='employer-item position-relative pe-3'>
 
                 <img data-cfsrc='<?= checkCorpAvaNull($avatar)  ?>' alt='Employer' style='width: 70px; height: 70px;object-fit: cover;' class="rounded-circle ">
                 <h3 style="color: #5f5656;"><?= $job ?></h3>
@@ -81,7 +81,7 @@
                                 <i class="fa-regular fa-pen-to-square text-white" style="font-size: 15px;"></i>
                             </div>
                         </a>
-                        <button onclick="confirmDelete('<?= $delete_recr ?>')" class="btn bg-secondary bg-opacity-75 me-3 text-white"><i class="fa-regular fa-trash-can" style="font-size: 15px;"></i></button>
+                        <button onclick="confirmDelete('<?= $delete_recr ?>')" class="btn bg-secondary bg-opacity-75 me-1 text-white"><i class="fa-regular fa-trash-can" style="font-size: 15px;"></i></button>
                     </div>
                 </div>
 

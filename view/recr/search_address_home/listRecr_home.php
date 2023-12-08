@@ -3,7 +3,7 @@ foreach ($list_recr as $value) {
     if ($value['address'] == 'Hà Nội') {
         extract($value);
         $link_recr = "index.php?act=info_recr&id=" . $id; ?>
-        <div class="col-sm-6 col-lg-3 mix h">
+        <div class="col-sm-6 col-lg-3  mix h" onclick="return window.location.href='<?= $link_recr ?>'">
             <div class="company-item">
                 <a href="<?= $link_recr ?>">
                     <div class="feature-top-right">
@@ -41,7 +41,7 @@ foreach ($list_recr as $value) {
     } else if ($value['address'] == 'TP. Hồ Chí Minh') {
         extract($value);
         $link_recr = "index.php?act=info_recr&id=" . $id; ?>
-        <div class="col-sm-6 col-lg-3 mix m">
+        <div class="col-sm-6 col-lg-3  mix m" onclick="return window.location.href='<?= $link_recr ?>'">
             <div class="company-item">
                 <a href="<?= $link_recr ?>">
                     <div class="feature-top-right">
@@ -49,7 +49,7 @@ foreach ($list_recr as $value) {
                     </div>
                     <div class="top flex-direction">
                         <a href="<?= $link_recr ?>">
-                            <img data-cfsrc="<?= checkUserAvaNull($avatar) ?>" alt="Brand" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/company1.png" alt="Brand"></noscript>
+                        <img  data-cfsrc='<?= checkCorpAvaNull($avatar)  ?>' alt='Employer' style='width: 70px; height: 70px;object-fit: cover;' class="rounded-circle ">
                         </a>
                         <h3>
                             <a href="<?= $link_recr ?>" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1; -webkit-box-orient: vertical;max-height: 200px;"><?= $job ?></a>
@@ -79,7 +79,7 @@ foreach ($list_recr as $value) {
     } else if ($value['address'] == 'Đà Nẵng') {
         extract($value);
         $link_recr = "index.php?act=info_recr&id=" . $id; ?>
-        <div class="col-sm-6 col-lg-3 mix d">
+        <div class="col-sm-6 col-lg-3  mix d" onclick="return window.location.href='<?= $link_recr ?>'">
             <div class="company-item">
                 <a href="<?= $link_recr ?>">
                     <div class="feature-top-right">
@@ -87,7 +87,7 @@ foreach ($list_recr as $value) {
                     </div>
                     <div class="top flex-direction">
                         <a href="<?= $link_recr ?>">
-                            <img data-cfsrc="<?= checkUserAvaNull($avatar) ?>" alt="Brand" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-one/company1.png" alt="Brand"></noscript>
+                        <img  data-cfsrc='<?= checkCorpAvaNull($avatar)  ?>' alt='Employer' style='width: 70px; height: 70px;object-fit: cover;' class="rounded-circle ">
                         </a>
                         <h3>
                             <a href="<?= $link_recr ?>" style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 1; -webkit-box-orient: vertical;max-height: 200px;"><?= $job ?></a>

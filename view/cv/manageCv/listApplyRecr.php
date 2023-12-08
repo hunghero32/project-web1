@@ -11,8 +11,14 @@
         </div>
 
     </form>
-
-    <?php foreach ($list_apply_recr as $key) : ?>
+    <?php if (empty($list_apply_recr)) { ?>
+        <div class=" my-3">
+            <div class="employer-item text-center">
+                Không có dữ liệu tìm thấy !
+            </div>
+        </div>
+        <?php } else {
+     foreach ($list_apply_recr as $key) { ?>
 
         <?php
         // var_dump($valu_racr);
@@ -21,7 +27,7 @@
         $withdrawCv = "index.php?act=withdrawCv&id=" . $idinfo . "&idrec=" . $id;
         $link_recr = "index.php?act=info_recr&id=" . $id;
         ?>
-        <div class='employer-item position-relative <?= $status == "Rút CV" ? 'd-none' : '' ?>'>
+        <div class='employer-item position-relative  <?= $status == "Rút CV" ? 'd-none' : '' ?> ' style="padding-right: 10px;">
 
             <img data-cfsrc='<?= checkCorpAvaNull($avatar)  ?>' alt='Employer' style='width: 70px; height: 70px;object-fit: cover;' class="rounded-circle ">
             <h3><a href="<?= $link_recr ?>" style="color: #5f5656;"><?= $job ?></a></h3>
@@ -42,12 +48,12 @@
             <div class="nav  nav-pills d-flex justify-content-between" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                 <a href="<?= $link_recr ?>" class="nav-link text-white me-3  py-2 px-3 fw-bold  bg-secondary bg-opacity-75" id="v-pills-info-tab" role="tab" style="font-size: 13px ;padding-bottom: 0;">Thông tin chi tiết </a>
                 <?php if ($status == 'Chờ xét duyệt') { ?>
-                    <button onclick="withdrawCv('<?= $withdrawCv ?>')" class="btn bg-opacity-25 me-3 text-white btn-secon" style="background-color: var(--secondary);">Rút hồ sơ </button>
+                    <button onclick="withdrawCv('<?= $withdrawCv ?>')" class="btn bg-opacity-25  text-white btn-secon" style="background-color: var(--secondary);">Rút hồ sơ </button>
                 <?php } ?>
             </div>
 
         </div>
-    <?php endforeach ?>
+    <?php }} ?>
 </div>
 <script>
     function withdrawCv(d) {

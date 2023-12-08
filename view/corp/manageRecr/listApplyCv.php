@@ -25,7 +25,7 @@
         // var_dump($listApply);
         foreach ($listApply as $cv) {
             extract($cv) ?>
-            <div class="candidate-item two" style="cursor:pointer;" onclick="return window.location.href='index.php?act=infoCv&id=<?= $iduser ?>&idinfo=<?= $idinfo ?>&browseR=<?= $status ?>'">
+            <div class="candidate-item two " style="cursor:pointer;" onclick="return window.location.href='index.php?act=infoCv&id=<?= $iduser ?>&idinfo=<?= $idinfo ?>&browseR=<?= $status ?>'">
                 <div class="w-100">
                     <h4><?= $namecv ?></h4>
                     <span class="w-100">Công việc ứng tuyển : <?= $job ?></span>
