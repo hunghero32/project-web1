@@ -34,7 +34,7 @@
                                 <input type="text" name="name" class="form-control" placeholder="Tên của bạn  (*)" pattern=".{2,}" title="Tên phải có ít nhất 8 ký tự" required>
                             </div>
                             <div class="form-group">
-                                <input type="password" name="pass" id="pass" class="form-control" placeholder="Mật khẩu (*)" pattern=".{8,}" title="Mật khảu phải có ít nhất 8 ký tự" required>
+                                <input type="password" name="pass" id="pass" class="form-control" placeholder="Mật khẩu (*)" pattern="(?=.*[A-Z])(?=.*\d).{8,}" title="Mật khẩu phải có ít nhất 1 chữ in hoa, 1 chữ thường, 1 số và 1 ký tự đặc biệt, và dài ít nhất 8 ký tự" required>
                             </div>
                             <div class="form-group">
                                 <input type="password" name="repass" id="repass" class="form-control" placeholder="Nhập lại mật khẩu (*)" pattern=".{8,}" title="Mật khẩu phải có ít nhất 8 ký tự" required>
