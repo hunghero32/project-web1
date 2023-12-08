@@ -11,7 +11,7 @@ $attach_path = 'assets/uploads/attach/';
 
 function hide($act)
 {
-    $hide = ['signup', 'signin','forgot' ,'admin','signupAdmin', 'listadmin','listcorp','listcv','listrecr','account','thongke', 'err'];
+    $hide = ['signup', 'signin','forgot' ,'admin','signupAdmin', 'listadmin','listcorp','listcv','listrecr','account','thongke', 'err','changepassword'];
     foreach ($hide as $value) {
         if ($act === $value) {
             return true;

@@ -112,6 +112,23 @@ switch ($act) {
         unset($_SESSION['username']);
         header('Location: index.php');
         break;
+
+    case 'changepassword':
+        if (isset($_POST['change'])) {
+            $iduser = $_SESSION['username']['id'];
+            $newpass = $_POST['newpass'];
+            $renewpass = $_POST['renewpass'];
+
+            if ($newpass === $renewpass) {
+                changePass($iduser,$newpass);
+                $_SESSION['username']['pass'] = $newpass;
+            }
+
+            $newpass !== $renewpass ? $_SESSION['wrongnewpass'] = 'true' : $_SESSION['changepass'] = 'true';
+        }
+
+        include 'view/user/changePassword.php';
+        break;
     case 'contact':
         include 'view/contact.php';
         break;

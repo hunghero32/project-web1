@@ -17,6 +17,14 @@ $notification = [
         "notice" => "Đăng kí thành công",
         "link" => "index.php?act=signin"
     ],
+    "wrongnewpass" => [
+        "notice" => "Nhập lại mật khẩu sai !",
+        "link" => ""
+    ],
+    "changepass" => [
+        "notice" => "Đổi mật khẩu thành công",
+        "link" => "index.php"
+    ],
     "updatedCorp" => [
         "notice" => "Cập nhật thành công !",
         "link" => "index.php?act=updateInfoCorp"

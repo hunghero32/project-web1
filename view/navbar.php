@@ -28,7 +28,7 @@
                         <li class="nav-item">
                             <a href="index.php?act=listCorp">Nhà tuyển dụng</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item d-none">
                             <a href="index.php?act=listCv">Ứng viên</a>
                         </li>
                         <li class="nav-item">
@@ -70,7 +70,7 @@
                                     </a>
                                 <?php } else if ($role == 2) { ?>
                                     <a class="job-right" href="index.php?act=manage_Cv">
-                                        Tạo CV <i class="fa-solid fa-file-pen"></i>
+                                        Tạo hồ sơ <i class="fa-solid fa-file-pen"></i>
                                     </a>
                                 <?php } else if ($role == 3) { ?>
                                     <a class="job-right" href="index.php?act=post_recr&id=<?= $id ?>">
