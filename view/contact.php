@@ -6,8 +6,8 @@
                     <h2>Liên Hệ</h2>
                     <ul>
                         <li>
-                            <img data-cfsrc="assets/img/home-three/title-img-two.png" alt="Image" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img-two.png" alt="Image"></noscript>
-                            <a href="index.html">Trang chủ</a>
+                            <img data-cfsrc="assets/img/favicon.png" alt="Image" style="display:none;visibility:hidden; width: 25px;" ><noscript><img src="assets/img/home-three/title-img-two.png" alt="Image"></noscript>
+                            <a href="index.php" class="mt-2">Trang chủ</a>
                         </li>
                         <li>
                             <span>/</span>
@@ -21,7 +21,6 @@
         </div>
     </div>
 </div>
-
 
 <div class="contact-info-area pt-100 pb-70">
     <div class="container">

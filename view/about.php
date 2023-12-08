@@ -3,17 +3,17 @@
         <div class="d-table-cell">
             <div class="container">
                 <div class="title-item">
-                    <h2>About</h2>
+                    <h2>Giới thiệu</h2>
                     <ul>
                         <li>
-                            <img data-cfsrc="assets/img/home-three/title-img-two.png" alt="Image" style="display:none;visibility:hidden;"><noscript><img src="assets/img/home-three/title-img-two.png" alt="Image"></noscript>
-                            <a href="index.html">Home</a>
+                        <img data-cfsrc="assets/img/favicon.png" alt="Image" style="display:none;visibility:hidden; width: 25px;" ><noscript><img src="assets/img/home-three/title-img-two.png" alt="Image"></noscript>
+                            <a href="index.php" class="mt-2">Trang chủ</a>
                         </li>
                         <li>
                             <span>/</span>
                         </li>
                         <li>
-                            About
+                            Giới thiệu
                         </li>
                     </ul>
                 </div>
@@ -167,15 +167,14 @@
         <div class="explore-item">
             <div class="section-title">
                 <span class="sub-title">Khám phá cuộc sống mới</span>
-                <h2>Được tìm thấy Hãy đưa CV của bạn đến trước những nhà tuyển dụng tuyệt vời</h2>
+                <h2>Hãy đưa CV của bạn đến trước những nhà tuyển dụng tuyệt vời</h2>
             </div>
             <p>Khám phá các cơ hội nghề nghiệp đa dạng và thú vị của chúng
                 tôi và bắt đầu chuyến phiêu lưu mới với sự phát triển và thành công!</p>
             <ul>
                 <li>
-                    <a class="left-btn" href="#">
-                        Tải lên sơ yếu lý lịch của bạn
-                        <i class="flaticon-upload"></i>
+                    <a class="left-btn px-5" href="index.php">
+                        Khám phá ngay
                     </a>
                 </li>
                 <li>
